@@ -1,7 +1,7 @@
-/*  
- * @(#) SpringConext.java Create on 2013-5-30 上午11:38:48   
- *   
- * Copyright 2013 by pztx.   
+/*
+ * @(#) SpringConext.java Create on 2013-5-30 上午11:38:48
+ *
+ * Copyright 2013 by pztx.
  */
 
 package cn.newcapec.framework.core.utils.springUtils;
@@ -21,7 +21,7 @@ import org.springframework.web.context.ServletContextAware;
 public class SpringConext implements ApplicationContextAware,ServletContextAware {
 
 	private static ApplicationContext context;
-	
+
 	private static ServletContext servletContext;
 
 
@@ -36,17 +36,16 @@ public class SpringConext implements ApplicationContextAware,ServletContextAware
 	public static ApplicationContext getApplicationContext() {
 		return context;
 	}
-	
-	
+
+
 
 	public ServletContext getServletContext() {
 		return servletContext;
 	}
 
-	@Override
 	public void setServletContext(ServletContext servletContext) {
 		this.servletContext=servletContext;
 	}
-	
+
 
 }

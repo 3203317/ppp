@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
- * 
+ *
  * @author andy.li
  *
  */
@@ -37,16 +37,14 @@ public class RequestEncodeFilter implements   Filter{
 		this.toChartSet = toChartSet;
 	}
 
-	@Override
 	public void destroy() {
 	}
 
 
 
-	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain arg2) throws IOException, ServletException {
-		
+
 		HttpServletRequest httpServletRequest = (HttpServletRequest)request;
 		String method = httpServletRequest.getMethod();
 		if ( method.equalsIgnoreCase("get") )
@@ -59,14 +57,13 @@ public class RequestEncodeFilter implements   Filter{
 			{
 				EscapeUtil.requestConvertPostUrlEncode(httpServletRequest, this.fromChartSet, this.toChartSet, new String(qs.getBytes(this.fromChartSet), this.toChartSet));
 			}
-		} 
+		}
 	 arg2.doFilter(request, response);
-		
-		
+
+
 	}
 
-	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-		
+
 	}
 }

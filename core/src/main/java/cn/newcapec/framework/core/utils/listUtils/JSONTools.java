@@ -22,14 +22,14 @@ import cn.newcapec.framework.core.utils.stringUtils.JsonDateValueProcessor;
  * @author andy.li
  */
 public class JSONTools {
-	
+
 	protected static Logger logger = Logger.getLogger(JSONTools.class);
-	
+
 	static{
 		String[]dateFormats = new String[]{"yyyy-MM-dd HH:mm:ss"};
 		JSONUtils.getMorpherRegistry().registerMorpher(new DateMorpherEx(dateFormats));//注册格式化日期的模式
 	}
-	
+
 	/**
 	 * @return
 	 */
@@ -39,7 +39,7 @@ public class JSONTools {
 		if(obj!=null){
 			result = obj.toString();
 		}
-		
+
 		return result;
 	}
 	public static final int getInt(JSONObject json,String key){
@@ -48,17 +48,17 @@ public class JSONTools {
 		if(obj!=null){
 			result = NumberUtils.toInt(obj.toString(), result);
 		}
-		
+
 		return result;
 	}
-	
+
 	public static final boolean getBoolean(JSONObject json,String key){
 		boolean result = false;
 		Object obj = getObject(json, key);
 		if(obj!=null){
 			result = BooleanUtils.toBoolean(obj.toString());
 		}
-		
+
 		return result;
 	}
 	public static final Double getDouble(JSONObject json,String key){
@@ -67,7 +67,7 @@ public class JSONTools {
 		if(obj!=null){
 			result = NumberUtils.toDouble(obj.toString(), result);
 		}
-		
+
 		return result;
 	}
 	public static final JSONObject getJSONObject(JSONObject json,String key){
@@ -76,21 +76,21 @@ public class JSONTools {
 		if(obj!=null && obj instanceof JSONObject){
 			result = (JSONObject) obj;
 		}
-		
+
 		return result;
 	}
-	
+
 	public static final JSONArray getJSONArray(JSONObject json,String key){
 		JSONArray result = null;
 		Object obj = getObject(json, key);
 		if(obj!=null && obj instanceof JSONArray){
 			result = (JSONArray) obj;
 		}
-		
+
 		return result;
 	}
-	
-	
+
+
 	public static final Object getObject(JSONObject json,String key){
 		Object result = null;
 		if(json!=null && StringUtils.isNotEmpty(key)&& json.containsKey(key)){
@@ -98,11 +98,11 @@ public class JSONTools {
 		}
 		return result;
 	}
-	
+
 	public static final <T> T JSONToBean(JSONObject jsonData,Class<T> clazz){
 		return JSONToBean(jsonData, clazz, null);
 	}
-	
+
 	/**
 	 * @return
 	 */
@@ -125,15 +125,15 @@ public class JSONTools {
 		return result;
 	}
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public static final <T> T JSONToBean(JSONObject jsonData,Class<T> clazz,String[] excludes, String datePattern,Boolean includeNull){
 		JsonConfig jsonConfig = getJSConfig(excludes, datePattern, includeNull);
 		return JSONToBean(jsonData, clazz, jsonConfig);
 	}
-	
-	
+
+
 	/**
 	 * @return
 	 */
@@ -156,11 +156,10 @@ public class JSONTools {
 					 }
 					return false;
 				}
-			});  
-			
+			});
+
 			result.setJavaPropertyFilter(new PropertyFilter() {
-				
-				@Override
+
 				public boolean apply(Object source, String name, Object value) {
 					if(value==null || StringUtils.isBlank(value.toString())){
 						return true;
@@ -171,12 +170,12 @@ public class JSONTools {
 		}
 		return result;
 	}
-	
+
 	public JSONObject strToJSONObject(String str,JSONObject jsonObject){
 		JSONObject result =null;
 		return result;
 	}
-	
+
 	public static JSONObject parseToJSONObject(String str) {
 		JSONObject result = null;
 		if (StringUtils.isNotBlank(str) && str.startsWith("{")
