@@ -355,6 +355,11 @@
 			<version>${spring.version}</version>
 		</dependency>
 		<!--spring basic end -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
+		</dependency>
 		<!--ant basic begin -->
 		<!--ant basic end -->
 		<!-- jetty begin -->
