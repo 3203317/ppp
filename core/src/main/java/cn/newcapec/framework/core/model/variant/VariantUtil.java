@@ -11,21 +11,24 @@ import cn.newcapec.framework.core.utils.dataUtils.DateUtil;
 import cn.newcapec.framework.core.utils.stringUtils.StringUtil;
 
 /**
- * 
+ *
  */
 public final class VariantUtil implements LogEnabled {
 	/**
 	 * 短日期formatter
 	 */
-	private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	private static SimpleDateFormat dateFormat = new SimpleDateFormat(
+			"yyyy-MM-dd");
 	/**
 	 * 时间formatter
 	 */
-	private static SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+	private static SimpleDateFormat timeFormat = new SimpleDateFormat(
+			"HH:mm:ss");
 	/**
 	 * 长日期formatter
 	 */
-	private static SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	private static SimpleDateFormat dateTimeFormat = new SimpleDateFormat(
+			"yyyy-MM-dd HH:mm:ss");
 
 	public static final Object toObject(byte value) {
 		return new Byte(value);
@@ -66,10 +69,10 @@ public final class VariantUtil implements LogEnabled {
 	public static final Object toObject(String value) {
 		return value;
 	}
-	
+
 	/**
 	 * 转换string
-	 *  
+	 *
 	 * @param value
 	 * @return
 	 */
@@ -80,9 +83,10 @@ public final class VariantUtil implements LogEnabled {
 			return DateUtil.toDateString((Date) value);
 		return value.toString();
 	}
+
 	/**
 	 * 转换byte
-	 *  
+	 *
 	 * @param value
 	 * @return
 	 */
@@ -98,9 +102,10 @@ public final class VariantUtil implements LogEnabled {
 			return 0;
 		return Byte.parseByte(str);
 	}
+
 	/**
 	 * 转换short
-	 *  
+	 *
 	 * @param value
 	 * @return
 	 */
@@ -116,10 +121,10 @@ public final class VariantUtil implements LogEnabled {
 			return 0;
 		return Short.parseShort(str);
 	}
-	
+
 	/**
 	 * 转换int
-	 *  
+	 *
 	 * @param value
 	 * @return
 	 */
@@ -138,10 +143,10 @@ public final class VariantUtil implements LogEnabled {
 			return 0;
 		return Integer.parseInt(str);
 	}
-	
+
 	/**
 	 * 转换long
-	 *  
+	 *
 	 * @param value
 	 * @return
 	 */
@@ -162,8 +167,10 @@ public final class VariantUtil implements LogEnabled {
 			return 0L;
 		return Long.parseLong(str);
 	}
+
 	/**
-	 *  转换float
+	 * 转换float
+	 *
 	 * @param value
 	 * @return
 	 */
@@ -182,9 +189,10 @@ public final class VariantUtil implements LogEnabled {
 			return 0F;
 		return Float.parseFloat(str);
 	}
+
 	/**
 	 * 转换double
-	 *  
+	 *
 	 * @param value
 	 * @return
 	 */
@@ -203,9 +211,10 @@ public final class VariantUtil implements LogEnabled {
 			return 0D;
 		return Double.parseDouble(str);
 	}
-	
+
 	/**
 	 * 转换bigdecimal
+	 *
 	 * @param value
 	 * @return
 	 */
@@ -224,21 +233,23 @@ public final class VariantUtil implements LogEnabled {
 			return BigDecimal.valueOf(0L);
 		return new BigDecimal(str);
 	}
+
 	/**
 	 * 转换逻辑值
-	 *  
+	 *
 	 * @param value
 	 * @return
 	 */
 	public static final boolean parseBoolean(String value) {
 		if (value == null)
 			return false;
-		return ((value.equalsIgnoreCase("true")) || (value.equals("1")) || (value.equals("-1")));
+		return ((value.equalsIgnoreCase("true")) || (value.equals("1")) || (value
+				.equals("-1")));
 	}
-	
+
 	/**
 	 * 转换布尔值
-	 *  
+	 *
 	 * @param value
 	 * @return
 	 */
@@ -249,9 +260,10 @@ public final class VariantUtil implements LogEnabled {
 			return ((Boolean) value).booleanValue();
 		return parseBoolean(value.toString());
 	}
+
 	/**
 	 * 判断是否为数值
-	 *  
+	 *
 	 * @param str
 	 * @return
 	 */
@@ -265,12 +277,13 @@ public final class VariantUtil implements LogEnabled {
 		}
 		return true;
 	}
+
 	/**
 	 * 转换日期
-	 *  
+	 *
 	 * @param value
 	 * @return
-	 * @throws SQLException 
+	 * @throws SQLException
 	 */
 	public static final Date parseDate(Object value) {
 		String str;
@@ -280,13 +293,13 @@ public final class VariantUtil implements LogEnabled {
 			return ((Date) value);
 		if (value instanceof Number)
 			return new Date(((Number) value).longValue());
-		if (value instanceof oracle.sql.TIMESTAMP)
-			try {
-				return ((oracle.sql.TIMESTAMP) value).timestampValue();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			
+//		if (value instanceof oracle.sql.TIMESTAMP)
+//			try {
+//				return ((oracle.sql.TIMESTAMP) value).timestampValue();
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+
 		if (StringUtil.isValid(str = String.valueOf(value))) {
 			if (isNumber(str)) {
 				long l = Long.parseLong(str);
@@ -299,7 +312,7 @@ public final class VariantUtil implements LogEnabled {
 						return timeFormat.parse(str);
 					return dateFormat.parse(str);
 				}
-				log.info("str:"+str);
+				log.info("str:" + str);
 				return dateTimeFormat.parse(str);
 			} catch (ParseException ex) {
 				ex.printStackTrace();
@@ -308,17 +321,17 @@ public final class VariantUtil implements LogEnabled {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 将对象转换为对应的数据类型值
+	 *
 	 * @param dataType
 	 * @param obj
 	 * @return
 	 */
 	public static final Object translate(int dataType, Object obj) {
 		if ((obj == null)
-				|| ((obj instanceof String) && (((String) obj)
-						.length() == 0))) {
+				|| ((obj instanceof String) && (((String) obj).length() == 0))) {
 			if (dataType == DataType.STRING)
 				return obj;
 			return null;
