@@ -1,5 +1,5 @@
 /**
- *
+ * 
  */
 package cn.newcapec.framework.core.handler;
 
@@ -25,9 +25,10 @@ import cn.newcapec.framework.core.utils.stringUtils.StringUtil;
 
 public class SystemExceptionHandler implements HandlerExceptionResolver ,LogEnabled{
 
+	@Override
 	public ModelAndView resolveException(HttpServletRequest request,
 			HttpServletResponse response, Object handler, Exception ex) {
-
+		
 		Msg msg = new Msg();
 		try {
 			if (ex instanceof BaseException) {
@@ -70,5 +71,5 @@ public class SystemExceptionHandler implements HandlerExceptionResolver ,LogEnab
 		return null;
 	}
 }
-
+		
 

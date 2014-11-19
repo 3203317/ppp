@@ -22,14 +22,14 @@ public class PagerFilter implements Filter {
 	private static String ROOT_PATH = "";
 	private static String WEBROOT_PATH="";
 	private static int framework_default_pagesize=10;
-
+	
 	public void destroy() {
 
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
-
+		
 		HttpServletRequest httpRequest = (HttpServletRequest)request;
 		PageContext.setOffset(getOffset(httpRequest));
 		PageContext.setPagesize(getPagesize(httpRequest));
@@ -40,7 +40,7 @@ public class PagerFilter implements Filter {
 			PageContext.removePagesize();
 		}
 	}
-
+	
 	private int getOffset(HttpServletRequest request){
 		int offset = 0;
 		try {
@@ -49,7 +49,7 @@ public class PagerFilter implements Filter {
 		}
 		return offset;
 	}
-
+	
 	private int getPagesize(HttpServletRequest httpRequest){
 		String psvalue = httpRequest.getParameter("limit");
 		if(psvalue != null && !psvalue.trim().equals("")){
@@ -62,7 +62,7 @@ public class PagerFilter implements Filter {
 				httpRequest.getSession().setAttribute(PAGE_SIZE_NAME, ps);
 			}
 		}
-
+		
 		Integer pagesize = (Integer)httpRequest.getSession().getAttribute(PAGE_SIZE_NAME);
 		if(pagesize == null){
 			if(StringUtils.isNotBlank(SysConfigUtil.get("framework.default.pagesize"))){
@@ -70,10 +70,11 @@ public class PagerFilter implements Filter {
 			httpRequest.getSession().setAttribute(PAGE_SIZE_NAME, 10);
 			return 10;
 		}
-
+		
 		return pagesize;
 	}
 
+	@Override
 	public void init(FilterConfig arg0) throws ServletException {
 		String realPath = arg0.getServletContext().getRealPath("/");
 		WEBROOT_PATH = realPath;

@@ -22,14 +22,14 @@ import org.apache.log4j.Logger;
  * @author andy.li
  */
 public class JSONTools {
-
+	
 	protected static Logger logger = Logger.getLogger(JSONTools.class);
-
+	
 	static{
 		String[]dateFormats = new String[]{"yyyy-MM-dd","yyyy-MM-dd HH:mm:ss"};
 		JSONUtils.getMorpherRegistry().registerMorpher(new DateMorpher(dateFormats));//注册格式化日期的模式
 	}
-
+	
 	/**
 	 * 从json中取String
 	 * @Title: getString
@@ -46,7 +46,7 @@ public class JSONTools {
 		if(obj!=null){
 			result = obj.toString();
 		}
-
+		
 		return result;
 	}
 	public static final int getInt(JSONObject json,String key){
@@ -55,17 +55,17 @@ public class JSONTools {
 		if(obj!=null){
 			result = NumberUtils.toInt(obj.toString(), result);
 		}
-
+		
 		return result;
 	}
-
+	
 	public static final boolean getBoolean(JSONObject json,String key){
 		boolean result = false;
 		Object obj = getObject(json, key);
 		if(obj!=null){
 			result = BooleanUtils.toBoolean(obj.toString());
 		}
-
+		
 		return result;
 	}
 	public static final Double getDouble(JSONObject json,String key){
@@ -74,7 +74,7 @@ public class JSONTools {
 		if(obj!=null){
 			result = NumberUtils.toDouble(obj.toString(), result);
 		}
-
+		
 		return result;
 	}
 	public static final JSONObject getJSONObject(JSONObject json,String key){
@@ -83,21 +83,21 @@ public class JSONTools {
 		if(obj!=null && obj instanceof JSONObject){
 			result = (JSONObject) obj;
 		}
-
+		
 		return result;
 	}
-
+	
 	public static final JSONArray getJSONArray(JSONObject json,String key){
 		JSONArray result = null;
 		Object obj = getObject(json, key);
 		if(obj!=null && obj instanceof JSONArray){
 			result = (JSONArray) obj;
 		}
-
+		
 		return result;
 	}
-
-
+	
+	
 	public static final Object getObject(JSONObject json,String key){
 		Object result = null;
 		if(json!=null && StringUtils.isNotEmpty(key)&& json.containsKey(key)){
@@ -105,11 +105,11 @@ public class JSONTools {
 		}
 		return result;
 	}
-
+	
 	public static final <T> T JSONToBean(JSONObject jsonData,Class<T> clazz){
 		return JSONToBean(jsonData, clazz, null);
 	}
-
+	
 	/**
 	 * json对象转bean
 	 * @Title: JSONToBean
@@ -140,7 +140,7 @@ public class JSONTools {
 		return result;
 	}
 	/**
-	 *
+	 * 
 	 * @Title: JSONToBean
 	 * @data:2013-7-3上午9:40:06
 	 * @author:zhanghongliang
@@ -156,8 +156,8 @@ public class JSONTools {
 		JsonConfig jsonConfig = getJSConfig(excludes, datePattern, includeNull);
 		return JSONToBean(jsonData, clazz, jsonConfig);
 	}
-
-
+	
+	
 	/**
 	 * 取jsonConfig
 	 * @Title: getJSConfig
@@ -188,10 +188,11 @@ public class JSONTools {
 					 }
 					return false;
 				}
-			});
-
+			});  
+			
 			result.setJavaPropertyFilter(new PropertyFilter() {
-
+				
+				@Override
 				public boolean apply(Object source, String name, Object value) {
 					if(value==null || StringUtils.isBlank(value.toString())){
 						return true;
@@ -202,12 +203,12 @@ public class JSONTools {
 		}
 		return result;
 	}
-
+	
 	public JSONObject strToJSONObject(String str,JSONObject jsonObject){
 		JSONObject result =null;
 		return result;
 	}
-
+	
 	public static JSONObject parseToJSONObject(String str) {
 		JSONObject result = null;
 		if (StringUtils.isNotBlank(str) && str.startsWith("{")
@@ -219,8 +220,8 @@ public class JSONTools {
 		}
 		return result;
 	}
-
-
+	
+	
 	public static JSONArray parseToJSONObject(List list,JsonConfig jsonConfig) {
 		JSONArray result = null;
 		if(jsonConfig==null){

@@ -27,10 +27,12 @@ public class CommonModel extends DataContainer implements DataObject {
             this.type = type;
         }
 
+        @Override
         public String getName() {
             return this.name();
         }
 
+        @Override
         public Class<?> getType() {
             return type;
         }

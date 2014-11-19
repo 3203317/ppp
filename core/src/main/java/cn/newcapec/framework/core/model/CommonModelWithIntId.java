@@ -31,19 +31,21 @@ public class CommonModelWithIntId extends DataContainer implements DataObject {
             this.type = type;
         }
 
+        @Override
         public String getName() {
             return this.name();
         }
 
+        @Override
         public Class<?> getType() {
             return type;
         }
     }
 
-	@Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator="comm_seq")
-    @SequenceGenerator(name="comm_seq")
+	@Id  
+    @Column(name = "id")    
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator="comm_seq")   
+    @SequenceGenerator(name="comm_seq")  
     public String getId() {
         return (String) super.getValue(Base2ModelProperty.id);
     }

@@ -1,5 +1,5 @@
 /**
- *
+ * 
  */
 package cn.newcapec.framework.core.handler;
 
@@ -36,16 +36,17 @@ import cn.newcapec.framework.core.utils.stringUtils.StringUtil;
 
 @SuppressWarnings("all")
 public class MultiViewHandlerInterceptor extends HandlerInterceptorAdapter implements LogEnabled{
+	
 
-
+	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		MultiViewResource resource=null;
-
+		
 		if(handler instanceof MultiViewResource){
 			 resource=(MultiViewResource)handler;
 		}
-
+		
 		if(handler instanceof HandlerMethod){
 			HandlerMethod handlerMethod=(HandlerMethod)handler;
 			if(handlerMethod.getBean() instanceof MultiViewResource){

@@ -1,5 +1,5 @@
 /**
- *
+ * 
  */
 package cn.newcapec.framework.core.handler.springDatebind;
 
@@ -19,6 +19,7 @@ public class SpringDateBind implements WebBindingInitializer {
 	/*
 	 * (non-Javadoc)
 	 */
+	@Override
 	public void initBinder(WebDataBinder binder, WebRequest request) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		dateFormat.setLenient(false);

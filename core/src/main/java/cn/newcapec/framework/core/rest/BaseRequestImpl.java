@@ -45,7 +45,7 @@ import com.noelios.restlet.http.HttpCall;
 import com.noelios.restlet.http.HttpRequest;
 
 /**
- *
+ * 
  * @author: andy.li
  */
 /**
@@ -55,7 +55,7 @@ import com.noelios.restlet.http.HttpRequest;
 @SuppressWarnings("all")
 public class BaseRequestImpl implements BaseRequest {
 	private Logger log = Logger.getLogger(getClass());
-
+	
 	/*获取系统上下文路径*/
 	private String contextPath;
 
@@ -103,7 +103,7 @@ public class BaseRequestImpl implements BaseRequest {
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-
+			
 		}
 	}
 
@@ -155,8 +155,8 @@ public class BaseRequestImpl implements BaseRequest {
 							}
 						}
 					}
-
-
+					
+					
 				} catch (Exception e) {
 					log.error("文件上传失败",e);
 					throw new SysException("文件上传失败", e);
@@ -239,7 +239,7 @@ public class BaseRequestImpl implements BaseRequest {
 					throw new SysException("客户端拼装的Json串格式不对!");
 				}
 			}
-
+			
 		}
 	}
 
@@ -286,7 +286,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 获取参数，此方法总是返回一个有效地String, 不会返回null.
-	 *
+	 * 
 	 * @param name
 	 * @return
 	 */
@@ -300,7 +300,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 获取参数，此方法总是返回一个有效地String, 不会返回null
-	 *
+	 * 
 	 * @param name
 	 *            参数名称
 	 * @param defaultValue
@@ -316,7 +316,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * bigdecimal型获取参数值
-	 *
+	 * 
 	 * @param name
 	 * @return
 	 */
@@ -328,7 +328,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 按bigdecimal型获取参数值
-	 *
+	 * 
 	 * @param name
 	 *            参数名称
 	 * @param defaultValue
@@ -344,7 +344,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 按int型获取参数值
-	 *
+	 * 
 	 * @param name
 	 * @return
 	 */
@@ -354,7 +354,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 按int型获取参数值
-	 *
+	 * 
 	 * @param name
 	 * @param defaultValue
 	 * @return
@@ -369,7 +369,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 按long型获取参数值
-	 *
+	 * 
 	 * @param name
 	 * @return
 	 */
@@ -379,7 +379,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 按long型获取参数值
-	 *
+	 * 
 	 * @param name
 	 * @param defaultValue
 	 * @return
@@ -394,7 +394,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 按float型获取参数值
-	 *
+	 * 
 	 * @param name
 	 * @return
 	 */
@@ -404,7 +404,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 按float型获取参数值
-	 *
+	 * 
 	 * @param name
 	 * @param defaultValue
 	 * @return
@@ -419,7 +419,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 按double型获取参数值
-	 *
+	 * 
 	 * @param name
 	 * @return
 	 */
@@ -429,7 +429,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 按double型获取参数值
-	 *
+	 * 
 	 * @param name
 	 * @param defaultValue
 	 * @return
@@ -443,7 +443,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 按boolean型获取参数值
-	 *
+	 * 
 	 * @param name
 	 * @return
 	 */
@@ -453,7 +453,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 按boolean型获取参数值
-	 *
+	 * 
 	 * @param name
 	 * @param defaultValue
 	 * @return
@@ -467,7 +467,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 按date型获取参数值
-	 *
+	 * 
 	 * @param name
 	 * @return
 	 */
@@ -477,7 +477,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 按date型获取参数值
-	 *
+	 * 
 	 * @param name
 	 * @param defaultValue
 	 * @return
@@ -494,7 +494,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 返回参数值数组.该方法返回的每个参数值始终不为NULL
-	 *
+	 * 
 	 * @param name
 	 * @return
 	 */
@@ -513,7 +513,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 将当前Request中包含的参数(Parameter)设置到给定的对象当中.
-	 *
+	 * 
 	 * @param object
 	 * @throws Exception
 	 */
@@ -531,7 +531,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 将当前Request中包含的参数(Parameter)设置到Map当中.
-	 *
+	 * 
 	 * @return
 	 */
 	public Map parametersToMap() {
@@ -542,7 +542,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 将当前Request中包含的参数(Parameter)设置到Bean当中.
-	 *
+	 * 
 	 * @param object
 	 * @throws Exception
 	 */
@@ -558,7 +558,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 将当前Request中包含的参数(Parameter)设置到Map当中.
-	 *
+	 * 
 	 * @param map
 	 */
 	@SuppressWarnings("unchecked")
@@ -573,7 +573,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 当前Request中包含的参数(Parameter)设置到VariantSet当中.
-	 *
+	 * 
 	 * @param variantSet
 	 */
 	protected void parametersToVariantSet(VariantSet variantSet) {
@@ -586,7 +586,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 将当前Request中包含的属性(Attribute)设置到给定的对象当中.
-	 *
+	 * 
 	 * @param dest
 	 * @throws Exception
 	 */
@@ -604,7 +604,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 当前Request中包含的属性(Attribute)设置到Map对象当中
-	 *
+	 * 
 	 * @return
 	 */
 	public Map attributiesToMap() {
@@ -615,7 +615,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 当前Request中包含的属性(Attribute)设置到Bean对象当中
-	 *
+	 * 
 	 * @return
 	 */
 	protected void attributiesToBean(Object dest) {
@@ -630,7 +630,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 当前Request中包含的属性(Attribute)设置到Map对象当中
-	 *
+	 * 
 	 * @return
 	 */
 	protected void attributiesToMap(Map map) {
@@ -644,7 +644,7 @@ public class BaseRequestImpl implements BaseRequest {
 
 	/**
 	 * 当前Request中包含的属性(Attribute)设置到VariantSet对象当中
-	 *
+	 * 
 	 * @param variant
 	 */
 	protected void attributiesToVariantSet(VariantSet variant) {
@@ -657,7 +657,7 @@ public class BaseRequestImpl implements BaseRequest {
 		}
 	}
 
-
+	
 	public String getContextPath() {
 		return PagerFilter.getRootPath();
 	}
@@ -670,6 +670,7 @@ public class BaseRequestImpl implements BaseRequest {
 		return this.request;
 	}
 
+	@Override
 	public List<FileAttach> getfiles() {
 		return fileAttachs;
 	}

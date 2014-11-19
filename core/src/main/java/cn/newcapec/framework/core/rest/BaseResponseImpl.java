@@ -20,11 +20,11 @@ import cn.newcapec.framework.core.utils.httpUtils.WebUtils;
 /**
  * @author: andy.li
  * </p>
- *
+ * 
  */
 public class BaseResponseImpl implements BaseResponse,LogEnabled {
 	private Response response = null;
-	public static final String rootPath = PagerFilter.getRootPath();
+	public static final String rootPath = PagerFilter.getRootPath(); 
 
 	private static final CharacterSet DEFAULT_CHARSET = CharacterSet.UTF_8;
 
@@ -36,11 +36,11 @@ public class BaseResponseImpl implements BaseResponse,LogEnabled {
 		representation.setCharacterSet(DEFAULT_CHARSET);
 		this.getOrignResponse().setEntity(representation);
 	}
-
+	
 	public void toView(String url,org.apache.velocity.context.Context context) {
 		String html = "";
         try {
-
+        	
             html = TemplateEngine.parse(url, context);
             Representation representation =  new StringRepresentation(html, MediaType.TEXT_HTML,
             		null, CharacterSet.UTF_8);
@@ -49,7 +49,7 @@ public class BaseResponseImpl implements BaseResponse,LogEnabled {
         	log.error(ExceptionUtils.getFullStackTrace(e));
         }
 	}
-
+	
 	public void print(Representation representation, CharacterSet characterSet) {
 		if (!DEFAULT_CHARSET.equals(characterSet)) {
 			representation.setCharacterSet(characterSet);
@@ -78,9 +78,10 @@ public class BaseResponseImpl implements BaseResponse,LogEnabled {
 		return this.response;
 	}
 
+	@Override
 	public void toMultiView(String url, Map model) {
 		HttpServletResponse result = null;
 		result =  WebUtils.getResponse(response.getRequest());
-
+		
 	}
 }
