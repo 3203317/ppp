@@ -7,7 +7,8 @@ import java.util.Collection;
 
 /**
  * 所有runtime异常的基类
- * @author andy.li
+ *
+ * @author huangxin
  */
 
 @SuppressWarnings("all")
@@ -15,7 +16,7 @@ public class BaseException extends SysException {
 	/**
 	 * 根异常，指示本异常实例产生的根本原因.
 	 */
-//	protected Throwable rootCause = null;
+	// protected Throwable rootCause = null;
 	private Collection exceptions = new ArrayList();
 	private String messageKey = null;
 	private Object[] messageArgs = null;
@@ -29,7 +30,7 @@ public class BaseException extends SysException {
 
 	/**
 	 * 构造函数.
-	 * 
+	 *
 	 * @param msg
 	 *            异常信息.
 	 */
@@ -40,7 +41,7 @@ public class BaseException extends SysException {
 
 	/**
 	 * 构造函数.
-	 * 
+	 *
 	 * @param cause
 	 *            引起本异常的异常.
 	 */
@@ -50,7 +51,7 @@ public class BaseException extends SysException {
 
 	/**
 	 * 构造函数.
-	 * 
+	 *
 	 * @param msg
 	 *            异常信息.
 	 * @param cause
@@ -63,7 +64,7 @@ public class BaseException extends SysException {
 
 	/**
 	 * 获得本异常实例所包含的多异常实例.
-	 * 
+	 *
 	 * @return 本异常实例所包含的多异常实例.
 	 */
 	public Collection getCollection() {
@@ -72,7 +73,7 @@ public class BaseException extends SysException {
 
 	/**
 	 * 增加一个异常实例，这个异常实例包装在本异常实例中.
-	 * 
+	 *
 	 * @param ex
 	 *            新的异常实例.
 	 */
@@ -82,7 +83,7 @@ public class BaseException extends SysException {
 
 	/**
 	 * 设置异常消息的keyCode，主要为支持国际化.
-	 * 
+	 *
 	 * @param key
 	 *            异常消息的keyCode.
 	 */
@@ -92,7 +93,7 @@ public class BaseException extends SysException {
 
 	/**
 	 * 获得异常的keyCode，主要为了支持国际化.
-	 * 
+	 *
 	 * @return 异常消息的keyCode.
 	 */
 	public String getMessageKey() {
@@ -101,7 +102,7 @@ public class BaseException extends SysException {
 
 	/**
 	 * 设置异常消息的参数，主要为了支持国际化. 异常消息使用如下格式定义带参数的消息: {0} is larger than {1}.
-	 * 
+	 *
 	 * @param args
 	 *            异常消息的参数数组.
 	 */
@@ -111,7 +112,7 @@ public class BaseException extends SysException {
 
 	/**
 	 * 获得异常消息的参数，主要为了支持国际化.
-	 * 
+	 *
 	 * @return 异常消息的参数数组.
 	 */
 	public Object[] getMessageArgs() {
@@ -120,7 +121,7 @@ public class BaseException extends SysException {
 
 	/**
 	 * 设置根异常.
-	 * 
+	 *
 	 * @param anException
 	 *            根异常.
 	 */
@@ -130,7 +131,7 @@ public class BaseException extends SysException {
 
 	/**
 	 * 获得根异常.
-	 * 
+	 *
 	 * @return 根异常.
 	 */
 	public Throwable getRootCause() {
@@ -146,7 +147,7 @@ public class BaseException extends SysException {
 
 	/**
 	 * 将异常的栈信息打印到输出流，先打印本异常的栈信息，然后打印根异常的栈信息.
-	 * 
+	 *
 	 * @param outStream
 	 *            输出流.
 	 */
@@ -156,7 +157,7 @@ public class BaseException extends SysException {
 
 	/**
 	 * 将异常的栈信息打印到输出流，先打印本异常的栈信息，然后打印根异常的栈信息.
-	 * 
+	 *
 	 * @param writer
 	 *            输出流
 	 */

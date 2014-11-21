@@ -6,14 +6,14 @@ import java.io.PrintWriter;
 /**
  * 系统异常.这是一个运行时异常，代表系统原因产生的异常，比如SQLException产生的异常，
  * 网络访问失败产生的异常，等。这种异常，程序中无法编程处理，用户也无法恢复，因此作为运行时异常抛出.
- * 
- * @author andy.li
+ *
+ * @author huangxin
  */
 
 public class SysException extends RuntimeException {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -5542169322764723764L;
 	/**
@@ -32,7 +32,7 @@ public class SysException extends RuntimeException {
 
 	/**
 	 * 构造函数.
-	 * 
+	 *
 	 * @param msg
 	 *            异常信息.
 	 */
@@ -42,7 +42,7 @@ public class SysException extends RuntimeException {
 
 	/**
 	 * 构造函数.
-	 * 
+	 *
 	 * @param cause
 	 *            产生本异常的根异常实例.
 	 */
@@ -52,7 +52,7 @@ public class SysException extends RuntimeException {
 
 	/**
 	 * 构造函数.
-	 * 
+	 *
 	 * @param msg
 	 *            异常信息.
 	 * @param cause
@@ -65,7 +65,7 @@ public class SysException extends RuntimeException {
 
 	/**
 	 * 设置异常消息的keyCode，主要为支持国际化.
-	 * 
+	 *
 	 * @param key
 	 *            异常消息的keyCode.
 	 */
@@ -75,7 +75,7 @@ public class SysException extends RuntimeException {
 
 	/**
 	 * 获得异常的keyCode，主要为了支持国际化.
-	 * 
+	 *
 	 * @return 异常消息的keyCode.
 	 */
 	public String getMessageKey() {
@@ -84,7 +84,7 @@ public class SysException extends RuntimeException {
 
 	/**
 	 * 设置异常消息的参数，主要为了支持国际化. 异常消息使用如下格式定义带参数的消息: {0} is larger than {1}.
-	 * 
+	 *
 	 * @param args
 	 *            异常消息的参数数组.
 	 */
@@ -94,7 +94,7 @@ public class SysException extends RuntimeException {
 
 	/**
 	 * 获得异常消息的参数，主要为了支持国际化.
-	 * 
+	 *
 	 * @return 异常消息的参数数组.
 	 */
 	public Object[] getMessageArgs() {
@@ -103,7 +103,7 @@ public class SysException extends RuntimeException {
 
 	/**
 	 * 设置根异常.
-	 * 
+	 *
 	 * @param anException
 	 *            根异常.
 	 */
@@ -113,7 +113,7 @@ public class SysException extends RuntimeException {
 
 	/**
 	 * 获得根异常.
-	 * 
+	 *
 	 * @return 根异常.
 	 */
 	public Throwable getRootCause() {
@@ -129,7 +129,7 @@ public class SysException extends RuntimeException {
 
 	/**
 	 * 将异常的栈信息打印到输出流，先打印本异常的栈信息，然后打印根异常的栈信息.
-	 * 
+	 *
 	 * @param outStream
 	 *            输出流.
 	 */
@@ -139,14 +139,14 @@ public class SysException extends RuntimeException {
 
 	/**
 	 * 将异常的栈信息打印到输出流，先打印本异常的栈信息，然后打印根异常的栈信息.
-	 * 
+	 *
 	 * @param writer
 	 *            输出流
 	 */
 	public void printStackTrace(PrintWriter writer) {
 		super.printStackTrace(writer);
 
-		if (getRootCause() != null) {
+		if (null != getRootCause()) {
 			getRootCause().printStackTrace(writer);
 		}
 		writer.flush();

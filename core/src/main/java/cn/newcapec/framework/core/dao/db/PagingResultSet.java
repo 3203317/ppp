@@ -9,8 +9,13 @@ import java.util.List;
 import cn.newcapec.framework.core.logs.LogEnabled;
 import cn.newcapec.framework.core.utils.clazzUtils.BeanUtils;
 
+/**
+ *
+ * @author huangxin
+ *
+ */
 @SuppressWarnings("all")
-public class PagingResultSet implements Serializable,LogEnabled {
+public class PagingResultSet implements Serializable, LogEnabled {
 
 	private int currRow;
 
@@ -62,7 +67,7 @@ public class PagingResultSet implements Serializable,LogEnabled {
 	}
 
 	/**
-	 * 
+	 *
 	 * @throws SQLException
 	 */
 	private void calPageCount() throws SQLException {
@@ -119,11 +124,11 @@ public class PagingResultSet implements Serializable,LogEnabled {
 
 	/**
 	 * 计算开始行
-	 * 
+	 *
 	 * @throws SQLException
 	 */
 	private void caculFirstRow() throws SQLException {
-		log.info("resultSet.getType:"+resultSet.getType());
+		log.info("resultSet.getType:" + resultSet.getType());
 		if (resultSet.getType() != 1003) {
 			int startRow = 1 * (pageIndex - 1);
 			if (startRow == 0) {
@@ -153,7 +158,7 @@ public class PagingResultSet implements Serializable,LogEnabled {
 
 	/**
 	 * TODO 目前基于resultset实现，后续可基于各版本的数据库分页机制实现
-	 * 
+	 *
 	 * @param pageSize
 	 * @param pageIndex
 	 * @return
