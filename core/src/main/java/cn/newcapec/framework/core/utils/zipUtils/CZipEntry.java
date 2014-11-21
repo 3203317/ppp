@@ -112,7 +112,7 @@ class CZipEntry implements ZipConstants, Cloneable {
      */
     public void setTime(long time) {
         // fix for bug 6625963: we bypass time calculations while Kernel is
-        // downloading bundles, since they aren't necessary and would cause
+		// downloading bundles, since they aren't necessary and would cause
         // the Kernel core to depend upon the (very large) time zone data
 //        if (sun.jkernel.DownloadManager.isCurrentThreadDownloading())
 //            this.time = sun.jkernel.DownloadManager.KERNEL_STATIC_MODTIME;

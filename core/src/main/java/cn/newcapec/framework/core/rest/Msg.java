@@ -1,24 +1,25 @@
 package cn.newcapec.framework.core.rest;
 
-import cn.newcapec.framework.core.utils.stringUtils.JsonDateValueProcessor;
+import java.sql.Timestamp;
+import java.util.Date;
+
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
+
 import org.apache.log4j.Logger;
 import org.restlet.data.CharacterSet;
 import org.restlet.data.MediaType;
 import org.restlet.resource.Representation;
 import org.restlet.resource.StringRepresentation;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import cn.newcapec.framework.core.utils.stringUtils.JsonDateValueProcessor;
 
 /**
  * 用于封装消息,格式{success:true,msg:xx,data:{}}
  * <p>
- * @author: andy.li
- * 
+ *
+ * @author: huangxin
+ *
  */
 @SuppressWarnings("all")
 public class Msg {
@@ -32,9 +33,9 @@ public class Msg {
 	 * 提示信息
 	 */
 	private String msg;
-	//code值
+	// code值
 	private String code;
-	/* 数据*/
+	/* 数据 */
 	private Object data;
 
 	public Msg() {
@@ -43,7 +44,7 @@ public class Msg {
 
 	/**
 	 * 构造方法。标识成功信息
-	 * 
+	 *
 	 * @param msg
 	 */
 	public Msg(String msg) {
@@ -52,7 +53,7 @@ public class Msg {
 
 	/**
 	 * 构造方法.
-	 * 
+	 *
 	 * @param success
 	 * @param msg
 	 */
@@ -62,7 +63,7 @@ public class Msg {
 
 	/**
 	 * 构造方法.
-	 * 
+	 *
 	 * @param msg
 	 *            消息
 	 * @param data
@@ -74,7 +75,7 @@ public class Msg {
 
 	/**
 	 * 构造方法
-	 * 
+	 *
 	 * @param success
 	 * @param msg
 	 * @param data
@@ -82,10 +83,10 @@ public class Msg {
 	public Msg(boolean success, String msg, Object data) {
 		this.msg = msg;
 		this.success = success;
-		if(null==data || "null".equals(data)){
+		if (null == data || "null".equals(data)) {
 			this.data = "";
-		}else
-		this.data = data;
+		} else
+			this.data = data;
 	}
 
 	/**
@@ -126,7 +127,6 @@ public class Msg {
 	public boolean isSuccess() {
 		return success;
 	}
-	
 
 	public String getCode() {
 		return code;
@@ -135,7 +135,6 @@ public class Msg {
 	public void setCode(String code) {
 		this.code = code;
 	}
-
 
 	/**
 	 * @param success
@@ -146,72 +145,74 @@ public class Msg {
 		return this;
 	}
 
-	
-	
 	public JsonConfig getJsonConfig(String dateFormat) {
 		JsonConfig config = new JsonConfig();
-		config.registerJsonValueProcessor(Date.class, new JsonDateValueProcessor(dateFormat));
-		config.registerJsonValueProcessor(Timestamp.class, new JsonDateValueProcessor(dateFormat));
+		config.registerJsonValueProcessor(Date.class,
+				new JsonDateValueProcessor(dateFormat));
+		config.registerJsonValueProcessor(Timestamp.class,
+				new JsonDateValueProcessor(dateFormat));
 		return config;
 	}
-	
 
 	/**
-	 * 将消息转为JsonObject对象。
-	 * 日期格式化
+	 * 将消息转为JsonObject对象。 日期格式化
+	 *
 	 * @return
-	 */;
+	 */
+	;
+
 	@SuppressWarnings("static-access")
 	public JSONObject toJSONObject() {
-		 String format = "yyyy-MM-dd HH:mm:ss";
+		String format = "yyyy-MM-dd HH:mm:ss";
 		JSONObject jsonObject = new JSONObject();
-		String newMsg = this.msg==null?"":this.msg;
+		String newMsg = this.msg == null ? "" : this.msg;
 		this.setMsg(newMsg);
-		jsonObject = jsonObject.fromObject(this,getJsonConfig(format));
+		jsonObject = jsonObject.fromObject(this, getJsonConfig(format));
 		return jsonObject;
 	}
-	
-	/**
-	 * 将消息转为JsonObject对象。
-	 * 自定义日期格式化
-	 * @return
-	 */;
-	 @SuppressWarnings("static-access")
-	 public JSONObject toJSONObject(String dataFormat) {
-		 JSONObject jsonObject = new JSONObject();
-		String newMsg = this.msg == null ? "" : this.msg;
-		 this.setMsg(newMsg);
-		 jsonObject = jsonObject.fromObject(this,getJsonConfig(dataFormat));
-		 return jsonObject;
-	 }
 
-	
+	/**
+	 * 将消息转为JsonObject对象。 自定义日期格式化
+	 *
+	 * @return
+	 */
+	;
+
+	@SuppressWarnings("static-access")
+	public JSONObject toJSONObject(String dataFormat) {
+		JSONObject jsonObject = new JSONObject();
+		String newMsg = this.msg == null ? "" : this.msg;
+		this.setMsg(newMsg);
+		jsonObject = jsonObject.fromObject(this, getJsonConfig(dataFormat));
+		return jsonObject;
+	}
 
 	/**
 	 * 将消息转换为JSON
 	 * Presention格式:{success:true,msg:xx,data:{xx1:value1,....,xx:value}}
-	 * 
+	 *
 	 * @param names
 	 *            转换为json对象的属性列表
 	 * @return
 	 */
 	public Representation toJSONObjectPresention() {
 
-		return new StringRepresentation(toJSONObject().toString().replaceAll("null", "\"\""),
-				MediaType.TEXT_PLAIN, null, CharacterSet.UTF_8);
+		return new StringRepresentation(toJSONObject().toString().replaceAll(
+				"null", "\"\""), MediaType.TEXT_PLAIN, null, CharacterSet.UTF_8);
 	}
 
 	/**
 	 * 将消息转换为JSON
 	 * Presention格式:{success:true,msg:xx,data:{xx1:value1,....,xx:value}}
-	 * 
+	 *
 	 * @param names
 	 *            转换为json对象的属性列表
 	 * @return
 	 */
 	public Representation toJSONObjectPresention(String dataFormat) {
-		
-		return new StringRepresentation(toJSONObject(dataFormat).toString().replaceAll("null", "\"\""),
-				MediaType.TEXT_PLAIN, null, CharacterSet.UTF_8);
+
+		return new StringRepresentation(toJSONObject(dataFormat).toString()
+				.replaceAll("null", "\"\""), MediaType.TEXT_PLAIN, null,
+				CharacterSet.UTF_8);
 	}
 }
