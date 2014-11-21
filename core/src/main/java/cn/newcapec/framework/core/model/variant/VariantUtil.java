@@ -293,12 +293,12 @@ public final class VariantUtil implements LogEnabled {
 			return ((Date) value);
 		if (value instanceof Number)
 			return new Date(((Number) value).longValue());
-//		if (value instanceof oracle.sql.TIMESTAMP)
-//			try {
-//				return ((oracle.sql.TIMESTAMP) value).timestampValue();
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			}
+		if (value instanceof oracle.sql.TIMESTAMP)
+			try {
+				return ((oracle.sql.TIMESTAMP) value).timestampValue();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 
 		if (StringUtil.isValid(str = String.valueOf(value))) {
 			if (isNumber(str)) {
