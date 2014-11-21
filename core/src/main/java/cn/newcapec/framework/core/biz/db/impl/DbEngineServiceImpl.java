@@ -1,5 +1,24 @@
 package cn.newcapec.framework.core.biz.db.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import javax.annotation.Resource;
+
+import org.apache.commons.lang.exception.ExceptionUtils;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.orm.hibernate3.HibernateCallback;
+import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.orm.hibernate3.SessionFactoryUtils;
+import org.springframework.stereotype.Service;
+
 import cn.newcapec.framework.core.biz.db.DbEngineService;
 import cn.newcapec.framework.core.dao.db.PagingResultSet;
 import cn.newcapec.framework.core.exception.BaseException;
@@ -10,37 +29,21 @@ import cn.newcapec.framework.core.model.dbmeta.DbContainerHelper;
 import cn.newcapec.framework.core.utils.clazzUtils.BeanUtils;
 import cn.newcapec.framework.core.utils.clazzUtils.DBUtil;
 import cn.newcapec.framework.core.utils.stringUtils.StringUtil;
-import org.apache.commons.lang.exception.ExceptionUtils;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.orm.hibernate3.HibernateCallback;
-import org.springframework.orm.hibernate3.HibernateTemplate;
-import org.springframework.orm.hibernate3.SessionFactoryUtils;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
 /**
  * 数据库SQL查询服务
- * 
- * @author andy.li
+ *
+ * @author huangxin
  */
 @Service("dbEngineService")
 @SuppressWarnings("all")
 public class DbEngineServiceImpl implements DbEngineService, LogEnabled {
 
-	@Resource(name="sessionFactory")
+	@Resource(name = "sessionFactory")
 	SessionFactory sessionFactory;
 
 	HibernateTemplate hibernateTemplate;
+
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
@@ -72,7 +75,7 @@ public class DbEngineServiceImpl implements DbEngineService, LogEnabled {
 
 			while (rs.next()) {
 				model.add(BeanUtils.resultSetToDO(rs, modelClass,
-                        convertFieldName));
+						convertFieldName));
 			}
 
 		} catch (Exception ex) {
@@ -120,7 +123,7 @@ public class DbEngineServiceImpl implements DbEngineService, LogEnabled {
 
 	/**
 	 * 将SQL中的值设置到Model中，放入List中返回
-	 * 
+	 *
 	 * @param querySQL
 	 *            查询sql
 	 * @param modelClass
@@ -226,7 +229,7 @@ public class DbEngineServiceImpl implements DbEngineService, LogEnabled {
 								throw (BaseException) ex;
 							else
 								throw new BaseException("执行SQL失败！", ex); // query
-																		// failed
+																			// failed
 
 						} finally {
 							try {
@@ -249,9 +252,9 @@ public class DbEngineServiceImpl implements DbEngineService, LogEnabled {
 	}
 
 	/**
-	 * 
+	 *
 	 * 获取当前操作的表名称
-	 * 
+	 *
 	 * @param sql
 	 *            动态执行SQL
 	 * @param type
@@ -345,7 +348,7 @@ public class DbEngineServiceImpl implements DbEngineService, LogEnabled {
 				if (params == null || params.length != count) {
 					throw new BaseException("SQL 参数传递错误！");
 				}
-				
+
 				for (int i = 0; i < count; i++) {
 					pstmt.setObject(i + 1, params[i]);
 				}
@@ -526,11 +529,12 @@ public class DbEngineServiceImpl implements DbEngineService, LogEnabled {
 	}
 
 	/*
-	 * 
+	 *
 	 * @param schemaPattern @param tablePattern @return
-	 * 
-	 * @see com.newstar.sys.service.IDbEngineService#getDBContainer(java.lang.String,
-	 *      java.lang.String)
+	 *
+	 * @see
+	 * com.newstar.sys.service.IDbEngineService#getDBContainer(java.lang.String,
+	 * java.lang.String)
 	 */
 
 	public Container getDBContainer(final String schemaPattern,
@@ -543,16 +547,17 @@ public class DbEngineServiceImpl implements DbEngineService, LogEnabled {
 							throws HibernateException, SQLException {
 
 						return DbContainerHelper.getDBContainer(schemaPattern,
-                                tablePattern, sess.connection());
+								tablePattern, sess.connection());
 					}
 				});
 	}
 
 	/*
-	 * 
+	 *
 	 * @param tableName @return
-	 * 
-	 * @see com.newstar.sys.service.IDbEngineService#getDBTable(java.lang.String)
+	 *
+	 * @see
+	 * com.newstar.sys.service.IDbEngineService#getDBTable(java.lang.String)
 	 */
 
 	public DBTable getDBTable(final String tableName) {
@@ -563,18 +568,19 @@ public class DbEngineServiceImpl implements DbEngineService, LogEnabled {
 					public Object doInHibernate(Session sess)
 							throws HibernateException, SQLException {
 
-						return DbContainerHelper.getDBTable(tableName, sess
-								.connection());
+						return DbContainerHelper.getDBTable(tableName,
+								sess.connection());
 					}
 				});
 	}
 
 	/*
-	 * 
+	 *
 	 * @param schemaPattern @param tablePattern @return
-	 * 
-	 * @see com.newstar.sys.service.IDbEngineService#getDBTables(java.lang.String,
-	 *      java.lang.String)
+	 *
+	 * @see
+	 * com.newstar.sys.service.IDbEngineService#getDBTables(java.lang.String,
+	 * java.lang.String)
 	 */
 	@SuppressWarnings("unchecked")
 	public List<DBTable> getDBTables(final String schemaPattern,
@@ -594,11 +600,12 @@ public class DbEngineServiceImpl implements DbEngineService, LogEnabled {
 	}
 
 	/*
-	 * 
+	 *
 	 * @param schemaPattern @param tablePattern @return
-	 * 
-	 * @see com.newstar.sys.service.IDbEngineService#getTableList(java.lang.String,
-	 *      java.lang.String)
+	 *
+	 * @see
+	 * com.newstar.sys.service.IDbEngineService#getTableList(java.lang.String,
+	 * java.lang.String)
 	 */
 	@SuppressWarnings("unchecked")
 	public Set<String> getTableList(final String schemaPattern,

@@ -1,24 +1,26 @@
 package cn.newcapec.framework.core.biz.db;
 
+import java.util.List;
+import java.util.Set;
+
 import cn.newcapec.framework.core.dao.db.PagingResultSet;
 import cn.newcapec.framework.core.exception.BaseException;
 import cn.newcapec.framework.core.logs.LogEnabled;
 import cn.newcapec.framework.core.model.dbmeta.Container;
 import cn.newcapec.framework.core.model.dbmeta.DBTable;
 
-import java.util.List;
-import java.util.Set;
-
 /**
- */@SuppressWarnings("all")
+ * @author huangxin
+ */
+@SuppressWarnings("all")
 public interface DbEngineService extends LogEnabled {
 
 	public abstract List query(final String querySQL, final Class modelClass,
-                               boolean convertFieldName) throws BaseException;
+			boolean convertFieldName) throws BaseException;
 
 	/**
 	 * 数据库查询
-	 * 
+	 *
 	 * @param querySQL
 	 *            查询sql
 	 * @param modelClass
@@ -33,12 +35,12 @@ public interface DbEngineService extends LogEnabled {
 	 * @throws BaseException
 	 */
 	public abstract PagingResultSet getPagingResultSet(final String querySQL,
-                                                       Object[] params, final Class modelClass, int pageSize, int pageIndex)
+			Object[] params, final Class modelClass, int pageSize, int pageIndex)
 			throws BaseException;
 
 	/**
 	 * 数据库查询
-	 * 
+	 *
 	 * @param querySQL
 	 *            查询sql
 	 * @param modelClass
@@ -53,12 +55,12 @@ public interface DbEngineService extends LogEnabled {
 	 * @throws BaseException
 	 */
 	public abstract List query(final String querySQL, Object[] params,
-                               final Class modelClass, int pageSize, int pageIndex)
+			final Class modelClass, int pageSize, int pageIndex)
 			throws BaseException;
 
 	/**
 	 * 将SQL中的值设置到Model中，放入List中返回
-	 * 
+	 *
 	 * @param querySQL
 	 *            查询sql
 	 * @param modelClass
@@ -71,12 +73,12 @@ public interface DbEngineService extends LogEnabled {
 	 * @throws Exception
 	 */
 	public abstract List query(String querySQL, Object[] params,
-                               Class modelClass, boolean convertFieldName);
+			Class modelClass, boolean convertFieldName);
 
 	/**
-	 * 
+	 *
 	 * 动态执行SQL
-	 * 
+	 *
 	 * @param querySQL
 	 * @param params
 	 *            传入参数
@@ -86,7 +88,7 @@ public interface DbEngineService extends LogEnabled {
 
 	/**
 	 * 校验记录是否存在
-	 * 
+	 *
 	 * @param tableName
 	 *            表名
 	 * @param field
@@ -99,12 +101,12 @@ public interface DbEngineService extends LogEnabled {
 	 * @return
 	 */
 	public abstract boolean checkRecordExist(String tableName, String field,
-                                             Object value, String extraSql, Object[] extraParams);
+			Object value, String extraSql, Object[] extraParams);
 
 	/**
-	 * 
+	 *
 	 * 校验记录是否存在
-	 * 
+	 *
 	 * @param entityName
 	 *            DO类名
 	 * @param property
@@ -117,22 +119,22 @@ public interface DbEngineService extends LogEnabled {
 	 * @return
 	 */
 	public abstract boolean checkRecordExist(Class entityName, String property,
-                                             Object value, String extraHql, Object[] extraParams);
+			Object value, String extraHql, Object[] extraParams);
 
 	/**
-	 * 
+	 *
 	 * 获取容器
-	 * 
+	 *
 	 * @param schemaPattern
 	 * @param tablePattern
 	 * @return
 	 */
 	public abstract Container getDBContainer(String schemaPattern,
-                                             String tablePattern);
+			String tablePattern);
 
 	/**
 	 * 获取表定义
-	 * 
+	 *
 	 * @param tableName
 	 * @return
 	 */
@@ -140,22 +142,22 @@ public interface DbEngineService extends LogEnabled {
 
 	/**
 	 * 获取表名
-	 * 
+	 *
 	 * @param schemaPattern
 	 * @param tablePattern
 	 * @return
 	 */
 	public abstract Set<String> getTableList(String schemaPattern,
-                                             String tablePattern);
+			String tablePattern);
 
 	/**
 	 * 获取表定义
-	 * 
+	 *
 	 * @param schemaPattern
 	 * @param tablePattern
 	 * @return
 	 */
 	public abstract List<DBTable> getDBTables(String schemaPattern,
-                                              String tablePattern);
+			String tablePattern);
 
 }
