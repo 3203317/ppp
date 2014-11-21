@@ -2,8 +2,8 @@ package cn.newcapec.framework.core.context;
 
 /**
  * 系统上下文线程变量
- * 
- * @author andy.li
+ *
+ * @author huangxin
  */
 @SuppressWarnings("all")
 public abstract class NewcapecContext {

@@ -6,8 +6,8 @@ import cn.newcapec.framework.core.utils.stringUtils.GlobalVariant;
 import cn.newcapec.framework.core.utils.stringUtils.StringUtil;
 
 /**
- * 
- * @author andy.li
+ *
+ * @author huangxin
  */
 public class LangUtil {
 	private LangUtil() {
@@ -19,31 +19,31 @@ public class LangUtil {
 		// get lang from request.parameter()
 		lang = context.getParameter(Keys.LANG);
 		lang = StringUtil.trim(lang);
-		if (lang.length() > 0) {
+		if (0 < lang.length()) {
 			return lang;
 		}
 
 		// get lang from request.attribute()
 		lang = (String) context.getAttribute(Keys.LANG);
 		lang = StringUtil.trim(lang);
-		if (lang.length() > 0) {
+		if (0 < lang.length()) {
 			return lang;
 		}
 
 		// get lang from session.user
-//		LoginUser user = (LoginUser) (context.getAttribute(Keys.USER));
-//		if (user != null) {
-//			lang = user.getLang();
-//			lang = StringUtil.trim(lang);
-//			if (lang.length() > 0) {
-//				return lang;
-//			}
-//		}
+		// LoginUser user = (LoginUser) (context.getAttribute(Keys.USER));
+		// if (user != null) {
+		// lang = user.getLang();
+		// lang = StringUtil.trim(lang);
+		// if (lang.length() > 0) {
+		// return lang;
+		// }
+		// }
 
 		// get lang from context
 		lang = GlobalVariant.getVariant(Keys.LANG);
 		lang = StringUtil.trim(lang);
-		if (lang.length() > 0) {
+		if (0 < lang.length()) {
 			return Lang.ZH;
 		}
 

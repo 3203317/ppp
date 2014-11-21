@@ -1,14 +1,15 @@
 package cn.newcapec.framework.core.context;
+
 /**
  * 全局关键字注册
- * @author andy.li
+ *
+ * @author huangxin
  */
 public interface Keys {
 	/**
 	 * 应用路径
 	 */
 	String CONTEXT_PAHT = "contextPath";
-
 
 	/**
 	 * 年度
@@ -119,10 +120,10 @@ public interface Keys {
 	 * 序列编号前缀
 	 */
 	String SEQ_NO = "_SEQ_NO";
-	
+
 	/**
 	 * 当前租户
-	 */	
-  String DATA_SOURCE_URL = "dataSource";		
+	 */
+	String DATA_SOURCE_URL = "dataSource";
 
 }

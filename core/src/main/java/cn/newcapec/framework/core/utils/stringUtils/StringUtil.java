@@ -1,93 +1,97 @@
 package cn.newcapec.framework.core.utils.stringUtils;
 
-import cn.newcapec.framework.core.exception.BaseException;
-import cn.newcapec.framework.core.logs.LogEnabled;
-import org.apache.commons.lang.StringUtils;
-
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import org.apache.commons.lang.StringUtils;
+
+import cn.newcapec.framework.core.exception.BaseException;
+import cn.newcapec.framework.core.logs.LogEnabled;
+
 /**
- * 
+ *
  */
 @SuppressWarnings("all")
 public class StringUtil implements LogEnabled {
-	
+
 	/**
-	 * 判断 参数 sb 是否�? null,""," "
+	 * 判断 参数 sb 是否为 null,""," "
+	 *
 	 * @param sb
 	 * @return
 	 */
-	public static final boolean notText(StringBuffer sb){
+	public static final boolean notText(StringBuffer sb) {
 		return !hasText(sb);
 	}
-	
+
 	/**
 	 * 是否不为null,"" 或只含有" "(空格)
 	 * */
-	public static final boolean hasText(StringBuffer sb){
+	public static final boolean hasText(StringBuffer sb) {
 		return (sb != null) && (hasText(sb.toString()));
 	}
-	
+
 	/**
 	 * 是否为null,"" 或只含有" "(空格)
 	 * */
-	public static final boolean notText(String str){
+	public static final boolean notText(String str) {
 		return !hasText(str);
 	}
-	
+
 	/**
-	 * <br>字符串是否有非空内容 
-	 * <br>StringUtils.hasText(null) -- false
-	 * <br>StringUtils.hasText("") -- false
-	 * <br>StringUtils.hasText(" ") -- false
-	 * <br>StringUtils.hasText("12345") -- true
-	 * <br>StringUtils.hasText(" 12345 ") -- true
+	 * <br>
+	 * 字符串是否有非空内容 <br>
+	 * StringUtils.hasText(null) -- false <br>
+	 * StringUtils.hasText("") -- false <br>
+	 * StringUtils.hasText(" ") -- false <br>
+	 * StringUtils.hasText("12345") -- true <br>
+	 * StringUtils.hasText(" 12345 ") -- true
 	 */
-	public static final boolean hasText(String str){
-		if(str == null || "null".equals(str)) return false;
+	public static final boolean hasText(String str) {
+		if (str == null || "null".equals(str))
+			return false;
 		String use = str.replace("'", "");
-		
+
 		return (use != null && use.trim().length() > 0);
 	}
-	
+
 	/**
-	 * <br>字符串是否有长度 
-	 * <br>StringUtils.hasText(null) -- false
-	 * <br>StringUtils.hasText("") -- false
-	 * <br>StringUtils.hasText(" ") -- true
-	 * <br>StringUtils.hasText("12345") -- true
-	 * <br>StringUtils.hasText(" 12345 ") -- true
+	 * <br>
+	 * 字符串是否有长度 <br>
+	 * StringUtils.hasText(null) -- false <br>
+	 * StringUtils.hasText("") -- false <br>
+	 * StringUtils.hasText(" ") -- true <br>
+	 * StringUtils.hasText("12345") -- true <br>
+	 * StringUtils.hasText(" 12345 ") -- true
 	 */
 	public static boolean hasLength(String str) {
-		if(str == null) return false;
+		if (str == null)
+			return false;
 		return (str != null && str.length() > 0);
 	}
-	
-	
-	
+
 	public static boolean hasLength(String[] strs) {
-		if(strs == null) return false;
-		
-		return strs.length>0;
+		if (strs == null)
+			return false;
+
+		return strs.length > 0;
 	}
 
 	/**
 	 * 判断字符串是否为空
-	 * 
+	 *
 	 * @param string
 	 * @return
 	 */
 	public static boolean isEmpty(String string) {
 		return string == null ? true : string.trim().length() == 0;
 	}
-	
 
 	/**
 	 * 替换所有字串.
-	 * 
+	 *
 	 * @param oldStr
 	 *            要进行替换的原字串
 	 * @param findStr
@@ -102,7 +106,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 替换字串,指定替换次数.
-	 * 
+	 *
 	 * @param oldStr
 	 *            要进行替换的原字串
 	 * @param findStr
@@ -130,7 +134,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 替换实现.
-	 * 
+	 *
 	 * @see replace(String oldStr,String findStr,String replStr,int times)
 	 * @see replace(String oldStr,String findStr,String replStr)
 	 * */
@@ -192,7 +196,7 @@ public class StringUtil implements LogEnabled {
 	 *    String t = deleteString("abcd","b","c",1);
 	 *    t.equals("ad") (true)
 	 * </code> </p>
-	 * 
+	 *
 	 * @param oldStr
 	 *            原字串.
 	 * @param beginStr
@@ -227,7 +231,7 @@ public class StringUtil implements LogEnabled {
 	 *    String t = deleteString("abcdbcd","b","c");
 	 *    t.equals("add") (true)
 	 * </code> </p>
-	 * 
+	 *
 	 * @param oldStr
 	 *            原字串.
 	 * @param beginStr
@@ -252,7 +256,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 获得不含路径的文件名.
-	 * 
+	 *
 	 * @param fileName
 	 *            文件名,可能含，也可能不含路径.为空/空串返回空串
 	 * @return 不含路径的文件名.
@@ -308,24 +312,24 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 去掉字串两边空格.
-	 * 
+	 *
 	 * @param s
 	 *            原字串,如为null,返回空串.
 	 * @return 去掉两边空格的字串
 	 * */
 	public static String trim(String s) {
-		return s == null ? "" : s.trim();
+		return null == s ? "" : s.trim();
 	}
 
 	/**
 	 * 进行二维数组某一列字符串的替换.
-	 * 
+	 *
 	 * 使用示例： String[][] string= new String[][]{{"string", "cying"},{"ss-strstd",
 	 * "string"}, {"dir-str", ""},{"teacher",""}}; String[][] newStr =
 	 * ReplaceString.replace(str, 0, "str", "cry"); 你将会得到这样的结果数组： newStr =
 	 * {{"crying", "cying"},{"ss-crystd", "string"}, {"dir-cry",
 	 * ""},{"teacher",""}};
-	 * 
+	 *
 	 * @param str
 	 *            要进行替换的字符串
 	 * @param columnIndex
@@ -376,7 +380,7 @@ public class StringUtil implements LogEnabled {
 	 *    String s = getRelativeDir("kd.util");
 	 *    s.equals("kd/util")
 	 * </code> </p>
-	 * 
+	 *
 	 * @param packageName
 	 *            包名,packageName为null或一空串时，返回null
 	 * @return String 与包名对应的相对路径
@@ -395,7 +399,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 将字符串的第一个字母变大写.
-	 * 
+	 *
 	 * @param s
 	 *            要转变的字串
 	 */
@@ -411,7 +415,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 将字符串的第一个字母变大写,其余是小写.
-	 * 
+	 *
 	 * @param s
 	 *            要转变的字串
 	 * @return 将字符串的第一个字母变大写,其余是小写
@@ -425,7 +429,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 将字符串的第一个字母变小写.
-	 * 
+	 *
 	 * @param s
 	 *            要转变的字串
 	 */
@@ -440,7 +444,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 判断指定的字符串是否是合法的Java标识符[Added By Yao Yantao].
-	 * 
+	 *
 	 * @param s
 	 *            要判断的字符串串
 	 * @return true,如果是Java的标识符; false，如果不是Java标识符或者是null.
@@ -465,7 +469,7 @@ public class StringUtil implements LogEnabled {
 	 * 如果任何下面的情况出现了，会抛出数组越界异常（IndexOutOfBoundsException），而 源数组与目标数组保持不变：
 	 * 如果srcOffset为负数； 如果dstOffset为负数； 如果length为负数； 如果srcOffset +
 	 * length大于src.length， 如果dstOffset + length大于dst.length.
-	 * 
+	 *
 	 * @param src
 	 *            源数组
 	 * @param src_position
@@ -496,7 +500,7 @@ public class StringUtil implements LogEnabled {
 	 * 需要注意的是，如果任何下面的情况出现了，会抛出空指针异常（NullPointerException）， 但源数组保持不便： 如果src为null.
 	 * 如果任何下面的情况出现了，会抛出数组越界异常（IndexOutOfBoundsException），而 源数组保持不变：
 	 * 如果srcOffset为负数； 如果length为负数； 如果srcOffset + length大于src.length，
-	 * 
+	 *
 	 * @param src
 	 *            源数组
 	 * @param src_position
@@ -520,7 +524,7 @@ public class StringUtil implements LogEnabled {
 	 * 需要注意的是，如果任何下面的情况出现了，会抛出空指针异常（NullPointerException）， 但源数组保持不便： 如果src为null.
 	 * 如果任何下面的情况出现了，会抛出数组越界异常（IndexOutOfBoundsException），而 源数组保持不变：
 	 * 如果srcOffset为负数； 如果length为负数； 如果srcOffset + length大于src.length，
-	 * 
+	 *
 	 * @param src
 	 *            源数组
 	 * @throws NullPointerException
@@ -533,7 +537,7 @@ public class StringUtil implements LogEnabled {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param s
 	 * @param delimiter
 	 * @return String[]
@@ -549,7 +553,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 比较两个字符串是否相等.
-	 * 
+	 *
 	 * @param s1
 	 *            String
 	 * @param s2
@@ -565,7 +569,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 将传入的LIST中的数组自动合并成一个大数组.
-	 * 
+	 *
 	 * @param list
 	 *            要合并的数组的列表,要求数组列数必须相等.
 	 * @return 合并后的数组.
@@ -606,7 +610,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 以DEBUG模式将数组内容输出.是否输出将视LOG设置而定.
-	 * 
+	 *
 	 * @param s
 	 *            要输出的数组.
 	 * */
@@ -624,7 +628,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 返回用指定分隔符隔开的字串.如分隔符为null或空串,抛出运行错误.
-	 * 
+	 *
 	 * @param arr
 	 *            要连接的数组,如长度为1,返回该元素,否则，返回用分隔符隔开而成的字串.
 	 * @param delim
@@ -666,7 +670,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 将超过长度的字符用...表示
-	 * 
+	 *
 	 * @param src
 	 * @param len
 	 * @return
@@ -686,7 +690,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 将一个iso8859-1字符串转换为给定的编码格式.
-	 * 
+	 *
 	 * @param str
 	 * @param charsetName
 	 * @return
@@ -701,7 +705,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 将一个字符串转换为给定的编码格式
-	 * 
+	 *
 	 * @param str
 	 * @param originCharsetName
 	 * @param charsetName
@@ -720,7 +724,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 向左补号
-	 * 
+	 *
 	 * @param val
 	 * @param size
 	 * @param ch
@@ -739,7 +743,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 向右补号
-	 * 
+	 *
 	 * @param val
 	 * @param size
 	 * @param ch
@@ -759,7 +763,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 向左补号
-	 * 
+	 *
 	 * @param val
 	 * @param size
 	 * @param ch
@@ -778,7 +782,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 向右补号
-	 * 
+	 *
 	 * @param val
 	 * @param size
 	 * @param ch
@@ -798,7 +802,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 解析数值
-	 * 
+	 *
 	 * @param in
 	 * @return
 	 */
@@ -854,7 +858,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 反转一个字符串
-	 * 
+	 *
 	 * @param str
 	 * @return
 	 */
@@ -875,6 +879,7 @@ public class StringUtil implements LogEnabled {
 
 	/**
 	 * 分隔字符串，指定返回值得长度
+	 *
 	 * @Title: splite
 	 * @data:2013-7-11下午6:16:28
 	 * @author:zhanghongliang
@@ -882,23 +887,25 @@ public class StringUtil implements LogEnabled {
 	 * @param str
 	 * @param splite
 	 * @param max
-	 * @param defaultEmtype 长度不够时，用什么补齐
+	 * @param defaultEmtype
+	 *            长度不够时，用什么补齐
 	 * @return
 	 */
-	public static String[] split(String str,String splite,int max,String defaultEmtype){
-		List<String> resultList =new ArrayList<String>();
+	public static String[] split(String str, String splite, int max,
+			String defaultEmtype) {
+		List<String> resultList = new ArrayList<String>();
 		String[] strs = StringUtils.split(str, splite, max);
 		defaultEmtype = StringUtils.defaultIfEmpty(defaultEmtype, "");
 		for (int i = 0; i < strs.length; i++) {
 			resultList.add(strs[i]);
 		}
-		
-		if(resultList.size() < max){
+
+		if (resultList.size() < max) {
 			for (int i = resultList.size(); i < max; i++) {
 				resultList.add(defaultEmtype);
 			}
 		}
-		
-		return resultList.toArray(new String[]{});
+
+		return resultList.toArray(new String[] {});
 	}
 }

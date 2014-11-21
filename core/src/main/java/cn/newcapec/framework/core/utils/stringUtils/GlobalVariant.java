@@ -7,7 +7,7 @@ import java.util.Map;
  * <p>
  * 注册全局变量的类
  * </p>
- * 
+ *
  */
 public class GlobalVariant {
 
@@ -23,7 +23,7 @@ public class GlobalVariant {
 	 * <p>
 	 * Description: 注册变量
 	 * </p>
-	 * 
+	 *
 	 * @param name
 	 *            变量名
 	 * @param value
@@ -40,7 +40,7 @@ public class GlobalVariant {
 	 * <p>
 	 * Description: 获取变量值
 	 * </p>
-	 * 
+	 *
 	 * @param name
 	 *            变量名
 	 * @return String 变量值
@@ -56,7 +56,7 @@ public class GlobalVariant {
 	 * <p>
 	 * Description: 获取变量值
 	 * </p>
-	 * 
+	 *
 	 * @param name
 	 *            变量名
 	 * @param defaultValue
@@ -79,7 +79,7 @@ public class GlobalVariant {
 	 * <p>
 	 * Description: 删除key值为name的项
 	 * </p>
-	 * 
+	 *
 	 * @param name
 	 *            变量名
 	 * @return String 变量值
@@ -96,7 +96,7 @@ public class GlobalVariant {
 	 * Description: 在hash中添加一个新值，如果原先存在指定key的项，则将新值添加到原先项的字符串的后面，否则添加一个
 	 * 指定key和value的新项
 	 * </p>
-	 * 
+	 *
 	 * @param name
 	 *            变量名
 	 * @param newValue
@@ -120,7 +120,7 @@ public class GlobalVariant {
 	 * <p>
 	 * Description: 判断hash中是否存在指定key的项
 	 * </p>
-	 * 
+	 *
 	 * @param name
 	 *            变量名
 	 * @return boolean true/false
@@ -136,7 +136,7 @@ public class GlobalVariant {
 	 * <p>
 	 * Description: 返回注册全局变量的个数
 	 * </p>
-	 * 
+	 *
 	 * @return int 注册变量的个数
 	 */
 	public static int size() {
