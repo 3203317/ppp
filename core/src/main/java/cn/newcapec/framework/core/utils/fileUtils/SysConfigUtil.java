@@ -1,7 +1,7 @@
-/*  
- * @(#) ConfigUtil.java Create on 2013-12-4 下午5:31:46   
- *   
- * Copyright 2013 by pztx.   
+/*
+ * @(#) ConfigUtil.java Create on 2013-12-4 下午5:31:46
+ *
+ * Copyright 2013 by pztx.
  */
 
 package cn.newcapec.framework.core.utils.fileUtils;
@@ -18,7 +18,8 @@ import cn.newcapec.framework.core.logs.LogEnabled;
 
 /**
  * 读取属性文件
- * @author andy
+ *
+ * @author huangxin
  *
  */
 public class SysConfigUtil implements LogEnabled {
@@ -47,7 +48,7 @@ public class SysConfigUtil implements LogEnabled {
 
 	/**
 	 * 获取 classpath 下 /config.properties 里的配置信息
-	 * 
+	 *
 	 * @param key
 	 *            根据关键字获取值
 	 * @return 返回对应关键字的值
@@ -67,13 +68,18 @@ public class SysConfigUtil implements LogEnabled {
 		}
 		return null;
 	}
-	
-	public static Map<String,String> getAllConfig(){
-		//加载配置文件，以后需要移到配置表的service中
-		Map<String,String> map = new HashMap<String, String>();
-		for(String key:CONFIG.keySet()){
-			map.put(StringUtils.trim(key), StringUtils.trim(CONFIG.getString(key)));
+
+	public static Map<String, String> getAllConfig() {
+		// 加载配置文件，以后需要移到配置表的service中
+		Map<String, String> map = new HashMap<String, String>();
+		for (String key : CONFIG.keySet()) {
+			map.put(StringUtils.trim(key),
+					StringUtils.trim(CONFIG.getString(key)));
 		}
 		return map;
+	}
+
+	public static void main(String[] args){
+
 	}
 }
