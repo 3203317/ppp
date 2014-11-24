@@ -1,10 +1,12 @@
 package cn.newcapec.framework.core.context;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 /**
  * 平台上下文环境工厂类
- * @author andy.li
+ *
+ * @author huangxin
  */
 public final class HttpNewcapecContextFactory {
 
@@ -15,7 +17,7 @@ public final class HttpNewcapecContextFactory {
 
 	/**
 	 * 获取当请上下文环境
-	 * 
+	 *
 	 * @param servletrequest
 	 * @return
 	 */
@@ -25,7 +27,7 @@ public final class HttpNewcapecContextFactory {
 
 	/**
 	 * 获取上下文环境
-	 * 
+	 *
 	 * @param servletrequest
 	 * @param flag
 	 *            是否创建标识

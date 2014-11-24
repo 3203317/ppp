@@ -1,11 +1,13 @@
 package cn.newcapec.framework.core.context;
-import javax.servlet.http.HttpServletRequest;
+
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
 import java.util.Stack;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
- * @author andy.li
+ * @author huangxin
  */
 @SuppressWarnings("all")
 public class HttpNewcapecContext extends AbstractNewcapecContext {
@@ -17,9 +19,9 @@ public class HttpNewcapecContext extends AbstractNewcapecContext {
 	}
 
 	/**
-	 * 
+	 *
 	 * 获取request对象
-	 * 
+	 *
 	 */
 	public HttpServletRequest getRequest() {
 		HttpServletRequest httpservletrequest = null;
@@ -40,9 +42,9 @@ public class HttpNewcapecContext extends AbstractNewcapecContext {
 	}
 
 	/**
-	 * 
+	 *
 	 * 加载当期请求至上下文环境
-	 * 
+	 *
 	 */
 	public void setRequest(HttpServletRequest httpservletrequest) {
 		boolean flag = false;

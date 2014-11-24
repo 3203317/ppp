@@ -10,7 +10,8 @@ import cn.newcapec.framework.core.utils.clazzUtils.BeanUtils;
 
 /**
  * 国际化消息查找. 国际化消息查找.可支持从数据库或资源文件查找.
- * @author andy.li
+ *
+ * @author huangxin
  */
 @SuppressWarnings("all")
 public class Message implements LogEnabled {
@@ -20,7 +21,7 @@ public class Message implements LogEnabled {
 
 	/**
 	 * 从数据库查找国际化消息,未找到返回NULL.
-	 * 
+	 *
 	 * @param infoCode
 	 *            消息代码.
 	 * @param lang
@@ -33,7 +34,7 @@ public class Message implements LogEnabled {
 
 	/**
 	 * 从数据库查找国际化消息,未找到返回NULL.
-	 * 
+	 *
 	 * @param infoCode
 	 *            消息代码.
 	 * @param lang
@@ -48,7 +49,7 @@ public class Message implements LogEnabled {
 
 	/**
 	 * 从资源文件查找国际化消息,未找到返回NULL.
-	 * 
+	 *
 	 * @param infoCode
 	 *            消息代码.
 	 * @param lang
@@ -60,9 +61,9 @@ public class Message implements LogEnabled {
 	}
 
 	/**
-	 * 
+	 *
 	 * 从平台 后台数据库表获取国际化信息
-	 * 
+	 *
 	 * @param infoCode
 	 *            语言代码
 	 * @param lang
@@ -76,13 +77,13 @@ public class Message implements LogEnabled {
 
 	private static String getInfoFromRes(String infoCode, String lang,
 			String resName) {
-	
+
 		return null;
 	}
 
 	/**
 	 * 从资源文件查找国际化消息,未找到返回NULL.
-	 * 
+	 *
 	 * @param infoCode
 	 *            消息代码.
 	 * @param lang

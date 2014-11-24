@@ -1,10 +1,12 @@
 package cn.newcapec.framework.core.context;
+
 import java.util.Hashtable;
 import java.util.Map;
 
 /**
  * 动态上下文环境
- * @author andy.li
+ *
+ * @author huangxin
  */
 @SuppressWarnings("all")
 public class DynaNewcapecContext extends AbstractNewcapecContext {

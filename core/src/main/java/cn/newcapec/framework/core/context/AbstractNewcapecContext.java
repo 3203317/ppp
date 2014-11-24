@@ -2,7 +2,8 @@ package cn.newcapec.framework.core.context;
 
 /**
  * 平台上下文环境抽象类
- * @author andy.li
+ *
+ * @author huangxin
  */
 public abstract class AbstractNewcapecContext extends NewcapecContext {
 

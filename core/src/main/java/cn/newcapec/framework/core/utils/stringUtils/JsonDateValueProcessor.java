@@ -1,12 +1,18 @@
 package cn.newcapec.framework.core.utils.stringUtils;
 
-import net.sf.json.JsonConfig;
-import net.sf.json.processors.JsonValueProcessor;
-import org.apache.commons.lang.StringUtils;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import net.sf.json.JsonConfig;
+import net.sf.json.processors.JsonValueProcessor;
+
+import org.apache.commons.lang.StringUtils;
+
+/**
+ *
+ * @author huangxin
+ *
+ */
 public class JsonDateValueProcessor implements JsonValueProcessor {
 	private String format = "yyyy-MM-dd HH:mm:ss";
 
@@ -15,7 +21,7 @@ public class JsonDateValueProcessor implements JsonValueProcessor {
 	}
 
 	public JsonDateValueProcessor(String format) {
-		if(StringUtils.isNotBlank(format)){
+		if (StringUtils.isNotBlank(format)) {
 			this.format = format;
 		}
 	}
