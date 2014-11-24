@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
- * 
- * @author andy.li
+ *
+ * @author huangxin
  *
  */
-public class RequestEncodeFilter implements   Filter{
+public class RequestEncodeFilter implements Filter {
 
 	private static final long serialVersionUID = 1530445419380216782L;
 
@@ -25,7 +25,6 @@ public class RequestEncodeFilter implements   Filter{
 
 		this.toChartSet = "UTF-8";
 	}
-
 
 	public void setFromChartSet(String fromChartSet) {
 
@@ -41,32 +40,30 @@ public class RequestEncodeFilter implements   Filter{
 	public void destroy() {
 	}
 
-
-
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain arg2) throws IOException, ServletException {
-		
-		HttpServletRequest httpServletRequest = (HttpServletRequest)request;
+
+		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 		String method = httpServletRequest.getMethod();
-		if ( method.equalsIgnoreCase("get") )
-		{
-			EscapeUtil.requestConvertEncode(httpServletRequest, this.fromChartSet, this.toChartSet);
-		} else if ( method.equalsIgnoreCase("post") )
-		{
+		if (method.equalsIgnoreCase("get")) {
+			EscapeUtil.requestConvertEncode(httpServletRequest,
+					this.fromChartSet, this.toChartSet);
+		} else if (method.equalsIgnoreCase("post")) {
 			String qs = httpServletRequest.getQueryString();
-			if ( qs != null )
-			{
-				EscapeUtil.requestConvertPostUrlEncode(httpServletRequest, this.fromChartSet, this.toChartSet, new String(qs.getBytes(this.fromChartSet), this.toChartSet));
+			if (qs != null) {
+				EscapeUtil.requestConvertPostUrlEncode(httpServletRequest,
+						this.fromChartSet, this.toChartSet,
+						new String(qs.getBytes(this.fromChartSet),
+								this.toChartSet));
 			}
-		} 
-	 arg2.doFilter(request, response);
-		
-		
+		}
+		arg2.doFilter(request, response);
+
 	}
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-		
+
 	}
 }
