@@ -5,7 +5,8 @@ import java.util.Properties;
 
 /**
  * 数据库配置
- * @author andy.li
+ *
+ * @author huangxin
  */
 @SuppressWarnings("all")
 public class Container {
@@ -13,7 +14,6 @@ public class Container {
 	private String packageName;
 
 	private Properties properties;
-
 
 	private Map tables;
 

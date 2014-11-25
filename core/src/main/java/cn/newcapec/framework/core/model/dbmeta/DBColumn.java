@@ -2,10 +2,9 @@ package cn.newcapec.framework.core.model.dbmeta;
 
 import java.util.Properties;
 
-
 /**
- * 
-  * @author andy.li
+ *
+ * @author huangxin
  */
 @SuppressWarnings("all")
 public class DBColumn {
@@ -78,21 +77,28 @@ public class DBColumn {
 	}
 
 	/**
-	 * Return true if the type given represents some kind of a numeric value and false if not
+	 * Return true if the type given represents some kind of a numeric value and
+	 * false if not
+	 *
 	 * @param type
 	 */
-	private boolean isInteger (String type) {
-	    if (null == type) return false;
-	    else if (type.equals("int")) return true;
-	    else if (type.equals("short")) return true;
-	    else if (type.equals("long")) return true;
-	    else return false;
+	private boolean isInteger(String type) {
+		if (null == type)
+			return false;
+		else if (type.equals("int"))
+			return true;
+		else if (type.equals("short"))
+			return true;
+		else if (type.equals("long"))
+			return true;
+		else
+			return false;
 	}
-	
+
 	/**
 	 * Return true if this column's type can be resolved and false if not
 	 */
-	public boolean isTypeResolved () {
+	public boolean isTypeResolved() {
 		return (null != TypeResolver.resolveType(getDataType(), false));
 	}
 
@@ -181,21 +187,22 @@ public class DBColumn {
 		if (null == javaType) {
 			javaType = TypeResolver.resolveType(getDataType(), true);
 			if (null != javaType) {
-			    if (isInteger(javaType)) {
-			        if (digits > 0) javaType = "bigdecimal";
-			    }
+				if (isInteger(javaType)) {
+					if (digits > 0)
+						javaType = "bigdecimal";
+				}
 			}
-			if (null == javaType) javaType = getDataType();
+			if (null == javaType)
+				javaType = getDataType();
 		}
 		return javaType;
 	}
-	
+
 	/**
 	 * @return the propName
 	 */
 	public String getPropName() {
 		return propName;
 	}
-	
-	
+
 }
