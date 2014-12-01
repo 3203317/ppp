@@ -26,7 +26,7 @@
 >
 
   <description>
-    Default web.xml file.  
+    Default web.xml file.
     This file is applied to a Web application before it's own WEB_INF/web.xml file
   </description>
 
@@ -143,7 +143,7 @@
     </init-param>
     <init-param>
       <param-name>useFileMappedBuffer</param-name>
-      <param-value>true</param-value>
+      <param-value>false</param-value>
     </init-param>
     <!--
     <init-param>
@@ -262,7 +262,7 @@
       <param-name>xpoweredBy</param-name>
       <param-value>false</param-value>
     </init-param>
-    <!--  
+    <!--
     <init-param>
         <param-name>classpath</param-name>
         <param-value>?</param-value>

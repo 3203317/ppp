@@ -49,7 +49,7 @@
 					<scanIntervalSeconds>0</scanIntervalSeconds>
 					<connectors>
 						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-							<port>80</port>
+							<port>81</port>
 							<maxIdleTime>60000</maxIdleTime>
 						</connector>
 					</connectors>
