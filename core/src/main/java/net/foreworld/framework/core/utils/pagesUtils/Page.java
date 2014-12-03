@@ -10,7 +10,7 @@ import java.util.List;
 @SuppressWarnings({ "all" })
 public class Page<T> {
 
-	public final static int DEFAULT_PAGE_SIZE = 15;
+	public final static int DEFAULT_PAGE_SIZE = 20;
 
 	private int total;
 	private List<T> items; // 分页集合
@@ -24,16 +24,13 @@ public class Page<T> {
 	}
 
 	public int getTotal() {
-
 		return total;
 	}
 
 	public void setTotal(int total) {
-
 		this.total = total;
 	}
 
 	public Page() {
 	}
-
 }
