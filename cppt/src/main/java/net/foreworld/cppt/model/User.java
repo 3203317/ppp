@@ -2,7 +2,7 @@ package net.foreworld.cppt.model;
 
 import java.io.Serializable;
 
-import cn.newcapec.framework.core.model.AppBaseModel;
+import net.foreworld.framework.core.model.AppBaseModel;
 
 /**
  *

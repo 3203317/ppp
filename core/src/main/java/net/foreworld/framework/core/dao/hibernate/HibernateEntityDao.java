@@ -41,10 +41,13 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 public abstract class HibernateEntityDao extends HibernateTemplate implements
 		LogEnabled {
 
+	/**
+	 * 为父类HibernateDaoSupport注入sessionFactory的值
+	 *
+	 * @param sessionFactory
+	 */
 	@Resource(name = "sessionFactory")
-	// 为父类HibernateDaoSupport注入sessionFactory的值
 	public void setSuperSessionFactory(SessionFactory sessionFactory) {
-
 		super.setSessionFactory(sessionFactory);
 	}
 
@@ -107,7 +110,6 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 * @return
 	 */
 	public Object findForObject(final String select, final Object[] values) {
-
 		HibernateCallback selectCallback = new HibernateCallback() {
 			public Object doInHibernate(Session session) {
 				Query query = session.createQuery(select);
@@ -633,7 +635,6 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 * @return
 	 */
 	private String getHibernateCountQuery(String hql) {
-
 		hql = StringUtils.defaultIfEmpty(hql, "");
 		// hql = hql.toLowerCase();
 
@@ -708,5 +709,4 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 			return query.executeUpdate();
 		}
 	}
-
 }
