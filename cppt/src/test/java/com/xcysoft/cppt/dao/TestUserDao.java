@@ -1,4 +1,4 @@
-package net.foreworld.cppt.dao;
+package com.xcysoft.cppt.dao;
 
 /**
  *

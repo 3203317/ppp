@@ -1,4 +1,4 @@
-package net.foreworld.cppt.model;
+package com.xcysoft.cppt.model;
 
 import java.io.Serializable;
 

@@ -1,8 +1,8 @@
-package net.foreworld.cppt.biz;
+package com.xcysoft.cppt.biz;
 
 import java.util.Map;
 
-import net.foreworld.cppt.model.User;
+import com.xcysoft.cppt.model.User;
 import framework.core.biz.BaseService;
 import framework.core.utils.pagesUtils.Page;
 

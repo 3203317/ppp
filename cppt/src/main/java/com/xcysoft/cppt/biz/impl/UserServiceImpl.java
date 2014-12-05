@@ -1,10 +1,10 @@
-package net.foreworld.cppt.biz.impl;
+package com.xcysoft.cppt.biz.impl;
 
 import java.util.Map;
 
-import net.foreworld.cppt.biz.UserService;
-import net.foreworld.cppt.dao.UserDao;
-import net.foreworld.cppt.model.User;
+import com.xcysoft.cppt.biz.UserService;
+import com.xcysoft.cppt.dao.UserDao;
+import com.xcysoft.cppt.model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

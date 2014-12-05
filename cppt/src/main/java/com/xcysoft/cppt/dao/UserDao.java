@@ -1,7 +1,7 @@
-package net.foreworld.cppt.dao;
+package com.xcysoft.cppt.dao;
 
-import net.foreworld.cppt.dao.base.BaseUserDao;
-import net.foreworld.cppt.model.User;
+import com.xcysoft.cppt.dao.base.BaseUserDao;
+import com.xcysoft.cppt.model.User;
 
 /**
  *
