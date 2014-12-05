@@ -3,8 +3,8 @@ package net.foreworld.cppt.biz;
 import java.util.Map;
 
 import net.foreworld.cppt.model.User;
-import net.foreworld.framework.core.biz.BaseService;
-import net.foreworld.framework.core.utils.pagesUtils.Page;
+import framework.core.biz.BaseService;
+import framework.core.utils.pagesUtils.Page;
 
 /**
  *

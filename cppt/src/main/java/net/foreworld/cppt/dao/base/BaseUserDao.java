@@ -1,7 +1,7 @@
 package net.foreworld.cppt.dao.base;
 
 import net.foreworld.cppt.model.User;
-import net.foreworld.framework.core.dao.hibernate.HibernateEntityDao;
+import framework.core.dao.hibernate.HibernateEntityDao;
 
 /**
  *

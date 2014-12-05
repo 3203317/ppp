@@ -15,9 +15,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>net.foreworld</groupId>
+			<groupId>framework</groupId>
 			<artifactId>framework-core</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.1</version>
 		</dependency>
 	</dependencies>
 	<build>
