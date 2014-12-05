@@ -13,17 +13,17 @@ public class PageView<T> {
 	/* 分页数据 */
 	private List<T> records;
 	/* 页码开始索引和结束索引 */
-	private PageIndex pageindex;
+	private PageIndex pageIndex;
 	/* 总页数 */
 	private long totalpage = 1;
 	/* 每页显示记录数 */
-	private int maxresult = 12;
+	private int maxResult = 20;
 	/* 当前页 */
-	private int currentpage = 1;
+	private int currentPage = 1;
 	/* 总记录数 */
-	private long totalrecord;
+	private long totalRecord;
 	/* 页码数量 */
-	private int pagecode = 10;
+	private int pageCode = 10;
 
 	private int begin = 0;
 
@@ -37,23 +37,23 @@ public class PageView<T> {
 	 * @return
 	 */
 	public int getFirstResult() {
-		return (this.currentpage - 1) * this.maxresult;
+		return (this.currentPage - 1) * this.maxResult;
 	}
 
 	public int getPagecode() {
-		return pagecode;
+		return pageCode;
 	}
 
 	public void setPagecode(int pagecode) {
-		this.pagecode = pagecode;
+		this.pageCode = pagecode;
 	}
 
 	public PageView(int maxresult, int currentpage) {
-		this.maxresult = maxresult;
+		this.maxResult = maxresult;
 		if (currentpage <= 0) {
 			currentpage = 1;
 		}
-		this.currentpage = currentpage;
+		this.currentPage = currentpage;
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -63,13 +63,13 @@ public class PageView<T> {
 	}
 
 	public long getTotalrecord() {
-		return totalrecord;
+		return totalRecord;
 	}
 
 	public void setTotalrecord(long totalrecord) {
-		this.totalrecord = totalrecord;
-		setTotalpage(this.totalrecord % this.maxresult == 0 ? this.totalrecord
-				/ this.maxresult : this.totalrecord / this.maxresult + 1);
+		this.totalRecord = totalrecord;
+		setTotalpage(this.totalRecord % this.maxResult == 0 ? this.totalRecord
+				/ this.maxResult : this.totalRecord / this.maxResult + 1);
 	}
 
 	public List<T> getRecords() {
@@ -81,7 +81,7 @@ public class PageView<T> {
 	}
 
 	public PageIndex getPageindex() {
-		return pageindex;
+		return pageIndex;
 	}
 
 	public long getTotalpage() {
@@ -90,20 +90,20 @@ public class PageView<T> {
 
 	public void setTotalpage(long totalpage) {
 		this.totalpage = totalpage;
-		this.pageindex = PageIndex.getPageIndex(pagecode, currentpage,
+		this.pageIndex = PageIndex.getPageIndex(pageCode, currentPage,
 				totalpage);
 	}
 
 	public int getMaxresult() {
-		return maxresult;
+		return maxResult;
 	}
 
 	public int getCurrentpage() {
-		return currentpage;
+		return currentPage;
 	}
 
 	public int getBegin() {
-		begin = (currentpage - 1) * maxresult;
+		begin = (currentPage - 1) * maxResult;
 		return begin;
 	}
 
@@ -112,7 +112,7 @@ public class PageView<T> {
 	}
 
 	public int getEnd() {
-		end = (currentpage) * maxresult - 1;
+		end = (currentPage) * maxResult - 1;
 		return end;
 	}
 

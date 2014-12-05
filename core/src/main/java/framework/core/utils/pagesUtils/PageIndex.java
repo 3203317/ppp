@@ -36,7 +36,7 @@ public class PageIndex {
 				- (viewpagecount % 2 == 0 ? viewpagecount / 2 - 1
 						: viewpagecount / 2);
 		long endpage = currentPage + viewpagecount / 2;
-		if (startpage < 1) {
+		if (1 > startpage) {
 			startpage = 1;
 			if (totalpage >= viewpagecount)
 				endpage = viewpagecount;
@@ -45,7 +45,7 @@ public class PageIndex {
 		}
 		if (endpage > totalpage) {
 			endpage = totalpage;
-			if ((endpage - viewpagecount) > 0)
+			if (0 < (endpage - viewpagecount))
 				startpage = endpage - viewpagecount + 1;
 			else
 				startpage = 1;
