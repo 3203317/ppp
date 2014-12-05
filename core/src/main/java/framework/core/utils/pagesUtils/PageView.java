@@ -10,30 +10,32 @@ import java.util.List;
  */
 @SuppressWarnings({ "all" })
 public class PageView<T> {
-	/** 分页数据 **/
+	/* 分页数据 */
 	private List<T> records;
-	/** 页码开始索引和结束索引 **/
+	/* 页码开始索引和结束索引 */
 	private PageIndex pageindex;
-	/** 总页数 **/
+	/* 总页数 */
 	private long totalpage = 1;
-	/** 每页显示记录数 **/
+	/* 每页显示记录数 */
 	private int maxresult = 12;
-	/** 当前页 **/
+	/* 当前页 */
 	private int currentpage = 1;
-	/** 总记录数 **/
+	/* 总记录数 */
 	private long totalrecord;
-	/** 页码数量 **/
+	/* 页码数量 */
 	private int pagecode = 10;
 
 	private int begin = 0;
 
 	private int end = 0;
-	/**
-	 * 分页时调用的js方法名.
-	 */
+	/* 分页时调用的js方法名 */
 	private String jsMethod;
 
-	/** 要获取记录的开始索引 **/
+	/**
+	 * 要获取记录的开始索引
+	 *
+	 * @return
+	 */
 	public int getFirstResult() {
 		return (this.currentpage - 1) * this.maxresult;
 	}

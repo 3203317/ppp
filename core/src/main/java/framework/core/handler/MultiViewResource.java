@@ -5,16 +5,17 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
-import framework.core.exception.BaseException;
-import framework.core.exception.asserts.AssertObject;
-import framework.core.logs.LogEnabled;
-import framework.core.model.FileAttach;
-import framework.core.rest.Msg;
 import net.sf.json.JSONObject;
 
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
+
+import framework.core.exception.BaseException;
+import framework.core.exception.asserts.AssertObject;
+import framework.core.logs.LogEnabled;
+import framework.core.model.FileAttach;
+import framework.core.rest.Msg;
 
 /**
  *
@@ -26,10 +27,9 @@ public abstract class MultiViewResource implements LogEnabled {
 	@ExceptionHandler(Exception.class)
 	public void exceptionHandler(Exception e, HttpServletResponse response) {
 		log.error(ExceptionUtils.getFullStackTrace(e));
-
 		try {
 			Msg msg = new Msg();
-			msg.setMsg("系统出现错误了！");
+			msg.setMsg("系统出现错误了");
 			response.getWriter().write(msg.toJSONObject().toString());
 		} catch (Exception ex) {
 			e.printStackTrace();
@@ -62,6 +62,10 @@ public abstract class MultiViewResource implements LogEnabled {
 
 	/**
 	 * 跳转页面
+	 *
+	 * @param path
+	 * @param model
+	 * @return
 	 */
 	protected ModelAndView toView(String path, Map<String, Object> model) {
 		ModelAndView result = new ModelAndView(path, model);
@@ -71,6 +75,9 @@ public abstract class MultiViewResource implements LogEnabled {
 
 	/**
 	 * 跳转页面
+	 *
+	 * @param path
+	 * @return
 	 */
 	protected String toView(String path) {
 		return path;
@@ -103,7 +110,7 @@ public abstract class MultiViewResource implements LogEnabled {
 	 * @return
 	 */
 	protected String getUrl(String key) {
-		if (UrlMapping.loadUrlMap != null) {
+		if (null != UrlMapping.loadUrlMap) {
 			if (UrlMapping.loadUrlMap.containsKey(key)) {
 				return UrlMapping.loadUrlMap.get(key);
 			}
@@ -111,18 +118,23 @@ public abstract class MultiViewResource implements LogEnabled {
 		return "";
 	}
 
+	/**
+	 *
+	 * @param assertObject
+	 * @return
+	 */
 	public Msg doExpAssert(AssertObject assertObject) {
 		Msg msg = new Msg();
 		try {
 			assertObject.AssertMethod(msg);
 			msg.setSuccess(true);
 		} catch (Exception e) {
-			msg.setMsg("系统出错了!");
+			msg.setMsg("系统出错了");
 			log.error(ExceptionUtils.getFullStackTrace(e));
 			if (e instanceof BaseException) {
 				throw (BaseException) e;
 			} else {
-				throw new BaseException("系统出错了!", e);
+				throw new BaseException("系统出错了", e);
 			}
 		}
 		return msg;

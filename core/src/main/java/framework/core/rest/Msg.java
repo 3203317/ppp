@@ -3,7 +3,6 @@ package framework.core.rest;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import framework.core.utils.stringUtils.JsonDateValueProcessor;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 
@@ -13,6 +12,8 @@ import org.restlet.data.MediaType;
 import org.restlet.resource.Representation;
 import org.restlet.resource.StringRepresentation;
 
+import framework.core.utils.stringUtils.JsonDateValueProcessor;
+
 /**
  * 用于封装消息,格式{success:true,msg:xx,data:{}}
  *
@@ -20,23 +21,18 @@ import org.restlet.resource.StringRepresentation;
  */
 @SuppressWarnings("all")
 public class Msg {
-
 	protected Logger log = Logger.getLogger(this.getClass());;
-	/**
-	 * 成功标志
-	 */
+	/* 成功标志 */
 	private boolean success = false;
-	/**
-	 * 提示信息
-	 */
+	/* 提示信息 */
 	private String msg;
-	// code值
+	/* code值 */
 	private String code;
 	/* 数据 */
 	private Object data;
 
 	public Msg() {
-
+		// TODO
 	}
 
 	/**
@@ -156,8 +152,6 @@ public class Msg {
 	 *
 	 * @return
 	 */
-	;
-
 	@SuppressWarnings("static-access")
 	public JSONObject toJSONObject() {
 		String format = "yyyy-MM-dd HH:mm:ss";
@@ -171,10 +165,9 @@ public class Msg {
 	/**
 	 * 将消息转为JsonObject对象。 自定义日期格式化
 	 *
+	 * @param dataFormat
 	 * @return
 	 */
-	;
-
 	@SuppressWarnings("static-access")
 	public JSONObject toJSONObject(String dataFormat) {
 		JSONObject jsonObject = new JSONObject();
@@ -193,7 +186,6 @@ public class Msg {
 	 * @return
 	 */
 	public Representation toJSONObjectPresention() {
-
 		return new StringRepresentation(toJSONObject().toString().replaceAll(
 				"null", "\"\""), MediaType.TEXT_PLAIN, null, CharacterSet.UTF_8);
 	}
@@ -207,7 +199,6 @@ public class Msg {
 	 * @return
 	 */
 	public Representation toJSONObjectPresention(String dataFormat) {
-
 		return new StringRepresentation(toJSONObject(dataFormat).toString()
 				.replaceAll("null", "\"\""), MediaType.TEXT_PLAIN, null,
 				CharacterSet.UTF_8);
