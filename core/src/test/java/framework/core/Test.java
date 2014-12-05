@@ -1,4 +1,4 @@
-package net.foreworld.framework.core;
+package framework.core;
 
 /**
  *
