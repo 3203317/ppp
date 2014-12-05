@@ -15,7 +15,7 @@ public class PageView<T> {
 	/* 页码开始索引和结束索引 */
 	private PageIndex pageIndex;
 	/* 总页数 */
-	private long totalpage = 1;
+	private long totalPage = 1;
 	/* 每页显示记录数 */
 	private int maxResult = 20;
 	/* 当前页 */
@@ -40,35 +40,35 @@ public class PageView<T> {
 		return (this.currentPage - 1) * this.maxResult;
 	}
 
-	public int getPagecode() {
+	public int getPageCode() {
 		return pageCode;
 	}
 
-	public void setPagecode(int pagecode) {
-		this.pageCode = pagecode;
+	public void setPageCode(int pageCode) {
+		this.pageCode = pageCode;
 	}
 
-	public PageView(int maxresult, int currentpage) {
-		this.maxResult = maxresult;
-		if (currentpage <= 0) {
-			currentpage = 1;
+	public PageView(int maxResult, int currentPage) {
+		this.maxResult = maxResult;
+		if (-1 > currentPage) {
+			currentPage = 1;
 		}
-		this.currentPage = currentpage;
+		this.currentPage = currentPage;
 	}
 
 	@SuppressWarnings("rawtypes")
-	public void setQueryResult(Page qr) {
-		setTotalrecord(qr.getTotal());
-		setRecords(qr.getItems());
+	public void setQueryResult(Page page) {
+		setTotalRecord(page.getTotal());
+		setRecords(page.getItems());
 	}
 
-	public long getTotalrecord() {
+	public long getTotalRecord() {
 		return totalRecord;
 	}
 
-	public void setTotalrecord(long totalrecord) {
-		this.totalRecord = totalrecord;
-		setTotalpage(this.totalRecord % this.maxResult == 0 ? this.totalRecord
+	public void setTotalRecord(long totalRecord) {
+		this.totalRecord = totalRecord;
+		setTotalPage(this.totalRecord % this.maxResult == 0 ? this.totalRecord
 				/ this.maxResult : this.totalRecord / this.maxResult + 1);
 	}
 
@@ -84,21 +84,21 @@ public class PageView<T> {
 		return pageIndex;
 	}
 
-	public long getTotalpage() {
-		return totalpage;
+	public long getTotalPage() {
+		return totalPage;
 	}
 
-	public void setTotalpage(long totalpage) {
-		this.totalpage = totalpage;
+	public void setTotalPage(long totalPage) {
+		this.totalPage = totalPage;
 		this.pageIndex = PageIndex.getPageIndex(pageCode, currentPage,
-				totalpage);
+				totalPage);
 	}
 
-	public int getMaxresult() {
+	public int getMaxResult() {
 		return maxResult;
 	}
 
-	public int getCurrentpage() {
+	public int getCurrentPage() {
 		return currentPage;
 	}
 
@@ -134,5 +134,4 @@ public class PageView<T> {
 	public void setJsMethod(String jsMethod) {
 		this.jsMethod = jsMethod;
 	}
-
 }

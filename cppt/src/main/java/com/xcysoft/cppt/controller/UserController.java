@@ -16,6 +16,11 @@ import framework.core.utils.pagesUtils.Page;
 import framework.core.utils.pagesUtils.PageContext;
 import framework.core.utils.pagesUtils.PageView;
 
+/**
+ *
+ * @author huangxin
+ *
+ */
 @Controller
 @Scope("prototype")
 @RequestMapping(value = "/user")

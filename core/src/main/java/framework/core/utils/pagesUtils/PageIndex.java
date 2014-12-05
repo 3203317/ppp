@@ -6,50 +6,50 @@ package framework.core.utils.pagesUtils;
  *
  */
 public class PageIndex {
-	private long startindex;
-	private long endindex;
+	private long startIndex;
+	private long endIndex;
 
-	public PageIndex(long startindex, long endindex) {
-		this.startindex = startindex;
-		this.endindex = endindex;
+	public PageIndex(long startIndex, long endIndex) {
+		this.startIndex = startIndex;
+		this.endIndex = endIndex;
 	}
 
-	public long getStartindex() {
-		return startindex;
+	public long getStartIndex() {
+		return startIndex;
 	}
 
-	public void setStartindex(long startindex) {
-		this.startindex = startindex;
+	public void setStartIndex(long startIndex) {
+		this.startIndex = startIndex;
 	}
 
-	public long getEndindex() {
-		return endindex;
+	public long getEndIndex() {
+		return endIndex;
 	}
 
-	public void setEndindex(long endindex) {
-		this.endindex = endindex;
+	public void setEndIndex(long endIndex) {
+		this.endIndex = endIndex;
 	}
 
-	public static PageIndex getPageIndex(long viewpagecount, int currentPage,
-			long totalpage) {
-		long startpage = currentPage
-				- (viewpagecount % 2 == 0 ? viewpagecount / 2 - 1
-						: viewpagecount / 2);
-		long endpage = currentPage + viewpagecount / 2;
-		if (1 > startpage) {
-			startpage = 1;
-			if (totalpage >= viewpagecount)
-				endpage = viewpagecount;
+	public static PageIndex getPageIndex(long viewPageCount, int currentPage,
+			long totalPage) {
+		long startPage = currentPage
+				- (viewPageCount % 2 == 0 ? viewPageCount / 2 - 1
+						: viewPageCount / 2);
+		long endPage = currentPage + viewPageCount / 2;
+		if (1 > startPage) {
+			startPage = 1;
+			if (totalPage >= viewPageCount)
+				endPage = viewPageCount;
 			else
-				endpage = totalpage;
+				endPage = totalPage;
 		}
-		if (endpage > totalpage) {
-			endpage = totalpage;
-			if (0 < (endpage - viewpagecount))
-				startpage = endpage - viewpagecount + 1;
+		if (endPage > totalPage) {
+			endPage = totalPage;
+			if (0 < (endPage - viewPageCount))
+				startPage = endPage - viewPageCount + 1;
 			else
-				startpage = 1;
+				startPage = 1;
 		}
-		return new PageIndex(startpage, endpage);
+		return new PageIndex(startPage, endPage);
 	}
 }
