@@ -19,7 +19,7 @@
 
 	<description>Spring mvc 配置</description>
 
-	<context:component-scan base-package="cn.newcapec.foundation.portal">
+	<context:component-scan base-package="com.xcysoft.foundation.portal">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 		<context:include-filter type="annotation"
@@ -45,7 +45,7 @@
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<property name="webBindingInitializer">
 			<bean
-				class="cn.newcapec.framework.core.handler.springDatebind.SpringDateBind" />
+				class="com.xcysoft.framework.core.handler.springDatebind.SpringDateBind" />
 		</property>
 
 		<property name="messageConverters">

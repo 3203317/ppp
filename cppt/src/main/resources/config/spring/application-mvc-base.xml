@@ -26,7 +26,7 @@
 	<mvc:resources mapping="styles/**" location="classpath:views/styles/**" />
 
 	<!-- 映射地址和视图展示 -->
-	<bean id="portalUrlMapping" class="cn.newcapec.framework.core.handler.ConfigurationRead">
+	<bean id="portalUrlMapping" class="com.xcysoft.framework.core.handler.ConfigurationRead">
 		<constructor-arg>
 			<list>
 				<value>config/cn/newcapec/foundation/portal/controller-conf/portalUrlMapping.properties
@@ -39,11 +39,11 @@
 
 
 	<!-- 异常类的处理handle -->
-	<bean class="cn.newcapec.framework.core.handler.SystemExceptionHandler" />
+	<bean class="com.xcysoft.framework.core.handler.SystemExceptionHandler" />
 
 	<mvc:interceptors>
 		<bean
-			class="cn.newcapec.framework.core.handler.NspApplicationContextInterceptor" />
+			class="com.xcysoft.framework.core.handler.NspApplicationContextInterceptor" />
 
 	</mvc:interceptors>
 
@@ -73,16 +73,16 @@
 		<property name="customArgumentResolvers">
 			<list>
 				<bean
-					class="cn.newcapec.framework.core.handler.method.annotation.RequestJsonParamMethodArgumentResolver" />
+					class="com.xcysoft.framework.core.handler.method.annotation.RequestJsonParamMethodArgumentResolver" />
 				<bean
-					class="cn.newcapec.framework.core.handler.method.annotation.FormModelMethodArgumentResolver" />
+					class="com.xcysoft.framework.core.handler.method.annotation.FormModelMethodArgumentResolver" />
 			</list>
 		</property>
 	</bean>
 
 	<!-- 初始化参数 -->
 	<bean id="multiViewHandlerInterceptor"
-		class="cn.newcapec.framework.core.handler.MultiViewHandlerInterceptor" />
+		class="com.xcysoft.framework.core.handler.MultiViewHandlerInterceptor" />
 
 	<bean
 		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
