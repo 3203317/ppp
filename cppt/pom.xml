@@ -15,9 +15,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>framework</groupId>
+			<groupId>com.xcysoft</groupId>
 			<artifactId>framework-core</artifactId>
-			<version>1.0.4</version>
+			<version>1.0.2</version>
 		</dependency>
 	</dependencies>
 	<build>

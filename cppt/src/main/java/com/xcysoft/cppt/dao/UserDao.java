@@ -7,8 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.xcysoft.cppt.dao.base.BaseUserDao;
 import com.xcysoft.cppt.model.User;
-
-import framework.core.utils.pagesUtils.Page;
+import com.xcysoft.framework.core.utils.pagesUtils.Page;
 
 /**
  *

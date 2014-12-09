@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.xcysoft.cppt.biz.UserService;
-
-import framework.core.handler.MultiViewResource;
-import framework.core.utils.pagesUtils.Page;
-import framework.core.utils.pagesUtils.PageContext;
-import framework.core.utils.pagesUtils.PageView;
+import com.xcysoft.framework.core.handler.MultiViewResource;
+import com.xcysoft.framework.core.utils.pagesUtils.Page;
+import com.xcysoft.framework.core.utils.pagesUtils.PageContext;
+import com.xcysoft.framework.core.utils.pagesUtils.PageView;
 
 /**
  *
