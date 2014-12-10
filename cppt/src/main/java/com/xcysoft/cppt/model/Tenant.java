@@ -2,7 +2,7 @@ package com.xcysoft.cppt.model;
 
 import java.io.Serializable;
 
-import com.xcysoft.framework.core.model.AppBaseModel;
+import framework.core.model.AppBaseModel;
 
 /**
  *
