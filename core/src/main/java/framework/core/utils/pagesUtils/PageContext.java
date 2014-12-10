@@ -8,7 +8,7 @@ package framework.core.utils.pagesUtils;
 @SuppressWarnings({ "all" })
 public class PageContext {
 	private static ThreadLocal offset = new ThreadLocal();
-	private static ThreadLocal pagesize = new ThreadLocal();
+	private static ThreadLocal pageSize = new ThreadLocal();
 
 	@SuppressWarnings("unchecked")
 	public static void setOffset(Integer _offset) {
@@ -17,10 +17,7 @@ public class PageContext {
 
 	public static Integer getOffset() {
 		Integer os = (Integer) offset.get();
-		if (os == null) {
-			return 0;
-		}
-		return os;
+		return null == os ? 0 : os;
 	}
 
 	public static void removeOffset() {
@@ -28,19 +25,16 @@ public class PageContext {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static void setPagesize(Integer _pagesize) {
-		pagesize.set(_pagesize);
+	public static void setPageSize(Integer _pageSize) {
+		pageSize.set(_pageSize);
 	}
 
-	public static Integer getPagesize() {
-		Integer ps = (Integer) pagesize.get();
-		if (ps == null) {
-			return Integer.MAX_VALUE;
-		}
-		return ps;
+	public static Integer getPageSize() {
+		Integer ps = (Integer) pageSize.get();
+		return null == ps ? Integer.MAX_VALUE : ps;
 	}
 
-	public static void removePagesize() {
-		pagesize.remove();
+	public static void removePageSize() {
+		pageSize.remove();
 	}
 }

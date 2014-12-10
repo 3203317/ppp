@@ -591,7 +591,7 @@ public class DbDataset implements Serializable {
 	 */
 	public DbDataset setPageSize(int pageSize) {
 		if (pageSize <= 0) {
-			this.pageSize = PageContext.getPagesize();
+			this.pageSize = PageContext.getPageSize();
 		} else {
 			this.pageSize = pageSize;
 

@@ -122,14 +122,14 @@ public class DBUtil {
 	public static List query(String querySQL, Object params, Class modelClass)
 			throws BaseException {
 		return iDbEngineService.query(querySQL.toString(),
-				new Object[] { params }, modelClass, PageContext.getPagesize(),
+				new Object[] { params }, modelClass, PageContext.getPageSize(),
 				PageContext.getOffset());
 	}
 
 	public static List query(String querySQL, Class modelClass)
 			throws BaseException {
 		return iDbEngineService.query(querySQL.toString(), null, modelClass,
-				PageContext.getPagesize(), PageContext.getOffset());
+				PageContext.getPageSize(), PageContext.getOffset());
 	}
 
 	/**
@@ -282,7 +282,7 @@ public class DBUtil {
 	public static PagingResultSet getPagingResultSet(String querySQL,
 			Object param, Class modelClass) throws BaseException {
 		return getPagingResultSet(querySQL, new Object[] { param }, modelClass,
-				PageContext.getPagesize(), PageContext.getOffset());
+				PageContext.getPageSize(), PageContext.getOffset());
 
 	}
 

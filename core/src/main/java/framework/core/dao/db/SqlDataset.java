@@ -74,7 +74,7 @@ public class SqlDataset extends DbDataset {
 	 */
 	public SqlDataset(String sql, ParameterSet params) {
 		this(sql, params, true, PageContext.getOffset(), PageContext
-				.getPagesize());
+				.getPageSize());
 	}
 
 	/**
@@ -85,7 +85,7 @@ public class SqlDataset extends DbDataset {
 	 */
 	public SqlDataset(String sql) {
 		this(sql, null, true, PageContext.getOffset(), PageContext
-				.getPagesize());
+				.getPageSize());
 	}
 
 	/**
@@ -137,7 +137,7 @@ public class SqlDataset extends DbDataset {
 	@Override
 	public SqlDataset loadData() {
 		// TODO Auto-generated method stub
-		this.setPageSize(PageContext.getPagesize());
+		this.setPageSize(PageContext.getPageSize());
 
 		// if (this.getPageSize() == 0) {
 		// this.setPageSize(DEFAULT_PAGING_SIZE);

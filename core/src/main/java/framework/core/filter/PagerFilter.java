@@ -37,12 +37,12 @@ public class PagerFilter implements Filter {
 
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		PageContext.setOffset(getOffset(httpRequest));
-		PageContext.setPagesize(getPagesize(httpRequest));
+		PageContext.setPageSize(getPagesize(httpRequest));
 		try {
 			chain.doFilter(request, response);
 		} finally {
 			PageContext.removeOffset();
-			PageContext.removePagesize();
+			PageContext.removePageSize();
 		}
 	}
 

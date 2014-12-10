@@ -41,7 +41,7 @@ public class UserController extends MultiViewResource {
 		Page page = userService.querys(getJsonObject());
 		// 菜单列表视图
 		PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
-				PageContext.getPagesize(), PageContext.getOffset());
+				PageContext.getPageSize(), PageContext.getOffset());
 		pageView.setQueryResult(page);
 		pageView.setJsMethod("reloadUserList");
 		modelMap.put("pageView", pageView);

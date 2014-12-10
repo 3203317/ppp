@@ -14,10 +14,6 @@ import java.util.Set;
 import javax.annotation.Resource;
 import javax.management.RuntimeErrorException;
 
-import framework.core.logs.LogEnabled;
-import framework.core.utils.pagesUtils.Page;
-import framework.core.utils.pagesUtils.PageContext;
-
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -31,8 +27,12 @@ import org.hibernate.transform.Transformers;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
+import framework.core.logs.LogEnabled;
+import framework.core.utils.pagesUtils.Page;
+import framework.core.utils.pagesUtils.PageContext;
+
 /**
- * 操作的Hibernate DAO基类.
+ * 操作的Hibernate DAO基类
  *
  * @author huangxin
  *
@@ -161,7 +161,7 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	public Page queryForpage(String hql, Object[] params,
 			LinkedHashMap<String, String> orderby) {
 		return queryForpage(hql, params, PageContext.getOffset(),
-				PageContext.getPagesize(), orderby);
+				PageContext.getPageSize(), orderby);
 	}
 
 	/**
@@ -311,9 +311,9 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 		List list = query
 				.setFirstResult(
 						PageContext.getOffset() > 0 ? (PageContext.getOffset() - 1)
-								* PageContext.getPagesize()
+								* PageContext.getPageSize()
 								: PageContext.getOffset())
-				.setMaxResults(PageContext.getPagesize())
+				.setMaxResults(PageContext.getPageSize())
 				.setResultTransformer(
 						(ResultTransformer) new UpperCasedAliasToEntityMapResultTransformer())
 				.list();
@@ -335,7 +335,7 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	public Page sqlQueryForPage(String sql, Object[] params,
 			LinkedHashMap<String, String> orderby) {
 		return sqlQueryForPage(sql, params, PageContext.getOffset(),
-				PageContext.getPagesize(), orderby);
+				PageContext.getPageSize(), orderby);
 	}
 
 	/**
@@ -416,7 +416,7 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 			Object[] params, LinkedHashMap<String, String> orderby) {
 
 		return sqlQueryForList(sql, params, PageContext.getOffset(),
-				PageContext.getPagesize(), orderby);
+				PageContext.getPageSize(), orderby);
 
 	}
 

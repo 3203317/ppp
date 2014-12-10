@@ -8,9 +8,5 @@ import org.apache.log4j.Logger;
  * @author huangxin
  */
 public interface LogEnabled {
-	/**
-	 * 日志打印
-	 */
 	public Logger log = Logger.getRootLogger();
-
 }
