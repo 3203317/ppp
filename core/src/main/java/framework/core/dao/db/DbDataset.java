@@ -9,6 +9,15 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import org.apache.log4j.Logger;
+import org.restlet.data.CharacterSet;
+import org.restlet.data.MediaType;
+import org.restlet.resource.Representation;
+import org.restlet.resource.StringRepresentation;
+
 import framework.core.exception.BaseException;
 import framework.core.model.variant.VariantSet;
 import framework.core.utils.MathUtils.MathUtil;
@@ -18,14 +27,6 @@ import framework.core.utils.pagesUtils.Page;
 import framework.core.utils.pagesUtils.PageContext;
 import framework.core.utils.stringUtils.JsonUtil;
 import framework.core.utils.stringUtils.StringUtil;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
-import org.apache.log4j.Logger;
-import org.restlet.data.CharacterSet;
-import org.restlet.data.MediaType;
-import org.restlet.resource.Representation;
-import org.restlet.resource.StringRepresentation;
 
 /**
  *
@@ -89,9 +90,8 @@ public class DbDataset implements Serializable {
 	public DbDataset(String sql, ParameterSet params, boolean supportPaging,
 			String pageIndex, String pageSize) {
 		this(sql, params, supportPaging,
-				framework.core.utils.MathUtils.MathUtil
-						.getInteger(pageIndex).intValue(), MathUtil.getInteger(
-						pageSize).intValue());
+				framework.core.utils.MathUtils.MathUtil.getInteger(pageIndex)
+						.intValue(), MathUtil.getInteger(pageSize).intValue());
 	}
 
 	/**
@@ -477,7 +477,7 @@ public class DbDataset implements Serializable {
 	}
 
 	/**
-	 * 转换为分页 andy.li
+	 * 转换为分页 huangxin
 	 *
 	 * @return
 	 */

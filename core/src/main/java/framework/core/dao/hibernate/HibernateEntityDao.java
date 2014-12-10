@@ -557,13 +557,11 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 		setParames(params, query);
 		Integer totalCount = 0;
 		Object count = query.uniqueResult();
-
 		if (count instanceof BigDecimal) {
 			totalCount = null == count ? 0 : ((BigDecimal) count).intValue();
 		} else if (count instanceof BigInteger) {
 			totalCount = null == count ? 0 : ((BigInteger) count).intValue();
 		}
-
 		return totalCount;
 	}
 
@@ -574,18 +572,16 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 * @return
 	 */
 	protected static String buildOrderby(LinkedHashMap<String, String> orderby) {
-
-		StringBuffer orderbyql = new StringBuffer(" ");
-		if (orderby != null && orderby.size() > 0) {
-			orderbyql.append(" order by ");
+		StringBuffer orderbySql = new StringBuffer(" ");
+		if (null != orderby && 0 < orderby.size()) {
+			orderbySql.append(" order by ");
 			for (String key : orderby.keySet()) {
-				orderbyql.append(key).append(" ").append(orderby.get(key))
+				orderbySql.append(key).append(" ").append(orderby.get(key))
 						.append(",");
 			}
-			orderbyql.deleteCharAt(orderbyql.length() - 1);
+			orderbySql.deleteCharAt(orderbySql.length() - 1);
 		}
-
-		return orderbyql.toString();
+		return orderbySql.toString();
 	}
 
 	/**
@@ -595,7 +591,7 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 * @param query
 	 */
 	private void setParames(Map args, Query query) {
-		if (args != null && args.size() > 0) {
+		if (null != args && 0 < args.size()) {
 			Set keySet = args.keySet();
 			Iterator it = keySet.iterator();
 			while (it.hasNext()) {
@@ -603,14 +599,13 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 				String value = (String) args.get(key);
 				query.setParameter(key, value);
 			}
-
 		}
 	}
 
 	/**
 	 * 返回对象定义
 	 *
-	 * @author andy
+	 * @author huangxin
 	 *
 	 */
 	private static class UpperCasedAliasToEntityMapResultTransformer extends
@@ -618,9 +613,9 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 		@SuppressWarnings("unchecked")
 		public Object transformTuple(Object[] tuple, String[] aliases) {
 			Map result = new HashMap(tuple.length);
-			for (int i = 0; i < tuple.length; i++) {
+			for (int i = 0, j = tuple.length; i < j; i++) {
 				String alias = aliases[i];
-				if (alias != null) {
+				if (null != alias) {
 					result.put(alias.toUpperCase(), tuple[i]);
 				}
 			}
@@ -637,18 +632,17 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	private String getHibernateCountQuery(String hql) {
 		hql = StringUtils.defaultIfEmpty(hql, "");
 		// hql = hql.toLowerCase();
-
 		int index = hql.indexOf("from");
-		if (index != -1) {
+		if (-1 != index) {
 			return "select count(*) " + hql.substring(index);
 		}
-		throw new RuntimeErrorException(null, "无效的sql语句");
+		throw new RuntimeErrorException(null, "无效的SQL语句");
 	}
 
 	/**
 	 * 回调内部类定义
 	 *
-	 * @author andy
+	 * @author huangxin
 	 *
 	 */
 	private class ExecuteCallback implements HibernateCallback {
@@ -678,10 +672,10 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 
 		private int getParameterCount(String hql) {
 			int count = 0;
-			if (hql != null) {
+			if (null != hql) {
 				StringBuffer buffer = new StringBuffer(hql);
 				int pos = -1;
-				while ((pos = buffer.indexOf("?")) != -1) {
+				while (-1 != (pos = buffer.indexOf("?"))) {
 					buffer.delete(0, pos + 1);
 					count++;
 				}
@@ -691,18 +685,18 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 
 		public Object doInHibernate(Session session) throws HibernateException,
 				SQLException {
-			if (hql == null)
+			if (null == hql)
 				throw new RuntimeException("nullable statement");
 
 			int paramCount = 0;
-			if ((paramCount = getParameterCount(hql)) > 0) {
-				if (args == null || args.length != paramCount)
+			if (0 < (paramCount = getParameterCount(hql))) {
+				if (null == args || args.length != paramCount)
 					throw new RuntimeException("nullable arguments");
 			}
 			Query query = session.createQuery(hql);
 
-			if (args != null) {
-				for (int i = 0; i < args.length; i++) {
+			if (null != args) {
+				for (int i = 0, j = args.length; i < j; i++) {
 					query.setParameter(i, args[i]);
 				}
 			}
