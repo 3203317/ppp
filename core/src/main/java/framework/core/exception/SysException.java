@@ -141,8 +141,7 @@ public class SysException extends RuntimeException {
 	 */
 	public void printStackTrace(PrintWriter writer) {
 		super.printStackTrace(writer);
-
-		if (getRootCause() != null) {
+		if (null != getRootCause()) {
 			getRootCause().printStackTrace(writer);
 		}
 		writer.flush();
