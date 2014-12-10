@@ -45,7 +45,7 @@
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<property name="webBindingInitializer">
 			<bean
-				class="com.xcysoft.framework.core.handler.springDatebind.SpringDateBind" />
+				class="framework.core.handler.springDatebind.SpringDateBind" />
 		</property>
 
 		<property name="messageConverters">

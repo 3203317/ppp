@@ -7,12 +7,12 @@
 		class="org.springframework.beans.factory.config.PropertyPathFactoryBean" />
 
 	<bean id="exceptionStatusService"
-		class="com.xcysoft.framework.core.exception.ExceptionStatusService">
+		class="framework.core.exception.ExceptionStatusService">
 	</bean>
 	<bean id="component" class="org.restlet.ext.spring.SpringComponent">
 		<property name="defaultTarget" ref="application" />
 	</bean>
-	<bean id="application" class="com.xcysoft.framework.core.rest.BaseApplication">
+	<bean id="application" class="framework.core.rest.BaseApplication">
 		<constructor-arg ref="component.context" />
 		<property name="root" ref="restRoute" />
 		<property name="statusService" ref="exceptionStatusService" />
