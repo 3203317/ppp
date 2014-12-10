@@ -113,8 +113,8 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 		HibernateCallback selectCallback = new HibernateCallback() {
 			public Object doInHibernate(Session session) {
 				Query query = session.createQuery(select);
-				if (values != null && values.length > 0) {
-					for (int i = 0; i < values.length; i++)
+				if (null != values && 0 < values.length) {
+					for (int i = 0, j = values.length; i < j; i++)
 						query.setParameter(i, values[i]);
 				}
 				return query.uniqueResult();
@@ -130,8 +130,8 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 *            查询 语句
 	 * @return
 	 */
-	public Page queryForpage(String hql) {
-		return queryForpage(hql, null, null);
+	public Page queryForPage(String hql) {
+		return queryForPage(hql, null, null);
 	}
 
 	/**
@@ -143,8 +143,8 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 *            排序
 	 * @return
 	 */
-	public Page queryForpage(String hql, LinkedHashMap<String, String> orderby) {
-		return queryForpage(hql, null, orderby);
+	public Page queryForPage(String hql, LinkedHashMap<String, String> orderby) {
+		return queryForPage(hql, null, orderby);
 	}
 
 	/**
@@ -158,9 +158,9 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 *            排序
 	 * @return
 	 */
-	public Page queryForpage(String hql, Object[] params,
+	public Page queryForPage(String hql, Object[] params,
 			LinkedHashMap<String, String> orderby) {
-		return queryForpage(hql, params, PageContext.getOffset(),
+		return queryForPage(hql, params, PageContext.getOffset(),
 				PageContext.getPageSize(), orderby);
 	}
 
@@ -171,15 +171,15 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 *            查询 语句
 	 * @param offset
 	 *            页码
-	 * @param pagesize
+	 * @param pageSize
 	 *            条数
 	 * @param orderby
 	 *            排序
 	 * @return
 	 */
-	public Page queryForpage(String hql, int offset, int pagesize,
+	public Page queryForPage(String hql, int offset, int pageSize,
 			LinkedHashMap<String, String> orderby) {
-		return queryForpage(hql, null, offset, pagesize, orderby);
+		return queryForPage(hql, null, offset, pageSize, orderby);
 	}
 
 	/**
@@ -191,15 +191,15 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 *            参数
 	 * @param offset
 	 *            页码
-	 * @param pagesize
+	 * @param pageSize
 	 *            条数
 	 * @param orderby
 	 *            排序
 	 * @return
 	 */
-	public Page queryForpage(String hql, Object values, int offset,
-			int pagesize, LinkedHashMap<String, String> orderby) {
-		return queryForpage(hql, new Object[] { values }, offset, pagesize,
+	public Page queryForPage(String hql, Object values, int offset,
+			int pageSize, LinkedHashMap<String, String> orderby) {
+		return queryForPage(hql, new Object[] { values }, offset, pageSize,
 				orderby);
 	}
 
@@ -210,21 +210,21 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 *            查询语句
 	 * @param values
 	 *            参数
-	 * @param pagestart
+	 * @param pageStart
 	 *            页码
-	 * @param pagesize
+	 * @param pageSize
 	 *            条数
 	 * @param orderby
 	 *            排序
 	 * @return
 	 */
-	public Page queryForpage(String select, Object[] values, int pagestart,
-			int pagesize, LinkedHashMap<String, String> orderby) {
+	public Page queryForPage(String select, Object[] values, int pageStart,
+			int pageSize, LinkedHashMap<String, String> orderby) {
 		Page page = new Page();
 		String countHql = getHibernateCountQuery(select);
 		Long totalCount = (Long) findForObject(countHql, values);
 		page.setTotal(totalCount.intValue());
-		page.setItems(queryForList(select, values, pagestart, pagesize, orderby));
+		page.setItems(queryForList(select, values, pageStart, pageSize, orderby));
 		return page;
 	}
 
@@ -235,30 +235,30 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 *            查询列表语句
 	 * @param values
 	 *            参数
-	 * @param pagestart
+	 * @param pageStart
 	 *            页码
-	 * @param pagesize
+	 * @param pageSize
 	 *            条数
 	 * @param orderby
 	 *            排序
 	 * @return
 	 */
 	public List queryForList(final String select, final Object[] values,
-			final int pagestart, final int pagesize,
+			final int pageStart, final int pageSize,
 			final LinkedHashMap<String, String> orderby) {
 		HibernateCallback selectCallback = new HibernateCallback() {
 			public Object doInHibernate(Session session) {
 				Query query = session.createQuery(select
 						+ buildOrderby(orderby));
-				if (values != null) {
-					for (int i = 0; i < values.length; i++)
+				if (null != values) {
+					for (int i = 0, j = values.length; i < j; i++)
 						query.setParameter(i, values[i]);
 				}
 
 				return query
 						.setFirstResult(
-								pagestart > 0 ? (pagestart - 1) * pagesize
-										: pagestart).setMaxResults(pagesize)
+								0 < pageStart ? (pageStart - 1) * pageSize
+										: pageStart).setMaxResults(pageSize)
 						.list();
 			}
 		};
@@ -274,21 +274,21 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 *            查询列表
 	 * @param values
 	 *            参数
-	 * @param pagestart
+	 * @param pageStart
 	 *            页码
-	 * @param pagesize
+	 * @param pageSize
 	 *            条数
 	 * @param orderby
 	 *            排序
 	 * @return
 	 */
 	public Page queryForPage(final String selectCount, final String select,
-			final Object[] values, int pagestart, final int pagesize,
+			final Object[] values, int pageStart, final int pageSize,
 			final LinkedHashMap<String, String> orderby) {
 		Page page = new Page();
 		Long totalCount = (Long) findForObject(selectCount, values);
 		page.setTotal(totalCount.intValue());
-		page.setItems(queryForList(select, values, pagestart, pagesize, orderby));
+		page.setItems(queryForList(select, values, pageStart, pageSize, orderby));
 		return page;
 	}
 
@@ -303,14 +303,14 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 *            排序
 	 * @return
 	 */
-	public Page sqlqueryForpage(String sql, Map args,
+	public Page sqlqueryForPage(String sql, Map args,
 			LinkedHashMap<String, String> orderby) {
 		SQLQuery query = getSession().createSQLQuery(sql);
 		setParames(args, query);
 		Page page = new Page();
 		List list = query
 				.setFirstResult(
-						PageContext.getOffset() > 0 ? (PageContext.getOffset() - 1)
+						0 < PageContext.getOffset() ? (PageContext.getOffset() - 1)
 								* PageContext.getPageSize()
 								: PageContext.getOffset())
 				.setMaxResults(PageContext.getPageSize())
@@ -348,32 +348,30 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 * @param rowMapper
 	 *            结果数组转化成对象
 	 * @param pagestart
-	 * @param pagesize
+	 * @param pageSize
 	 * @param orderby
 	 * @return
 	 */
 	public Page sqlQueryForPage(String sql, Object[] params, int offSet,
-			int pagesize, LinkedHashMap<String, String> orderby) {
+			int pageSize, LinkedHashMap<String, String> orderby) {
 		// 查询总数
 		SQLQuery countQuery = getSession().createSQLQuery(
 				getHibernateCountQuery(sql));
-		if (null != params && params.length > 0) {
-			for (int i = 0; i < params.length; i++) {
+		if (null != params && 0 < params.length) {
+			for (int i = 0, j = params.length; i < j; i++) {
 				countQuery.setParameter(i, params[i]);
 			}
 		}
 		Integer totalCount = 0;
 		Object count = countQuery.uniqueResult();
-
 		if (count instanceof BigDecimal) {
-
 			totalCount = null == count ? 0 : ((BigDecimal) count).intValue();
 		} else if (count instanceof BigInteger) {
 			totalCount = null == count ? 0 : ((BigInteger) count).intValue();
 		}
 		Page page = new Page();
 		page.setTotal(totalCount);
-		page.setItems(sqlQueryForList(sql, params, offSet, pagesize, orderby));
+		page.setItems(sqlQueryForList(sql, params, offSet, pageSize, orderby));
 		return page;
 	}
 
@@ -387,12 +385,11 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 * @return
 	 */
 	public Object sqlFindObject(final String select, final Object[] values) {
-
 		HibernateCallback selectCallback = new HibernateCallback() {
 			public Object doInHibernate(Session session) {
 				Query query = session.createSQLQuery(select);
-				if (values != null) {
-					for (int i = 0; i < values.length; i++)
+				if (null != values) {
+					for (int i = 0, j = values.length; i < j; i++)
 						query.setParameter(i, values[i]);
 				}
 				return query.uniqueResult();
@@ -414,7 +411,6 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 */
 	public List<Map<String, Object>> sqlQueryForList(String sql,
 			Object[] params, LinkedHashMap<String, String> orderby) {
-
 		return sqlQueryForList(sql, params, PageContext.getOffset(),
 				PageContext.getPageSize(), orderby);
 
@@ -429,31 +425,31 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 *            参数
 	 * @param offSet
 	 *            页码
-	 * @param pagesize
+	 * @param pageSize
 	 *            显示条数
 	 * @param orderby
 	 *            排序
 	 * @return
 	 */
 	public List<Map<String, Object>> sqlQueryForList(String sql,
-			Object[] params, Integer offSet, Integer pagesize,
+			Object[] params, Integer offSet, Integer pageSize,
 			LinkedHashMap<String, String> orderby) {
 		// sql的拼装
 		String querySql = null;
 		sql += buildOrderby(orderby);
 		int firstResult = 0;
-		if (offSet > 0) {
-			firstResult = (offSet - 1) * pagesize;
+		if (0 < offSet) {
+			firstResult = (offSet - 1) * pageSize;
 		}
 		SQLQuery listQuery = getSession().createSQLQuery(sql);
 		if (params != null) {
-			for (int i = 0; i < params.length; i++) {
+			for (int i = 0, j = params.length; i < j; i++) {
 				listQuery.setParameter(i, params[i]);
 			}
 		}
 		List list = listQuery
 				.setFirstResult(firstResult)
-				.setMaxResults(pagesize)
+				.setMaxResults(pageSize)
 				.setResultTransformer(
 						(ResultTransformer) new UpperCasedAliasToEntityMapResultTransformer())
 				.list();
@@ -469,36 +465,35 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 *            参数数组
 	 * @param offSet
 	 *            页码
-	 * @param pagesize
+	 * @param pageSize
 	 *            每页条数
 	 * @param orderby
 	 *            排序
-	 * @param classes
+	 * @param clazz
 	 *            返回实体类
 	 * @return
 	 */
 	public List sqlQueryForList(String sql, Object[] params, Integer offSet,
-			Integer pagesize, LinkedHashMap<String, String> orderby,
-			Class classes) {
+			Integer pageSize, LinkedHashMap<String, String> orderby, Class clazz) {
 		// sql的拼装
 		String querySql = null;
 		sql += buildOrderby(orderby);
 		int firstResult = 0;
-		if (offSet > 0) {
-			firstResult = (offSet - 1) * pagesize;
+		if (0 < offSet) {
+			firstResult = (offSet - 1) * pageSize;
 		}
 
 		SQLQuery listQuery = getSession().createSQLQuery(querySql);
-		if (params != null) {
-			for (int i = 0; i < params.length; i++) {
+		if (null != params) {
+			for (int i = 0, j = params.length; i < j; i++) {
 				listQuery.setParameter(i, params[i]);
 			}
 		}
-		if (classes == null) {
+		if (null == clazz) {
 			listQuery
 					.setResultTransformer((ResultTransformer) new UpperCasedAliasToEntityMapResultTransformer());
 		} else {
-			listQuery.setResultTransformer(Transformers.aliasToBean(classes));
+			listQuery.setResultTransformer(Transformers.aliasToBean(clazz));
 		}
 		return listQuery.list();
 	}
@@ -510,34 +505,33 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 *            查询语句
 	 * @param params
 	 *            参数Map
-	 * @param offSet
+	 * @param offset
 	 *            页码
-	 * @param pagesize
+	 * @param pageSize
 	 *            每页条数
 	 * @param orderby
 	 *            排序
-	 * @param classes
+	 * @param clazz
 	 *            返回实体类
 	 * @return
 	 */
-	public List sqlQueryForList(String sql, Map params, Integer offSet,
-			Integer pagesize, LinkedHashMap<String, String> orderby,
-			Class classes) {
+	public List sqlQueryForList(String sql, Map params, Integer offset,
+			Integer pageSize, LinkedHashMap<String, String> orderby, Class clazz) {
 		// sql的拼装
 		String querySql = null;
 		sql += buildOrderby(orderby);
 		int firstResult = 0;
-		if (offSet > 0) {
-			firstResult = (offSet - 1) * pagesize;
+		if (0 < offset) {
+			firstResult = (offset - 1) * pageSize;
 		}
 
 		SQLQuery listQuery = getSession().createSQLQuery(querySql);
 		setParames(params, listQuery);
-		if (classes == null) {
+		if (null == clazz) {
 			listQuery
 					.setResultTransformer((ResultTransformer) new UpperCasedAliasToEntityMapResultTransformer());
 		} else {
-			listQuery.setResultTransformer(Transformers.aliasToBean(classes));
+			listQuery.setResultTransformer(Transformers.aliasToBean(clazz));
 		}
 		return listQuery.list();
 	}

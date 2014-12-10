@@ -35,7 +35,7 @@ public class UserDao extends BaseUserDao {
 		if (null != paramMap) {
 			// TODO
 		}
-		return this.sqlqueryForpage(sql.toString(), param, null);
+		return this.sqlqueryForPage(sql.toString(), param, null);
 	}
 
 }
