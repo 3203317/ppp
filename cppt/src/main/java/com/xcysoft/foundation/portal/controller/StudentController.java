@@ -1,7 +1,7 @@
 /**
  *
  */
-package cn.newcapec.foundation.portal.controller;
+package com.xcysoft.foundation.portal.controller;
 
 import java.io.File;
 import java.util.List;
@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import cn.newcapec.foundation.portal.biz.StudentService;
-import cn.newcapec.foundation.portal.model.Student;
 import cn.newcapec.framework.core.exception.asserts.Assert;
 import cn.newcapec.framework.core.exception.asserts.AssertObject;
 import cn.newcapec.framework.core.handler.MultiViewResource;
@@ -32,6 +30,9 @@ import cn.newcapec.framework.core.utils.jsonUtils.JSONTools;
 import cn.newcapec.framework.core.utils.pagesUtils.Page;
 import cn.newcapec.framework.core.utils.pagesUtils.PageContext;
 import cn.newcapec.framework.core.utils.pagesUtils.PageView;
+
+import com.xcysoft.foundation.portal.biz.StudentService;
+import com.xcysoft.foundation.portal.model.Student;
 
 /**
  * 学生视图展示类

@@ -1,7 +1,7 @@
 /**
  *
  */
-package cn.newcapec.foundation.portal.rest;
+package com.xcysoft.foundation.portal.rest;
 
 import java.io.File;
 import java.util.List;
@@ -12,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import cn.newcapec.foundation.portal.biz.StudentService;
-import cn.newcapec.foundation.portal.model.Student;
 import cn.newcapec.framework.core.exception.asserts.AssertObject;
 import cn.newcapec.framework.core.model.FileAttach;
 import cn.newcapec.framework.core.rest.BaseRequest;
@@ -28,6 +26,9 @@ import cn.newcapec.framework.core.utils.jsonUtils.JSONTools;
 import cn.newcapec.framework.core.utils.pagesUtils.Page;
 import cn.newcapec.framework.core.utils.pagesUtils.PageContext;
 import cn.newcapec.framework.core.utils.pagesUtils.PageView;
+
+import com.xcysoft.foundation.portal.biz.StudentService;
+import com.xcysoft.foundation.portal.model.Student;
 
 /**
  * 学生视图展示

@@ -1,21 +1,20 @@
 /**
- * 
+ *
  */
-package cn.newcapec.foundation.portal.biz.impl;
+package com.xcysoft.foundation.portal.biz.impl;
 
 import java.util.Map;
 
-import org.apache.commons.chain.web.WebContext;
-import org.apache.struts.chain.contexts.WebActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import cn.newcapec.foundation.portal.biz.StudentService;
-import cn.newcapec.foundation.portal.dao.StudentDao;
-import cn.newcapec.foundation.portal.model.Student;
 import cn.newcapec.framework.core.utils.pagesUtils.Page;
+
+import com.xcysoft.foundation.portal.biz.StudentService;
+import com.xcysoft.foundation.portal.dao.StudentDao;
+import com.xcysoft.foundation.portal.model.Student;
 
 /**
  * 学生业务接口实现类
@@ -26,10 +25,10 @@ import cn.newcapec.framework.core.utils.pagesUtils.Page;
 @Transactional
 @SuppressWarnings("all")
 public class StudentServiceImpl implements StudentService {
-	
+
 	@Autowired
 	private StudentDao studentDao;
-	
+
 	@Override
 	public void removeUnused(String id) {
 		studentDao.delete(id);

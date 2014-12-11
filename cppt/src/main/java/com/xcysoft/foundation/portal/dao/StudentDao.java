@@ -1,20 +1,18 @@
 /**
  *
  */
-package cn.newcapec.foundation.portal.dao;
+package com.xcysoft.foundation.portal.dao;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.exception.ExceptionUtils;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
-import cn.newcapec.foundation.portal.dao.base.BaseStudentDao;
-import cn.newcapec.framework.core.exception.BaseException;
 import cn.newcapec.framework.core.utils.pagesUtils.Page;
-import cn.newcapec.framework.core.utils.pagesUtils.PageContext;
+
+import com.xcysoft.foundation.portal.dao.base.BaseStudentDao;
 
 /**
  * 学生数据操作类

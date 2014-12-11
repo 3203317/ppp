@@ -1,13 +1,14 @@
 /**
- * 
+ *
  */
-package cn.newcapec.foundation.portal.biz;
+package com.xcysoft.foundation.portal.biz;
 
 import java.util.Map;
 
-import cn.newcapec.foundation.portal.model.Student;
 import cn.newcapec.framework.core.biz.BaseService;
 import cn.newcapec.framework.core.utils.pagesUtils.Page;
+
+import com.xcysoft.foundation.portal.model.Student;
 
 /**
  * 学生业务接口类
@@ -30,7 +31,7 @@ public interface StudentService extends BaseService<Student> {
 	 * @return
 	 */
 	public Student findById(String id);
-	
+
 	/**
 	 * 删去学生
 	 * @param ids

@@ -1,4 +1,4 @@
-package cn.newcapec.foundation.portal.model;
+package com.xcysoft.foundation.portal.model;
 
 import java.util.Date;
 
@@ -17,15 +17,15 @@ import cn.newcapec.framework.core.model.CommonModel;
 
 /**
  * 学生实体类
- * 
+ *
  * @author andy
- * 
+ *
  */
 @Table(name = "t_student")
 @Entity
 public class Student extends CommonModel {
 	private static final long serialVersionUID = 1L;
-	
+
 	/* 编号 */
 	@Column(name = "no", length = 30)
 	private String no;
@@ -51,9 +51,9 @@ public class Student extends CommonModel {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="birthday")
 	private Date birthday;
-	
-	
-	
+
+
+
 	public String getNo() {
 		return no;
 	}
@@ -156,7 +156,7 @@ public class Student extends CommonModel {
 		this.birthday = birthday;
 	}
 
-	
-	
-	
+
+
+
 }

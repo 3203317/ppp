@@ -1,4 +1,4 @@
-package cn.newcapec.foundation.portal.rest;
+package com.xcysoft.foundation.portal.rest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,16 +33,16 @@ import cn.newcapec.framework.core.utils.pagesUtils.PageContext;
 
 /**
  * 传统模式视图资源类
- * 
+ *
  * @author andy.li
- * 
+ *
  */
 
 @Component
 @Scope("prototype")
 @SuppressWarnings("all")
 public class TraditionResource extends BaseResource implements BaseResourceHandler {
-	
+
 	/* 资源业务类 */
 	@Autowired
 	private MenuService menuService;
@@ -53,12 +53,12 @@ public class TraditionResource extends BaseResource implements BaseResourceHandl
 
 	/**
 	 * 首页
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 */
 	public void index(final BaseRequest request, final BaseResponse response) {
-		
+
 			doExpAssert(new AssertObject() {
 				@Override
 				public void AssertMethod(Msg Msg) {
@@ -112,7 +112,7 @@ public class TraditionResource extends BaseResource implements BaseResourceHandl
 										}
 									}
 								}
-						
+
 								getNewcapectViewContext().put("rootMenu", rootMenu);
 		                        getNewcapectViewContext().put("noRootMenu", noRootMenu);
 							}
@@ -120,7 +120,7 @@ public class TraditionResource extends BaseResource implements BaseResourceHandl
 						response.toView(getUrl("tradition.index"), getNewcapectViewContext());
 				}
 			});
- 		
+
 	}
 
 }

@@ -1,4 +1,4 @@
-package cn.newcapec.foundation.portal.util;
+package com.xcysoft.foundation.portal.util;
 
 import org.restlet.Finder;
 import org.restlet.Restlet;

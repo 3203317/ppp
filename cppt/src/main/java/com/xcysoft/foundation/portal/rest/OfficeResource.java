@@ -1,4 +1,4 @@
-package cn.newcapec.foundation.portal.rest;
+package com.xcysoft.foundation.portal.rest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
