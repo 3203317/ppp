@@ -1,30 +1,30 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
-<web-app>
-	<display-name>CPPT</display-name>
-	<description>产品平台</description>
-
-	<!-- log4j config -->
-	<context-param>
-		<param-name>log4jConfigLocation</param-name>
-		<param-value>classpath:log4j.properties</param-value>
-	</context-param>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			classpath*:config/**/restlet-conf/*.xml;
-			classpath*:config/**/restlet/*.xml;
-			classpath*:config/spring/applicationContext-dataSource.xml;
-			classpath*:config/spring/dataAccessContext-hibernate.xml;
-			classpath*:config/spring/application-mvc-base.xml;
-			classpath*:config/restlet/restletContext.xml;
+            classpath*:config/**/restlet-conf/*.xml;
+            classpath*:config/spring-conf/applicationContext-dataSource.xml;
+            classpath*:config/spring-conf/dataAccessContext-hibernate.xml;
+            classpath*:config/spring-conf/application-mvc-base.xml;
+            classpath*:config/restlet-conf/restletContext.xml;
         </param-value>
 	</context-param>
+	
+<!--	-->
 
-	<listener>
+	<!--     log4j config -->
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>classpath:log4j.properties</param-value>
+	</context-param>
+	
+
+    <listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
@@ -40,32 +40,34 @@
 
 	<filter>
 		<filter-name>hibernateFilter</filter-name>
-		<filter-class>com.xcysoft.framework.core.filter.OpenSessionInViewFilter</filter-class>
-		<init-param>
-			<param-name>singleSession</param-name>
-			<param-value>false</param-value>
-		</init-param>
+		<filter-class>cn.newcapec.framework.core.filter.OpenSessionInViewFilter</filter-class>
+			    <init-param>      
+  			<param-name>singleSession</param-name>
+  			<param-value>false</param-value>   
+ 		</init-param>
 	</filter>
+	
+	<!-- 多视图的-->
+		<servlet>
+			<servlet-name>multiViewController</servlet-name>
+			<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+			<init-param>
+				<param-name>contextConfigLocation</param-name>
+				<param-value>classpath*:config/spring-conf/application-mvc-portal.xml</param-value>
+			</init-param>
+			<load-on-startup>1</load-on-startup>
+		</servlet>
+		<servlet-mapping>
+			<servlet-name>multiViewController</servlet-name>
+		  	<url-pattern>/controller/*</url-pattern>
+		</servlet-mapping>
 
-	<!-- 多视图的 -->
-	<servlet>
-		<servlet-name>multiViewController</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath*:config/spring/application-mvc-portal.xml</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>multiViewController</servlet-name>
-		<url-pattern>/controller/*</url-pattern>
-	</servlet-mapping>
 
 	<filter-mapping>
 		<filter-name>hibernateFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+
 
 	<filter>
 		<filter-name>encodingFilter</filter-name>
@@ -82,36 +84,37 @@
 
 	<filter>
 		<filter-name>pagerFilter</filter-name>
-		<filter-class>com.xcysoft.framework.core.filter.PagerFilter</filter-class>
+		<filter-class>cn.newcapec.framework.core.filter.PagerFilter</filter-class>
 	</filter>
-
-	<!-- <filter> -->
-	<!-- <filter-name>loginFilter</filter-name> -->
-	<!-- <filter-class>cn.newcapec.foundation.privilege.filter.LoginFilter</filter-class> -->
-	<!-- <init-param> -->
-	<!-- <param-name>allowUrl</param-name> -->
-	<!-- <param-value> /restful/privilegeProxyService/user/loginUI; -->
-	<!-- /restful/privilegeProxyService/user/login; -->
-	<!-- /restful/privilegeProxyService/control/SystemInit; -->
-	<!-- </param-value> -->
-	<!-- </init-param> -->
-	<!-- </filter> -->
-
+	
+<!--	<filter>-->
+<!--	<filter-name>loginFilter</filter-name>-->
+<!--		<filter-class>cn.newcapec.foundation.privilege.filter.LoginFilter</filter-class>-->
+<!--			<init-param>-->
+<!--			<param-name>allowUrl</param-name>-->
+<!--			<param-value>-->
+<!--			    /restful/privilegeProxyService/user/loginUI;-->
+<!--			    /restful/privilegeProxyService/user/login;-->
+<!--			    /restful/privilegeProxyService/control/SystemInit;-->
+<!--			</param-value>-->
+<!--		</init-param>-->
+<!--	</filter>-->
+	
 	<filter>
 		<filter-name>requestEncodeFilter</filter-name>
-		<filter-class>com.xcysoft.framework.core.filter.RequestEncodeFilter</filter-class>
+		<filter-class>cn.newcapec.framework.core.filter.RequestEncodeFilter</filter-class>
 	</filter>
-
-	<!-- <filter-mapping> -->
-	<!-- <filter-name>loginFilter</filter-name> -->
-	<!-- <url-pattern>/restful/*</url-pattern> -->
-	<!-- </filter-mapping> -->
+	
+<!-- 	<filter-mapping>
+		<filter-name>loginFilter</filter-name>
+		<url-pattern>/restful/*</url-pattern>
+	</filter-mapping> -->
 
 	<filter-mapping>
 		<filter-name>requestEncodeFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
+	
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
@@ -122,7 +125,7 @@
 		<filter-name>pagerFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
+	
 	<servlet>
 		<servlet-name>restlet</servlet-name>
 		<servlet-class>com.noelios.restlet.ext.spring.SpringServerServlet</servlet-class>
@@ -136,21 +139,26 @@
 		<url-pattern>/restful/*</url-pattern>
 	</servlet-mapping>
 
-	<!-- <servlet> -->
-	<!-- <servlet-name>charServlet</servlet-name> -->
-	<!-- <servlet-class>cn.newcapec.foundation.privilege.servlet.CharServlet</servlet-class> -->
-	<!-- <load-on-startup>3</load-on-startup> -->
-	<!-- </servlet> -->
 
-	<!-- <servlet> <servlet-name>timedJobServlet</servlet-name> -->
-	<!-- <servlet-class>cn.newcapec.framework.base.timedjob.TimedJobServlet</servlet-class> -->
-	<!-- <load-on-startup>10</load-on-startup> </servlet> -->
 
-	<!-- <servlet-mapping> -->
-	<!-- <servlet-name>charServlet</servlet-name> -->
-	<!-- <url-pattern>/validatecode/code.jpeg</url-pattern> -->
-	<!-- </servlet-mapping> -->
 
+<!--	<servlet>-->
+<!--		<servlet-name>charServlet</servlet-name>-->
+<!--		<servlet-class>cn.newcapec.foundation.privilege.servlet.CharServlet</servlet-class>-->
+<!--		<load-on-startup>3</load-on-startup>-->
+<!--	</servlet>-->
+
+<!--		<servlet> <servlet-name>timedJobServlet</servlet-name>-->
+<!--		<servlet-class>cn.newcapec.framework.base.timedjob.TimedJobServlet</servlet-class>-->
+<!--		<load-on-startup>10</load-on-startup> </servlet>-->
+
+	
+<!--	<servlet-mapping>-->
+<!--		<servlet-name>charServlet</servlet-name>-->
+<!--		<url-pattern>/validatecode/code.jpeg</url-pattern>-->
+<!--	</servlet-mapping>-->
+
+	
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
@@ -158,5 +166,5 @@
 	<welcome-file-list>
 		<welcome-file>/index.jsp</welcome-file>
 	</welcome-file-list>
-
 </web-app>
+

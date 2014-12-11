@@ -1,8 +1,0 @@
-#Thu Dec 11 14:18:42 CST 2014
-eclipse.preferences.version=1
-encoding//src/main/resources/config/com/xcysoft/cppt/controller-conf/portalUrlMapping.properties=UTF-8
-encoding//src/main/resources/config/com/xcysoft/cppt/restlet-conf/restletUrlMapping.properties=UTF-8
-encoding//src/main/resources/config/config.properties=UTF-8
-encoding//src/main/resources/config/jdbc.properties=UTF-8
-encoding//src/main/resources/config/velocity/velocity.properties=UTF-8
-encoding//src/main/resources/log4j.properties=UTF-8
