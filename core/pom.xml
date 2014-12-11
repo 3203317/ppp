@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.xcysoft</groupId>
 	<artifactId>framework-core</artifactId>
-	<version>1.0.6</version>
+	<version>1.0.7</version>
 	<distributionManagement>
 		<repository>
 			<id>repo1.xcysoft.com</id>
@@ -16,7 +16,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.6</jdk.version>
 		<!--核心类 -->
-		<newcapec.framework.version>1.0.0-RELEASE</newcapec.framework.version>
+		<xcysoft.framework.version>1.0.0-RELEASE</xcysoft.framework.version>
 		<!--spring -->
 		<spring.version>3.2.5.RELEASE</spring.version>
 		<!--hibernate -->
