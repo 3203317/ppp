@@ -35,15 +35,14 @@ public class UserController extends MultiViewResource {
 	 * @param modelMap
 	 * @return
 	 */
-	@RequestMapping(value = "index")
-	public ModelAndView stuListUI(ModelMap modelMap) {
+	@RequestMapping(value = "manage")
+	public ModelAndView manageUI(ModelMap modelMap) {
 		Page page = userService.querys(getJsonObject());
-		// 菜单列表视图
 		PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
 				PageContext.getPageSize(), PageContext.getOffset());
 		pageView.setQueryResult(page);
 		pageView.setJsMethod("reloadUserList");
 		modelMap.put("pageView", pageView);
-		return toView(getUrl("user.index"), modelMap);
+		return toView(getUrl("user.manage"), modelMap);
 	}
 }

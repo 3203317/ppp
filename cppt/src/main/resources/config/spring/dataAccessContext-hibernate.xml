@@ -47,14 +47,12 @@
 
 	<!--Hibernate SessionFatory 配置 -->
 	<bean id="sessionFactory"
-		class="framework.core.dao.hibernate.SessionFactoryAutoDialectBean"
+		class="com.xcysoft.framework.core.dao.hibernate.SessionFactoryAutoDialectBean"
 		lazy-init="false">
 		<property name="dataSource" ref="bizDatasourceOracle" />
 		<property name="packagesToScan">
 			<list>
-				<value>com.xcysoft.foundation.privilege.model</value>
-				<value>framework.log.model</value>
-				<value>com.xcysoft.foundation.portal.model</value>
+				<value>com.xcysoft.cppt.model</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

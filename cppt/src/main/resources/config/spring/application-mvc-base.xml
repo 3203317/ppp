@@ -17,8 +17,7 @@
 	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 	<!-- default-lazy-init="true" default-autowire="byName"> -->
 
-	<description>Spring mvc 基础配置</description>
-
+	<description>Spring MVC 基础配置</description>
 
 	<!-- scripts资源文件配置 -->
 	<mvc:resources mapping="scripts/**" location="classpath:views/scripts/**" />
@@ -26,29 +25,22 @@
 	<mvc:resources mapping="styles/**" location="classpath:views/styles/**" />
 
 	<!-- 映射地址和视图展示 -->
-	<bean id="portalUrlMapping" class="framework.core.handler.ConfigurationRead">
+	<bean id="portalUrlMapping" class="com.xcysoft.framework.core.handler.ConfigurationRead">
 		<constructor-arg>
 			<list>
-				<value>config/cn/newcapec/foundation/portal/controller-conf/portalUrlMapping.properties
-				</value>
-				<value>config/cn/newcapec/foundation/portal/restlet-conf/restletUrlMapping.properties
+				<value>config/com/xcysoft/cppt/controller-conf/portalUrlMapping.properties
 				</value>
 			</list>
 		</constructor-arg>
 	</bean>
 
-
 	<!-- 异常类的处理handle -->
-	<bean class="framework.core.handler.SystemExceptionHandler" />
+	<bean class="com.xcysoft.framework.core.handler.SystemExceptionHandler" />
 
 	<mvc:interceptors>
 		<bean
-			class="framework.core.handler.NspApplicationContextInterceptor" />
-
+			class="com.xcysoft.framework.core.handler.NspApplicationContextInterceptor" />
 	</mvc:interceptors>
-
-
-
 
 	<bean id="stringHttpMessageConverter"
 		class="org.springframework.http.converter.StringHttpMessageConverter">
@@ -73,16 +65,16 @@
 		<property name="customArgumentResolvers">
 			<list>
 				<bean
-					class="framework.core.handler.method.annotation.RequestJsonParamMethodArgumentResolver" />
+					class="com.xcysoft.framework.core.handler.method.annotation.RequestJsonParamMethodArgumentResolver" />
 				<bean
-					class="framework.core.handler.method.annotation.FormModelMethodArgumentResolver" />
+					class="com.xcysoft.framework.core.handler.method.annotation.FormModelMethodArgumentResolver" />
 			</list>
 		</property>
 	</bean>
 
 	<!-- 初始化参数 -->
 	<bean id="multiViewHandlerInterceptor"
-		class="framework.core.handler.MultiViewHandlerInterceptor" />
+		class="com.xcysoft.framework.core.handler.MultiViewHandlerInterceptor" />
 
 	<bean
 		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
@@ -107,7 +99,6 @@
 			</list>
 		</property>
 	</bean>
-
 
 	<!-- velocity视图解析器 -->
 	<bean id="velocityViewResolver"
@@ -147,6 +138,5 @@
 		<property name="suffix" value=".jsp" />
 		<property name="order" value="2"></property>
 	</bean>
-
 
 </beans>
