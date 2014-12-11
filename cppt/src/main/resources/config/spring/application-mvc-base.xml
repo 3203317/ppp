@@ -30,6 +30,8 @@
 			<list>
 				<value>config/com/xcysoft/cppt/controller-conf/portalUrlMapping.properties
 				</value>
+				<value>config/com/xcysoft/cppt/restlet-conf/restletUrlMapping.properties
+				</value>
 			</list>
 		</constructor-arg>
 	</bean>
