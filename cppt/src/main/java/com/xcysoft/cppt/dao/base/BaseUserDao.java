@@ -1,8 +1,7 @@
 package com.xcysoft.cppt.dao.base;
 
 import com.xcysoft.cppt.model.User;
-
-import framework.core.dao.hibernate.HibernateEntityDao;
+import com.xcysoft.framework.core.dao.hibernate.HibernateEntityDao;
 
 /**
  *

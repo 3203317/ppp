@@ -10,8 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.xcysoft.cppt.biz.UserService;
 import com.xcysoft.cppt.dao.UserDao;
 import com.xcysoft.cppt.model.User;
-
-import framework.core.utils.pagesUtils.Page;
+import com.xcysoft.framework.core.utils.pagesUtils.Page;
 
 /**
  *
