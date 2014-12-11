@@ -15,6 +15,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
+			classpath*:config/**/restlet-conf/*.xml;
 			classpath*:config/**/restlet/*.xml;
 			classpath*:config/spring/applicationContext-dataSource.xml;
 			classpath*:config/spring/dataAccessContext-hibernate.xml;
