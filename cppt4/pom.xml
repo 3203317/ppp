@@ -13,27 +13,13 @@
 	<name>cppt Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
-	<distributionManagement>
-		<repository>
-			<id>releases</id>
-			<name>privilege</name>
-			<url>http://192.168.0.65/nexus/content/repositories/releases</url>
-		</repository>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<name>privilege</name>
-			<url>http://192.168.0.65/nexus/content/repositories/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
-	<!-- 设定除中央仓库(repo1.maven.org/maven2/)外的其他仓库,按设定顺序进行查找.如有Nexus私服, 取消注释并指向正确的服务器地址 -->
 	<repositories>
 		<repository>
 			<id>maven-newcapec</id>
 			<name>maven-newcapec</name>
-			<url>http://192.168.0.65/nexus/content/groups/newcapec/</url>
+			<url>http://127.0.0.1:8082/nexus/content/groups/public/</url>
 		</repository>
 	</repositories>
-
 
 	<dependencies>
 		<dependency>
