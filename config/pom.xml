@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.xcysoft</groupId>
 	<artifactId>config</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.5</version>
 	<packaging>pom</packaging>
 
 	<distributionManagement>
@@ -75,21 +75,21 @@
 	<dependencyManagement>
 		<dependencies>
 			<!-- 核心依赖 begin -->
-			<dependency>
+			<!-- <dependency>
 				<groupId>cn.newcapec.framework.plugins</groupId>
 				<artifactId>cn.newcapec.framework.plugins.cache</artifactId>
 				<version>${newcapec.framework.version}</version>
-			</dependency>
+			</dependency> -->
 			<dependency>
 				<groupId>cn.newcapec.framework</groupId>
 				<artifactId>cn.newcapec.framework.core</artifactId>
 				<version>${newcapec.framework.version}</version>
 			</dependency>
-			<dependency>
+			<!-- <dependency>
 				<groupId>cn.newcapec.ojdbc</groupId>
 				<artifactId>ojdbc</artifactId>
 				<version>14</version>
-			</dependency>
+			</dependency> -->
 			<!-- 核心依赖 end -->
 			<!-- httpclient -->
 			<dependency>
@@ -229,11 +229,11 @@
 			</dependency>
 			<!-- json basic end -->
 			<!-- db basic bgein -->
-			<dependency>
+			<!-- <dependency>
 				<groupId>cn.newcapec.ojdbc</groupId>
 				<artifactId>ojdbc</artifactId>
 				<version>14</version>
-			</dependency>
+			</dependency> -->
 			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
