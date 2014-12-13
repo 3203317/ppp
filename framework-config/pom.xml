@@ -76,15 +76,16 @@
 	<dependencyManagement>
 		<dependencies>
 			<!-- 核心依赖 begin -->
-			<!-- <dependency> <groupId>cn.newcapec.framework.plugins</groupId> <artifactId>cn.newcapec.framework.plugins.cache</artifactId>
-				<version>${newcapec.framework.version}</version> </dependency> -->
 			<dependency>
-				<groupId>cn.newcapec.framework</groupId>
-				<artifactId>cn.newcapec.framework.core</artifactId>
-				<version>${newcapec.framework.version}</version>
+				<groupId>com.xcysoft</groupId>
+				<artifactId>framework-core</artifactId>
+				<version>${xcysoft.framework.version}</version>
 			</dependency>
-			<!-- <dependency> <groupId>cn.newcapec.ojdbc</groupId> <artifactId>ojdbc</artifactId>
-				<version>14</version> </dependency> -->
+			<dependency>
+				<groupId>com.oracle</groupId>
+				<artifactId>ojdbc14</artifactId>
+				<version>9.0.2.0.0</version>
+			</dependency>
 			<!-- 核心依赖 end -->
 			<!-- httpclient -->
 			<dependency>
@@ -224,8 +225,6 @@
 			</dependency>
 			<!-- json basic end -->
 			<!-- db basic bgein -->
-			<!-- <dependency> <groupId>cn.newcapec.ojdbc</groupId> <artifactId>ojdbc</artifactId>
-				<version>14</version> </dependency> -->
 			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
