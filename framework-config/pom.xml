@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.xcysoft</groupId>
-	<artifactId>config</artifactId>
-	<version>0.0.5</version>
+	<artifactId>framework-config</artifactId>
+	<version>0.0.1</version>
 	<packaging>pom</packaging>
 
 	<distributionManagement>
@@ -18,7 +18,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.6</jdk.version>
 		<!--核心类 -->
-		<newcapec.framework.version>1.0.0-RELEASE</newcapec.framework.version>
+		<xcysoft.framework.version>1.0.0-RELEASE</xcysoft.framework.version>
 		<!--spring -->
 		<spring.version>3.2.5.RELEASE</spring.version>
 		<!--hibernate -->
@@ -68,6 +68,7 @@
 		<!--jetty -->
 		<jetty.version>7.6.13.v20130916</jetty.version>
 	</properties>
+
 	<prerequisites>
 		<maven>3.2.1</maven>
 	</prerequisites>
@@ -75,21 +76,15 @@
 	<dependencyManagement>
 		<dependencies>
 			<!-- 核心依赖 begin -->
-			<!-- <dependency>
-				<groupId>cn.newcapec.framework.plugins</groupId>
-				<artifactId>cn.newcapec.framework.plugins.cache</artifactId>
-				<version>${newcapec.framework.version}</version>
-			</dependency> -->
+			<!-- <dependency> <groupId>cn.newcapec.framework.plugins</groupId> <artifactId>cn.newcapec.framework.plugins.cache</artifactId>
+				<version>${newcapec.framework.version}</version> </dependency> -->
 			<dependency>
 				<groupId>cn.newcapec.framework</groupId>
 				<artifactId>cn.newcapec.framework.core</artifactId>
 				<version>${newcapec.framework.version}</version>
 			</dependency>
-			<!-- <dependency>
-				<groupId>cn.newcapec.ojdbc</groupId>
-				<artifactId>ojdbc</artifactId>
-				<version>14</version>
-			</dependency> -->
+			<!-- <dependency> <groupId>cn.newcapec.ojdbc</groupId> <artifactId>ojdbc</artifactId>
+				<version>14</version> </dependency> -->
 			<!-- 核心依赖 end -->
 			<!-- httpclient -->
 			<dependency>
@@ -229,11 +224,8 @@
 			</dependency>
 			<!-- json basic end -->
 			<!-- db basic bgein -->
-			<!-- <dependency>
-				<groupId>cn.newcapec.ojdbc</groupId>
-				<artifactId>ojdbc</artifactId>
-				<version>14</version>
-			</dependency> -->
+			<!-- <dependency> <groupId>cn.newcapec.ojdbc</groupId> <artifactId>ojdbc</artifactId>
+				<version>14</version> </dependency> -->
 			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
