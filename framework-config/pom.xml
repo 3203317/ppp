@@ -66,7 +66,7 @@
 		<!--ant -->
 		<ant.maven.version>2.13</ant.maven.version>
 		<!--jetty -->
-		<jetty.version>7.6.13.v20130916</jetty.version>
+		<jetty.version>8.1.16.v20140903</jetty.version>
 	</properties>
 
 	<prerequisites>
