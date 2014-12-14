@@ -5,8 +5,8 @@
 	<artifactId>foundation-cppt</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1</version>
-	<name>foundation-cppt Maven Webapp</name>
-	<url>http://maven.apache.org</url>
+	<name>foundation-cppt</name>
+	<url>http://www.xcysoft.com</url>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
