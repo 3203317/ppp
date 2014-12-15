@@ -30,9 +30,8 @@ public class UserController extends MultiViewResource {
 	 */
 	@RequestMapping(value = "addUserUI")
 	public String addUserUI() {
-		System.out.println("===+++===----------");
-		User st = userService.get("12");
-		System.out.println(st.getUserName());
+		User user = userService.get("12");
+		System.out.println(user.getUserName());
 		return getUrl("user.addUserUI");
 	}
 }
