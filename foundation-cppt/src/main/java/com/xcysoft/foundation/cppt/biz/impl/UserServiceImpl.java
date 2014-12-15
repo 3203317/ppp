@@ -9,6 +9,11 @@ import com.xcysoft.foundation.cppt.biz.UserService;
 import com.xcysoft.foundation.cppt.dao.UserDao;
 import com.xcysoft.foundation.cppt.model.User;
 
+/**
+ *
+ * @author huangxin
+ *
+ */
 @Service("userService")
 @Transactional
 @SuppressWarnings("all")
@@ -19,21 +24,17 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional(readOnly = true, propagation = Propagation.NOT_SUPPORTED)
-	public User get(String arg0) {
-		// TODO Auto-generated method stub
-		return userDao.get(arg0);
+	public User get(String id) {
+		return userDao.get(id);
 	}
 
 	@Override
-	public void removeUnused(String arg0) {
-		// TODO Auto-generated method stub
-
+	public void removeUnused(String id) {
+		userDao.delete(id);
 	}
 
 	@Override
-	public void saveOrUpdate(User arg0) {
-		// TODO Auto-generated method stub
-
+	public void saveOrUpdate(User entity) {
+		userDao.saveOrUpdate(entity);
 	}
-
 }
