@@ -195,7 +195,7 @@
 							<classifier>classes</classifier>
 							<jarName>${project.artifactId}</jarName>
 							<includes>
-								<include>**/cn/**</include>
+								<include>**/com/**</include>
 								<include>**/views/**</include>
 							</includes>
 						</configuration>
