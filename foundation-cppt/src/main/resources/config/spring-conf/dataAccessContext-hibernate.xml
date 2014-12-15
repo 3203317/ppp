@@ -9,20 +9,23 @@
          http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 	<!-- 使Spring关注Annotation -->
     <context:annotation-config />
-    
-    
+
+
 	<!-- 核心类扫描 -->
 	<context:component-scan base-package="cn.newcapec.framework" />
-	<!-- 权限扫描 -->	
+	<!-- 权限扫描 -->
 	<context:component-scan base-package="cn.newcapec.foundation.privilege" />
 	<!-- 门户restlet类扫描 -->
-  	<context:component-scan base-package="cn.newcapec.foundation.portal">
+  	<!-- <context:component-scan base-package="cn.newcapec.foundation.portal">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
+	</context:component-scan> -->
+  	<context:component-scan base-package="com.xcysoft.foundation.cppt">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
 	</context:component-scan>
-    
+
     <aop:aspectj-autoproxy proxy-target-class="true"/>
-    
-    
+
+
     <bean id="parentDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="maxPoolSize" value="${c3p0.pool.maxsize}" />
         <property name="minPoolSize" value="${c3p0.pool.minsize}" />
@@ -45,16 +48,17 @@
         </property>
     </bean>
 
-	
+
 	<!--Hibernate SessionFatory 配置-->
 	<bean id="sessionFactory" class="cn.newcapec.framework.core.dao.hibernate.SessionFactoryAutoDialectBean" lazy-init="false">
 		<property name="dataSource" ref="bizDatasourceOracle"/>
 	 	 <property name="packagesToScan">
 			   	  <list>
-			   	    <value>cn.newcapec.foundation.privilege.model</value>
+			   	    <!-- <value>cn.newcapec.foundation.privilege.model</value>
 			   	    <value>cn.newcapec.framework.log.model</value>
-			   	    <value>cn.newcapec.foundation.portal.model</value>
-			     </list> 
+			   	    <value>cn.newcapec.foundation.portal.model</value> -->
+			   	    <value>com.xcysoft.foundation.cppt.model</value>
+			     </list>
      	 </property>
 		<property name="hibernateProperties">
 			<props>
@@ -70,8 +74,8 @@
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	
+
 	<!--使用基于注解方式配置事务 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
-	
+
 </beans>

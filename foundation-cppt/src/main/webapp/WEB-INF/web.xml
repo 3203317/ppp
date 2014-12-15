@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
 	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-            classpath*:config/**/restlet-conf/*.xml;
             classpath*:config/spring-conf/applicationContext-dataSource.xml;
             classpath*:config/spring-conf/dataAccessContext-hibernate.xml;
             classpath*:config/spring-conf/application-mvc-base.xml;
-            classpath*:config/restlet-conf/restletContext.xml;
         </param-value>
 	</context-param>
-	
+
 <!--	-->
 
 	<!--     log4j config -->
@@ -22,7 +20,7 @@
 		<param-name>log4jConfigLocation</param-name>
 		<param-value>classpath:log4j.properties</param-value>
 	</context-param>
-	
+
 
     <listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -41,12 +39,12 @@
 	<filter>
 		<filter-name>hibernateFilter</filter-name>
 		<filter-class>cn.newcapec.framework.core.filter.OpenSessionInViewFilter</filter-class>
-			    <init-param>      
+			    <init-param>
   			<param-name>singleSession</param-name>
-  			<param-value>false</param-value>   
+  			<param-value>false</param-value>
  		</init-param>
 	</filter>
-	
+
 	<!-- 多视图的-->
 		<servlet>
 			<servlet-name>multiViewController</servlet-name>
@@ -86,7 +84,7 @@
 		<filter-name>pagerFilter</filter-name>
 		<filter-class>cn.newcapec.framework.core.filter.PagerFilter</filter-class>
 	</filter>
-	
+
 <!--	<filter>-->
 <!--	<filter-name>loginFilter</filter-name>-->
 <!--		<filter-class>cn.newcapec.foundation.privilege.filter.LoginFilter</filter-class>-->
@@ -99,12 +97,12 @@
 <!--			</param-value>-->
 <!--		</init-param>-->
 <!--	</filter>-->
-	
+
 	<filter>
 		<filter-name>requestEncodeFilter</filter-name>
 		<filter-class>cn.newcapec.framework.core.filter.RequestEncodeFilter</filter-class>
 	</filter>
-	
+
 <!-- 	<filter-mapping>
 		<filter-name>loginFilter</filter-name>
 		<url-pattern>/restful/*</url-pattern>
@@ -114,7 +112,7 @@
 		<filter-name>requestEncodeFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
@@ -125,7 +123,7 @@
 		<filter-name>pagerFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
 	<servlet>
 		<servlet-name>restlet</servlet-name>
 		<servlet-class>com.noelios.restlet.ext.spring.SpringServerServlet</servlet-class>
@@ -152,13 +150,13 @@
 <!--		<servlet-class>cn.newcapec.framework.base.timedjob.TimedJobServlet</servlet-class>-->
 <!--		<load-on-startup>10</load-on-startup> </servlet>-->
 
-	
+
 <!--	<servlet-mapping>-->
 <!--		<servlet-name>charServlet</servlet-name>-->
 <!--		<url-pattern>/validatecode/code.jpeg</url-pattern>-->
 <!--	</servlet-mapping>-->
 
-	
+
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
