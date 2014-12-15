@@ -1,9 +1,16 @@
 package com.xcysoft.foundation.cppt.dao.base;
 
+import java.io.Serializable;
+
 import cn.newcapec.framework.core.dao.hibernate.HibernateEntityDao;
 
 import com.xcysoft.foundation.cppt.model.User;
 
+/**
+ *
+ * @author huangxin
+ *
+ */
 @SuppressWarnings("all")
 public abstract class BaseUserDao extends HibernateEntityDao {
 
@@ -12,7 +19,7 @@ public abstract class BaseUserDao extends HibernateEntityDao {
 		return User.class;
 	}
 
-	public User get(java.io.Serializable key) {
+	public User get(Serializable key) {
 		return (User) get(getReferenceClass(), key);
 	}
 }
