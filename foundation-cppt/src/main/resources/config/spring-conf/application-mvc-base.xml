@@ -17,8 +17,7 @@
 	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 	<!-- default-lazy-init="true" default-autowire="byName"> -->
 
-	<description>Spring mvc 基础配置</description>
-
+	<description>Spring MVC 基础配置</description>
 
 	<!-- scripts资源文件配置 -->
 	<mvc:resources mapping="scripts/**" location="classpath:views/scripts/**" />
@@ -34,18 +33,13 @@
 		</constructor-arg>
 	</bean>
 
-
 	<!-- 异常类的处理handle -->
 	<bean class="cn.newcapec.framework.core.handler.SystemExceptionHandler" />
 
 	<mvc:interceptors>
 		<bean
 			class="cn.newcapec.framework.core.handler.NspApplicationContextInterceptor" />
-
 	</mvc:interceptors>
-
-
-
 
 	<bean id="stringHttpMessageConverter"
 		class="org.springframework.http.converter.StringHttpMessageConverter">
@@ -104,7 +98,6 @@
 		</property>
 	</bean>
 
-
 	<!-- velocity视图解析器 -->
 	<bean id="velocityViewResolver"
 		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
@@ -134,8 +127,7 @@
 		</property>
 	</bean>
 
-	<!-- jsp视图解析器
-       -->
+	<!-- jsp视图解析器 -->
 	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass"
@@ -144,6 +136,5 @@
 		<property name="suffix" value=".jsp" />
 		<property name="order" value="2"></property>
 	</bean>
-
 
 </beans>
