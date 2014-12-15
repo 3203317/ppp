@@ -1,5 +1,6 @@
-#Mon Dec 15 11:28:23 CST 2014
+#Mon Dec 15 11:50:06 CST 2014
 eclipse.preferences.version=1
+encoding//src/main/resources/config/com/xcysoft/foundation/cppt/controller-conf/portalUrlMapping.properties=UTF-8
 encoding//src/main/resources/config/config.properties=UTF-8
 encoding//src/main/resources/config/jdbc.properties=UTF-8
 encoding//src/main/resources/config/velocity/velocity.properties=UTF-8
