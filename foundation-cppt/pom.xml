@@ -6,12 +6,12 @@
 		<artifactId>cn.newcapec.config</artifactId>
 		<version>1.0.0-RELEASE</version>
 	</parent>
-	<groupId>cn.newcapec.foundation</groupId>
-	<artifactId>cn.newcapec.foundation.portal</artifactId>
+	<groupId>com.xcysoft</groupId>
+	<artifactId>foundation-cppt</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.0-RELEASE</version>
 	<name>foundation :: portal</name>
-	<url>http://maven.apache.org</url>
+	<url>http://www.xcysoft.com</url>
 
 	<distributionManagement>
 		<repository>
