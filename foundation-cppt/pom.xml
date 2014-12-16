@@ -4,13 +4,13 @@
 	<parent>
 		<groupId>com.xcysoft</groupId>
 		<artifactId>framework-config</artifactId>
-		<version>1.0.19</version>
+		<version>1.0.20</version>
 	</parent>
 	<groupId>com.xcysoft</groupId>
 	<artifactId>foundation-cppt</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.1</version>
-	<name>foundation :: cppt</name>
+	<name>xcysoft :: foundation :: cppt</name>
 	<url>http://www.xcysoft.com</url>
 
 	<repositories>

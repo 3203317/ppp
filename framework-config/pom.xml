@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.xcysoft</groupId>
 	<artifactId>framework-config</artifactId>
-	<version>1.0.19</version>
+	<version>1.0.20</version>
 	<packaging>pom</packaging>
 	<name>xcysoft :: framework :: config</name>
 
@@ -27,7 +27,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.6</jdk.version>
 		<!--核心类 -->
-		<newcapec.framework.version>1.0.19</newcapec.framework.version>
+		<xcysoft.framework.version>1.0.20</xcysoft.framework.version>
 		<!--spring -->
 		<spring.version>3.2.5.RELEASE</spring.version>
 		<!--hibernate -->
@@ -88,7 +88,7 @@
 			<dependency>
 				<groupId>com.xcysoft</groupId>
 				<artifactId>framework-core</artifactId>
-				<version>${newcapec.framework.version}</version>
+				<version>${xcysoft.framework.version}</version>
 			</dependency>
 			<!-- 核心依赖 end -->
 			<!-- httpclient -->
@@ -230,9 +230,9 @@
 			<!-- json basic end -->
 			<!-- db basic bgein -->
 			<dependency>
-				<groupId>cn.newcapec.ojdbc</groupId>
-				<artifactId>ojdbc</artifactId>
-				<version>14</version>
+				<groupId>com.oracle</groupId>
+				<artifactId>ojdbc14</artifactId>
+				<version>9.0.2.0.0</version>
 			</dependency>
 			<dependency>
 				<groupId>mysql</groupId>
