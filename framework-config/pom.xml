@@ -3,9 +3,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.xcysoft</groupId>
 	<artifactId>framework-config</artifactId>
-	<version>1.0.17-RELEASE</version>
+	<version>1.0.19</version>
 	<packaging>pom</packaging>
-	<name>framework :: config</name>
+	<name>xcysoft :: framework :: config</name>
 
 	<distributionManagement>
 		<repository>
@@ -27,7 +27,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.6</jdk.version>
 		<!--核心类 -->
-		<newcapec.framework.version>1.0.17-RELEASE</newcapec.framework.version>
+		<newcapec.framework.version>1.0.19</newcapec.framework.version>
 		<!--spring -->
 		<spring.version>3.2.5.RELEASE</spring.version>
 		<!--hibernate -->
@@ -86,8 +86,8 @@
 		<dependencies>
 			<!-- 核心依赖 begin -->
 			<dependency>
-				<groupId>cn.newcapec.framework</groupId>
-				<artifactId>cn.newcapec.framework.core</artifactId>
+				<groupId>com.xcysoft</groupId>
+				<artifactId>framework-core</artifactId>
 				<version>${newcapec.framework.version}</version>
 			</dependency>
 			<!-- 核心依赖 end -->
