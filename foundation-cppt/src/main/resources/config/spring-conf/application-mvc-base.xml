@@ -28,7 +28,7 @@
 	<bean id="portalUrlMapping" class="cn.newcapec.framework.core.handler.ConfigurationRead">
 		<constructor-arg>
 			<list>
-				<value>config/com/xcysoft/foundation/cppt/controller-conf/portalUrlMapping.properties</value>
+				<value>config/com/xcysoft/foundation/cppt/controller-conf/urlMapping.properties</value>
 			</list>
 		</constructor-arg>
 	</bean>
