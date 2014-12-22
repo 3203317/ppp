@@ -8,11 +8,12 @@
 <meta name='author' content='3203317@qq.com,新' />
 <meta http-equiv='content-type' content='text/html;charset=utf-8' />
 <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-<link rel='stylesheet' type='text/css' href='http://localhost:8082/js/bootstrap/3.2.0/dist/css/bootstrap.min.css?v3.2.0' media='screen' />
-<link rel='stylesheet' type='text/css' href='http://localhost:8082/js/bootstrap/3.2.0/dist/css/bootstrap-theme.min.css?v3.2.0' media='screen' />
-<link rel='stylesheet' type='text/css' href='http://localhost:8082/js/FlexSlider/2.2.2/flexslider.css' media='screen' />
-<link rel='stylesheet' type='text/css' href='http://localhost:8082/js/font-awesome/4.1.0/css/font-awesome.min.css' media='screen' />
-<script type='text/javascript' src='http://localhost:8082/js/jquery/2.0.2/jquery.min.js?v2.0.2'></script>
+<link rel='stylesheet' type='text/css' href='${cdn}bootstrap/3.2.0/dist/css/bootstrap.min.css?v3.2.0' media='screen' />
+<link rel='stylesheet' type='text/css' href='${cdn}bootstrap/3.2.0/dist/css/bootstrap-theme.min.css?v3.2.0' media='screen' />
+<link rel='stylesheet' type='text/css' href='${cdn}FlexSlider/2.2.2/flexslider.css' media='screen' />
+<link rel='stylesheet' type='text/css' href='${cdn}font-awesome/4.1.0/css/font-awesome.min.css' media='screen' />
+<link rel='stylesheet' type='text/css' href='${virtualPath}styles/css/olx/v1.0.1/olx.css?v3' media='screen' />
+<script type='text/javascript' src='${cdn}jquery/2.0.2/jquery.min.js?v2.0.2'></script>
 	<style>
 	body {
 		background-color: #F5F5F5;
@@ -56,6 +57,22 @@
 			<button id='btn_login' type='button' class='btn btn-primary'>登陆</button>
 		</form>
 	</section>
+
+<!-- Bootstrap -->
+<script type='text/javascript' src='${cdn}jquery/ext/jquery.pin.js'></script>
+<script type='text/javascript' src='${cdn}jquery/ext/ext.form.js'></script>
+<script type='text/javascript' src='${cdn}underscore/1.5.1/underscore.min.js'></script>
+<script type='text/javascript' src='${cdn}bootstrap/3.2.0/dist/js/bootstrap.min.js?v3.2.0'></script>
+<script type='text/javascript' src='${cdn}FlexSlider/2.2.2/jquery.flexslider-min.js' defer></script>
+<!-- Olx -->
+<script type='text/javascript' src='${cdn}olxjs/1.0.0/js/olx.js'></script>
+<!--[if lte IE 9]>
+<script type='text/javascript' src='${cdn}html5shiv/3.7.0/html5shiv.js'></script>
+<script type='text/javascript' src='${cdn}respond/1.3.0/respond.min.js'></script>
+<![endif]-->
+<!--[if lte IE 7]>
+<script type='text/javascript' src='${cdn}verybsie/1.0.0/js/bootstrap-verybsie.js'></script>
+<![endif]-->
 
 	<script type='text/javascript'>
 	$('#btn_login').click(function(){

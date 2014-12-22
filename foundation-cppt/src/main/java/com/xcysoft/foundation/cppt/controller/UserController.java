@@ -5,9 +5,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import cn.newcapec.framework.core.exception.asserts.AssertObject;
 import cn.newcapec.framework.core.handler.MultiViewResource;
@@ -37,7 +39,7 @@ public class UserController extends MultiViewResource {
 	@RequestMapping(value = "add", method = RequestMethod.GET)
 	public String addUserUI() {
 		User user = userService.get("12");
-		System.out.println(user.getUserName());
+		System.out.println(user.getUser_name());
 		return getUrl("user.addUserUI");
 	}
 
@@ -46,7 +48,7 @@ public class UserController extends MultiViewResource {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value = "add", method = RequestMethod.POST)
+	@RequestMapping(value = "add.do", method = RequestMethod.POST)
 	@ResponseBody
 	public Msg addUser(final HttpServletRequest request) {
 		return doExpAssert(new AssertObject() {
@@ -60,10 +62,13 @@ public class UserController extends MultiViewResource {
 
 	/**
 	 *
+	 * @param modelMap
 	 * @return
 	 */
 	@RequestMapping(value = "login", method = RequestMethod.GET)
-	public String loginUI() {
-		return getUrl("user.loginUI");
+	public ModelAndView loginUI(ModelMap modelMap) {
+		modelMap.put("cdn", "http://localhost:8082/js/");
+		modelMap.put("virtualPath", "/controller/");
+		return toView(getUrl("user.loginUI"), modelMap);
 	}
 }

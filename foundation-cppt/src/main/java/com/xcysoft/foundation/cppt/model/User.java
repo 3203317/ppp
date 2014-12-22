@@ -17,19 +17,19 @@ public class User extends CommonModel {
 
 	private static final long serialVersionUID = 1968235354973491611L;
 
-	@Column(name = "USERNAME", length = 32)
-	private String userName;
-	@Column(name = "PASSWORD", length = 32)
+	private String user_name;
 	private String password;
 
-	public String getUserName() {
-		return userName;
+	@Column(name = "USER_NAME", length = 32)
+	public String getUser_name() {
+		return user_name;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 
+	@Column(name = "PASSWORD", length = 32)
 	public String getPassword() {
 		return password;
 	}
