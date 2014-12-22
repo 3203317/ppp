@@ -14,6 +14,13 @@ import org.restlet.resource.StringRepresentation;
 
 import cn.newcapec.framework.core.utils.stringUtils.JsonDateValueProcessor;
 
+/**
+ *
+ * @author huangxin
+ * @修改时间
+ * @<p>2014-12-22 15:28</p>
+ *
+ */
 public class Msg {
 	protected Logger log = Logger.getLogger(getClass());
 
@@ -23,6 +30,7 @@ public class Msg {
 	private Object data;
 
 	public Msg() {
+		// TODO
 	}
 
 	public Msg(String msg) {
@@ -40,7 +48,7 @@ public class Msg {
 	public Msg(boolean success, String msg, Object data) {
 		this.msg = msg;
 		this.success = success;
-		if ((null == data) || ("null".equals(data)))
+		if (null == data || "null".equals(data))
 			this.data = "";
 		else
 			this.data = data;

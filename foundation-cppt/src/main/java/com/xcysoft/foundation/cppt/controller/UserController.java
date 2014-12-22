@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import cn.newcapec.framework.core.exception.asserts.AssertObject;
 import cn.newcapec.framework.core.handler.MultiViewResource;
 import cn.newcapec.framework.core.rest.Msg;
+import cn.newcapec.framework.core.utils.jsonUtils.JSONTools;
 
 import com.xcysoft.foundation.cppt.biz.UserService;
 import com.xcysoft.foundation.cppt.model.User;
@@ -67,8 +68,33 @@ public class UserController extends MultiViewResource {
 	 */
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public ModelAndView loginUI(ModelMap modelMap) {
-		modelMap.put("cdn", "http://localhost:8082/js/");
+		modelMap.put("cdn", "http://localhost:1234/js/");
 		modelMap.put("virtualPath", "/controller/");
 		return toView(getUrl("user.loginUI"), modelMap);
+	}
+
+	/**
+	 *
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "login.do", method = RequestMethod.POST)
+	public Msg login(final HttpServletRequest request) {
+		return doExpAssert(new AssertObject() {
+			@Override
+			public void AssertMethod(Msg msg) {
+				User user = JSONTools.JSONToBean(getJsonObject(), User.class);
+
+				String user_name = user.getUser_name();
+				String password = user.getPassword().trim();
+
+				Msg result = userService.loginValidate(user_name, password);
+				msg.setMsg(result.getMsg());
+
+				if (result.isSuccess()) {
+					msg.setSuccess(result.isSuccess());
+				}
+			}
+		});
 	}
 }

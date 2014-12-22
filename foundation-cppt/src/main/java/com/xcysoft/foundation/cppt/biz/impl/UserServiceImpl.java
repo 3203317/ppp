@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.newcapec.framework.core.rest.Msg;
+
 import com.xcysoft.foundation.cppt.biz.UserService;
 import com.xcysoft.foundation.cppt.dao.UserDao;
 import com.xcysoft.foundation.cppt.model.User;
@@ -36,5 +38,21 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void saveOrUpdate(User entity) {
 		userDao.saveOrUpdate(entity);
+	}
+
+	@Override
+	public Msg loginValidate(String userName, String password) {
+		Msg msg = new Msg();
+		User user = userDao.findByName(userName);
+		if (null == user) {
+			msg.setMsg("不存在该用户");
+			return msg;
+		}
+		if (!user.getPassword().equals(password)) {
+			msg.setMsg("用户名或密码输入错误");
+			return msg;
+		}
+		msg.setSuccess(true);
+		return msg;
 	}
 }
