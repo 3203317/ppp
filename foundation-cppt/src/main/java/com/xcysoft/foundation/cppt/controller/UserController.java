@@ -86,7 +86,17 @@ public class UserController extends MultiViewResource {
 				User user = JSONTools.JSONToBean(getJsonObject(), User.class);
 
 				String user_name = user.getUser_name();
-				String password = user.getPassword().trim();
+				String password = user.getPassword();
+
+				if (null == user_name || "".equals(user_name.trim())) {
+					msg.setMsg("用户名不能为空");
+					return;
+				}
+
+				if (null == password || "".equals(password.trim())) {
+					msg.setMsg("密码不能为空");
+					return;
+				}
 
 				Msg result = userService.loginValidate(user_name, password);
 				msg.setMsg(result.getMsg());

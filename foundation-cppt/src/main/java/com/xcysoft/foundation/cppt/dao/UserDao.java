@@ -24,8 +24,8 @@ public class UserDao extends BaseUserDao {
 	 */
 	public User findByName(String name) {
 		Map<String, Object> param = new HashMap<String, Object>();
-		StringBuilder hql = new StringBuilder("from "
-				+ getReferenceClass().getName() + " where USER_NAME=?");
+		StringBuilder hql = new StringBuilder("FROM "
+				+ getReferenceClass().getName() + " WHERE USER_NAME=?");
 		return (User) this.findForObject(hql.toString(), new Object[] { name });
 	}
 }

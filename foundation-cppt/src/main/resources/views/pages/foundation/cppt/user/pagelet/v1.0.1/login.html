@@ -75,14 +75,14 @@
 <![endif]-->
 	<script type='text/javascript'>
 	var validate = function(){
-		if('' === $('#loginFrm_UserName').val().trim()){
+		#*if('' === $('#loginFrm_UserName').val().trim()){
 			alert('用户名不能为空！');
 			return;
 		}
 		if('' === $('#loginFrm_UserPass').val().trim()){
 			alert('密码不能为空！');
 			return;
-		}
+		}*#
 		return $('#loginFrm').serializeObjectForm();
 	};
 
