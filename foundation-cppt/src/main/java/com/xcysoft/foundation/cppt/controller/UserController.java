@@ -107,4 +107,16 @@ public class UserController extends MultiViewResource {
 			}
 		});
 	}
+
+	/**
+	 *
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping(value = "changePwd", method = RequestMethod.GET)
+	public ModelAndView changePwdUI(ModelMap modelMap) {
+		modelMap.put("cdn", "http://localhost:1234/js/");
+		modelMap.put("virtualPath", "/controller/");
+		return toView(getUrl("user.changePwdUI"), modelMap);
+	}
 }
