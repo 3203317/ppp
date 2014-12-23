@@ -39,6 +39,6 @@ public class UserDao extends BaseUserDao {
 	public Page findAll(Map<String, Object> paramMap) {
 		Map<String, Object> param = new HashMap<String, Object>();
 		StringBuilder sql = new StringBuilder("select * from s_user where 1=1");
-		return this.sqlqueryForPage(sql.toString(), param, null);
+		return this.sqlQueryForPage(sql.toString(), param, null);
 	}
 }

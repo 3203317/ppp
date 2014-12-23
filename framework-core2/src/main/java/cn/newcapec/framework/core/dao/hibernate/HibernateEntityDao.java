@@ -303,7 +303,7 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 *            排序
 	 * @return
 	 */
-	public Page sqlqueryForPage(String sql, Map args,
+	public Page sqlQueryForPage(String sql, Map args,
 			LinkedHashMap<String, String> orderby) {
 		SQLQuery query = getSession().createSQLQuery(sql);
 		setParames(args, query);
@@ -546,7 +546,7 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 * @return
 	 */
 	private long countBySql(String strSql, Map params) {
-		strSql = "select count(*) as num from (" + strSql + ") t";
+		strSql = "select count(1) as num from (" + strSql + ") t";
 		SQLQuery query = getSession().createSQLQuery(strSql);
 		setParames(params, query);
 		Integer totalCount = 0;
@@ -628,7 +628,7 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 		// hql = hql.toLowerCase();
 		int index = hql.indexOf("from");
 		if (-1 != index) {
-			return "select count(*) " + hql.substring(index);
+			return "select count(1) " + hql.substring(index);
 		}
 		throw new RuntimeErrorException(null, "无效的SQL语句");
 	}
