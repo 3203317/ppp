@@ -29,6 +29,6 @@ public class SiteController extends MultiViewResource {
 	public ModelAndView indexUI(ModelMap modelMap) {
 		modelMap.put("cdn", "http://localhost:1234/js/");
 		modelMap.put("virtualPath", "/controller/");
-		return toView(getUrl("site.manage.indexUI"), modelMap);
+		return toView(getUrl("manage.indexUI"), modelMap);
 	}
 }
