@@ -9,9 +9,9 @@
 		</tr>
 	</thead>
 	<tbody>
-		#foreach($user in $users)<tr>
+		#foreach($!user in $!pageView.records)<tr>
 			<td class='ta'><input type='checkbox' value='$user.id'></td>
-			<td>$user.User_name</td>
+			<td>$!user.USER_NAME</td>
 			<td></td>
 			<td></td>
 			<td></td>

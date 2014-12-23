@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
+import cn.newcapec.framework.core.utils.pagesUtils.Page;
+
 import com.xcysoft.foundation.cppt.dao.base.BaseUserDao;
 import com.xcysoft.foundation.cppt.model.User;
 
@@ -27,5 +29,16 @@ public class UserDao extends BaseUserDao {
 		StringBuilder hql = new StringBuilder("FROM "
 				+ getReferenceClass().getName() + " WHERE USER_NAME=?");
 		return (User) this.findForObject(hql.toString(), new Object[] { name });
+	}
+
+	/**
+	 *
+	 * @param paramMap
+	 * @return
+	 */
+	public Page findAll(Map<String, Object> paramMap) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		StringBuilder sql = new StringBuilder("select * from s_user where 1=1");
+		return this.sqlqueryForPage(sql.toString(), param, null);
 	}
 }

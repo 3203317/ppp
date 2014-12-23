@@ -546,7 +546,7 @@ public abstract class HibernateEntityDao extends HibernateTemplate implements
 	 * @return
 	 */
 	private long countBySql(String strSql, Map params) {
-		strSql = "select count(*) as num from (" + strSql + ") ";
+		strSql = "select count(*) as num from (" + strSql + ") t";
 		SQLQuery query = getSession().createSQLQuery(strSql);
 		setParames(params, query);
 		Integer totalCount = 0;

@@ -1,5 +1,7 @@
 package com.xcysoft.foundation.cppt.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,9 @@ import cn.newcapec.framework.core.exception.asserts.AssertObject;
 import cn.newcapec.framework.core.handler.MultiViewResource;
 import cn.newcapec.framework.core.rest.Msg;
 import cn.newcapec.framework.core.utils.jsonUtils.JSONTools;
+import cn.newcapec.framework.core.utils.pagesUtils.Page;
+import cn.newcapec.framework.core.utils.pagesUtils.PageContext;
+import cn.newcapec.framework.core.utils.pagesUtils.PageView;
 
 import com.xcysoft.foundation.cppt.biz.UserService;
 import com.xcysoft.foundation.cppt.model.User;
@@ -130,6 +135,13 @@ public class UserController extends MultiViewResource {
 	public ModelAndView indexUI(ModelMap modelMap) {
 		modelMap.put("cdn", "http://localhost:1234/js/");
 		modelMap.put("virtualPath", "/controller/");
+
+		Page page = userService.findList(null);
+		PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
+				PageContext.getPageSize(), PageContext.getOffset());
+		pageView.setQueryResult(page);
+		modelMap.put("pageView", pageView);
+
 		return toView(getUrl("user.indexUI"), modelMap);
 	}
 }

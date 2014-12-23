@@ -1,11 +1,14 @@
 package com.xcysoft.foundation.cppt.biz.impl;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.newcapec.framework.core.rest.Msg;
+import cn.newcapec.framework.core.utils.pagesUtils.Page;
 
 import com.xcysoft.foundation.cppt.biz.UserService;
 import com.xcysoft.foundation.cppt.dao.UserDao;
@@ -54,5 +57,11 @@ public class UserServiceImpl implements UserService {
 		}
 		msg.setSuccess(true);
 		return msg;
+	}
+
+	@Override
+	public Page findList(Map<String, Object> paramMap) {
+		Page page = userDao.findAll(paramMap);
+		return page;
 	}
 }
