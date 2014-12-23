@@ -125,4 +125,11 @@ public class UserController extends MultiViewResource {
 		modelMap.put("virtualPath", "/controller/");
 		return toView(getUrl("user.changePwdUI"), modelMap);
 	}
+
+	@RequestMapping(value = "index", method = RequestMethod.GET)
+	public ModelAndView indexUI(ModelMap modelMap) {
+		modelMap.put("cdn", "http://localhost:1234/js/");
+		modelMap.put("virtualPath", "/controller/");
+		return toView(getUrl("user.indexUI"), modelMap);
+	}
 }
