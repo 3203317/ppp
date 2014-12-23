@@ -73,6 +73,12 @@ public class UserController extends MultiViewResource {
 		return toView(getUrl("user.loginUI"), modelMap);
 	}
 
+	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	public String logout() {
+		// TODO
+		return redirect("login");
+	}
+
 	/**
 	 *
 	 * @param request
