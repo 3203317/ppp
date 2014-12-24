@@ -3,6 +3,7 @@ package com.xcysoft.foundation.cppt.dao;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Repository;
 
 import cn.newcapec.framework.core.utils.pagesUtils.Page;
@@ -38,7 +39,16 @@ public class UserDao extends BaseUserDao {
 	 */
 	public Page findAll(Map<String, Object> paramMap) {
 		Map<String, Object> param = new HashMap<String, Object>();
-		StringBuilder sql = new StringBuilder("select * from s_user where 1=1");
+		StringBuilder sql = new StringBuilder(
+				"SELECT * FROM S_USER t WHERE 1=1");
+		if (null != paramMap) {
+			if (paramMap.containsKey("user_name")
+					&& StringUtils.isNotBlank(paramMap.get("user_name")
+							.toString())) {
+				sql.append(" AND t.USER_NAME=:USER_NAME");
+				param.put("USER_NAME", paramMap.get("user_name"));
+			}
+		}
 		return this.sqlQueryForPage(sql.toString(), param, null);
 	}
 }

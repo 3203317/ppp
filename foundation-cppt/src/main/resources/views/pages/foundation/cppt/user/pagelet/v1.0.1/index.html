@@ -65,8 +65,11 @@
 				dataType: 'JSON',
 				data: formObj
 			}).done(function (data) {
-				//console.log(data.msg.data)
-				$('#table1').parent().append(data.msg.data);
+				var data = data.msg;
+				if(!data.success) return;
+				var _data = data.data;
+				if(!_data) return;
+				$('#table1').html(_data);
 			});
 		});
 	</script>
