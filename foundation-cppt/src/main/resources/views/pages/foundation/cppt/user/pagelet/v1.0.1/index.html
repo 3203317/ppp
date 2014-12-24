@@ -23,11 +23,11 @@
 						<h3 class='panel-title'><strong>查询条件</strong></h3>
 					</div>
 					<div class='panel-body'>
-						<form class='form-inline' role='form'>
+						<form id='searchFrm' class='form-inline' role='form' onsubmit='return false;'>
 							<div class='form-group'>
-								<input type='text' class='form-control' id='inputEmail3' placeholder='用户名'>
+								<input type='text' class='form-control' id='searchFrm_UserName' name='user_name' placeholder='用户名'>
 							</div>
-							<button type='button' class='btn btn-default glyphicon glyphicon-search'>&#8201;查询</button>
+							<button type='button' class='btn btn-default glyphicon glyphicon-search' id='searchFrm_btn_search'>&#8201;查询</button>
 						</form>
 					</div>
 				</div>
@@ -56,5 +56,19 @@
 		</div>
 	</div>
 	#parse('foundation/cppt/site/pagelet/v1.0.1/js.html')
+	<script>
+		$('#searchFrm_btn_search').click(function(){
+			var formObj = $('#searchFrm').serializeObjectForm();
+			$ .ajax({
+				url: 'list',
+				type: 'GET',
+				dataType: 'JSON',
+				data: formObj
+			}).done(function (data) {
+				//console.log(data.msg.data)
+				$('#table1').parent().append(data.msg.data);
+			});
+		});
+	</script>
 </body>
 </html>

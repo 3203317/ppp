@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONObject;
 
 import org.apache.commons.lang.exception.ExceptionUtils;
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.context.Context;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,6 +18,7 @@ import cn.newcapec.framework.core.exception.asserts.AssertObject;
 import cn.newcapec.framework.core.logs.LogEnabled;
 import cn.newcapec.framework.core.model.FileAttach;
 import cn.newcapec.framework.core.rest.Msg;
+import cn.newcapec.framework.core.rest.velocity.TemplateEngine;
 
 /**
  *
@@ -70,6 +73,20 @@ public abstract class MultiViewResource implements LogEnabled {
 		ModelAndView result = new ModelAndView(path, model);
 		result.addAllObjects(model);
 		return result;
+	}
+
+	protected String toHtml(String path, Map<String, Object> model) {
+		Context ctx = new VelocityContext();
+		for (String key : model.keySet()) {
+			ctx.put(key, model.get(key));
+		}
+		String str = null;
+		try {
+			str = TemplateEngine.parse(path + ".html", ctx);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return str;
 	}
 
 	/**

@@ -1,5 +1,6 @@
 package com.xcysoft.foundation.cppt.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -143,5 +144,25 @@ public class UserController extends MultiViewResource {
 		modelMap.put("pageView", pageView);
 
 		return toView(getUrl("user.indexUI"), modelMap);
+	}
+
+	@RequestMapping(value = "list", method = RequestMethod.GET)
+	public Msg list(final HttpServletRequest request) {
+		return doExpAssert(new AssertObject() {
+			@Override
+			public void AssertMethod(Msg msg) {
+				Page page = userService.findList(getJsonObject());
+				PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
+						PageContext.getPageSize(), PageContext.getOffset());
+				pageView.setQueryResult(page);
+
+				Map<String, Object> modelMap = new HashMap<String, Object>();
+				modelMap.put("pageView", pageView);
+
+				msg.setData(toHtml(getUrl("user.indexUI.listUI"), modelMap));
+				msg.setSuccess(true);
+			}
+		});
+
 	}
 }

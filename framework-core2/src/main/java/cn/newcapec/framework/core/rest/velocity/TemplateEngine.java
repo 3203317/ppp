@@ -1,39 +1,57 @@
 package cn.newcapec.framework.core.rest.velocity;
 
-import cn.newcapec.framework.core.utils.springUtils.SpringConext;
 import java.io.StringWriter;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.velocity.Template;
 import org.apache.velocity.app.Velocity;
-import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.context.Context;
-import org.springframework.context.ApplicationContext;
 import org.springframework.web.servlet.view.velocity.VelocityConfigurer;
 
-public class TemplateEngine
-{
-  private static final Log log = LogFactory.getLog(TemplateEngine.class);
+import cn.newcapec.framework.core.utils.springUtils.SpringConext;
 
-  public static String parse(String templatePath, Context context)
-    throws Exception
-  {
-    VelocityConfigurer vc = (VelocityConfigurer)SpringConext.getApplicationContext().getBean("velocityConfig");
-    Template t = vc.getVelocityEngine().getTemplate(templatePath, "utf-8");
-    context.put("paging", "common/includePagination.vm");
-    StringWriter sw = new StringWriter();
-    t.merge(context, sw);
-    return sw.toString();
-  }
+/**
+ *
+ * <p>
+ * 模版视图数据合成处理工具类
+ * </p>
+ * <p>
+ * 暂只支持Velocity模版视图
+ * </p>
+ *
+ * @author huangxin
+ *
+ */
+public class TemplateEngine {
+	private static final Log log = LogFactory.getLog(TemplateEngine.class);
 
-  static
-  {
-    Velocity.setProperty("directive.set.null.allowed", "true");
-    try
-    {
-      Velocity.init();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
+	public static String parse(String templatePath, Context context)
+			throws Exception {
+		// 获取spring中velocity环境配置
+		VelocityConfigurer vc = (VelocityConfigurer) SpringConext
+				.getApplicationContext().getBean("velocityConfig");
+		/* Velocity.getTemplate(templatePath, "utf-8"); */
+		Template t = vc.getVelocityEngine().getTemplate(templatePath, "utf-8");
+		// context.put("paging", "common/includePagination.vm");
+		StringWriter sw = new StringWriter();
+		t.merge(context, sw);
+		return sw.toString();
+	}
+
+	static {
+		// String templatePath = PathUtil.getRootPath();
+		// Velocity.setProperty(Velocity.FILE_RESOURCE_LOADER_PATH, templatePath
+		// + ConfigUtil.getItem("file.resource.loader.path"));
+		// Velocity.setProperty("directive.set.null.allowed", "true");
+		Velocity.setProperty(Velocity.SET_NULL_ALLOWED, "true");
+		Velocity.setProperty("runtime.log.logsystem.class",
+				"org.apache.velocity.runtime.log.NullLogSystem");
+		// log.info("templatePath:" + templatePath);
+		try {
+			Velocity.init();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
