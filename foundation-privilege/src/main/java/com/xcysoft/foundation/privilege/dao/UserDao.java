@@ -1,4 +1,4 @@
-package com.xcysoft.foundation.cppt.dao;
+package com.xcysoft.foundation.privilege.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,8 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import cn.newcapec.framework.core.utils.pagesUtils.Page;
 
-import com.xcysoft.foundation.cppt.dao.base.BaseUserDao;
-import com.xcysoft.foundation.cppt.model.User;
+import com.xcysoft.foundation.privilege.dao.base.BaseUserDao;
+import com.xcysoft.foundation.privilege.model.User;
 
 /**
  *

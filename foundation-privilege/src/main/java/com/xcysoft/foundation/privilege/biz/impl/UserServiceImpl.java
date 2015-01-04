@@ -1,4 +1,4 @@
-package com.xcysoft.foundation.cppt.biz.impl;
+package com.xcysoft.foundation.privilege.biz.impl;
 
 import java.util.Map;
 
@@ -10,9 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.newcapec.framework.core.rest.Msg;
 import cn.newcapec.framework.core.utils.pagesUtils.Page;
 
-import com.xcysoft.foundation.cppt.biz.UserService;
-import com.xcysoft.foundation.cppt.dao.UserDao;
-import com.xcysoft.foundation.cppt.model.User;
+import com.xcysoft.foundation.privilege.biz.UserService;
+import com.xcysoft.foundation.privilege.dao.UserDao;
+import com.xcysoft.foundation.privilege.model.User;
 
 /**
  *

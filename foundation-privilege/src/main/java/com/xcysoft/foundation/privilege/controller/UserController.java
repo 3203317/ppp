@@ -1,4 +1,4 @@
-package com.xcysoft.foundation.cppt.controller;
+package com.xcysoft.foundation.privilege.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,8 +23,8 @@ import cn.newcapec.framework.core.utils.pagesUtils.Page;
 import cn.newcapec.framework.core.utils.pagesUtils.PageContext;
 import cn.newcapec.framework.core.utils.pagesUtils.PageView;
 
-import com.xcysoft.foundation.cppt.biz.UserService;
-import com.xcysoft.foundation.cppt.model.User;
+import com.xcysoft.foundation.privilege.biz.UserService;
+import com.xcysoft.foundation.privilege.model.User;
 
 /**
  *

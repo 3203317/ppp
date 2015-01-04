@@ -1,4 +1,4 @@
-package com.xcysoft.foundation.cppt.controller;
+package com.xcysoft.foundation.privilege.controller;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;

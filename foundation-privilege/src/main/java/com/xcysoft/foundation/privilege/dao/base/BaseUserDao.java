@@ -1,10 +1,10 @@
-package com.xcysoft.foundation.cppt.dao.base;
+package com.xcysoft.foundation.privilege.dao.base;
 
 import java.io.Serializable;
 
 import cn.newcapec.framework.core.dao.hibernate.HibernateEntityDao;
 
-import com.xcysoft.foundation.cppt.model.User;
+import com.xcysoft.foundation.privilege.model.User;
 
 /**
  *

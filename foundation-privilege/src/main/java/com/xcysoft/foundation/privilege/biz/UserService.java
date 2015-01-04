@@ -1,4 +1,4 @@
-package com.xcysoft.foundation.cppt.biz;
+package com.xcysoft.foundation.privilege.biz;
 
 import java.util.Map;
 
@@ -6,7 +6,7 @@ import cn.newcapec.framework.core.biz.BaseService;
 import cn.newcapec.framework.core.rest.Msg;
 import cn.newcapec.framework.core.utils.pagesUtils.Page;
 
-import com.xcysoft.foundation.cppt.model.User;
+import com.xcysoft.foundation.privilege.model.User;
 
 /**
  *

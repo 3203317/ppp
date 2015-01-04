@@ -1,4 +1,4 @@
-package com.xcysoft.foundation.cppt.model;
+package com.xcysoft.foundation.privilege.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
