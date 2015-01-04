@@ -74,7 +74,7 @@ public class UserController extends MultiViewResource {
 	 */
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public ModelAndView loginUI(ModelMap modelMap) {
-		modelMap.put("cdn", "http://localhost:1234/js/");
+		modelMap.put("cdn", "http://localhost/js/");
 		modelMap.put("virtualPath", "/controller/");
 		return toView(getUrl("user.loginUI"), modelMap);
 	}
@@ -127,14 +127,14 @@ public class UserController extends MultiViewResource {
 	 */
 	@RequestMapping(value = "changePwd", method = RequestMethod.GET)
 	public ModelAndView changePwdUI(ModelMap modelMap) {
-		modelMap.put("cdn", "http://localhost:1234/js/");
+		modelMap.put("cdn", "http://localhost/js/");
 		modelMap.put("virtualPath", "/controller/");
 		return toView(getUrl("user.changePwdUI"), modelMap);
 	}
 
 	@RequestMapping(value = "index", method = RequestMethod.GET)
 	public ModelAndView indexUI(ModelMap modelMap) {
-		modelMap.put("cdn", "http://localhost:1234/js/");
+		modelMap.put("cdn", "http://localhost/js/");
 		modelMap.put("virtualPath", "/controller/");
 
 		Page page = userService.findList(null);
