@@ -19,7 +19,7 @@
   	<!-- <context:component-scan base-package="cn.newcapec.foundation.portal">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
 	</context:component-scan> -->
-  	<context:component-scan base-package="com.xcysoft.foundation.cppt">
+  	<context:component-scan base-package="com.xcysoft.foundation.privilege">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
 	</context:component-scan>
 
@@ -57,7 +57,7 @@
 			   	    <!-- <value>cn.newcapec.foundation.privilege.model</value>
 			   	    <value>cn.newcapec.framework.log.model</value>
 			   	    <value>cn.newcapec.foundation.portal.model</value> -->
-			   	    <value>com.xcysoft.foundation.cppt.model</value>
+			   	    <value>com.xcysoft.foundation.privilege.model</value>
 			     </list>
      	 </property>
 		<property name="hibernateProperties">
