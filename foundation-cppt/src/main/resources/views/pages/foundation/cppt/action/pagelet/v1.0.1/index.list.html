@@ -1,0 +1,18 @@
+<table id='table1' data-olx-type='olx.grid' class='table table-bordered table-hover table-condensed table-striped' data-url='/action/list' data-current='1' data-pagesize='20' data-count='561'>
+	<thead>
+		<tr>
+			<th class='ta'><input type='checkbox' title='全选/取消'></th>
+			<th>动作名称</th>
+			<th>动作类型</th>
+			<th>动作URI</th>
+		</tr>
+	</thead>
+	<tbody>
+		#foreach($!act in $!pageView.records)<tr>
+			<td class='ta'><input type='checkbox' value='$act.ID'></td>
+			<td>$!act.ACTION_NAME</td>
+			<td>$!act.ACTION_TYPE</td>
+			<td>$!act.ACTION_URI</td>
+		</tr>#end
+	</tbody>
+</table>
