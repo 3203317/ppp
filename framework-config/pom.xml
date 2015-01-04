@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.xcysoft</groupId>
 	<artifactId>framework-config</artifactId>
-	<version>1.0.35</version>
+	<version>1.0.36</version>
 	<packaging>pom</packaging>
 	<name>xcysoft :: framework :: config</name>
 
@@ -27,7 +27,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.6</jdk.version>
 		<!--核心类 -->
-		<xcysoft.framework.version>1.0.35</xcysoft.framework.version>
+		<xcysoft.framework.version>1.0.36</xcysoft.framework.version>
 		<!--spring -->
 		<spring.version>3.2.5.RELEASE</spring.version>
 		<!--hibernate -->

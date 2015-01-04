@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import cn.newcapec.framework.core.exception.asserts.AssertObject;
 import cn.newcapec.framework.core.handler.MultiViewResource;
 import cn.newcapec.framework.core.rest.Msg;
+import cn.newcapec.framework.core.utils.fileUtils.SysConfigUtil;
 import cn.newcapec.framework.core.utils.jsonUtils.JSONTools;
 import cn.newcapec.framework.core.utils.pagesUtils.Page;
 import cn.newcapec.framework.core.utils.pagesUtils.PageContext;
@@ -74,8 +75,8 @@ public class UserController extends MultiViewResource {
 	 */
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public ModelAndView loginUI(ModelMap modelMap) {
-		modelMap.put("cdn", "http://localhost/js/");
-		modelMap.put("virtualPath", "/controller/");
+		modelMap.put("cdn", SysConfigUtil.get("html.cdn"));
+		modelMap.put("virtualPath", SysConfigUtil.get("html.virtualPath"));
 		return toView(getUrl("user.loginUI"), modelMap);
 	}
 
@@ -127,15 +128,15 @@ public class UserController extends MultiViewResource {
 	 */
 	@RequestMapping(value = "changePwd", method = RequestMethod.GET)
 	public ModelAndView changePwdUI(ModelMap modelMap) {
-		modelMap.put("cdn", "http://localhost/js/");
-		modelMap.put("virtualPath", "/controller/");
+		modelMap.put("cdn", SysConfigUtil.get("html.cdn"));
+		modelMap.put("virtualPath", SysConfigUtil.get("html.virtualPath"));
 		return toView(getUrl("user.changePwdUI"), modelMap);
 	}
 
 	@RequestMapping(value = "index", method = RequestMethod.GET)
 	public ModelAndView indexUI(ModelMap modelMap) {
-		modelMap.put("cdn", "http://localhost/js/");
-		modelMap.put("virtualPath", "/controller/");
+		modelMap.put("cdn", SysConfigUtil.get("html.cdn"));
+		modelMap.put("virtualPath", SysConfigUtil.get("html.virtualPath"));
 
 		Page page = userService.findList(null);
 		PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(

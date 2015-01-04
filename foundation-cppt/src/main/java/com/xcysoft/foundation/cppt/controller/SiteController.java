@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.newcapec.framework.core.handler.MultiViewResource;
+import cn.newcapec.framework.core.utils.fileUtils.SysConfigUtil;
 
 /**
  *
@@ -27,8 +28,8 @@ public class SiteController extends MultiViewResource {
 	 */
 	@RequestMapping(value = "index", method = RequestMethod.GET)
 	public ModelAndView indexUI(ModelMap modelMap) {
-		modelMap.put("cdn", "http://localhost/js/");
-		modelMap.put("virtualPath", "/controller/");
+		modelMap.put("cdn", SysConfigUtil.get("html.cdn"));
+		modelMap.put("virtualPath", SysConfigUtil.get("html.virtualPath"));
 		return toView(getUrl("manage.indexUI"), modelMap);
 	}
 }
