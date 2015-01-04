@@ -69,7 +69,7 @@ public class PagerFilter implements Filter {
 
 		Integer pagesize = (Integer) httpRequest.getSession().getAttribute(
 				PAGE_SIZE_NAME);
-		if (null != pagesize) {
+		if (null == pagesize) {
 			if (StringUtils.isNotBlank(SysConfigUtil
 					.get("framework.default.pagesize"))) {
 				framework_default_pagesize = NumberUtils.toInt(SysConfigUtil
@@ -87,7 +87,7 @@ public class PagerFilter implements Filter {
 		String realPath = arg0.getServletContext().getRealPath("/");
 		WEBROOT_PATH = realPath;
 		String rootPath = arg0.getServletContext().getContextPath();
-		if (null != rootPath) {
+		if (null == rootPath) {
 			rootPath = "";
 		}
 		ROOT_PATH = rootPath;
