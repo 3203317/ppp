@@ -4,21 +4,12 @@
 <title>用户管理 | 系统管理 | 产品平台</title>
 	#parse('foundation/cppt/site/pagelet/v1.0.1/head.html')
 <link rel='stylesheet' type='text/css' href='${virtualPath}styles/css/foundation/cppt/manage/v1.0.1/index.css' media='screen' />
-<style>
-	.ta {
-		width: 50px;
-	}
-</style>
+<link rel='stylesheet' type='text/css' href='${virtualPath}styles/css/foundation/cppt/manage/v1.0.1/menu.css' media='screen' />
 </head>
 <body>
-	#parse('foundation/cppt/manage/pagelet/v1.0.1/top.banner.html')
-	<header id='header'></header>
 	<div class='container'>
 		<div class='row'>
-			<div class='col-sm-12 col-md-2'>
-				#parse('foundation/cppt/manage/pagelet/v1.0.1/side.nav.html')
-			</div>
-			<div class='col-sm-12 col-md-10'>
+			<div class='col-sm-12 col-md-12'>
 				<div id='info_alert' class='alert alert-info'>
 					<button type='button' class='close' data-dismiss='alert'>&times;</button>
 					<strong>提示：</strong>查询设置用户信息。
@@ -61,6 +52,7 @@
 		</div>
 	</div>
 	#parse('foundation/cppt/site/pagelet/v1.0.1/js.html')
+	#parse('foundation/cppt/site/pagelet/v1.0.1/resize.html')
 	<script>
 		$('#searchFrm_btn_search').click(function(){
 			var formObj = $('#searchFrm').serializeObjectForm();

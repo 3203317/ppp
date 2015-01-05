@@ -1,0 +1,11 @@
+<script>
+(function(){
+	var resize = function(){
+		if(!parent) return;
+		if(!parent.resizeInnerPage) return;
+		parent.resizeInnerPage($(document.body));
+	}
+	$(window).load(resize);
+	$(window).resize(resize);
+})();
+</script>
