@@ -27,7 +27,7 @@
 	#parse('foundation/cppt/site/pagelet/v1.0.1/js.html')
 <script type='text/javascript' src='${cdn}backbone/1.0.0/backbone.min.js?v1.0.0'></script>
 <script>
-(function(){
+(function($){
 	var ifr_innerPage = $('#innerPage');
 	var Router = Backbone.Router.extend({
 		routes: {
@@ -46,7 +46,7 @@
 	});
 	new Router();
 	Backbone.history.start();
-})();
+})($);
 
 function resizeInnerPage(obj){
 	document.getElementById('innerPage').height = obj.height();

@@ -1,11 +1,16 @@
 <script>
-(function(){
+(function(jq){
 	var resize = function(){
 		if(!parent) return;
 		if(!parent.resizeInnerPage) return;
-		parent.resizeInnerPage($(document.body));
+		parent.resizeInnerPage(jq(document.body));
 	}
-	$(window).load(resize);
-	$(window).resize(resize);
-})();
+	jq(window).load(resize);
+	jq(window).resize(resize);
+	var _old = jq.fn.html;
+	jq.fn.html = function(){
+		_old.apply(this, arguments);
+		resize();
+	};
+})($);
 </script>
