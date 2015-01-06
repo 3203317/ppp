@@ -32,4 +32,11 @@ public class SiteController extends MultiViewResource {
 		modelMap.put("virtualPath", SysConfigUtil.get("html.virtualPath"));
 		return toView(getUrl("manage.indexUI"), modelMap);
 	}
+
+	@RequestMapping(value = "welcome", method = RequestMethod.GET)
+	public ModelAndView welcomeUI(ModelMap modelMap) {
+		modelMap.put("cdn", SysConfigUtil.get("html.cdn"));
+		modelMap.put("virtualPath", SysConfigUtil.get("html.virtualPath"));
+		return toView(getUrl("manage.welcomeUI"), modelMap);
+	}
 }

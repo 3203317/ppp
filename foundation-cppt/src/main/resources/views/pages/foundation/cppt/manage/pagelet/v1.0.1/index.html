@@ -25,10 +25,29 @@
 		</div>
 	</div>
 	#parse('foundation/cppt/site/pagelet/v1.0.1/js.html')
+<script type='text/javascript' src='${cdn}backbone/1.0.0/backbone.min.js?v1.0.0'></script>
 <script>
-function go(src){
-	document.getElementById('innerPage').src = src;
-}
+(function(){
+	var ifr_innerPage = $('#innerPage');
+	var Router = Backbone.Router.extend({
+		routes: {
+			'': '_showDefPage',
+			'page/*path': '_showPage'
+		},
+		initialize: function() {
+			//console.log('initialize');
+		},
+		_showDefPage: function(){
+			ifr_innerPage.attr('src', 'welcome');
+		},
+		_showPage: function($url){
+			ifr_innerPage.attr('src', '/'+ $url);
+		}
+	});
+	new Router();
+	Backbone.history.start();
+})();
+
 function resizeInnerPage(obj){
 	document.getElementById('innerPage').height = obj.height();
 }
