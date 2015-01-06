@@ -12,7 +12,7 @@
 	</thead>
 	<tbody>
 		#foreach($!user in $!pageView.records)<tr>
-			<td class='ta'><input type='checkbox' value='$user.ID'></td>
+			<td class='ta'><input type='checkbox' value='$!user.ID'></td>
 			<td>$!user.USER_NAME</td>
 			<td>$!user.REAL_NAME</td>
 			<td>#parseSex($!user.SEX)</td>

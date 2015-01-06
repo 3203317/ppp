@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import cn.newcapec.framework.core.dao.hibernate.HibernateEntityDao;
 
-import com.xcysoft.foundation.cppt.model.Action;
+import com.xcysoft.foundation.cppt.model.Role;
 
 /**
  *
@@ -12,14 +12,14 @@ import com.xcysoft.foundation.cppt.model.Action;
  *
  */
 @SuppressWarnings("all")
-public abstract class BaseActionDao extends HibernateEntityDao {
+public abstract class BaseRoleDao extends HibernateEntityDao {
 
 	@Override
 	protected Class getReferenceClass() {
-		return Action.class;
+		return Role.class;
 	}
 
-	public Action get(Serializable key) {
-		return (Action) get(getReferenceClass(), key);
+	public Role get(Serializable key) {
+		return (Role) get(getReferenceClass(), key);
 	}
 }
