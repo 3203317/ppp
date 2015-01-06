@@ -33,6 +33,12 @@
 								</div>
 							</div>
 							<div class='form-group'>
+								<label class='col-sm-2 hidden-xs control-label' for='addFrm_RealName'>真实姓名 <span class='must'>*</span></label>
+								<div class='col-sm-4'>
+									<input type='text' class='form-control' name='real_name' id='addFrm_RealName' placeholder='真实姓名'>
+								</div>
+							</div>
+							<div class='form-group'>
 								<label class='col-sm-2 hidden-xs control-label' for='addFrm_Sex'>性别</label>
 								<div class='col-sm-4'>
 									<select class='form-control' name='sex' id='addFrm_Sex'>
@@ -45,7 +51,7 @@
 							<div class='form-group'>
 								<div class='col-sm-offset-2 col-sm-4'>
 									<button id='addFrm_btn_sub' type='button' class='btn btn-primary btn-sm'>保存</button>
-									<a class='btn btn-default btn-sm' href='javascript:history.back();'>返回</a>
+									<a class='btn btn-default btn-sm' href="javascript:go('#page/controller/user/index')">返回</a>
 								</div>
 							</div>
 						</form>

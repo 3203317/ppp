@@ -20,6 +20,27 @@ public class User extends CommonModel {
 	private String user_name;
 	private String password;
 
+	private String real_name;
+	private Integer sex;
+
+	@Column(name = "REAL_NAME", length = 32)
+	public String getReal_name() {
+		return real_name;
+	}
+
+	public void setReal_name(String real_name) {
+		this.real_name = real_name;
+	}
+
+	@Column(name = "SEX", length = 2)
+	public Integer getSex() {
+		return sex;
+	}
+
+	public void setSex(Integer sex) {
+		this.sex = sex;
+	}
+
 	@Column(name = "USER_NAME", length = 32)
 	public String getUser_name() {
 		return user_name;
