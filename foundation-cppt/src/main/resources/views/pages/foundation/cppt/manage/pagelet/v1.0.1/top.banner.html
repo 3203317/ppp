@@ -24,7 +24,7 @@
 						<li><a href='#page${virtualPath}user/changePwd'>修改密码</a></li>
 					</ul>
 				</li>
-				<li class='active'><a href='javascript:logout();'>退出</a></li>
+				<li class='active'><a href='javascript:;' onclick="$('#logoutConfirmModal').modal()">退出</a></li>
 			</ul>
 			<form id='topSearchFrm' class='navbar-form navbar-right' role='search' data-olx-type='olx.form' onsubmit='return false;'>
 				<div class='form-group'><input class='form-control' type='text' placeholder='搜索'></div>
@@ -53,9 +53,6 @@
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <script>
-function logout(){
-	$('#logoutConfirmModal').modal();
-}
 $(function(){
 	$('#logoutConfirmModal_btn_submit').click(function(){
 		location.href = '${virtualPath}user/logout'
