@@ -8,3 +8,7 @@
 .breadcrumb {
 	background-color: #ffffff
 }
+
+form .must {
+	color: red;
+}

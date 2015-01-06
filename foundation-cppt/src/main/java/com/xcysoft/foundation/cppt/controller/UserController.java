@@ -45,10 +45,12 @@ public class UserController extends MultiViewResource {
 	 * @return
 	 */
 	@RequestMapping(value = "add", method = RequestMethod.GET)
-	public String addUserUI() {
-		User user = userService.get("12");
+	public ModelAndView addUserUI(ModelMap modelMap) {
+		modelMap.put("cdn", SysConfigUtil.get("html.cdn"));
+		modelMap.put("virtualPath", SysConfigUtil.get("html.virtualPath"));
+		User user = userService.get("3");
 		System.out.println(user.getUser_name());
-		return getUrl("user.addUserUI");
+		return toView(getUrl("user.addUserUI"), modelMap);
 	}
 
 	/**
