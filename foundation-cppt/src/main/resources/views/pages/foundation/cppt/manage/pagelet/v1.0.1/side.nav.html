@@ -2,12 +2,12 @@
 	<div class='panel panel-default'>
 		<div class='panel-heading'>
 			<h4 class='panel-title'>
-				<a data-toggle='collapse' data-parent='#accordion' href='#collapseMod'>菜单管理</a>
+				<a data-toggle='collapse' data-parent='#accordion' href='#collapseMenu'>菜单管理</a>
 			</h4>
 		</div>
-		<div id='collapseMod' class='panel-collapse collapse in'>
+		<div id='collapseMenu' class='panel-collapse collapse in'>
 			<div class='panel-body'>
-				<p><a href='${virtualPath}module/index'>菜单信息管理</a></p>
+				<p><a href="javascript:go('${virtualPath}menu/index')">菜单信息管理</a></p>
 				<p><a href='javascript:;'>注册菜单操作</a></p>
 			</div>
 		</div>
@@ -20,8 +20,8 @@
 		</div>
 		<div id='collapseRole' class='panel-collapse collapse'>
 			<div class='panel-body'>
-				<p><a href='${virtualPath}role/index'>角色信息管理</a></p>
-				<p><a href='${virtualPath}role/index'>角色权限设置</a></p>
+				<p><a href="javascript:go('${virtualPath}role/index')">角色信息管理</a></p>
+				<p><a href='javascript:;'>角色权限设置</a></p>
 			</div>
 		</div>
 	</div>
