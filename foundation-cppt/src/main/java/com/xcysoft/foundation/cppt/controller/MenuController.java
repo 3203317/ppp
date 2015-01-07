@@ -75,7 +75,11 @@ public class MenuController extends MultiViewResource {
 				Map<String, Object> modelMap = new HashMap<String, Object>();
 				modelMap.put("pageView", pageView);
 
-				msg.setData(toHtml(getUrl("menu.indexUI.listUI"), modelMap));
+				if (getJsonObject().containsKey("type")) {
+					msg.setData(page);
+				} else {
+					msg.setData(toHtml(getUrl("menu.indexUI.listUI"), modelMap));
+				}
 				msg.setSuccess(true);
 			}
 		});

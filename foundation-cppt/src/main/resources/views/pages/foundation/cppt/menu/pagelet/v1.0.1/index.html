@@ -17,6 +17,14 @@ ul.ztree {
 ul.ztree * {
 	font-family: "Microsoft Yahei",Helvetica,Arial,sans-serif;
 }
+.ztree li span.button.switch.level0 {
+	visibility: hidden;
+	width: 1px;
+}
+.ztree li ul.level0 {
+	padding: 0;
+	background: none;
+}
 </style>
 </head>
 <body>
@@ -93,6 +101,32 @@ ul.ztree * {
 				data: {
 					simpleData: {
 						enable: true
+					}
+				}, callback: {
+					beforeExpand: function(treeid, node) {
+						var zTree = $ .fn.zTree.getZTreeObj(treeid);
+						if(node.children) return;
+						$ .ajax({
+							url: 'list.do',
+							type: 'GET',
+							dataType: 'JSON',
+							data: {
+								pid: node.id,
+								type: 'object'
+							}
+						}).done(function (data) {
+							if(!data.msg.success) return;
+							var items = data.msg.data.items;
+							for(var i=0,j=items.length;i<j;i++){
+								var item = items[i];
+								zTree.addNodes(node, {
+									id: item.ID,
+									pId: node.id,
+									isParent: !!item.ISPARENT,
+									name: item.MENU_NAME
+								});
+							}
+						});
 					}
 				}
 			};
