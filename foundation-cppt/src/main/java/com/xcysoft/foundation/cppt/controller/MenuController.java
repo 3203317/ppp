@@ -1,6 +1,7 @@
 package com.xcysoft.foundation.cppt.controller;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +38,8 @@ public class MenuController extends MultiViewResource {
 	@Autowired
 	private MenuService menuService;
 
+	private LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
+
 	@RequestMapping(value = "index", method = RequestMethod.GET)
 	public ModelAndView indexUI(ModelMap modelMap) {
 		modelMap.put("cdn", SysConfigUtil.get("html.cdn"));
@@ -46,7 +49,8 @@ public class MenuController extends MultiViewResource {
 		paramMap.put("pid", "0");
 		PageContext.setPageSize(Integer.MAX_VALUE);
 
-		Page page = menuService.findList(paramMap);
+		orderby.put("sort", "asc");
+		Page page = menuService.findList(paramMap, orderby);
 		PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
 				PageContext.getPageSize(), PageContext.getOffset());
 		pageView.setQueryResult(page);
@@ -62,7 +66,8 @@ public class MenuController extends MultiViewResource {
 		return doExpAssert(new AssertObject() {
 			@Override
 			public void AssertMethod(Msg msg) {
-				Page page = menuService.findList(getJsonObject());
+				orderby.put("sort", "asc");
+				Page page = menuService.findList(getJsonObject(), orderby);
 				PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
 						PageContext.getPageSize(), PageContext.getOffset());
 				pageView.setQueryResult(page);

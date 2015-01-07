@@ -89,15 +89,23 @@ ul.ztree * {
 	<SCRIPT type="text/javascript">
 		<!--
 		(function($){
-			var setting = {};
-			var zNodes = [];
-			#foreach($!obj in $!treeView.records)
-				zNodes.push({
-					id: '$!obj.ID',
-					name: '$!obj.MENU_NAME',
-					isParent: !!$!obj.ISPARENT
-				});
-			#end
+			var setting = {
+				data: {
+					simpleData: {
+						enable: true
+					}
+				}
+			};
+			var zNodes = [{
+				id: '0',
+				name: 'Root',
+				open: true
+			}#foreach($!obj in $!treeView.records),{
+				id: '$!obj.ID',
+				pId: '$!obj.PID',
+				name: '$!obj.MENU_NAME',
+				isParent: !!$!obj.ISPARENT
+			}#end];
 
 			$(document).ready(function(){
 				$ .fn.zTree.init($("#menuTree"), setting, zNodes);

@@ -1,6 +1,7 @@
 package com.xcysoft.foundation.cppt.dao;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,7 +26,8 @@ public class MenuDao extends BaseMenuDao {
 	 * @param paramMap
 	 * @return
 	 */
-	public Page findAll(Map<String, Object> paramMap) {
+	public Page findAll(Map<String, Object> paramMap,
+			LinkedHashMap<String, String> orderby) {
 		List<Object> param = new ArrayList<Object>();
 		StringBuilder sql = new StringBuilder(
 				"select * from s_menu t where 1=1");
@@ -42,6 +44,6 @@ public class MenuDao extends BaseMenuDao {
 				param.add(paramMap.get("pid"));
 			}
 		}
-		return this.sqlQueryForPage(sql.toString(), param.toArray(), null);
+		return this.sqlQueryForPage(sql.toString(), param.toArray(), orderby);
 	}
 }
