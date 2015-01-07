@@ -21,6 +21,16 @@ public class Menu extends CommonModel {
 	private String menu_name;
 	private String menu_url;
 	private Integer sort;
+	private Integer isParent;
+
+	@Column(name = "ISPARENT")
+	public Integer getIsParent() {
+		return isParent;
+	}
+
+	public void setIsParent(Integer isParent) {
+		this.isParent = isParent;
+	}
 
 	@Column(name = "PID", length = 32)
 	public String getPid() {

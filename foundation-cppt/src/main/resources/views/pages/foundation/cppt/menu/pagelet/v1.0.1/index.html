@@ -5,6 +5,19 @@
 	#parse('foundation/cppt/site/pagelet/v1.0.1/head.html')
 <link rel='stylesheet' type='text/css' href='${virtualPath}styles/css/foundation/cppt/manage/v1.0.1/index.css' media='screen' />
 <link rel='stylesheet' type='text/css' href='${virtualPath}styles/css/foundation/cppt/manage/v1.0.1/iframe.css' media='screen' />
+<link rel='stylesheet' type='text/css' href='${cdn}ztree/3.5.15/css/zTreeStyle/zTreeStyle.css' media='screen' />
+<style>
+ul.ztree {
+	border: 1px solid #DDDDDD;
+	height: 300px;
+	overflow-y: scroll;
+	overflow-x: auto;
+	margin-bottom: 10px;
+}
+ul.ztree * {
+	font-family: "Microsoft Yahei",Helvetica,Arial,sans-serif;
+}
+</style>
 </head>
 <body>
 	<div class='container'>
@@ -35,6 +48,11 @@
 						</form>
 					</div>
 				</div>
+			</div>
+			<div class='col-sm-12 col-md-3'>
+				<ul id="menuTree" class="ztree"></ul>
+			</div>
+			<div class='col-sm-12 col-md-9'>
 				<div class='panel panel-default table-responsive'>
 					<div class='panel-heading'>
 						<div class='btn-group btn-group-sm'>
@@ -45,22 +63,12 @@
 					</div>
 					#parse('foundation/cppt/menu/pagelet/v1.0.1/index.list.html')
 				</div>
-				<nav>
-					<ul class="pagination pagination-sm">
-						<li class="disabled"><a href="javascript:;">&laquo;</a></li>
-						<li class="active"><a href="javascript:;">1</a></li>
-						<li><a href="javascript:;">2</a></li>
-						<li><a href="javascript:;">3</a></li>
-						<li><a href="javascript:;">4</a></li>
-						<li><a href="javascript:;">5</a></li>
-						<li><a href="javascript:;">&raquo;</a></li>
-					</ul>
-				</nav>
 			</div>
 		</div>
 	</div>
 	#parse('foundation/cppt/site/pagelet/v1.0.1/js.html')
 	#parse('foundation/cppt/site/pagelet/v1.0.1/iframe.html')
+	<script type="text/javascript" src="${cdn}ztree/3.5.15/js/jquery.ztree.core-3.5.js"></script>
 	<script>
 		$('#searchFrm_btn_search').click(function(){
 			var formObj = $('#searchFrm').serializeObjectForm();
@@ -78,5 +86,21 @@
 			});
 		});
 	</script>
+	<SCRIPT type="text/javascript">
+		<!--
+		var setting = {};
+		var zNodes = [];
+		#foreach($!obj in $!treeView.records)
+			zNodes.push({
+				name: '$!obj.MENU_NAME',
+				isParent: !!$!obj.ISPARENT
+			});
+		#end
+
+		$(document).ready(function(){
+			$ .fn.zTree.init($("#menuTree"), setting, zNodes);
+		});
+		//-->
+	</SCRIPT>
 </body>
 </html>

@@ -36,6 +36,11 @@ public class MenuDao extends BaseMenuDao {
 				sql.append(" and t.menu_name like ?");
 				param.add("%" + paramMap.get("menu_name") + "%");
 			}
+			if (paramMap.containsKey("pid")
+					&& StringUtils.isNotBlank(paramMap.get("pid").toString())) {
+				sql.append(" and t.pid = ?");
+				param.add(paramMap.get("pid"));
+			}
 		}
 		return this.sqlQueryForPage(sql.toString(), param.toArray(), null);
 	}

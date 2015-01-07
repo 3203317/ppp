@@ -48,6 +48,16 @@ public class MenuController extends MultiViewResource {
 		pageView.setQueryResult(page);
 		modelMap.put("pageView", pageView);
 
+		/* tree */
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("pid", "0");
+		page = menuService.findList(paramMap);
+		PageContext.setPageSize(Integer.MAX_VALUE);
+		pageView = new PageView<Map<String, Object>>(PageContext.getPageSize(),
+				PageContext.getOffset());
+		pageView.setQueryResult(page);
+		modelMap.put("treeView", pageView);
+
 		return toView(getUrl("menu.indexUI"), modelMap);
 	}
 
