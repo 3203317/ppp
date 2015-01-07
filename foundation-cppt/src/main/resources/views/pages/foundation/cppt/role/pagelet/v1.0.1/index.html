@@ -65,7 +65,7 @@
 		$('#searchFrm_btn_search').click(function(){
 			var formObj = $('#searchFrm').serializeObjectForm();
 			$ .ajax({
-				url: 'list',
+				url: 'list.do',
 				type: 'GET',
 				dataType: 'JSON',
 				data: formObj

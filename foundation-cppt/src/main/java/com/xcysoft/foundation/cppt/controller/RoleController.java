@@ -51,7 +51,7 @@ public class RoleController extends MultiViewResource {
 		return toView(getUrl("role.indexUI"), modelMap);
 	}
 
-	@RequestMapping(value = "list", method = RequestMethod.GET)
+	@RequestMapping(value = "list.do", method = RequestMethod.GET)
 	public Msg list(final HttpServletRequest request) {
 		return doExpAssert(new AssertObject() {
 			@Override

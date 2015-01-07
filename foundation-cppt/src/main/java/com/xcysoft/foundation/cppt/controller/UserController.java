@@ -149,7 +149,7 @@ public class UserController extends MultiViewResource {
 		return toView(getUrl("user.indexUI"), modelMap);
 	}
 
-	@RequestMapping(value = "list", method = RequestMethod.GET)
+	@RequestMapping(value = "list.do", method = RequestMethod.GET)
 	public Msg list(final HttpServletRequest request) {
 		return doExpAssert(new AssertObject() {
 			@Override

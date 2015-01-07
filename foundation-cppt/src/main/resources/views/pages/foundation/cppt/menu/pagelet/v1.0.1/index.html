@@ -73,7 +73,7 @@ ul.ztree * {
 		$('#searchFrm_btn_search').click(function(){
 			var formObj = $('#searchFrm').serializeObjectForm();
 			$ .ajax({
-				url: 'list',
+				url: 'list.do',
 				type: 'GET',
 				dataType: 'JSON',
 				data: formObj
@@ -88,18 +88,21 @@ ul.ztree * {
 	</script>
 	<SCRIPT type="text/javascript">
 		<!--
-		var setting = {};
-		var zNodes = [];
-		#foreach($!obj in $!treeView.records)
-			zNodes.push({
-				name: '$!obj.MENU_NAME',
-				isParent: !!$!obj.ISPARENT
-			});
-		#end
+		(function($){
+			var setting = {};
+			var zNodes = [];
+			#foreach($!obj in $!treeView.records)
+				zNodes.push({
+					id: '$!obj.ID',
+					name: '$!obj.MENU_NAME',
+					isParent: !!$!obj.ISPARENT
+				});
+			#end
 
-		$(document).ready(function(){
-			$ .fn.zTree.init($("#menuTree"), setting, zNodes);
-		});
+			$(document).ready(function(){
+				$ .fn.zTree.init($("#menuTree"), setting, zNodes);
+			});
+		})($);
 		//-->
 	</SCRIPT>
 </body>
