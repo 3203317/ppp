@@ -79,8 +79,7 @@ public class SiteController extends MultiViewResource {
 	 * @return
 	 */
 	private Page getChildMenus() {
-		LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
-		orderby.put("id", "asc");
+		orderby.put("pid", "asc");
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("pid", getFirstMenuId());
 		Page page = menuService.findChildren(paramMap, orderby);
