@@ -49,4 +49,11 @@ public class MenuServiceImpl implements MenuService {
 		Page page = menuDao.findAll(paramMap, orderby);
 		return page;
 	}
+
+	@Override
+	public Page findChildren(Map<String, Object> paramMap,
+			LinkedHashMap<String, String> orderby) {
+		Page page = menuDao.findAllChildren(paramMap, orderby);
+		return page;
+	}
 }

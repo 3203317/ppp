@@ -1,68 +1,22 @@
-#foreach($!obj in $!childMenusView.records)
-	<!-- $!obj.MENU_NAME -->
-#end
 <div class='panel-group' id='accordion'>
+	#foreach($!obj in $!childMenusView.records)
+		#if(4 == $!obj.ID.length())
 	<div class='panel panel-default'>
 		<div class='panel-heading'>
 			<h4 class='panel-title'>
-				<a data-toggle='collapse' data-parent='#accordion' href='#collapseMenu'>菜单管理</a>
+				<a data-toggle='collapse' data-parent='#accordion' href='#collapse$!obj.ID'>$!obj.MENU_NAME</a>
 			</h4>
 		</div>
-		<div id='collapseMenu' class='panel-collapse collapse in'>
+		<div id='collapse$!obj.ID' class='panel-collapse collapse#if(1 == $velocityCount) in#end'>
 			<div class='panel-body'>
-				<p><a href='#page${virtualPath}menu/index'>菜单信息维护</a></p>
-				<p><a href='javascript:;'>菜单操作注册</a></p>
+				#foreach($!obj2 in $!childMenusView.records)
+					#if(6 == $!obj2.ID.length() && $!obj.ID == $!obj2.PID)
+				<p><a href='#page${virtualPath}$!obj2.MENU_URL'>$!obj2.MENU_NAME</a></p>
+					#end
+				#end
 			</div>
 		</div>
 	</div>
-	<div class='panel panel-default'>
-		<div class='panel-heading'>
-			<h4 class='panel-title'>
-				<a data-toggle='collapse' data-parent='#accordion' href='#collapseRole'>角色管理</a>
-			</h4>
-		</div>
-		<div id='collapseRole' class='panel-collapse collapse'>
-			<div class='panel-body'>
-				<p><a href='#page${virtualPath}role/index'>角色信息维护</a></p>
-				<p><a href='javascript:;'>角色权限设置</a></p>
-			</div>
-		</div>
-	</div>
-	<div class='panel panel-default'>
-		<div class='panel-heading'>
-			<h4 class='panel-title'>
-				<a data-toggle='collapse' data-parent='#accordion' href='#collapseUser'>用户管理</a>
-			</h4>
-		</div>
-		<div id='collapseUser' class='panel-collapse collapse'>
-			<div class='panel-body'>
-				<p><a href='#page${virtualPath}user/index'>用户信息维护</a></p>
-				<p><a href='javascript:;'>用户角色设置</a></p>
-			</div>
-		</div>
-	</div>
-	<div class='panel panel-default'>
-		<div class='panel-heading'>
-			<h4 class='panel-title'>
-				<a data-toggle='collapse' data-parent='#accordion' href='#collapseAct'>动作管理</a>
-			</h4>
-		</div>
-		<div id='collapseAct' class='panel-collapse collapse'>
-			<div class='panel-body'>
-				<p><a href='#page${virtualPath}action/index'>动作信息维护</a></p>
-			</div>
-		</div>
-	</div>
-	<div class='panel panel-default'>
-		<div class='panel-heading'>
-			<h4 class='panel-title'>
-				<a data-toggle='collapse' data-parent='#accordion' href='#collapseDat'>数据权限</a>
-			</h4>
-		</div>
-		<div id='collapseDat' class='panel-collapse collapse'>
-			<div class='panel-body'>
-				<p><a href='javascript:;'>数据规则设置</a></p>
-			</div>
-		</div>
-	</div>
+		#end
+	#end
 </div>

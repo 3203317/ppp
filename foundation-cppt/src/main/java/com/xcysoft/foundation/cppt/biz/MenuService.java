@@ -24,4 +24,8 @@ public interface MenuService extends BaseService<Menu> {
 	@SuppressWarnings("rawtypes")
 	public Page findList(Map<String, Object> paramMap,
 			LinkedHashMap<String, String> orderby);
+
+	@SuppressWarnings("rawtypes")
+	public Page findChildren(Map<String, Object> paramMap,
+			LinkedHashMap<String, String> orderby);
 }

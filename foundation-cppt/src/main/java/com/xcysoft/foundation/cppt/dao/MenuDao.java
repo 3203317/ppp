@@ -46,4 +46,25 @@ public class MenuDao extends BaseMenuDao {
 		}
 		return this.sqlQueryForPage(sql.toString(), param.toArray(), orderby);
 	}
+
+	public Page findAllChildren(Map<String, Object> paramMap,
+			LinkedHashMap<String, String> orderby) {
+		List<Object> param = new ArrayList<Object>();
+		StringBuilder sql = new StringBuilder(
+				"select * from s_menu t where 1=1");
+		if (null != paramMap) {
+			if (paramMap.containsKey("menu_name")
+					&& StringUtils.isNotBlank(paramMap.get("menu_name")
+							.toString())) {
+				sql.append(" and t.menu_name like ?");
+				param.add("%" + paramMap.get("menu_name") + "%");
+			}
+			if (paramMap.containsKey("pid")
+					&& StringUtils.isNotBlank(paramMap.get("pid").toString())) {
+				sql.append(" and t.pid like ?");
+				param.add(paramMap.get("pid") + "%");
+			}
+		}
+		return this.sqlQueryForPage(sql.toString(), param.toArray(), orderby);
+	}
 }
