@@ -12,7 +12,7 @@
 		<div id='navbar-collapse' class='collapse navbar-collapse'>
 			<ul class='nav navbar-nav'>
 				#foreach($!obj in $!menuView.records)
-					<li#if(2 == $velocityCount) class='active'#end><a href='#page${virtualPath}manage/welcome' onclick='sideNav("$!obj.ID")'>$!obj.MENU_NAME</a></li>
+					<li#if(2 == $velocityCount) class='active'#end><a href='#page${virtualPath}manage/welcome' onclick='sideNav("$!obj.ID", this)'>$!obj.MENU_NAME</a></li>
 				#end
 			</ul>
 			<ul class='nav navbar-nav navbar-right'>
@@ -56,14 +56,14 @@ $(function(){
 		location.href = '${virtualPath}user/logout'
 	});
 });
-function sideNav(menuId){
+function sideNav(menuId, self){
+	$(self).parents().find('.active').removeClass();
+	$(self).parent().addClass('active');
 	$ .ajax({
 		url: 'sideNav.do',
 		type: 'GET',
 		dataType: 'JSON',
-		data: {
-			pid: menuId
-		}
+		data: { pid: menuId }
 	}).done(function (data) {
 		var data = data.msg;
 		if(!data.success) return;
