@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import cn.newcapec.framework.core.exception.asserts.AssertObject;
 import cn.newcapec.framework.core.handler.MultiViewResource;
+import cn.newcapec.framework.core.rest.Msg;
 import cn.newcapec.framework.core.utils.fileUtils.SysConfigUtil;
 import cn.newcapec.framework.core.utils.pagesUtils.Page;
 import cn.newcapec.framework.core.utils.pagesUtils.PageContext;
@@ -61,7 +65,7 @@ public class SiteController extends MultiViewResource {
 		pageView = new PageView<Map<String, Object>>(PageContext.getPageSize(),
 				PageContext.getOffset());
 		pageView.setQueryResult(page);
-		modelMap.put("childMenusView", pageView);
+		modelMap.put("sideNavView", pageView);
 
 		return toView(getUrl("manage.indexUI"), modelMap);
 	}
@@ -71,6 +75,32 @@ public class SiteController extends MultiViewResource {
 		modelMap.put("cdn", SysConfigUtil.get("html.cdn"));
 		modelMap.put("virtualPath", SysConfigUtil.get("html.virtualPath"));
 		return toView(getUrl("manage.welcomeUI"), modelMap);
+	}
+
+	@RequestMapping(value = "sideNav.do", method = RequestMethod.GET)
+	public Msg sideNav(final HttpServletRequest request) {
+		return doExpAssert(new AssertObject() {
+			@Override
+			public void AssertMethod(Msg msg) {
+				orderby.put("sort", "asc");
+				orderby.put("pid", "asc");
+				PageContext.setPageSize(Integer.MAX_VALUE);
+				Page page = menuService.findChildren(getJsonObject(), orderby);
+				PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
+						PageContext.getPageSize(), PageContext.getOffset());
+				pageView.setQueryResult(page);
+
+				Map<String, Object> modelMap = new HashMap<String, Object>();
+				modelMap.put("sideNavView", pageView);
+
+				modelMap.put("cdn", SysConfigUtil.get("html.cdn"));
+				modelMap.put("virtualPath",
+						SysConfigUtil.get("html.virtualPath"));
+
+				msg.setData(toHtml(getUrl("manage.side.navUI"), modelMap));
+				msg.setSuccess(true);
+			}
+		});
 	}
 
 	/**

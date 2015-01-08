@@ -1,5 +1,5 @@
 <div class='panel-group' id='accordion'>
-	#foreach($!obj in $!childMenusView.records)
+	#foreach($!obj in $!sideNavView.records)
 		#if(4 == $!obj.ID.length())
 	<div class='panel panel-default'>
 		<div class='panel-heading'>
@@ -9,7 +9,7 @@
 		</div>
 		<div id='collapse$!obj.ID' class='panel-collapse collapse#if(1 == $velocityCount) in#end'>
 			<div class='panel-body'>
-				#foreach($!obj2 in $!childMenusView.records)
+				#foreach($!obj2 in $!sideNavView.records)
 					#if(6 == $!obj2.ID.length() && $!obj.ID == $!obj2.PID)
 				<p><a href='#page${virtualPath}$!obj2.MENU_URL'>$!obj2.MENU_NAME</a></p>
 					#end
