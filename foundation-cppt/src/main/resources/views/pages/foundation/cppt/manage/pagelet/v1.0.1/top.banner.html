@@ -12,14 +12,14 @@
 		<div id='navbar-collapse' class='collapse navbar-collapse'>
 			<ul class='nav navbar-nav'>
 				#foreach($!obj in $!menuView.records)
-					<li#if(2 == $velocityCount) class='active'#end><a href='#page${virtualPath}manage/welcome' onclick='sideNav("$!obj.ID", this)'>$!obj.MENU_NAME</a></li>
+					<li#if(2 == $velocityCount) class='active'#end><a href='#page/${virtualPath}manage/welcome' onclick='sideNav("$!obj.ID", this)'>$!obj.MENU_NAME</a></li>
 				#end
 			</ul>
 			<ul class='nav navbar-nav navbar-right'>
 				<li class='dropdown active'>
 					<a href='javascript:;' class='dropdown-toggle' data-toggle='dropdown'>配置 <b class='caret'></b></a>
 					<ul class='dropdown-menu'>
-						<li><a href='#page${virtualPath}user/changePwd'>修改密码</a></li>
+						<li><a href='#page/${virtualPath}user/changePwd'>修改密码</a></li>
 					</ul>
 				</li>
 				<li class='active'><a href='javascript:;' onclick="$('#logoutConfirmModal').modal()">退出</a></li>

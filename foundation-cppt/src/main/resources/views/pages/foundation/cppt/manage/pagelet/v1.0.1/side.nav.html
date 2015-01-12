@@ -11,7 +11,7 @@
 			<div class='panel-body'>
 				#foreach($!obj2 in $!sideNavView.records)
 					#if(6 == $!obj2.ID.length() && $!obj.ID == $!obj2.PID)
-				<p><a href='#page${virtualPath}$!obj2.MENU_URL'>$!obj2.MENU_NAME</a></p>
+				<p><a href='#page/${virtualPath}$!obj2.MENU_URL'>$!obj2.MENU_NAME</a></p>
 					#end
 				#end
 			</div>
