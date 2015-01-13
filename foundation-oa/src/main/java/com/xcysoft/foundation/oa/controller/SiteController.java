@@ -2,6 +2,8 @@ package com.xcysoft.foundation.oa.controller;
 
 import java.util.LinkedHashMap;
 
+import net.sf.json.JSONObject;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -34,6 +36,11 @@ public class SiteController extends MultiViewResource {
 	public ModelAndView indexUI(ModelMap modelMap) {
 		modelMap.put("cdn", SysConfigUtil.get("html.cdn"));
 		modelMap.put("virtualPath", SysConfigUtil.get("html.virtualPath"));
+
+		JSONObject jsonObj = getJsonObject();
+		if (null != jsonObj && jsonObj.containsKey("tenant")) {
+			modelMap.put("tenant", jsonObj.get("tenant"));
+		}
 		return toView(getUrl("site.indexUI"), modelMap);
 	}
 
