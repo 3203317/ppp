@@ -103,15 +103,15 @@ ul.ztree * {
 						enable: true
 					}
 				}, callback: {
-					beforeExpand: function(treeid, node) {
-						var zTree = $ .fn.zTree.getZTreeObj(treeid);
-						if(node.children) return;
+					beforeExpand: function(treeId, treeNode) {
+						var zTree = $ .fn.zTree.getZTreeObj(treeId);
+						if(treeNode.children) return;
 						$ .ajax({
 							url: 'list.do',
 							type: 'GET',
 							dataType: 'JSON',
 							data: {
-								pid: node.id,
+								pid: treeNode.id,
 								type: 'object'
 							}
 						}).done(function (data) {
@@ -119,13 +119,29 @@ ul.ztree * {
 							var items = data.msg.data.items;
 							for(var i=0,j=items.length;i<j;i++){
 								var item = items[i];
-								zTree.addNodes(node, {
+								zTree.addNodes(treeNode, {
 									id: item.ID,
-									pId: node.id,
+									pId: treeNode.id,
 									isParent: !!item.ISPARENT,
 									name: item.MENU_NAME
 								});
 							}
+						});
+					}, onClick: function(event, treeId, treeNode, clickFlag){
+						var zTree = $ .fn.zTree.getZTreeObj(treeId);
+						$ .ajax({
+							url: 'list.do',
+							type: 'GET',
+							dataType: 'JSON',
+							data: {
+								pid: treeNode.id
+							}
+						}).done(function (data) {
+							var data = data.msg;
+							if(!data.success) return;
+							var _data = data.data;
+							if(!_data) return;
+							$('#table1').html(_data);
 						});
 					}
 				}
