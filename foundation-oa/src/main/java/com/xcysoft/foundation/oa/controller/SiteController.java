@@ -41,6 +41,11 @@ public class SiteController extends MultiViewResource {
 		if (null != jsonObj && jsonObj.containsKey("tenant")) {
 			modelMap.put("tenant", jsonObj.get("tenant"));
 		}
+
+		if (null != jsonObj) {
+			modelMap.put("urlparams", jsonObj.toString());
+		}
+
 		return toView(getUrl("site.indexUI"), modelMap);
 	}
 
