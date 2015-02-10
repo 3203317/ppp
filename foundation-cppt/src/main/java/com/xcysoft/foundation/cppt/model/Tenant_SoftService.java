@@ -29,7 +29,7 @@ public class Tenant_SoftService extends CommonModel {
 		this.tenant_id = tenant_id;
 	}
 
-	@Column(name = "SERVICE_NAME", length = 32)
+	@Column(name = "SOFTSERVICE_ID", length = 32)
 	public String getSoftservice_id() {
 		return softservice_id;
 	}
