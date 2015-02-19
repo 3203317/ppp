@@ -21,17 +21,6 @@ public class Tenant extends CommonModel {
 	private String tel;
 	private Integer status;
 
-	private String user_id;
-
-	@Column(name = "USER_ID", length = 32)
-	public String getUser_id() {
-		return user_id;
-	}
-
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
-	}
-
 	@Column(name = "TENANT_NAME", length = 32)
 	public String getTenant_name() {
 		return tenant_name;
