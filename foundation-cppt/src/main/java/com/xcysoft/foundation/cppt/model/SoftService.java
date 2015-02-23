@@ -17,35 +17,25 @@ public class SoftService extends CommonModel {
 
 	private static final long serialVersionUID = -5721553887568455358L;
 
-	private String service_name;
-	private String service_version;
-	private String service_desc;
+	private String softservice_name;
+	private String softservice_desc;
 
-	@Column(name = "SERVICE_NAME", length = 32)
-	public String getService_name() {
-		return service_name;
+	@Column(name = "SOFTSERVICE_NAME", length = 32)
+	public String getSoftservice_name() {
+		return softservice_name;
 	}
 
-	public void setService_name(String service_name) {
-		this.service_name = service_name;
+	public void setSoftservice_name(String softservice_name) {
+		this.softservice_name = softservice_name;
 	}
 
-	@Column(name = "SERVICE_VERSION", length = 32)
-	public String getService_version() {
-		return service_version;
+	@Column(name = "SOFTSERVICE_DESC", length = 255)
+	public String getSoftservice_desc() {
+		return softservice_desc;
 	}
 
-	public void setService_version(String service_version) {
-		this.service_version = service_version;
-	}
-
-	@Column(name = "SERVICE_DESC", length = 255)
-	public String getService_desc() {
-		return service_desc;
-	}
-
-	public void setService_desc(String service_desc) {
-		this.service_desc = service_desc;
+	public void setSoftservice_desc(String softservice_desc) {
+		this.softservice_desc = softservice_desc;
 	}
 
 }
