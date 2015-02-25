@@ -1,5 +1,7 @@
 package com.xcysoft.foundation.cppt.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -22,6 +24,17 @@ public class User extends CommonModel {
 
 	private String real_name;
 	private Integer sex;
+
+	private Date create_time;
+
+	@Column(name = "CREATE_TIME")
+	public Date getCreate_time() {
+		return create_time;
+	}
+
+	public void setCreate_time(Date create_time) {
+		this.create_time = create_time;
+	}
 
 	@Column(name = "REAL_NAME", length = 32)
 	public String getReal_name() {

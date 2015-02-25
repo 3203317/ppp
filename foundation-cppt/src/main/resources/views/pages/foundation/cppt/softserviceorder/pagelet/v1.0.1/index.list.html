@@ -1,0 +1,22 @@
+<table id='table1' data-olx-type='olx.grid' class='table table-bordered table-hover table-condensed table-striped' data-url='/tenant/list' data-current='1' data-pagesize='20' data-count='561'>
+	<thead>
+		<tr>
+			<th class='ta'><input type='checkbox' title='全选/取消'></th>
+			<th>租户名称</th>
+			<th>服务名称</th>
+			<th>用户数</th>
+			<th>到期日期</th>
+			<th>费用</th>
+			<th>创建时间</th>
+		</tr>
+	</thead>
+	<tbody>
+		#foreach($!tenant in $!pageView.records)<tr>
+			<td class='ta'><input type='checkbox' value='$!tenant.ID'></td>
+			<td>$!tenant.TENANT_NAME</td>
+			<td>$!tenant.CORP_NAME</td>
+			<td>$!tenant.TEL</td>
+			<td>#parseStatus($!tenant.STATUS)</td>
+		</tr>#end
+	</tbody>
+</table>

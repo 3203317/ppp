@@ -26,6 +26,17 @@ public class SoftServiceOrder extends CommonModel {
 
 	private Integer cost;
 
+	private Date create_time;
+
+	@Column(name = "CREATE_TIME")
+	public Date getCreate_time() {
+		return create_time;
+	}
+
+	public void setCreate_time(Date create_time) {
+		this.create_time = create_time;
+	}
+
 	@Column(name = "COST", length = 8)
 	public Integer getCost() {
 		return cost;
