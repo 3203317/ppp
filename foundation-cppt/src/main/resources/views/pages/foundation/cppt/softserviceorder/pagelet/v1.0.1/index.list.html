@@ -17,7 +17,7 @@
 			<td>$!record.SOFTSERVICE_NAME</td>
 			<td>$!record.USER_NUMS</td>
 			<td>$!record.EXPIRED_DATE</td>
-			<td>$!record.COST</td>
+			<td style='text-align:right;'>#parseCurrency($!record.COST)</td>
 			<td>$!record.CREATE_TIME</td>
 		</tr>#end
 	</tbody>
