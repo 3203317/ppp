@@ -1,6 +1,7 @@
 package com.xcysoft.foundation.cppt.dao;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,7 +26,8 @@ public class SoftServiceOrderDao extends BaseSoftServiceOrderDao {
 	 * @param paramMap
 	 * @return
 	 */
-	public Page findAll(Map<String, Object> paramMap) {
+	public Page findAll(Map<String, Object> paramMap,
+			LinkedHashMap<String, String> orderby) {
 		List<Object> param = new ArrayList<Object>();
 		StringBuilder sql = new StringBuilder("select * from ("
 				+ "select a.*, b.SOFTSERVICE_NAME, c.TENANT_NAME "
@@ -46,6 +48,6 @@ public class SoftServiceOrderDao extends BaseSoftServiceOrderDao {
 				param.add("%" + paramMap.get("tenant_name") + "%");
 			}
 		}
-		return this.sqlQueryForPage(sql.toString(), param.toArray(), null);
+		return this.sqlQueryForPage(sql.toString(), param.toArray(), orderby);
 	}
 }

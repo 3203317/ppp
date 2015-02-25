@@ -1,6 +1,7 @@
 package com.xcysoft.foundation.cppt.controller;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,12 +38,16 @@ public class SoftServiceOrderController extends MultiViewResource {
 	@Autowired
 	private SoftServiceOrderService softServiceOrderService;
 
+	private LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
+
 	@RequestMapping(value = "index", method = RequestMethod.GET)
 	public ModelAndView indexUI(ModelMap modelMap) {
 		modelMap.put("cdn", SysConfigUtil.get("html.cdn"));
 		modelMap.put("virtualPath", SysConfigUtil.get("html.virtualPath"));
 
-		Page page = softServiceOrderService.findList(null);
+		orderby.put("id", "desc");
+
+		Page page = softServiceOrderService.findList(null, orderby);
 		PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
 				PageContext.getPageSize(), PageContext.getOffset());
 		pageView.setQueryResult(page);
@@ -56,7 +61,9 @@ public class SoftServiceOrderController extends MultiViewResource {
 		return doExpAssert(new AssertObject() {
 			@Override
 			public void AssertMethod(Msg msg) {
-				Page page = softServiceOrderService.findList(getJsonObject());
+				orderby.put("id", "desc");
+				Page page = softServiceOrderService.findList(getJsonObject(),
+						orderby);
 				PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
 						PageContext.getPageSize(), PageContext.getOffset());
 				pageView.setQueryResult(page);

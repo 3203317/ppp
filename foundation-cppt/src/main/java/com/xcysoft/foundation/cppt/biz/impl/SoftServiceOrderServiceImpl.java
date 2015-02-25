@@ -1,5 +1,6 @@
 package com.xcysoft.foundation.cppt.biz.impl;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +44,9 @@ public class SoftServiceOrderServiceImpl implements SoftServiceOrderService {
 	}
 
 	@Override
-	public Page findList(Map<String, Object> paramMap) {
-		Page page = softServiceOrderDao.findAll(paramMap);
+	public Page findList(Map<String, Object> paramMap,
+			LinkedHashMap<String, String> orderby) {
+		Page page = softServiceOrderDao.findAll(paramMap, orderby);
 		return page;
 	}
 }

@@ -1,5 +1,6 @@
 package com.xcysoft.foundation.cppt.biz;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import cn.newcapec.framework.core.biz.BaseService;
@@ -20,5 +21,6 @@ public interface SoftServiceOrderService extends BaseService<SoftServiceOrder> {
 	 * @return
 	 */
 	@SuppressWarnings("rawtypes")
-	public Page findList(Map<String, Object> paramMap);
+	public Page findList(Map<String, Object> paramMap,
+			LinkedHashMap<String, String> orderby);
 }
