@@ -21,6 +21,27 @@ public class Tenant extends CommonModel {
 	private String tel;
 	private Integer status;
 
+	private String password;
+	private String corp_name;
+
+	@Column(name = "CORP_NAME", length = 128)
+	public String getCorp_name() {
+		return corp_name;
+	}
+
+	public void setCorp_name(String corp_name) {
+		this.corp_name = corp_name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	@Column(name = "PASSWORD", length = 32)
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Column(name = "TENANT_NAME", length = 32)
 	public String getTenant_name() {
 		return tenant_name;
