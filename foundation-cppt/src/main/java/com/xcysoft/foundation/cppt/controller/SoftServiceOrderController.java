@@ -45,7 +45,7 @@ public class SoftServiceOrderController extends MultiViewResource {
 		modelMap.put("cdn", SysConfigUtil.get("html.cdn"));
 		modelMap.put("virtualPath", SysConfigUtil.get("html.virtualPath"));
 
-		orderby.put("id", "desc");
+		orderby.put("create_time", "desc");
 
 		Page page = softServiceOrderService.findList(null, orderby);
 		PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
@@ -61,7 +61,7 @@ public class SoftServiceOrderController extends MultiViewResource {
 		return doExpAssert(new AssertObject() {
 			@Override
 			public void AssertMethod(Msg msg) {
-				orderby.put("id", "desc");
+				orderby.put("create_time", "desc");
 				Page page = softServiceOrderService.findList(getJsonObject(),
 						orderby);
 				PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
@@ -76,5 +76,12 @@ public class SoftServiceOrderController extends MultiViewResource {
 				msg.setSuccess(true);
 			}
 		});
+	}
+
+	@RequestMapping(value = "add", method = RequestMethod.GET)
+	public ModelAndView addUI(ModelMap modelMap) {
+		modelMap.put("cdn", SysConfigUtil.get("html.cdn"));
+		modelMap.put("virtualPath", SysConfigUtil.get("html.virtualPath"));
+		return toView(getUrl("softserviceorder.addUI"), modelMap);
 	}
 }
