@@ -21,7 +21,7 @@ import cn.newcapec.framework.core.utils.pagesUtils.Page;
 import cn.newcapec.framework.core.utils.pagesUtils.PageContext;
 import cn.newcapec.framework.core.utils.pagesUtils.PageView;
 
-import com.xcysoft.foundation.cppt.biz.TenantService;
+import com.xcysoft.foundation.cppt.biz.SoftServiceOrderService;
 
 /**
  *
@@ -35,14 +35,14 @@ import com.xcysoft.foundation.cppt.biz.TenantService;
 public class SoftServiceOrderController extends MultiViewResource {
 
 	@Autowired
-	private TenantService tenantService;
+	private SoftServiceOrderService softServiceOrderService;
 
 	@RequestMapping(value = "index", method = RequestMethod.GET)
 	public ModelAndView indexUI(ModelMap modelMap) {
 		modelMap.put("cdn", SysConfigUtil.get("html.cdn"));
 		modelMap.put("virtualPath", SysConfigUtil.get("html.virtualPath"));
 
-		Page page = tenantService.findList(null);
+		Page page = softServiceOrderService.findList(null);
 		PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
 				PageContext.getPageSize(), PageContext.getOffset());
 		pageView.setQueryResult(page);
@@ -56,7 +56,7 @@ public class SoftServiceOrderController extends MultiViewResource {
 		return doExpAssert(new AssertObject() {
 			@Override
 			public void AssertMethod(Msg msg) {
-				Page page = tenantService.findList(getJsonObject());
+				Page page = softServiceOrderService.findList(getJsonObject());
 				PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
 						PageContext.getPageSize(), PageContext.getOffset());
 				pageView.setQueryResult(page);
