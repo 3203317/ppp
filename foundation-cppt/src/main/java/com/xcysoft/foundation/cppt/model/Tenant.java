@@ -1,5 +1,7 @@
 package com.xcysoft.foundation.cppt.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -23,6 +25,17 @@ public class Tenant extends CommonModel {
 
 	private String password;
 	private String corp_name;
+
+	private Date reg_time;
+
+	@Column(name = "REG_TIME")
+	public Date getReg_time() {
+		return reg_time;
+	}
+
+	public void setReg_time(Date reg_time) {
+		this.reg_time = reg_time;
+	}
 
 	@Column(name = "CORP_NAME", length = 128)
 	public String getCorp_name() {

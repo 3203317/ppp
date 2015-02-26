@@ -6,15 +6,17 @@
 			<th>公司名称</th>
 			<th>手机</th>
 			<th>状态</th>
+			<th>注册时间</th>
 		</tr>
 	</thead>
 	<tbody>
-		#foreach($!tenant in $!pageView.records)<tr>
-			<td class='ta'><input type='checkbox' value='$!tenant.ID'></td>
-			<td>$!tenant.TENANT_NAME</td>
-			<td>$!tenant.CORP_NAME</td>
-			<td>$!tenant.TEL</td>
-			<td>#parseStatus($!tenant.STATUS)</td>
+		#foreach($!record in $!pageView.records)<tr>
+			<td class='ta'><input type='checkbox' value='$!record.ID'></td>
+			<td>$!record.TENANT_NAME</td>
+			<td>$!record.CORP_NAME</td>
+			<td>$!record.TEL</td>
+			<td>#parseStatus($!record.STATUS)</td>
+			<td>$!record.REG_TIME</td>
 		</tr>#end
 	</tbody>
 </table>

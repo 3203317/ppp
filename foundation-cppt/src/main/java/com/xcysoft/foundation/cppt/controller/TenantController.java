@@ -1,6 +1,7 @@
 package com.xcysoft.foundation.cppt.controller;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,12 +38,16 @@ public class TenantController extends MultiViewResource {
 	@Autowired
 	private TenantService tenantService;
 
+	private LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
+
 	@RequestMapping(value = "index", method = RequestMethod.GET)
 	public ModelAndView indexUI(ModelMap modelMap) {
 		modelMap.put("cdn", SysConfigUtil.get("html.cdn"));
 		modelMap.put("virtualPath", SysConfigUtil.get("html.virtualPath"));
 
-		Page page = tenantService.findList(null);
+		orderby.put("REG_TIME", "desc");
+
+		Page page = tenantService.findList(null, orderby);
 		PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
 				PageContext.getPageSize(), PageContext.getOffset());
 		pageView.setQueryResult(page);
@@ -56,7 +61,8 @@ public class TenantController extends MultiViewResource {
 		return doExpAssert(new AssertObject() {
 			@Override
 			public void AssertMethod(Msg msg) {
-				Page page = tenantService.findList(getJsonObject());
+				orderby.put("REG_TIME", "desc");
+				Page page = tenantService.findList(getJsonObject(), orderby);
 				PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
 						PageContext.getPageSize(), PageContext.getOffset());
 				pageView.setQueryResult(page);
