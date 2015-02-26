@@ -5,11 +5,6 @@
 	#parse('foundation/cppt/site/pagelet/v1.0.1/head.html')
 <link rel='stylesheet' type='text/css' href='${virtualPath}styles/css/foundation/cppt/manage/v1.0.1/index.css' media='screen' />
 <link rel='stylesheet' type='text/css' href='${virtualPath}styles/css/foundation/cppt/manage/v1.0.1/iframe.css' media='screen' />
-<style>
-li a {
-  font-size: 12px;
-}
-</style>
 </head>
 <body>
 	<div class='container'>
@@ -21,11 +16,11 @@ li a {
 						<a href='javascript:;'>产品平台</a></li>
 					<li class='active'>租户管理</li>
 					<li class='active'>租户管理</li>
-					<li class='active'>服务订单维护</li>
+					<li class='active'>用户信息维护</li>
 				</ol>
 				<div id='info_alert' class='alert alert-info'>
 					<button type='button' class='close' data-dismiss='alert'>&times;</button>
-					<strong>提示：</strong>查询设置租户信息。
+					<strong>提示：</strong>查询设置租户用户信息。
 				</div>
 				<div class='panel panel-info'>
 					<div class='panel-heading'>
@@ -37,7 +32,7 @@ li a {
 								<input type='text' class='form-control' id='searchFrm_TenantName' name='tenant_name' placeholder='租户名称'>
 							</div>
 							<div class='form-group'>
-								<input type='text' class='form-control' id='searchFrm_SoftServiceName' name='softservice_name' placeholder='服务名称'>
+								<input type='text' class='form-control' id='searchFrm_UserName' name='user_name' placeholder='用户名'>
 							</div>
 							<button type='button' class='btn btn-default glyphicon glyphicon-search' id='searchFrm_btn_search'>&#8201;查询</button>
 						</form>
@@ -46,12 +41,12 @@ li a {
 				<div class='panel panel-default table-responsive'>
 					<div class='panel-heading'>
 						<div class='btn-group btn-group-sm'>
-							<a class='btn btn-primary glyphicon glyphicon-plus-sign' href="javascript:go('#page/${virtualPath}softserviceorder/add')">新增</a>
+							<button class='btn btn-primary glyphicon glyphicon-plus-sign' data-toggle='modal' data-target='#addModal'>新增</button>
 							<button id='btn_edit' class='btn btn-default glyphicon glyphicon-edit' data-toggle='modal' data-target='#editModal'>编辑</button>
 							<button id='btn_del' class='btn btn-danger glyphicon glyphicon-remove-sign'>删除</button>
 						</div>
 					</div>
-					#parse('foundation/cppt/softserviceorder/pagelet/v1.0.1/index.list.html')
+					#parse('foundation/cppt/tenantuser/pagelet/v1.0.1/index.list.html')
 				</div>
 				<nav>
 					<ul class="pagination pagination-sm">

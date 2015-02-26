@@ -13,20 +13,59 @@ import cn.newcapec.framework.core.model.CommonModel;
  * @author huangxin
  *
  */
-@Table(name = "s_tenant")
+@Table(name = "s_tenantuser")
 @Entity
-public class Tenant extends CommonModel {
+public class TenantUser extends CommonModel {
 
 	private static final long serialVersionUID = 7647583745725460714L;
 
-	private String tenant_name;
+	private String tenant_id;
 	private String tel;
 	private Integer status;
 
+	private String user_name;
 	private String password;
-	private String corp_name;
 
 	private Date reg_time;
+
+	private Integer sex;
+	private String real_name;
+
+	@Column(name = "SEX", length = 1)
+	public Integer getSex() {
+		return sex;
+	}
+
+	public void setSex(Integer sex) {
+		this.sex = sex;
+	}
+
+	@Column(name = "REAL_NAME", length = 16)
+	public String getReal_name() {
+		return real_name;
+	}
+
+	public void setReal_name(String real_name) {
+		this.real_name = real_name;
+	}
+
+	@Column(name = "TENANT_ID", length = 32)
+	public String getTenant_id() {
+		return tenant_id;
+	}
+
+	public void setTenant_id(String tenant_id) {
+		this.tenant_id = tenant_id;
+	}
+
+	@Column(name = "USER_NAME", length = 32)
+	public String getUser_name() {
+		return user_name;
+	}
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
 
 	@Column(name = "REG_TIME")
 	public Date getReg_time() {
@@ -37,15 +76,6 @@ public class Tenant extends CommonModel {
 		this.reg_time = reg_time;
 	}
 
-	@Column(name = "CORP_NAME", length = 128)
-	public String getCorp_name() {
-		return corp_name;
-	}
-
-	public void setCorp_name(String corp_name) {
-		this.corp_name = corp_name;
-	}
-
 	@Column(name = "PASSWORD", length = 32)
 	public String getPassword() {
 		return password;
@@ -53,15 +83,6 @@ public class Tenant extends CommonModel {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	@Column(name = "TENANT_NAME", length = 32)
-	public String getTenant_name() {
-		return tenant_name;
-	}
-
-	public void setTenant_name(String tenant_name) {
-		this.tenant_name = tenant_name;
 	}
 
 	@Column(name = "TEL", length = 32)
