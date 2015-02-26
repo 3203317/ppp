@@ -22,7 +22,7 @@ import cn.newcapec.framework.core.utils.pagesUtils.Page;
 import cn.newcapec.framework.core.utils.pagesUtils.PageContext;
 import cn.newcapec.framework.core.utils.pagesUtils.PageView;
 
-import com.xcysoft.foundation.cppt.biz.TenantService;
+import com.xcysoft.foundation.cppt.biz.TenantOrgService;
 
 /**
  *
@@ -36,7 +36,7 @@ import com.xcysoft.foundation.cppt.biz.TenantService;
 public class TenantOrgController extends MultiViewResource {
 
 	@Autowired
-	private TenantService tenantService;
+	private TenantOrgService tenantOrgService;
 
 	private LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
 
@@ -46,7 +46,7 @@ public class TenantOrgController extends MultiViewResource {
 		modelMap.put("virtualPath", SysConfigUtil.get("html.virtualPath"));
 
 		orderby.put("REG_TIME", "desc");
-		Page page = tenantService.findList(null, orderby);
+		Page page = tenantOrgService.findList(null, orderby);
 		PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
 				PageContext.getPageSize(), PageContext.getOffset());
 		pageView.setQueryResult(page);
@@ -61,7 +61,7 @@ public class TenantOrgController extends MultiViewResource {
 			@Override
 			public void AssertMethod(Msg msg) {
 				orderby.put("REG_TIME", "desc");
-				Page page = tenantService.findList(getJsonObject(), orderby);
+				Page page = tenantOrgService.findList(getJsonObject(), orderby);
 				PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
 						PageContext.getPageSize(), PageContext.getOffset());
 				pageView.setQueryResult(page);
