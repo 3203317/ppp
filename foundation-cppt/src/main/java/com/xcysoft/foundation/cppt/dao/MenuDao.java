@@ -30,7 +30,7 @@ public class MenuDao extends BaseMenuDao {
 			LinkedHashMap<String, String> orderby) {
 		List<Object> param = new ArrayList<Object>();
 		StringBuilder sql = new StringBuilder(
-				"select * from s_menu t where 1=1");
+				"select t.* from s_menu t where 1=1");
 		if (null != paramMap) {
 			if (paramMap.containsKey("menu_name")
 					&& StringUtils.isNotBlank(paramMap.get("menu_name")
@@ -51,7 +51,7 @@ public class MenuDao extends BaseMenuDao {
 			LinkedHashMap<String, String> orderby) {
 		List<Object> param = new ArrayList<Object>();
 		StringBuilder sql = new StringBuilder(
-				"select * from s_menu t where 1=1");
+				"select t.* from s_menu t where 1=1");
 		if (null != paramMap) {
 			if (paramMap.containsKey("menu_name")
 					&& StringUtils.isNotBlank(paramMap.get("menu_name")
@@ -61,8 +61,8 @@ public class MenuDao extends BaseMenuDao {
 			}
 			if (paramMap.containsKey("pid")
 					&& StringUtils.isNotBlank(paramMap.get("pid").toString())) {
-				sql.append(" and t.pid like ?");
-				param.add(paramMap.get("pid") + "%");
+				sql.append(" and t.path like CONCAT((select path from s_menu where id=?), ',%')");
+				param.add(paramMap.get("pid"));
 			}
 		}
 		return this.sqlQueryForPage(sql.toString(), param.toArray(), orderby);

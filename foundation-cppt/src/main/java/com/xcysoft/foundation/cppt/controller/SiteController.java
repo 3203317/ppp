@@ -51,7 +51,7 @@ public class SiteController extends MultiViewResource {
 		modelMap.put("virtualPath", SysConfigUtil.get("html.virtualPath"));
 
 		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("pid", "00");
+		paramMap.put("pid", "0");
 		PageContext.setPageSize(Integer.MAX_VALUE);
 
 		orderby.put("sort", "asc");
@@ -83,7 +83,6 @@ public class SiteController extends MultiViewResource {
 			@Override
 			public void AssertMethod(Msg msg) {
 				orderby.put("sort", "asc");
-				orderby.put("pid", "asc");
 				PageContext.setPageSize(Integer.MAX_VALUE);
 				Page page = menuService.findChildren(getJsonObject(), orderby);
 				PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
@@ -109,7 +108,7 @@ public class SiteController extends MultiViewResource {
 	 * @return
 	 */
 	private Page getChildMenus() {
-		orderby.put("pid", "asc");
+		orderby.put("sort", "asc");
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("pid", getFirstMenuId());
 		Page page = menuService.findChildren(paramMap, orderby);
@@ -121,6 +120,6 @@ public class SiteController extends MultiViewResource {
 	 * @return
 	 */
 	private String getFirstMenuId() {
-		return "02";
+		return "4";
 	}
 }

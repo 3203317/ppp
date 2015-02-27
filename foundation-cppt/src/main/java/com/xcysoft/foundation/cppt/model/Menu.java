@@ -15,13 +15,24 @@ import cn.newcapec.framework.core.model.CommonModel;
 @Entity
 public class Menu extends CommonModel {
 
-	private static final long serialVersionUID = -4831791085842205655L;
+	private static final long serialVersionUID = -8340012625413254838L;
 
 	private String pid;
 	private String menu_name;
 	private String menu_url;
 	private Integer sort;
 	private Integer isParent;
+
+	private String path;
+
+	@Column(name = "PATH", length = 1000)
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
 
 	@Column(name = "ISPARENT")
 	public Integer getIsParent() {
