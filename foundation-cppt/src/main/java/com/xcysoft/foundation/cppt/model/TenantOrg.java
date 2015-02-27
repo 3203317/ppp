@@ -17,19 +17,29 @@ import cn.newcapec.framework.core.model.CommonModel;
 @Entity
 public class TenantOrg extends CommonModel {
 
-	private static final long serialVersionUID = -6594802840258584070L;
+	private static final long serialVersionUID = -1754167444971334188L;
 
 	private String tenant_id;
 
 	private String org_name;
 
-	private String _id;
-	private String p_id;
+	private String pid;
 
 	private Date create_time;
 
 	private Integer sort;
 	private Integer isParent;
+
+	private String path;
+
+	@Column(name = "PATH", length = 1000)
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
 
 	@Column(name = "SORT", length = 2)
 	public Integer getSort() {
@@ -49,22 +59,13 @@ public class TenantOrg extends CommonModel {
 		this.isParent = isParent;
 	}
 
-	@Column(name = "P_ID", length = 255)
-	public String getP_id() {
-		return p_id;
+	@Column(name = "PID", length = 255)
+	public String getPid() {
+		return pid;
 	}
 
-	public void setP_id(String p_id) {
-		this.p_id = p_id;
-	}
-
-	@Column(name = "_ID", length = 255)
-	public String get_id() {
-		return _id;
-	}
-
-	public void set_id(String _id) {
-		this._id = _id;
+	public void setPid(String pid) {
+		this.pid = pid;
 	}
 
 	@Column(name = "CREATE_TIME")
