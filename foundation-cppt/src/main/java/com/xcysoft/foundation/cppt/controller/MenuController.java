@@ -46,7 +46,7 @@ public class MenuController extends MultiViewResource {
 		modelMap.put("virtualPath", SysConfigUtil.get("html.virtualPath"));
 
 		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("pid", "00");
+		paramMap.put("pid", "0");
 		PageContext.setPageSize(Integer.MAX_VALUE);
 
 		orderby.put("sort", "asc");
