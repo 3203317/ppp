@@ -3,7 +3,7 @@
 		##if(4 == $!obj.ID.length())
 		#set ($len = 0)
 		#foreach ($item in $!obj.PATH.split(","))
-			#set ($len = $len + 1)
+			#set ($len = $velocityCount)
 		#end
 		#if(3 == $len)
 	<div class='panel panel-default'>
@@ -17,7 +17,7 @@
 				#foreach($!obj2 in $!sideNavView.records)
 					#set ($len = 0)
 					#foreach ($item in $!obj2.PATH.split(","))
-						#set ($len = $len + 1)
+						#set ($len = $velocityCount)
 					#end
 					#if(4 == $len && $!obj.ID == $!obj2.PID)
 				<p><a href='#page/${virtualPath}$!obj2.MENU_URL'>$!obj2.MENU_NAME</a></p>
