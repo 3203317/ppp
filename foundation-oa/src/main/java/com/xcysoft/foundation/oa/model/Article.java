@@ -17,16 +17,16 @@ public class Article extends CommonModel {
 
 	private static final long serialVersionUID = 4170561128898820100L;
 
-	private String article_name;
+	private String article_title;
 	private String article_content;
 
-	@Column(name = "ARTICLE_NAME", length = 128)
-	public String getArticle_name() {
-		return article_name;
+	@Column(name = "ARTICLE_TITLE", length = 128)
+	public String getArticle_title() {
+		return article_title;
 	}
 
-	public void setArticle_name(String article_name) {
-		this.article_name = article_name;
+	public void setArticle_title(String article_title) {
+		this.article_title = article_title;
 	}
 
 	@Column(name = "ARTICLE_CONTENT", length = 256)

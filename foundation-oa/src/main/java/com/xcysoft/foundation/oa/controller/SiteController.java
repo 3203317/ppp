@@ -1,9 +1,11 @@
 package com.xcysoft.foundation.oa.controller;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 import net.sf.json.JSONObject;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,6 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cn.newcapec.framework.core.handler.MultiViewResource;
 import cn.newcapec.framework.core.utils.fileUtils.SysConfigUtil;
+import cn.newcapec.framework.core.utils.pagesUtils.Page;
+import cn.newcapec.framework.core.utils.pagesUtils.PageContext;
+import cn.newcapec.framework.core.utils.pagesUtils.PageView;
+
+import com.xcysoft.foundation.oa.biz.ArticleService;
 
 /**
  *
@@ -24,6 +31,9 @@ import cn.newcapec.framework.core.utils.fileUtils.SysConfigUtil;
 @RequestMapping(value = "/site")
 @SuppressWarnings("all")
 public class SiteController extends MultiViewResource {
+
+	@Autowired
+	private ArticleService articleService;
 
 	private LinkedHashMap<String, String> orderby = new LinkedHashMap<String, String>();
 
@@ -45,6 +55,12 @@ public class SiteController extends MultiViewResource {
 		if (null != jsonObj) {
 			modelMap.put("urlparams", jsonObj.toString());
 		}
+
+		Page page = articleService.findList(null, null);
+		PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
+				PageContext.getPageSize(), PageContext.getOffset());
+		pageView.setQueryResult(page);
+		modelMap.put("pageView", pageView);
 
 		return toView(getUrl("site.indexUI"), modelMap);
 	}

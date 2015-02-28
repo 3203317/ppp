@@ -7,6 +7,14 @@
 </head>
 <body>
 oa 租户：“$!{tenant}”<br>
-url参数：“$!{urlparams}”
+url参数：“$!{urlparams}”<br>
+
+	<table style="border:solid 1px red;">
+		#foreach($!record in $!pageView.records)<tr>
+			<td>$!record.ID</td>
+			<td>$!record.ARTICLE_TITLE</td>
+			<td>$!record.ARTICLE_CONTENT</td>
+		</tr>#end
+	</table>
 </body>
 </html>
