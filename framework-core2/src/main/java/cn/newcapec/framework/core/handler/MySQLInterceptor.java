@@ -16,6 +16,12 @@ public class MySQLInterceptor extends EmptyInterceptor {
 
 	private static final long serialVersionUID = -5182264670201560449L;
 
+	static String[] DBTABLES = null;
+
+	static {
+		DBTABLES = SysConfigUtil.get("db.tables").split(",");
+	}
+
 	@Autowired
 	private HttpServletRequest request;
 
@@ -32,7 +38,7 @@ public class MySQLInterceptor extends EmptyInterceptor {
 	}
 
 	protected String[] getDbTables() {
-		String[] table_names = SysConfigUtil.get("db.tables").split(",");
+		String[] table_names = DBTABLES;
 		return table_names;
 	}
 
