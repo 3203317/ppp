@@ -20,6 +20,7 @@ import cn.newcapec.framework.core.utils.pagesUtils.PageContext;
 import cn.newcapec.framework.core.utils.pagesUtils.PageView;
 
 import com.xcysoft.foundation.oa.biz.ArticleService;
+import com.xcysoft.foundation.oa.model.Article;
 
 /**
  *
@@ -55,6 +56,14 @@ public class SiteController extends MultiViewResource {
 		if (null != jsonObj) {
 			modelMap.put("urlparams", jsonObj.toString());
 		}
+
+		Article article = new Article();
+		article.setArticle_title("haha");
+		article.setId("3");
+
+		articleService.saveOrUpdate(article);
+
+		articleService.get("1");
 
 		Page page = articleService.findList(null, null);
 		PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(

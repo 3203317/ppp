@@ -51,6 +51,9 @@
 
 	<!--Hibernate SessionFatory 配置-->
 	<bean id="sessionFactory" class="cn.newcapec.framework.core.dao.hibernate.SessionFactoryAutoDialectBean" lazy-init="false">
+		<property name="entityInterceptor">
+			<bean id ="auditInterceptor" class="cn.newcapec.framework.core.handler.MySQLInterceptor" />
+		</property>
 		<property name="dataSource" ref="bizDatasourceOracle"/>
 	 	 <property name="packagesToScan">
 			   	  <list>
