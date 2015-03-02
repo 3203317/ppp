@@ -1,6 +1,7 @@
 package com.xcysoft.foundation.cppt.biz;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import cn.newcapec.framework.core.biz.BaseService;
@@ -26,6 +27,6 @@ public interface MenuService extends BaseService<Menu> {
 			LinkedHashMap<String, String> orderby);
 
 	@SuppressWarnings("rawtypes")
-	public Page findChildren(Map<String, Object> paramMap,
+	public List findChildren(Map<String, Object> paramMap,
 			LinkedHashMap<String, String> orderby);
 }

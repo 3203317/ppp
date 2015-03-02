@@ -1,6 +1,7 @@
 package com.xcysoft.foundation.cppt.biz.impl;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,9 +52,9 @@ public class MenuServiceImpl implements MenuService {
 	}
 
 	@Override
-	public Page findChildren(Map<String, Object> paramMap,
+	public List findChildren(Map<String, Object> paramMap,
 			LinkedHashMap<String, String> orderby) {
-		Page page = menuDao.findAllChildren(paramMap, orderby);
-		return page;
+		List list = menuDao.findAllChildren(paramMap, orderby);
+		return list;
 	}
 }

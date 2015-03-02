@@ -1,5 +1,5 @@
 <div class='panel-group' id='accordion'>
-	#foreach($!obj in $!sideNavView.records)
+	#foreach($!obj in $!sideNavView)
 		##if(4 == $!obj.ID.length())
 		#set ($len = 0)
 		#foreach ($item in $!obj.PATH.split(","))
@@ -14,7 +14,7 @@
 		</div>
 		<div id='collapse$!obj.ID' class='panel-collapse collapse#if(1 == $velocityCount) in#end'>
 			<div class='panel-body'>
-				#foreach($!obj2 in $!sideNavView.records)
+				#foreach($!obj2 in $!sideNavView)
 					#set ($len = 0)
 					#foreach ($item in $!obj2.PATH.split(","))
 						#set ($len = $velocityCount)

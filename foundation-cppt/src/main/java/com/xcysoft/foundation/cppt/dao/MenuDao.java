@@ -47,7 +47,7 @@ public class MenuDao extends BaseMenuDao {
 		return this.sqlQueryForPage(sql.toString(), param.toArray(), orderby);
 	}
 
-	public Page findAllChildren(Map<String, Object> paramMap,
+	public List findAllChildren(Map<String, Object> paramMap,
 			LinkedHashMap<String, String> orderby) {
 		List<Object> param = new ArrayList<Object>();
 		StringBuilder sql = new StringBuilder(
@@ -65,6 +65,6 @@ public class MenuDao extends BaseMenuDao {
 				param.add(paramMap.get("pid"));
 			}
 		}
-		return this.sqlQueryForPage(sql.toString(), param.toArray(), orderby);
+		return this.sqlQueryForList(sql.toString(), param.toArray(), orderby);
 	}
 }

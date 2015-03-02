@@ -2,6 +2,7 @@ package com.xcysoft.foundation.cppt.controller;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -61,11 +62,8 @@ public class SiteController extends MultiViewResource {
 		pageView.setQueryResult(page);
 		modelMap.put("menuView", pageView);
 
-		page = getChildMenus();
-		pageView = new PageView<Map<String, Object>>(PageContext.getPageSize(),
-				PageContext.getOffset());
-		pageView.setQueryResult(page);
-		modelMap.put("sideNavView", pageView);
+		List list = getChildMenus();
+		modelMap.put("sideNavView", list);
 
 		return toView(getUrl("manage.indexUI"), modelMap);
 	}
@@ -84,13 +82,10 @@ public class SiteController extends MultiViewResource {
 			public void AssertMethod(Msg msg) {
 				orderby.put("sort", "asc");
 				PageContext.setPageSize(Integer.MAX_VALUE);
-				Page page = menuService.findChildren(getJsonObject(), orderby);
-				PageView<Map<String, Object>> pageView = new PageView<Map<String, Object>>(
-						PageContext.getPageSize(), PageContext.getOffset());
-				pageView.setQueryResult(page);
+				List list = menuService.findChildren(getJsonObject(), orderby);
 
 				Map<String, Object> modelMap = new HashMap<String, Object>();
-				modelMap.put("sideNavView", pageView);
+				modelMap.put("sideNavView", list);
 
 				modelMap.put("cdn", SysConfigUtil.get("html.cdn"));
 				modelMap.put("virtualPath",
@@ -107,12 +102,12 @@ public class SiteController extends MultiViewResource {
 	 *
 	 * @return
 	 */
-	private Page getChildMenus() {
+	private List getChildMenus() {
 		orderby.put("sort", "asc");
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("pid", getFirstMenuId());
-		Page page = menuService.findChildren(paramMap, orderby);
-		return page;
+		List list = menuService.findChildren(paramMap, orderby);
+		return list;
 	}
 
 	/**
