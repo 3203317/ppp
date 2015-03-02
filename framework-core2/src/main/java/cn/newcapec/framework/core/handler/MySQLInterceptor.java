@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.hibernate.EmptyInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import cn.newcapec.framework.core.utils.fileUtils.SysConfigUtil;
+
 /**
  *
  * @author huangxin
@@ -21,28 +23,28 @@ public class MySQLInterceptor extends EmptyInterceptor {
 	public String onPrepareStatement(String sql) {
 		// HttpServletRequest request = ((ServletRequestAttributes)
 		// RequestContextHolder.getRequestAttributes()).getRequest();
-
-		String tenant_name = getTenantName();
-
-		if (null != tenant_name) {
-			String[] table_names = getDbTables();
-
-			for (String table_name : table_names) {
-				sql = sql.replaceAll("(?i) " + table_name + " ", " "
-						+ tenant_name + "_" + table_name + " ");
-			}
-		}
-
-		System.out.println("--==sql:" + sql);
+		sql = transSQL(sql);
 		return super.onPrepareStatement(sql);
 	}
 
-	private String getTenantName() {
+	protected String getTenantName() {
 		return request.getParameter("tenant");
 	}
 
-	private String[] getDbTables() {
-		String[] table_names = { "oa_article", "abc" };
+	protected String[] getDbTables() {
+		String[] table_names = SysConfigUtil.get("db.tables").split(",");
 		return table_names;
+	}
+
+	protected String transSQL(String sql) {
+		String tenant_name = getTenantName();
+		if (null != tenant_name) {
+			String[] table_names = getDbTables();
+			for (String table_name : table_names) {
+				sql = sql.replaceAll("(?i) " + table_name + " ", " "
+						+ tenant_name + "__" + table_name + " ");
+			}
+		}
+		return sql;
 	}
 }
