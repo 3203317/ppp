@@ -1,6 +1,6 @@
 package com.transilink.framework.core.dao.hibernate;
 
-import com.transilink.framework.core.dao.dialect.NewcapecMySQLDialect;
+import com.transilink.framework.core.dao.dialect.TransilinkMySQLDialect;
 import com.transilink.framework.core.logs.LogEnabled;
 import java.util.Properties;
 import javax.sql.DataSource;
@@ -24,7 +24,7 @@ public class SessionFactoryAutoDialectBean extends AnnotationSessionFactoryBean
     log.info("Database type is \"" + dbType + "\"");
 
     if ("MySQL".equals(dbType)) {
-      this.dialect = NewcapecMySQLDialect.class.getName();
+      this.dialect = TransilinkMySQLDialect.class.getName();
     }
     else if ("Oracle".equals(dbType)) {
       this.dialect = Oracle10gDialect.class.getName();

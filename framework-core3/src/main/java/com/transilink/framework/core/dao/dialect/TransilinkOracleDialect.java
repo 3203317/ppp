@@ -6,9 +6,9 @@ import org.hibernate.type.BigIntegerType;
 import org.hibernate.type.StringType;
 import org.hibernate.type.TextType;
 
-public class NewcapecOracleDialect extends Oracle10gDialect
+public class TransilinkOracleDialect extends Oracle10gDialect
 {
-  public NewcapecOracleDialect()
+  public TransilinkOracleDialect()
   {
     registerHibernateType(-1, Hibernate.STRING.getName());
     registerHibernateType(-1, Hibernate.TEXT.getName());

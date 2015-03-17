@@ -1,11 +1,11 @@
 package com.transilink.framework.core.i18n;
 
-import com.transilink.framework.core.context.NewcapecContext;
+import com.transilink.framework.core.context.TransilinkContext;
 import com.transilink.framework.core.utils.stringUtils.GlobalVariant;
 import com.transilink.framework.core.utils.stringUtils.StringUtil;
 
 public class LangUtil {
-	public static String getLang(NewcapecContext context) {
+	public static String getLang(TransilinkContext context) {
 		String lang = null;
 
 		lang = context.getParameter("lang");

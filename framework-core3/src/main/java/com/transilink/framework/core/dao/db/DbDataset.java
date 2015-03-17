@@ -428,7 +428,7 @@ public class DbDataset implements Serializable {
 		if (StringUtil.isEmpty(this.sql)) {
 			throw new BaseException("请设置dataset SQl!");
 		}
-		// 根据NewcapecContext上下文编译字符
+		// 根据TransilinkContext上下文编译字符
 		String parsedSQl = translateSql(this.sql);
 		if (StringUtil.isEmpty(parsedSQl)) {
 			throw new BaseException("dataset SQl 解析错误!");
@@ -529,7 +529,7 @@ public class DbDataset implements Serializable {
 	 */
 	public String getParsedSql() {
 
-		// 根据NewcapecContext上下文编译字符
+		// 根据TransilinkContext上下文编译字符
 		String parsedSQl = translateSql(this.sql);
 		if (StringUtil.isEmpty(parsedSQl)) {
 			return null;

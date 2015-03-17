@@ -7,11 +7,11 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-public class HttpNewcapecContext extends AbstractNewcapecContext
+public class HttpTransilinkContext extends AbstractTransilinkContext
 {
   protected Stack reqeustStack;
 
-  HttpNewcapecContext()
+  HttpTransilinkContext()
   {
     this.reqeustStack = new Stack();
   }

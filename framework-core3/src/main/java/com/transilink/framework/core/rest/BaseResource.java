@@ -24,6 +24,7 @@ import org.restlet.resource.ResourceException;
 import org.restlet.resource.Variant;
 import org.springframework.beans.factory.InitializingBean;
 
+import com.noelios.restlet.ext.servlet.ServletCall;
 import com.transilink.framework.core.exception.BaseException;
 import com.transilink.framework.core.exception.ExceptionUtil;
 import com.transilink.framework.core.exception.SysException;
@@ -34,8 +35,6 @@ import com.transilink.framework.core.logs.LogEnabled;
 import com.transilink.framework.core.utils.dataUtils.DateUtil;
 import com.transilink.framework.core.utils.fileUtils.SysConfigUtil;
 import com.transilink.framework.core.utils.stringUtils.StringUtil;
-
-import com.noelios.restlet.ext.servlet.ServletCall;
 
 /**
  *
@@ -53,7 +52,7 @@ public class BaseResource extends Resource implements InitializingBean,
 	/* 获取系统上下文路径 */
 	private String contextPath;
 
-	private org.apache.velocity.context.Context newcapectViewContext = this
+	private org.apache.velocity.context.Context transilinkViewContext = this
 			.getVelocityContext();
 
 	private static VelocityContext getVelocityContext() {
@@ -395,8 +394,8 @@ public class BaseResource extends Resource implements InitializingBean,
 		return jsonObject;
 	}
 
-	public org.apache.velocity.context.Context getNewcapectViewContext() {
-		return newcapectViewContext;
+	public org.apache.velocity.context.Context getTransilinkViewContext() {
+		return transilinkViewContext;
 	}
 
 	public void beforeHandle(Context context, Request request, Response response) {

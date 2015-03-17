@@ -1,6 +1,6 @@
 package com.transilink.framework.core.context;
 
-public abstract class AbstractNewcapecContext extends NewcapecContext {
+public abstract class AbstractTransilinkContext extends TransilinkContext {
 	public Object getAttribute(String s) {
 		Object obj;
 		if (((obj = getAttribute(1, s)) == null)

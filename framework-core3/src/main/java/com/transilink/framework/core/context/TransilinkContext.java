@@ -1,21 +1,21 @@
 package com.transilink.framework.core.context;
 
-public abstract class NewcapecContext {
+public abstract class TransilinkContext {
 	public static final int REQUEST = 1;
 	public static final int SESSION = 5;
 	public static final int APPLICATION = 9;
 	private static ThreadLocal cache = new ThreadLocal();
 
-	public static void registerContext(NewcapecContext context) {
+	public static void registerContext(TransilinkContext context) {
 		cache.set(context);
 	}
 
-	public static synchronized NewcapecContext getContext() {
+	public static synchronized TransilinkContext getContext() {
 		Object obj;
-		if ((obj = (NewcapecContext) cache.get()) == null) {
-			registerContext((NewcapecContext) (obj = new DynaNewcapecContext()));
+		if ((obj = (TransilinkContext) cache.get()) == null) {
+			registerContext((TransilinkContext) (obj = new DynaTransilinkContext()));
 		}
-		return (NewcapecContext) (NewcapecContext) obj;
+		return (TransilinkContext) (TransilinkContext) obj;
 	}
 
 	public static void unregisterContext() {

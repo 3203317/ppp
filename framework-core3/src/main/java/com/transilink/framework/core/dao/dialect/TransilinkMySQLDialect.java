@@ -6,9 +6,9 @@ import org.hibernate.type.BigIntegerType;
 import org.hibernate.type.StringType;
 import org.hibernate.type.TextType;
 
-public class NewcapecMySQLDialect extends MySQL5Dialect
+public class TransilinkMySQLDialect extends MySQL5Dialect
 {
-  public NewcapecMySQLDialect()
+  public TransilinkMySQLDialect()
   {
     registerHibernateType(-1, Hibernate.STRING.getName());
     registerHibernateType(-1, Hibernate.TEXT.getName());

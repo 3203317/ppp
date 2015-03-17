@@ -3,10 +3,10 @@ package com.transilink.framework.core.context;
 import java.util.Hashtable;
 import java.util.Map;
 
-public class DynaNewcapecContext extends AbstractNewcapecContext {
+public class DynaTransilinkContext extends AbstractTransilinkContext {
 	private Map cache;
 
-	public DynaNewcapecContext() {
+	public DynaTransilinkContext() {
 		this.cache = new Hashtable();
 	}
 
