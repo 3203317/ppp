@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.transilink</groupId>
 	<artifactId>framework-config</artifactId>
-	<version>1.0.42</version>
+	<version>1.0.43</version>
 	<packaging>pom</packaging>
 	<name>transilink :: framework :: config</name>
 
@@ -27,7 +27,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.6</jdk.version>
 		<!--核心类 -->
-		<transilink.framework.version>1.0.42</transilink.framework.version>
+		<transilink.framework.version>1.0.43</transilink.framework.version>
 		<!--spring -->
 		<spring.version>3.2.5.RELEASE</spring.version>
 		<!--hibernate -->

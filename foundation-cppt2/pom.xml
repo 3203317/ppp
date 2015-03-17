@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.transilink</groupId>
 		<artifactId>framework-config</artifactId>
-		<version>1.0.42</version>
+		<version>1.0.43</version>
 	</parent>
 	<groupId>com.transilink</groupId>
 	<artifactId>foundation-cppt</artifactId>
