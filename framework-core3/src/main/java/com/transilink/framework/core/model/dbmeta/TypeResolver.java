@@ -3,6 +3,11 @@ package com.transilink.framework.core.model.dbmeta;
 import java.util.Enumeration;
 import java.util.Properties;
 
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
 public class TypeResolver {
 	private static final Properties typeMap = new Properties();
 

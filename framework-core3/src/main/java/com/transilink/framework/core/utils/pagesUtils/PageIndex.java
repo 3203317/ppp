@@ -2,7 +2,7 @@ package com.transilink.framework.core.utils.pagesUtils;
 
 /**
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
  *
  */
 public class PageIndex {

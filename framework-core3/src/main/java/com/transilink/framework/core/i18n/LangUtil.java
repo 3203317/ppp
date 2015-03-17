@@ -4,6 +4,11 @@ import com.transilink.framework.core.context.TransilinkContext;
 import com.transilink.framework.core.utils.stringUtils.GlobalVariant;
 import com.transilink.framework.core.utils.stringUtils.StringUtil;
 
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
 public class LangUtil {
 	public static String getLang(TransilinkContext context) {
 		String lang = null;

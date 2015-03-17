@@ -10,7 +10,7 @@ import org.apache.commons.lang.StringUtils;
 
 /**
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
  *
  */
 public class JsonDateValueProcessor implements JsonValueProcessor {

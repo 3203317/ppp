@@ -16,11 +16,9 @@ import java.util.zip.Deflater;
 import java.util.zip.ZipException;
 
 /**
- * This class implements an output stream filter for writing files in the ZIP
- * file format. Includes support for both compressed and uncompressed entries.
  *
- * @author David Connelly
- * @version 1.36, 03/23/10
+ * @author huangxin (3203317@qq.com)
+ *
  */
 public class CZipOutputStream extends DeflaterOutputStream implements
 		ZipConstants {

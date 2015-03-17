@@ -9,7 +9,8 @@ import org.apache.commons.logging.LogFactory;
 /**
  * Generics的util类.
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
+ *
  */
 @SuppressWarnings({ "all" })
 public class GenericsUtils {

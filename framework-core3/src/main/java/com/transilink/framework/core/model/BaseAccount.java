@@ -2,6 +2,11 @@ package com.transilink.framework.core.model;
 
 import java.io.Serializable;
 
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
 public class BaseAccount implements Serializable {
 	private static final long serialVersionUID = 242416230124446179L;
 	public String name;

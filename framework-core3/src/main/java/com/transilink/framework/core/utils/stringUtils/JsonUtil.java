@@ -17,7 +17,8 @@ import com.transilink.framework.core.utils.clazzUtils.BeanUtils;
 /**
  * json 工具类
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
+ *
  */
 @SuppressWarnings("all")
 public class JsonUtil implements LogEnabled {

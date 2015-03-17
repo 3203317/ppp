@@ -14,15 +14,14 @@ import javax.servlet.http.HttpSession;
 
 import org.restlet.data.Request;
 
-import com.transilink.framework.core.logs.LogEnabled;
-
 import com.noelios.restlet.ext.servlet.ServletCall;
 import com.noelios.restlet.http.HttpCall;
 import com.noelios.restlet.http.HttpRequest;
+import com.transilink.framework.core.logs.LogEnabled;
 
 /**
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
  *
  */
 public class WebUtils implements LogEnabled {

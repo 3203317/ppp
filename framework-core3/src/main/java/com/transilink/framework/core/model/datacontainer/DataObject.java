@@ -1,5 +1,9 @@
 package com.transilink.framework.core.model.datacontainer;
 
-public abstract interface DataObject
-{
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
+public abstract interface DataObject {
 }

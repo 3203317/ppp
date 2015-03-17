@@ -2,6 +2,11 @@ package com.transilink.framework.core.model.datacontainer;
 
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
 public class DefaultThreadLocalManager implements ThreadLocalManager {
 	private static ConcurrentHashMap<String, ThreadLocalContainer> allContainers = new ConcurrentHashMap();
 	private static ThreadLocalContainer appContainer = new ThreadLocalContainer();

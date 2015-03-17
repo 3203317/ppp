@@ -1,6 +1,10 @@
 package com.transilink.framework.core.dao.db;
 
-public abstract interface UUIDGenerator
-{
-  public abstract String generate();
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
+public abstract interface UUIDGenerator {
+	public abstract String generate();
 }

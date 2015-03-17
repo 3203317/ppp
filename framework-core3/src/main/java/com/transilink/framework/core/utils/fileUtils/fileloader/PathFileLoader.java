@@ -12,7 +12,8 @@ import java.net.URL;
 /**
  * 本地文件读取器.
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
+ *
  */
 public class PathFileLoader extends FileLoader {
 	private File file;

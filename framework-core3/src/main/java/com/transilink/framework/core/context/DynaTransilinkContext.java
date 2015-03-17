@@ -3,6 +3,11 @@ package com.transilink.framework.core.context;
 import java.util.Hashtable;
 import java.util.Map;
 
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
 public class DynaTransilinkContext extends AbstractTransilinkContext {
 	private Map cache;
 

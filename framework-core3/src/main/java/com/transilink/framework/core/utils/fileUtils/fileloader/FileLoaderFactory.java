@@ -5,7 +5,8 @@ import com.transilink.framework.core.utils.clazzUtils.ClassLoaderUtils;
 /**
  * 文件加载工厂类
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
+ *
  */
 @SuppressWarnings("all")
 public final class FileLoaderFactory {

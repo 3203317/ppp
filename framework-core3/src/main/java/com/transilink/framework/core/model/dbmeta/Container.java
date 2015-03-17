@@ -3,6 +3,11 @@ package com.transilink.framework.core.model.dbmeta;
 import java.util.Map;
 import java.util.Properties;
 
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
 public class Container {
 	private String packageName;
 	private Properties properties;

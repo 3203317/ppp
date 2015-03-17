@@ -38,7 +38,8 @@ import com.transilink.framework.core.utils.stringUtils.StringUtil;
 
 /**
  *
- * @author: huangxin
+ * @author huangxin (3203317@qq.com)
+ *
  */
 @SuppressWarnings("all")
 public class BaseResource extends Resource implements InitializingBean,

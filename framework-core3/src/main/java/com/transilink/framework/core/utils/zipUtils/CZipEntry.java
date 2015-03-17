@@ -10,10 +10,9 @@ package com.transilink.framework.core.utils.zipUtils;
 import java.util.Date;
 
 /**
- * This class is used to represent a ZIP file entry.
  *
- * @version 1.43, 03/23/10
- * @author David Connelly
+ * @author huangxin (3203317@qq.com)
+ *
  */
 public class CZipEntry implements ZipConstants, Cloneable {
 	String name; // entry name

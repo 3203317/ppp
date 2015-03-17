@@ -7,12 +7,10 @@
 
 package com.transilink.framework.core.utils.zipUtils;
 
-/*
- * This interface defines the constants that are used by the classes
- * which manipulate ZIP files.
+/**
  *
- * @version	1.20, 03/23/10
- * @author	David Connelly
+ * @author huangxin (3203317@qq.com)
+ *
  */
 interface ZipConstants {
 	/*

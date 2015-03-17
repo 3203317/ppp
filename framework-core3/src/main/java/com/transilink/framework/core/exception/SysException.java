@@ -3,6 +3,11 @@ package com.transilink.framework.core.exception;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
 public class SysException extends RuntimeException {
 	private static final long serialVersionUID = -5542169322764723764L;
 	protected Throwable rootCause = null;

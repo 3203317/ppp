@@ -8,7 +8,7 @@ import com.transilink.framework.core.utils.pagesUtils.PageContext;
 
 /**
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
  *
  */
 @SuppressWarnings("all")

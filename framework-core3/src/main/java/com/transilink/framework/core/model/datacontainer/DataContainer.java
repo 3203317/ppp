@@ -6,6 +6,11 @@ import java.util.Map;
 
 import javax.persistence.MappedSuperclass;
 
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
 @MappedSuperclass
 public abstract class DataContainer implements Serializable {
 	private static final long serialVersionUID = 1L;

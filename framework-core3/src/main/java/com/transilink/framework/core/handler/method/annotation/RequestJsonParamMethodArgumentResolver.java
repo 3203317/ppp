@@ -25,7 +25,7 @@ import com.transilink.framework.core.handler.util.MapWapper;
 
 /**
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
  *
  */
 public class RequestJsonParamMethodArgumentResolver extends

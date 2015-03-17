@@ -19,7 +19,7 @@ import org.apache.log4j.Logger;
 
 /**
  * @JSONUtil.java
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
  */
 public class JSONTools {
 

@@ -1,71 +1,78 @@
 package com.transilink.framework.core.rest;
 
-import com.transilink.framework.core.model.FileAttach;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.commons.fileupload.FileItem;
 import org.json.JSONObject;
 import org.restlet.data.Request;
 
-public abstract interface BaseRequest
-{
-  public abstract JSONObject getJSONObject();
+import com.transilink.framework.core.model.FileAttach;
 
-  public abstract String getParameter(String paramString);
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
+public abstract interface BaseRequest {
+	public abstract JSONObject getJSONObject();
 
-  public abstract String[] getParameters(String paramString);
+	public abstract String getParameter(String paramString);
 
-  public abstract List<FileItem> getUploadFileItems();
+	public abstract String[] getParameters(String paramString);
 
-  public abstract List<FileAttach> getfiles();
+	public abstract List<FileItem> getUploadFileItems();
 
-  public abstract String[] getParamNames();
+	public abstract List<FileAttach> getfiles();
 
-  public abstract Map<String, String> getParamValueMap();
+	public abstract String[] getParamNames();
 
-  public abstract String getString(String paramString);
+	public abstract Map<String, String> getParamValueMap();
 
-  public abstract String getString(String paramString1, String paramString2);
+	public abstract String getString(String paramString);
 
-  public abstract int getInt(String paramString);
+	public abstract String getString(String paramString1, String paramString2);
 
-  public abstract int getInt(String paramString, int paramInt);
+	public abstract int getInt(String paramString);
 
-  public abstract long getLong(String paramString);
+	public abstract int getInt(String paramString, int paramInt);
 
-  public abstract long getLong(String paramString, long paramLong);
+	public abstract long getLong(String paramString);
 
-  public abstract float getFloat(String paramString);
+	public abstract long getLong(String paramString, long paramLong);
 
-  public abstract float getFloat(String paramString, float paramFloat);
+	public abstract float getFloat(String paramString);
 
-  public abstract double getDouble(String paramString);
+	public abstract float getFloat(String paramString, float paramFloat);
 
-  public abstract double getDouble(String paramString, double paramDouble);
+	public abstract double getDouble(String paramString);
 
-  public abstract boolean getBoolean(String paramString);
+	public abstract double getDouble(String paramString, double paramDouble);
 
-  public abstract boolean getBoolean(String paramString, boolean paramBoolean);
+	public abstract boolean getBoolean(String paramString);
 
-  public abstract Date getDate(String paramString);
+	public abstract boolean getBoolean(String paramString, boolean paramBoolean);
 
-  public abstract Date getDate(String paramString, Date paramDate);
+	public abstract Date getDate(String paramString);
 
-  public abstract String[] getStringValues(String paramString);
+	public abstract Date getDate(String paramString, Date paramDate);
 
-  public abstract void parameterToDO(Object paramObject);
+	public abstract String[] getStringValues(String paramString);
 
-  public abstract Map parametersToMap();
+	public abstract void parameterToDO(Object paramObject);
 
-  public abstract void attributiesToDO(Object paramObject);
+	public abstract Map parametersToMap();
 
-  public abstract Map attributiesToMap();
+	public abstract void attributiesToDO(Object paramObject);
 
-  public abstract Request getOrginRequest();
+	public abstract Map attributiesToMap();
 
-  public abstract BigDecimal getBigdecimal(String paramString);
+	public abstract Request getOrginRequest();
 
-  public abstract BigDecimal getBigdecimal(String paramString, BigDecimal paramBigDecimal);
+	public abstract BigDecimal getBigdecimal(String paramString);
+
+	public abstract BigDecimal getBigdecimal(String paramString,
+			BigDecimal paramBigDecimal);
 }

@@ -1,5 +1,10 @@
 package com.transilink.framework.core.model.variant;
 
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
 public final class DataType {
 	public static final String UNKNOWN_NAME = "";
 	public static final int UNKNOWN = 0;

@@ -7,6 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
 public class DBTable implements Comparable {
 	private String name;
 	private String metaData;

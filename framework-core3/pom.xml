@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>com.transilink</groupId>
 		<artifactId>framework-config</artifactId>
-		<version>1.0.41</version>
+		<version>1.0.42</version>
 	</parent>
 	<groupId>com.transilink</groupId>
 	<artifactId>framework-core</artifactId>
-	<version>1.0.41</version>
+	<version>1.0.42</version>
 	<packaging>jar</packaging>
 	<name>transilink :: framework :: core</name>
 

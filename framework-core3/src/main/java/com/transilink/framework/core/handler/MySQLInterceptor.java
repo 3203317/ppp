@@ -9,7 +9,7 @@ import com.transilink.framework.core.utils.fileUtils.SysConfigUtil;
 
 /**
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
  *
  */
 public class MySQLInterceptor extends EmptyInterceptor {

@@ -12,7 +12,8 @@ import com.transilink.framework.core.exception.BaseException;
 
 /**
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
+ *
  */
 @SuppressWarnings("all")
 public final class DbContainerHelper {

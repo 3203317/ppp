@@ -6,7 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 平台上下文环境工厂类
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
+ *
  */
 public final class HttpTransilinkContextFactory {
 
@@ -21,7 +22,8 @@ public final class HttpTransilinkContextFactory {
 	 * @param servletrequest
 	 * @return
 	 */
-	public static final TransilinkContext getContext(ServletRequest servletrequest) {
+	public static final TransilinkContext getContext(
+			ServletRequest servletrequest) {
 		return getContext(servletrequest, true);
 	}
 
@@ -44,9 +46,11 @@ public final class HttpTransilinkContextFactory {
 					return null;
 				}
 				httpTransilinkContext = new HttpTransilinkContext();
-				servletrequest.setAttribute(ATTRIBUTE_KEY, httpTransilinkContext);
+				servletrequest.setAttribute(ATTRIBUTE_KEY,
+						httpTransilinkContext);
 			}
-			httpTransilinkContext.setRequest((HttpServletRequest) servletrequest);
+			httpTransilinkContext
+					.setRequest((HttpServletRequest) servletrequest);
 		} else {
 			httpTransilinkContext = new HttpTransilinkContext();
 		}

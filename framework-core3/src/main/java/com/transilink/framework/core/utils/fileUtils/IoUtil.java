@@ -28,7 +28,7 @@ import com.transilink.framework.core.utils.zipUtils.CZipOutputStream;
 /**
  * 方便操作文件的类.
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
  *
  */
 public class IoUtil {

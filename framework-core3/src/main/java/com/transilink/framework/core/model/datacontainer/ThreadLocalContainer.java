@@ -3,6 +3,11 @@ package com.transilink.framework.core.model.datacontainer;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
 public class ThreadLocalContainer {
 	private ThreadLocal<HashMap<String, Object>> threadLocals = new ThreadLocal();
 

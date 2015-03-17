@@ -29,7 +29,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
  *
  */
 public class DateMorpherEx extends AbstractObjectMorpher {

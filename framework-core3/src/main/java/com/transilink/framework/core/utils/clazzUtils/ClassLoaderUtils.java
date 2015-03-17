@@ -11,7 +11,8 @@ import java.net.URL;
  * Title:类加载工具类
  * </p>
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
+ *
  */
 @SuppressWarnings("all")
 public class ClassLoaderUtils {

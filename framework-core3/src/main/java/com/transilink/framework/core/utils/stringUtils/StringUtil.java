@@ -11,7 +11,9 @@ import com.transilink.framework.core.exception.BaseException;
 import com.transilink.framework.core.logs.LogEnabled;
 
 /**
- * @author huangxin
+ *
+ * @author huangxin (3203317@qq.com)
+ *
  */
 @SuppressWarnings("all")
 public class StringUtil implements LogEnabled {

@@ -16,13 +16,9 @@ import java.util.zip.Inflater;
 import java.util.zip.ZipException;
 
 /**
- * This class implements a stream filter for uncompressing data in the "deflate"
- * compression format. It is also used as the basis for other decompression
- * filters, such as GZIPInputStream.
  *
- * @see Inflater
- * @version 1.41, 03/23/10
- * @author David Connelly
+ * @author huangxin (3203317@qq.com)
+ *
  */
 public class InflaterInputStream extends FilterInputStream {
 	/**

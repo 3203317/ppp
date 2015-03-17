@@ -9,7 +9,8 @@ import java.net.URL;
 /**
  * 默认文件加载器
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
+ *
  */
 public class DefaultFileLoader extends FileLoader {
 	public static final String CLASSPATH_PREFIX = "classpath:";

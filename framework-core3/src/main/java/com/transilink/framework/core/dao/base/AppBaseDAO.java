@@ -7,7 +7,7 @@ import com.transilink.framework.core.utils.clazzUtils.GenericsUtils;
 
 /**
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
  *
  * @param <T>
  */

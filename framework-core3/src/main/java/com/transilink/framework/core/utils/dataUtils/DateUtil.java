@@ -15,7 +15,8 @@ import com.transilink.framework.core.logs.LogEnabled;
 /**
  * 提供对日期时间操作的几个日常方法.
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
+ *
  */
 public class DateUtil implements LogEnabled {
 	public static String DATE_FORMAT = "yyyy-MM-dd";

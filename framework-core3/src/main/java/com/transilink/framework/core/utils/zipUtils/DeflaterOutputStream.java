@@ -13,13 +13,9 @@ import java.io.OutputStream;
 import java.util.zip.Deflater;
 
 /**
- * This class implements an output stream filter for compressing data in the
- * "deflate" compression format. It is also used as the basis for other types of
- * compression filters, such as GZIPOutputStream.
  *
- * @see Deflater
- * @version 1.37, 03/23/10
- * @author David Connelly
+ * @author huangxin (3203317@qq.com)
+ *
  */
 public class DeflaterOutputStream extends FilterOutputStream {
 	/**

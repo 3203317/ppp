@@ -11,7 +11,8 @@ import com.transilink.framework.core.utils.clazzUtils.BeanUtils;
 /**
  * 国际化消息查找. 国际化消息查找.可支持从数据库或资源文件查找.
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
+ *
  */
 @SuppressWarnings("all")
 public class Message implements LogEnabled {

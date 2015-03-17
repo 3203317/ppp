@@ -2,8 +2,6 @@ package com.transilink.framework.core.utils.listUtils;
 
 import java.util.Date;
 
-import com.transilink.framework.core.utils.dataUtils.DateMorpherEx;
-import com.transilink.framework.core.utils.stringUtils.JsonDateValueProcessor;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
@@ -17,9 +15,12 @@ import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.commons.lang.math.NumberUtils;
 import org.apache.log4j.Logger;
 
+import com.transilink.framework.core.utils.dataUtils.DateMorpherEx;
+import com.transilink.framework.core.utils.stringUtils.JsonDateValueProcessor;
+
 /**
  * @JSONUtil.java
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
  */
 public class JSONTools {
 

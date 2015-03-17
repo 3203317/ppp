@@ -7,10 +7,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import oracle.sql.TIMESTAMP;
+
 import com.transilink.framework.core.logs.LogEnabled;
 import com.transilink.framework.core.utils.dataUtils.DateUtil;
 import com.transilink.framework.core.utils.stringUtils.StringUtil;
 
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
 public final class VariantUtil implements LogEnabled {
 	private static SimpleDateFormat dateFormat = new SimpleDateFormat(
 			"yyyy-MM-dd");

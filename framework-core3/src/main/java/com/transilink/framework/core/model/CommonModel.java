@@ -11,6 +11,11 @@ import com.transilink.framework.core.model.datacontainer.DataContainer;
 import com.transilink.framework.core.model.datacontainer.DataObject;
 import com.transilink.framework.core.model.datacontainer.Property;
 
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
 @MappedSuperclass
 public class CommonModel extends DataContainer implements DataObject {
 	public CommonModel() {

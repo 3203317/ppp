@@ -10,7 +10,8 @@ import org.springframework.web.context.ServletContextAware;
 /**
  * spring上下文工具类
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
+ *
  */
 @Component
 public class SpringConext implements ApplicationContextAware,

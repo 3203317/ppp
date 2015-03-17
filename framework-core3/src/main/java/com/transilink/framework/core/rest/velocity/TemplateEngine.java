@@ -20,7 +20,7 @@ import com.transilink.framework.core.utils.springUtils.SpringConext;
  * 暂只支持Velocity模版视图
  * </p>
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
  *
  */
 public class TemplateEngine {

@@ -9,7 +9,8 @@ import java.util.Map;
 
 /**
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
+ *
  */
 @SuppressWarnings("all")
 public class MetaDataRetriever extends Thread {

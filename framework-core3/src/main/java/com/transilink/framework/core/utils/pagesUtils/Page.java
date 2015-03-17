@@ -5,7 +5,8 @@ import java.util.List;
 /**
  * Page is not a domain object but is used to store and fetch page information.
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
+ *
  */
 @SuppressWarnings({ "all" })
 public class Page<T> {

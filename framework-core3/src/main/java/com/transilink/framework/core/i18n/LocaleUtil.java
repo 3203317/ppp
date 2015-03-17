@@ -1,35 +1,38 @@
 package com.transilink.framework.core.i18n;
 
-import com.transilink.framework.core.utils.stringUtils.GlobalVariant;
 import java.util.Locale;
 
-public final class LocaleUtil
-{
-  private static Locale loc = new Locale("zh", "", "");
-  private static boolean inited = false;
+import com.transilink.framework.core.utils.stringUtils.GlobalVariant;
 
-  public static Locale getLocale()
-  {
-    return loc;
-  }
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
+public final class LocaleUtil {
+	private static Locale loc = new Locale("zh", "", "");
+	private static boolean inited = false;
 
-  public static Locale getLocale(String lang)
-  {
-    return new Locale(lang, "", "");
-  }
+	public static Locale getLocale() {
+		return loc;
+	}
 
-  private static void init() {
-    if (!inited) {
-      String lang = GlobalVariant.getVariant("lang");
+	public static Locale getLocale(String lang) {
+		return new Locale(lang, "", "");
+	}
 
-      if (lang != null) {
-        loc = new Locale(lang, "", "");
-      }
-    }
-    inited = true;
-  }
+	private static void init() {
+		if (!inited) {
+			String lang = GlobalVariant.getVariant("lang");
 
-  static {
-    init();
-  }
+			if (lang != null) {
+				loc = new Locale(lang, "", "");
+			}
+		}
+		inited = true;
+	}
+
+	static {
+		init();
+	}
 }

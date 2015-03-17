@@ -9,7 +9,8 @@ import java.net.URL;
 /**
  * 类资源加载器
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
+ *
  */
 public class ResourceFileLoader extends FileLoader {
 	private URL url;

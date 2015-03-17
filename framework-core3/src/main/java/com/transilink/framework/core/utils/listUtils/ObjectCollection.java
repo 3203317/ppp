@@ -7,7 +7,8 @@ import java.util.Map;
 /**
  * 对象列表接口,定义对象列表的基本方法。
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
+ *
  */
 @SuppressWarnings("all")
 public interface ObjectCollection {

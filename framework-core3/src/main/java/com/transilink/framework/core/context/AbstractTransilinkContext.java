@@ -1,5 +1,10 @@
 package com.transilink.framework.core.context;
 
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
 public abstract class AbstractTransilinkContext extends TransilinkContext {
 	public Object getAttribute(String s) {
 		Object obj;

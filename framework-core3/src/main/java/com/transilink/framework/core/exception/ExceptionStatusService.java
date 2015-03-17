@@ -12,6 +12,11 @@ import org.restlet.service.StatusService;
 
 import com.transilink.framework.core.logs.LogEnabled;
 
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
 public class ExceptionStatusService extends StatusService implements LogEnabled {
 	public Representation getRepresentation(Status status, Request request,
 			Response response) {

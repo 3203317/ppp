@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
  *
  * @param <T>
  */

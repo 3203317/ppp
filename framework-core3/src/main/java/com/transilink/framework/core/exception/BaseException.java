@@ -5,6 +5,11 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
 public class BaseException extends SysException {
 	private Collection exceptions = new ArrayList();
 	private String messageKey = null;

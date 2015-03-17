@@ -16,7 +16,7 @@ import com.transilink.framework.core.utils.stringUtils.JsonDateValueProcessor;
 
 /**
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
  * @修改时间
  * @<p>2014-12-22 15:28</p>
  *

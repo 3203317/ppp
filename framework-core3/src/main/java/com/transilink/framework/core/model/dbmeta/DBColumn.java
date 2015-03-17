@@ -2,6 +2,11 @@ package com.transilink.framework.core.model.dbmeta;
 
 import java.util.Properties;
 
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
 public class DBColumn {
 	private DBTable table;
 	private String name;

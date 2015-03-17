@@ -21,8 +21,9 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 /**
  * 功能描述: Excel操纵类
  *
- * @author: huangxin
- * @date: 2011-4-22
+ * @author huangxin (3203317@qq.com)
+ * @date 2011-4-22
+ *
  */
 public class ExcelTemplate {
 	private static Log logger = LogFactory.getLog(ExcelTemplate.class);

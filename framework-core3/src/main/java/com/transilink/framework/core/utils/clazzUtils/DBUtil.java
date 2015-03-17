@@ -13,7 +13,9 @@ import com.transilink.framework.core.utils.pagesUtils.PageContext;
 import com.transilink.framework.core.utils.springUtils.SpringConext;
 
 /**
- * @author huangxin
+ *
+ * @author huangxin (3203317@qq.com)
+ *
  */
 @SuppressWarnings("all")
 public class DBUtil {

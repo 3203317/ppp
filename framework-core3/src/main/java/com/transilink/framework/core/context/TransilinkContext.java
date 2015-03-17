@@ -1,5 +1,10 @@
 package com.transilink.framework.core.context;
 
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
 public abstract class TransilinkContext {
 	public static final int REQUEST = 1;
 	public static final int SESSION = 5;

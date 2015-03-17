@@ -1,6 +1,5 @@
 package com.transilink.framework.core.rest;
 
-
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
@@ -32,6 +31,9 @@ import org.restlet.data.Request;
 import org.restlet.ext.fileupload.RestletFileUpload;
 import org.restlet.resource.Representation;
 
+import com.noelios.restlet.ext.servlet.ServletCall;
+import com.noelios.restlet.http.HttpCall;
+import com.noelios.restlet.http.HttpRequest;
 import com.transilink.framework.core.exception.SysException;
 import com.transilink.framework.core.filter.PagerFilter;
 import com.transilink.framework.core.model.FileAttach;
@@ -40,12 +42,9 @@ import com.transilink.framework.core.model.variant.VariantUtil;
 import com.transilink.framework.core.utils.clazzUtils.BeanUtils;
 import com.transilink.framework.core.utils.stringUtils.StringUtil;
 
-import com.noelios.restlet.ext.servlet.ServletCall;
-import com.noelios.restlet.http.HttpCall;
-import com.noelios.restlet.http.HttpRequest;
-
 /**
- * @author huangxin
+ *
+ * @author huangxin (3203317@qq.com)
  *
  */
 @SuppressWarnings("all")

@@ -13,7 +13,7 @@ import com.transilink.framework.core.logs.LogEnabled;
 /**
  * 读取属性文件
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
  *
  */
 public class SysConfigUtil implements LogEnabled {

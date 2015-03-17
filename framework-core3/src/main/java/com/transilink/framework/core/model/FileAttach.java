@@ -3,6 +3,11 @@ package com.transilink.framework.core.model;
 import java.io.InputStream;
 import java.io.Serializable;
 
+/**
+ *
+ * @author huangxin (3203317@qq.com)
+ *
+ */
 public class FileAttach implements Serializable {
 	private static final long serialVersionUID = -6048829856792388813L;
 

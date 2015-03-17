@@ -18,11 +18,9 @@ import java.util.zip.ZipException;
 import sun.security.action.GetPropertyAction;
 
 /**
- * This class implements an input stream filter for reading files in the ZIP
- * file format. Includes support for both compressed and uncompressed entries.
  *
- * @author David Connelly
- * @version 1.46, 03/23/10
+ * @author huangxin (3203317@qq.com)
+ *
  */
 public class CZipInputStream extends InflaterInputStream implements
 		ZipConstants {
