@@ -1,0 +1,18 @@
+<table id='table1' data-olx-type='olx.grid' class='table table-bordered table-hover table-condensed table-striped' data-url='/tenantorg/list' data-current='1' data-pagesize='20' data-count='561'>
+	<thead>
+		<tr>
+			<th class='ta'><input type='checkbox' title='全选/取消'></th>
+			<th>租户名称</th>
+			<th>公司名称</th>
+			<th>组织机构数</th>
+		</tr>
+	</thead>
+	<tbody>
+		#foreach($!record in $!pageView.records)<tr>
+			<td class='ta'><input type='checkbox' value='$!record.ID'></td>
+			<td>$!record.TENANT_NAME</td>
+			<td>$!record.CORP_NAME</td>
+			<td>$!record.ORG_NUMS</td>
+		</tr>#end
+	</tbody>
+</table>

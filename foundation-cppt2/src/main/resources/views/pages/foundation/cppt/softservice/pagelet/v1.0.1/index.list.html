@@ -1,0 +1,16 @@
+<table id='table1' data-olx-type='olx.grid' class='table table-bordered table-hover table-condensed table-striped' data-url='/softservice/list' data-current='1' data-pagesize='20' data-count='561'>
+	<thead>
+		<tr>
+			<th class='ta'><input type='checkbox' title='全选/取消'></th>
+			<th>服务名称</th>
+			<th>服务描述</th>
+		</tr>
+	</thead>
+	<tbody>
+		#foreach($!softservice in $!pageView.records)<tr>
+			<td class='ta'><input type='checkbox' value='$!softservice.ID'></td>
+			<td>$!softservice.SOFTSERVICE_NAME</td>
+			<td>$!softservice.SOFTSERVICE_DESC</td>
+		</tr>#end
+	</tbody>
+</table>
