@@ -9,7 +9,7 @@ import com.transilink.framework.core.utils.pagesUtils.Page;
 
 /**
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
  *
  */
 public interface UserService extends BaseService<User> {

@@ -10,7 +10,7 @@ import com.transilink.framework.core.model.CommonModel;
 
 /**
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
  *
  */
 @Table(name = "s_role")

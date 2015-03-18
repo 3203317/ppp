@@ -24,7 +24,7 @@ import com.transilink.framework.core.utils.pagesUtils.PageView;
 
 /**
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
  *
  */
 @Controller

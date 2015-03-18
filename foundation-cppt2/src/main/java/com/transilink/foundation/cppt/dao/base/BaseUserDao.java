@@ -7,7 +7,7 @@ import com.transilink.framework.core.dao.hibernate.HibernateEntityDao;
 
 /**
  *
- * @author huangxin
+ * @author huangxin (3203317@qq.com)
  *
  */
 @SuppressWarnings("all")
