@@ -2,20 +2,20 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.xcysoft</groupId>
-		<artifactId>framework-config</artifactId>
+		<groupId>anyang</groupId>
+		<artifactId>anyang-config</artifactId>
 		<version>1.0.40</version>
 	</parent>
-	<groupId>com.xcysoft</groupId>
-	<artifactId>framework-core</artifactId>
+	<groupId>anyang</groupId>
+	<artifactId>anyang-core</artifactId>
 	<version>1.0.40</version>
 	<packaging>jar</packaging>
-	<name>xcysoft :: framework :: core</name>
+	<name>anyang :: framework :: core</name>
 
 	<distributionManagement>
 		<repository>
-			<id>repo1.xcysoft.com</id>
-			<url>http://localhost:8082/nexus/content/repositories/repo1.xcysoft.com</url>
+			<id>anyang</id>
+			<url>http://localhost:8082/nexus/content/repositories/anyang</url>
 		</repository>
 	</distributionManagement>
 
