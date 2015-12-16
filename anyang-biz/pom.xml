@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>anyang</groupId>
 		<artifactId>anyang-config</artifactId>
-		<version>1.0.40</version>
+		<version>1.0.41</version>
 	</parent>
 	<groupId>anyang</groupId>
 	<artifactId>anyang-biz</artifactId>
