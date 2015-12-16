@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="JSMessage">
+	<resultMap type="JSMessage" id="jSMessageResultMap">
+		<result property="id" column="id" />
+		<association property="sendUser" column="sendUserId" javaType="JSUser" select="JSUser.findById" />
+	</resultMap>
+	
+	<sql id="table_columns">
+		id,title,content,sendUserId,receiverId,receiverType,messageType,createTime,status
+    </sql>
+	<sql id="entity_properties">
+		#{id},#{title},#{content},#{sendUser.id},#{receiverId},#{receiverType},#{messageType},#{createTime,jdbcType=TIMESTAMP},#{status}
+	</sql>
+	
+	<!-- 适用于主键自增类型 -->
+	<insert id="save" parameterType="JSMessage">
+		insert into j_s_message( <include refid="table_columns" /> ) 
+		values ( <include refid="entity_properties" /> )
+	</insert>
+	<!-- 批量保存对象 -->
+	<insert id="batchInsert" parameterType="list">
+		insert into
+		j_s_message
+		(
+		<include refid="table_columns" />
+		)
+		<foreach collection="list" item="item" index="index"
+			separator="union all">
+			select #{item.id},#{item.sendUser.id},#{item.receiverId},#{item.receiverType},#{item.messageType},#{item.createTime},#{item.status} from dual
+		</foreach>
+	</insert>
+	<delete id="deleteByIds">
+		delete from j_s_message
+		where id in
+		<foreach item="item" collection="array" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+	<delete id="deleteAll">
+		delete from j_s_message
+	</delete>
+	<update id="update" parameterType="JSMessage">
+		update j_s_message 
+		set status="1"
+		<where>id = #{id}</where>
+	</update>
+	
+	<select id="findById" resultMap="jSMessageResultMap" parameterType="String" >
+		select <include refid="table_columns" />
+		from j_s_message
+		where id = #{id}
+	</select>
+	
+	<select id="queryAll" resultMap="jSMessageResultMap">
+		select <include refid="table_columns" /> 
+		from j_s_message
+	</select>
+	
+	<!-- 使用like用法：columnName like concat('%',#columnName#,'%') -->
+	<sql id="page_where">
+		<trim prefix="where" prefixOverrides="and | or ">
+		</trim>
+	</sql>
+	
+	<!-- 获取对象列表(分页)-->
+	<select id="pagerList" resultMap="jSMessageResultMap" parameterType="PagerInfo">
+		select <include refid="table_columns" />
+		from j_s_message
+	</select>
+	
+	<!-- 其他自定义SQL -->
+	
+</mapper>

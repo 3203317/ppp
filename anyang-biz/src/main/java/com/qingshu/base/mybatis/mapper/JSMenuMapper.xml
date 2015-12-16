@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="JSMenu">
+	<!-- Result Map -->
+	<resultMap id="BaseResultMap" type="JSMenu">
+	<result column="id" property="id" />
+	<association property="menuPid" column="menuPid" javaType="JSMenu" select="JSMenu.find"/>
+	</resultMap>
+	<!-- 数据表字段列 -->
+	<sql id="Base_Column_List">
+		jm.id,jm.menuCode,jm.menuName,jm.menuLevel,jm.menuUrl,jm.menuPid,jm.menuImg,jm.menuType,jm.allowDelete
+	</sql>
+	<!-- 数据表名 -->
+	<sql id="tablename"> j_s_menu </sql>
+	<sql id="tableasname"> j_s_menu jm</sql>
+	<!-- where 条件 -->
+	<sql id="where"> where 1=1 </sql>
+	<!-- columnKey 主键 列名称 ,视图获取不到主键 需要设置 -->
+	<sql id="columnKey"> and jm.id=#{id} </sql>
+	<sql id="andOther">
+		<trim suffixOverrides=",">
+			<if test="menuCode != null"> and jm.menuCode = #{menuCode} </if>
+			<if test="menuName != null"> and jm.menuName = #{menuName} </if>
+			<if test="menuPid != null">  and jm.menuPid = #{menuPid} </if>
+		</trim>
+	</sql>
+	<sql id="page_where">
+		<trim prefix="where" prefixOverrides="and | or ">
+			 <if test="queryParams.menuName !=null">and jm.menuName = #{queryParams.menuName}</if>
+		</trim>
+	</sql>
+	<!-- 保存对象 -->
+	<insert id="save" parameterType="JSMenu">
+		insert into
+		<include refid="tablename" />
+		(id,menuName,menuUrl,menuPid,menuImg,menuCode,menuLevel,menuType)
+		values(#{id},#{menuName},#{menuUrl},#{menuPid.id},#{menuImg},#{menuCode},#{menuLevel},#{menuType})
+	</insert>
+	<!-- 更新角色 -->
+	<update id="update" parameterType="JSMenu">
+		update 
+		<include refid="tablename"/> 
+		<trim prefix="set" suffixOverrides=",">
+			<if test="menuName != null">menuName = #{menuName},</if>
+			<if test="menuUrl != null">menuUrl = #{menuUrl},</if>
+			<if test="menuUrl != null">menuCode = #{menuCode},</if>
+			<if test="menuPid != null">menuPid = #{menuPid.id},</if>
+			<if test="menuImg != null">menuImg = #{menuImg},</if>
+			<if test="menuType != null">menuType = #{menuType},</if>
+		</trim>
+		<where>id = #{id}</where>
+	</update>
+	<!--查找对象-->
+	<select id="find" resultMap="BaseResultMap" parameterType="map" >
+		select 
+		<include refid="Base_Column_List" />
+		from 
+		<include refid="tableasname"/>
+		where id = #{id}
+	</select>
+	<!--查找登陆用户（角色和用户本身）拥有的菜单权限-->
+	<select id="findJSMenuByRoleId" resultMap="BaseResultMap" parameterType="Map" >
+		select distinct 
+		<include refid="Base_Column_List" /> 
+		from 
+		<include refid="tableasname"/>
+		left join j_s_permission jp 
+		on jm.id=jp.permissionId
+		where (jp.ownerId in 
+		<foreach item="ownerId" collection="ownerList" open="(" separator="," close=")">
+           #{ownerId}
+       </foreach>
+		and jp.ownerType=#{ownerType} and jp.permissionType=#{permissionType}) or (jp.ownerId=#{currentUserId} and  jp.ownerType=#{currentUserType}  and jp.permissionType=#{permissionType}) order by jm.menuCode
+	</select>
+	<!--批量删除-->
+	<delete id="deleteAll">
+		delete from 
+		<include refid="tablename" />
+		where id in
+		<foreach item="item" collection="array" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+	<!-- 查询一级菜单-->
+	<select id="findFirstMenu" resultMap="BaseResultMap" parameterType="string">
+		select
+		<include refid="Base_Column_List" />
+		from 
+		<include refid="tableasname" /> 
+		where jm.menuPid is null or jm.menuPid='0'
+	</select>
+	<!-- 查询子节点 -->
+	<select id="findChildren" resultMap="BaseResultMap" parameterType="string">
+		select
+		<include refid="Base_Column_List" />
+		from 
+		<include refid="tableasname" /> 
+		where jm.menuPid=#{menuPid}
+	</select>
+	<!-- 查询子节点 -->
+	<select id="createCode" resultType="String" parameterType="string">
+		SELECT to_number(max(jm.menuCode))+1 from 
+        <include refid="tableasname" /> 
+         where jm.menuPid=#{menuPid}
+	</select>
+	<!-- 查询,参数查询,Map -->
+	<select id="selectByMap" parameterType="Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from
+		<include refid="tableasname" />
+		<include refid="where" />
+		<include refid="andOther" />
+	</select>
+	<!-- 获取对象列表(分页)-->
+	<select id="pagerList" parameterType="PagerInfo" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from
+		<include refid="tableasname" />
+		<include refid="page_where" />
+	</select>
+</mapper>

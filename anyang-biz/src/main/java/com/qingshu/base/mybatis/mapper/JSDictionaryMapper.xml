@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="JSDictionary">
+	<resultMap type="JSDictionary" id="jSDictionaryResultMap">
+		<result property="id" column="id" />
+		<association property="dictGroup" column="dictGroupId" javaType="JSDictionaryGroup" select="JSDictionaryGroup.findById" />
+	</resultMap>
+	
+	<sql id="table_columns">
+		id,dictName,dictCode,dictGroupId
+    </sql>
+	<sql id="entity_properties">
+		#{id},#{dictName},#{dictCode},#{dictGroup.id}
+	</sql>
+	
+	<!-- 适用于主键自增类型 -->
+	<insert id="save" parameterType="JSDictionary">
+		insert into j_s_dictionary( <include refid="table_columns" /> ) 
+		values ( <include refid="entity_properties" /> )
+	</insert>
+	
+	<delete id="deleteByIds">
+		delete from j_s_dictionary
+		where id in
+		<foreach item="item" collection="array" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+	
+	<update id="update" parameterType="JSDictionary">
+		update j_s_dictionary 
+		<trim prefix="set" suffixOverrides=",">
+			<if test="dictName != null">dictName = #{dictName},</if>
+			<if test="dictCode != null">dictCode = #{dictCode},</if>
+		</trim>
+		<where>id = #{id}</where>
+	</update>
+	
+	<select id="findById" resultMap="jSDictionaryResultMap" parameterType="String" >
+		select <include refid="table_columns" />
+		from j_s_dictionary
+		where id = #{id}
+	</select>
+	<select id="findByGroupId" resultMap="jSDictionaryResultMap" parameterType="String" >
+		select <include refid="table_columns" />
+		from j_s_dictionary
+		where dictGroupId = #{dictGroupId}
+	</select>
+	<select id="queryAll" resultMap="jSDictionaryResultMap">
+		select <include refid="table_columns" /> 
+		from j_s_dictionary
+	</select>
+	
+	<!-- 使用like用法：columnName like concat('%',#columnName#,'%') -->
+	<sql id="page_where">
+		<trim prefix="where" prefixOverrides="and | or ">
+		</trim>
+	</sql>
+	
+	<!-- 获取对象列表(分页)-->
+	<select id="pagerList" resultMap="jSDictionaryResultMap" parameterType="PagerInfo">
+		select <include refid="table_columns" />
+		from j_s_dictionary
+	</select>
+	
+	<!-- 其他自定义SQL -->
+	
+</mapper>

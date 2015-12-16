@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="JSPermission">
+	<!-- Result Map -->
+	<resultMap id="BaseResultMap" type="JSPermission">
+	<result column="id" property="id" />
+	<collection property="operationList" column="id" select="selectJSOperation" ofType="JSOperation" />
+	</resultMap>
+	<!-- 数据表字段列 -->
+	<sql id="Search_Column_List">
+		jp.id,jp.ownerId,jp.permissionId,jp.ownerType,jp.permissionType
+	</sql>
+	<sql id="Base_Column_List">
+		id,ownerId,permissionId,ownerType,permissionType
+	</sql>
+	<!-- 数据表名 -->
+	<sql id="tableasname"> j_s_permission jp</sql>
+	<sql id="tablename"> j_s_permission </sql>
+	<!-- where 条件 -->
+	<sql id="where"> where 1=1 </sql>
+	<!-- columnKey 主键 列名称 ,视图获取不到主键 需要设置 -->
+	<sql id="columnKey"> and jp.id=#{id} </sql>
+	<sql id="andOther">
+		<trim suffixOverrides=",">
+			<if test="ownerId != null"> and jp.ownerId = #{ownerId} </if>
+			<if test="permissionId != null"> and jp.permissionId = #{permissionId}</if>
+			<if test="permissionType != null"> and jp.permissionType = #{permissionType}</if>
+			<if test="ownerType != null"> and jp.ownerType = #{ownerType} </if>
+		</trim>
+	</sql>
+	<sql id="page_where">
+		<trim prefix="where" prefixOverrides="and | or ">
+			<if test="queryParams.ownerId !=null">and jp.ownerId = #{queryParams.ownerId}</if>
+		</trim>
+	</sql>
+	<!-- 查询,参数查询,Map -->
+	<select id="selectByMap" parameterType="Map" resultMap="BaseResultMap">
+		select
+		<include refid="Search_Column_List" />
+		from
+		<include refid="tableasname" />
+		<include refid="where" />
+		<include refid="andOther" />
+	</select>
+	<!-- 批量保存对象 -->
+	<insert id="batchInsert" parameterType="list">
+		insert into
+		<include refid="tablename" />
+		(
+		<include refid="Base_Column_List" />
+		)
+		<foreach collection="list" item="item" index="index"
+			separator="union all">
+			select #{item.id},#{item.ownerId},#{item.permissionId},#{item.ownerType},#{item.permissionType} from dual
+		</foreach>
+	</insert>
+	<!-- 批量角色分配的操作 -->
+	<insert id="batchInsertOperation" parameterType="list">
+		insert into
+		j_s_permission_operation
+		(operationId,permissionId)
+		<foreach collection="list" item="item" index="index"
+			separator="union all">
+			select #{item.operationId},#{item.permissionId} from dual
+		</foreach>
+	</insert>
+	<!--删除权限上拥有的操作 -->
+	<delete id="deleteOperation" parameterType="String">
+		delete from
+		j_s_permission_operation
+		where permissionId =#{permissionId}
+	</delete>
+	<!-- 保存对象 -->
+	<insert id="save" parameterType="JSPermission">
+		insert into
+		<include refid="tablename" />
+		(id,ownerId,permissionId,ownerType,permissionType)
+		values(#{id},#{ownerId},#{permissionId},#{ownerType},#{permissionType})
+	</insert>
+	<!--查找对象 -->
+	<select id="find" resultMap="BaseResultMap" parameterType="String">
+		select
+		<include refid="Search_Column_List" />
+		from
+		<include refid="tableasname" />
+		where jp.id = #{id}
+	</select>
+	<!--批量删除 -->
+	<delete id="deleteAll">
+		delete from
+		<include refid="tablename" />
+		where id in
+		<foreach item="item" collection="array" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+	<!--单对象删除 -->
+	<delete id="delete" parameterType="String">
+		delete from
+		<include refid="tablename" />
+		where id =#{id}
+	</delete>
+	<!--单对象删除 -->
+	<delete id="deleteMenuPermission" parameterType="Map">
+		delete from
+		<include refid="tablename" />
+		where permissionId =#{permissionId} and permissionType=#{permissionType}
+	</delete>
+	<!-- 获取用户列表(分页) -->
+	<select id="pagerList" parameterType="PagerInfo" resultMap="BaseResultMap">
+		select
+		<include refid="Search_Column_List" />
+		from
+		<include refid="tableasname" />
+		<include refid="page_where" />
+	</select>
+	<!-- 查询菜单拥有的操作 -->
+	<select id="selectJSOperation" parameterType="String" resultType="JSOperation">
+	  select *  
+      from j_s_operation jo  
+           left  join j_s_permission_operation jop  
+              on jo.id=jop.operationId
+           left join j_s_permission  jp 
+              on jp.id =jop.permissionId
+      where jp.id=#{id}						
+	</select>
+</mapper>

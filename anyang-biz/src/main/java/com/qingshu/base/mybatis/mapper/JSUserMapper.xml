@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="JSUser">
+	<!-- Result Map 必须声明主键字段-->
+	<resultMap id="BaseResultMap" type="JSUser">
+	<result column="id" property="id" />
+	<collection property="jsRoles" column="id" select="selectJSRoles" ofType="JSRole" /> 
+	</resultMap>
+	<!-- 数据表字段列 -->
+	<sql id="Base_Column_List">
+		ju.id,ju.userName,ju.passWord,ju.nickName,ju.realName,ju.mobile,ju.telephone,ju.email,ju.signFile,ju.headPic,ju.status,ju.userType,ju.userLevel,ju.islock,ju.x,ju.y
+	</sql>
+	<!-- 数据表名 -->
+	<sql id="tableasname"> j_s_user ju</sql>
+	<sql id="tablename"> j_s_user </sql>
+	<!-- where 条件 -->
+	<sql id="where"> where 1=1 </sql>
+	<!-- columnKey 主键 列名称 ,视图获取不到主键需要设置 -->
+	<sql id="columnKey"> and ju.id=#{id} </sql>
+	<sql id="andOther">
+		<trim suffixOverrides=",">
+			<if test="userName != null and userName !='' "> and (ju.userName = #{userName} or ju.nickName= #{userName}) </if>
+			<if test="passWord != null and passWord !='' "> and ju.passWord = #{passWord} </if>
+		</trim>
+	</sql>
+	<sql id="page_where">
+		<trim prefix="where" prefixOverrides="and | or ">
+			 <if test="queryParams.userName !=null">and ju.userName = #{queryParams.userName}</if>
+		</trim>
+	</sql>
+	<!-- 保存用户 -->
+	<insert id="save" parameterType="JSUser">
+		insert into
+		<include refid="tablename" />
+		(id,userName,nickName,passWord,realName,telephone,userType,email,userLevel,islock)
+		values(#{id},#{userName},#{nickName},#{passWord},#{realName},#{telephone},#{userType},#{email},#{userLevel},#{islock})
+	</insert> 
+	<!-- 更新用户 -->
+	<update id="update" parameterType="JSUser">
+		update 
+		<include refid="tablename"/> 
+		<trim prefix="set" suffixOverrides=",">
+			<if test="userName != null">userName = #{userName},</if>
+			<if test="realName != null">realName = #{realName},</if>
+			<if test="nickName != null">nickName = #{nickName},</if>
+			<if test="email != null">email = #{email},</if>
+			<if test="passWord != null">passWord = #{passWord},</if>
+			<if test="telephone != null">telephone = #{telephone},</if>
+			<if test="x != null and x != ''">x = #{x},</if>
+			<if test="y != null and y != ''">y = #{y},</if>
+		</trim>
+		<where>id = #{id}</where>
+	</update>
+	<!-- 用户锁定状态更新-->
+	<update id="updateLock" parameterType="JSUser">
+		update 
+		<include refid="tablename"/> 
+		<trim prefix="set" suffixOverrides=",">
+			<if test="islock != null">islock = #{islock},</if>
+		</trim>
+		<where>id = #{id}</where>
+	</update>
+		<!-- 用户密码修改更新-->
+	<update id="updatePassword" parameterType="JSUser">
+		update 
+		<include refid="tablename"/> 
+		<trim prefix="set" suffixOverrides=",">
+			<if test="passWord != null">passWord = #{passWord},</if>
+		</trim>
+		<where>id = #{id}</where>
+	</update>
+	<!--查找对象-->
+	<select id="find" resultMap="BaseResultMap" parameterType="map" >
+		select 
+		<include refid="Base_Column_List" />
+		from 
+		<include refid="tableasname"/>
+		where ju.id = #{id}
+	</select>
+		<!--查找对象-->
+	<select id="findByUserName" resultMap="BaseResultMap" parameterType="map" >
+		select 
+		<include refid="Base_Column_List" />
+		from 
+		<include refid="tableasname"/>
+		where ju.userName = #{userName}
+	</select>
+	<!--查找工信局用户(类型为JSUser,userLevel为1)-->
+	<select id="findSUser" resultMap="BaseResultMap" parameterType="map" >
+		select 
+		<include refid="Base_Column_List" />
+		from 
+		<include refid="tableasname"/>
+		where ju.userType = #{userType} and ju.userLevel=#{userLevel}
+	</select>
+	<!--查找对象-->
+	<select id="findAll" resultMap="BaseResultMap">
+		select 
+		<include refid="Base_Column_List" />
+		from 
+		<include refid="tableasname"/>
+	</select>
+	<!--查找对象-->
+	<select id="findById" resultMap="BaseResultMap" parameterType="string" >
+		select 
+		<include refid="Base_Column_List" />
+		from 
+		<include refid="tableasname"/>
+		where ju.id = #{id}
+	</select>
+	<select id="findByIds" resultMap="BaseResultMap">
+		select 
+		<include refid="Base_Column_List" />
+		from 
+		<include refid="tableasname"/>
+		where id in
+		<foreach item="item" collection="array" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+	<!--查找某角色下的用户-->
+	<select id="findUserByRole" resultType="JSUser" parameterType="String" >
+		select 
+		<include refid="Base_Column_List" />
+		from 
+		<include refid="tableasname"/>
+		left join j_s_user_role ur
+		on ju.id=ur.userId
+		where ur.roleId=#{id}
+	</select>
+	<!--批量删除-->
+	<delete id="deleteAll">
+		delete from 
+		<include refid="tablename" />
+		where id in
+		<foreach item="item" collection="array" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+	<!--单对象删除-->
+	<delete id="delete" parameterType="String">
+		delete from 
+		<include refid="tablename" />
+		where id =#{id}
+	</delete>
+	<!-- 查询用户拥有的角色 -->
+	<select id="selectJSRoles" parameterType="String" resultType="JSRole">
+	  select *  
+      from j_s_role r  
+           left  join j_s_user_role ur  
+              on r.id=ur.roleId
+           left join j_s_user  u 
+              on u.id =ur.userId
+      where u.id=#{id}						
+	</select>
+	<!-- 查询,参数查询,Map -->
+	<select id="list" parameterType="Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List"/>
+		from
+		<include refid="tableasname"/>
+		<include refid="where"/>
+		<include refid="andOther"/>
+	</select>
+	<!-- 获取用户列表(分页)-->
+	<select id="pagerList" parameterType="PagerInfo" resultMap="BaseResultMap">
+		select distinct
+		<include refid="Base_Column_List" />
+		from
+		<include refid="tableasname" />
+		left join j_s_organization_user jsou
+		on ju.id=jsou.userid
+		left join j_s_organization jso
+		on jso.id=jsou.organizationid
+		<include refid="page_where" />
+	</select>
+	<select id="usercount" parameterType="PagerInfo" resultMap="BaseResultMap">
+		select ju.userType,ju.userLevel,count(userType) state from j_s_user ju left join j_s_organization_user jsou
+		on ju.id=jsou.userid
+		where (ju.userLevel >=3)
+		  group by ju.userType,ju.userLevel
+	</select>
+	<select id="userscalecount" parameterType="String" resultType="Integer">
+		select count(ju.id)  from j_s_user ju 
+		where (ju.userLevel=3 or ju.userLevel=5) 
+	</select>
+</mapper>

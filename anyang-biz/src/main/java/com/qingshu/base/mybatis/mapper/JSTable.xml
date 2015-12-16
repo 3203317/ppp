@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="JSTable">
+	<resultMap type="JSTable" id="jSTableResultMap">
+		<result property="id" column="id" />
+	</resultMap>
+	
+	<sql id="table_columns">
+		id,tableName,tableDesc,pojoName,entityName
+    </sql>
+	<sql id="entity_properties">
+		#{id,jdbcType=VARCHAR},#{tableName,jdbcType=VARCHAR},#{tableDesc,jdbcType=VARCHAR},#{pojoName,jdbcType=VARCHAR},#{entityName,jdbcType=VARCHAR}
+	</sql>
+	
+	<!-- 适用于主键自增类型 -->
+	<insert id="save" parameterType="JSTable">
+		insert into j_s_table( <include refid="table_columns" /> ) 
+		values ( <include refid="entity_properties" /> )
+	</insert>
+	<!-- 批量保存对象 -->
+	<insert id="batchInsert" parameterType="list">
+		insert into
+		j_s_table
+		(
+		<include refid="table_columns" /> )  
+		<foreach collection="list" item="item" index="index"
+			separator="union all">
+			select #{item.id},#{item.tableName},#{item.tableDesc},#{item.pojoName},#{item.entityName} from dual
+		</foreach>
+	</insert>
+	<delete id="deleteByIds">
+		delete from j_s_table
+		where id in
+		<foreach item="item" collection="array" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+	<delete id="deleteAll">
+		delete from j_s_table
+	</delete>
+	<update id="update" parameterType="JSTable">
+		update j_s_log 
+		<trim prefix="set" suffixOverrides=",">
+		</trim>
+		<where>id = #{id}</where>
+	</update>
+	
+	<select id="findById" resultMap="jSTableResultMap" parameterType="String" >
+		select <include refid="table_columns" />
+		from j_s_table
+		where id = #{id}
+	</select>
+	<select id="findByEntity" resultMap="jSTableResultMap" parameterType="String" >
+		select <include refid="table_columns" />
+		from j_s_table
+		where entityName = #{entityName}
+	</select>
+	
+	<select id="queryAll" resultMap="jSTableResultMap">
+		select <include refid="table_columns" /> 
+		from j_s_table
+	</select>
+	
+	<!-- 使用like用法：columnName like concat('%',#columnName#,'%') -->
+	<sql id="page_where">
+		<trim prefix="where" prefixOverrides="and | or ">
+		</trim>
+	</sql>
+	
+	<!-- 获取对象列表(分页)-->
+	<select id="pagerList" resultMap="jSTableResultMap" parameterType="PagerInfo">
+		select <include refid="table_columns" />
+		from j_s_table
+		<include refid="page_where" />
+	</select>
+	
+	<!-- 其他自定义SQL -->
+	
+</mapper>

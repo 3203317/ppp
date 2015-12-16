@@ -31,7 +31,7 @@
 		<!--spring -->
 		<spring.version>3.2.5.RELEASE</spring.version>
 		<!--hibernate -->
-		<hibernate.version>3.6.0.Final</hibernate.version>
+		<hibernate.version>4.2.0.Final</hibernate.version>
 		<javassist.version>3.1</javassist.version>
 		<cglib.version>2.2</cglib.version>
 		<!-- restlet -->

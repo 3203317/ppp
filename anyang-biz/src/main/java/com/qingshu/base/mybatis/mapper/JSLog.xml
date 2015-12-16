@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="JSLog">
+	<resultMap type="JSLog" id="jSLogResultMap">
+		<result property="id" column="id" />
+		<association property="jsTable" column="tableid" javaType="JSTable" select="JSTable.findById" />
+	</resultMap>
+	
+	<sql id="table_columns">
+		id,userId,userName,logDate,logIp,logDesc,methodName,tableId,entityName,entityPk
+    </sql>
+	<sql id="table_columnsas">
+		l.id id,userId,l.userName userName,logDate,logIp,logDesc,methodName,tableId,entityName,entityPk
+    </sql>
+	<sql id="entity_properties">
+		#{id,jdbcType=VARCHAR},#{jsUser.id,jdbcType=VARCHAR},#{userName,jdbcType=VARCHAR},#{logDate,jdbcType=TIMESTAMP},#{logIp,jdbcType=VARCHAR},#{logDesc,jdbcType=VARCHAR},#{methodName,jdbcType=VARCHAR},#{jsTable.id,jdbcType=VARCHAR},#{entityName,jdbcType=VARCHAR},#{entityPk,jdbcType=VARCHAR}
+	</sql>
+	
+	<!-- 适用于主键自增类型 -->
+	<insert id="save" parameterType="JSLog">
+		insert into j_s_log( <include refid="table_columns" /> ) 
+		values ( <include refid="entity_properties" /> )
+	</insert>
+	
+	<delete id="deleteByIds">
+		delete from j_s_log
+		where id in
+		<foreach item="item" collection="array" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+	
+	<update id="update" parameterType="JSLog">
+		update j_s_log 
+		<trim prefix="set" suffixOverrides=",">
+		</trim>
+		<where>id = #{id}</where>
+	</update>
+	
+	<select id="findById" resultMap="jSLogResultMap" parameterType="String" >
+		select <include refid="table_columns" />
+		from j_s_log
+		where id = #{id}
+	</select>
+	<select id="findLastLogin" resultMap="jSLogResultMap" parameterType="String" >
+		select <include refid="table_columns" />
+		from j_s_log jsl
+		where jsl.methodName='login' and jsl.userId=#{userId}
+		and jsl.logDate = (select max(logDate) from j_s_log log where log.methodName='login' and log.userId=#{userId})
+	</select>
+	<select id="findByPF" resultMap="jSLogResultMap" parameterType="Map" >
+		select <include refid="table_columns" />
+		from j_s_log
+		where userId = #{userId} and entityPk=#{entityFk} and entityName=#{entityFkName}
+	</select>
+	<select id="queryAll" resultMap="jSLogResultMap">
+		select <include refid="table_columns" /> 
+		from j_s_log order by logDate desc
+	</select>
+	
+	<!-- 使用like用法：columnName like concat('%',#columnName#,'%') -->
+	<sql id="page_where">
+		<trim prefix="where" prefixOverrides="and | or ">
+		</trim>
+	</sql>
+	
+	<!-- 获取对象列表(分页)-->
+	<select id="pagerList" resultMap="jSLogResultMap" parameterType="PagerInfo">
+		select <include refid="table_columnsas" />
+		from j_s_log l left join j_s_user u on l.entityPk=u.id
+	</select>
+	
+	<!-- 其他自定义SQL -->
+	
+</mapper>
