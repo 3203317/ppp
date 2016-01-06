@@ -13,7 +13,7 @@
   <form method="post" action="/add_ftl">
 	<table>
   <tr>
-	<td>姓名</td>
+	<td>姓名121</td>
 	<td>密码</td>
 	<td>动作</td>
   </tr>
