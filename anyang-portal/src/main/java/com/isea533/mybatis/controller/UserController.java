@@ -1,5 +1,7 @@
 package com.isea533.mybatis.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,14 +32,17 @@ public class UserController {
 	}
 
 	@RequestMapping(value = { "/user/login" }, method = RequestMethod.POST, produces = "application/json")
-	public ModelAndView login(User pj) {
+	public ModelAndView login(User user, HttpSession session) {
 		ModelAndView result = new ModelAndView();
 		// TODO
-		if ("admin".equals(pj.getUserName())
-				&& "123456".equals(pj.getUserPass())) {
-			result.addObject("success", "true");
+		if ("admin".equals(user.getUserName())
+				&& "123456".equals(user.getUserPass())) {
+			result.addObject("success", true);
+			// TODO
+			session.setAttribute("session.user", user);
 		} else {
-			result.addObject("success", "false");
+			result.addObject("success", false);
+			result.addObject("msg", "用户名或密码输入错误");
 		} // END
 		return result;
 	}

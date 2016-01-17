@@ -49,7 +49,9 @@
 						userPass : $('#loginFrm_USERPASS').val()
 					}
 				}).done(function(data) {
-					console.log(data);
+					if (data.success)
+						return location.href = '/manage/';
+					alert(data.msg);
 				});
 			});
 		});
