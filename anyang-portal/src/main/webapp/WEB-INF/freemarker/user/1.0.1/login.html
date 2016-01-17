@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="Author" content="">
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<title>测试实例</title>
+<script type='text/javascript'
+	src='http://www.foreworld.net/js/jquery/2.0.2/jquery.min.js'></script>
+</head>
+<body>
+	<center>
+		<form id='loginFrm' role='form' onsubmit='return false;'>
+			<table>
+				<tr>
+					<td>用户名</td>
+					<td><input type="text" id='loginFrm_USERNAME' name='userName'
+						value='${(user.userName)!}'></td>
+				</tr>
+				<tr>
+					<td>密码</td>
+					<td><input type="password" id='loginFrm_USERPASS'
+						name='userPass' value='${(user.userPass)!}'>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="button" id='btn_login' value="登陆"></td>
+				</tr>
+			</table>
+		</form>
+	</center>
+	<script>
+		$(function() {
+			$('#btn_login').click(function() {
+				$.ajax({
+					url : '/user/login',
+					type : 'POST',
+					dataType : 'JSON',
+					data : {
+						userName : $('#loginFrm_USERNAME').val(),
+						userPass : $('#loginFrm_USERPASS').val()
+					}
+				}).done(function(data) {
+					console.log(data);
+				});
+			});
+		});
+	</script>
+</body>
+</html>
