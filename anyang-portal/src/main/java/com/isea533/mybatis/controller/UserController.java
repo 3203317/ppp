@@ -31,6 +31,12 @@ public class UserController {
 		return result;
 	}
 
+	@RequestMapping(value = { "/user/logout" }, method = RequestMethod.GET)
+	public String logoutUI(HttpSession session) {
+		session.invalidate();
+		return "redirect:/user/login";
+	}
+
 	@RequestMapping(value = { "/user/login" }, method = RequestMethod.POST, produces = "application/json")
 	public ModelAndView login(User user, HttpSession session) {
 		ModelAndView result = new ModelAndView();

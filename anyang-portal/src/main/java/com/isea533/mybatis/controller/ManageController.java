@@ -19,10 +19,13 @@ public class ManageController {
 
 	@RequestMapping(value = { "/manage/" }, method = RequestMethod.GET)
 	public ModelAndView indexUI(HttpSession session) {
+		Object obj = session.getAttribute("session.user");
+		if (null == obj) {
+			return new ModelAndView("redirect:/user/login");
+		} // END
 		ModelAndView result = new ModelAndView(index_ftl);
 		// TODO
-		result.addObject("data_session_user",
-				session.getAttribute("session.user"));
+		result.addObject("data_session_user", obj);
 		return result;
 	}
 }
