@@ -19,4 +19,12 @@ public interface HttpSession {
 	 * 释放Session
 	 */
 	void invalidate();
+
+	/**
+	 * 获取Session
+	 *
+	 * @param name
+	 * @return
+	 */
+	Object getAttribute(String name);
 }

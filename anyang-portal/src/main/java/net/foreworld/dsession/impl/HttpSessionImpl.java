@@ -24,12 +24,14 @@ public class HttpSessionImpl implements HttpSession {
 		session1.invalidate();
 	}
 
+	public Object getAttribute(String name) {
+		javax.servlet.http.HttpSession session1 = getSession();
+		return session1.getAttribute(name);
+	}
+
 	public static javax.servlet.http.HttpSession getSession() {
 		javax.servlet.http.HttpSession session = null;
-		try {
-			session = getRequest().getSession();
-		} catch (Exception e) {
-		}
+		session = getRequest().getSession();
 		return session;
 	}
 

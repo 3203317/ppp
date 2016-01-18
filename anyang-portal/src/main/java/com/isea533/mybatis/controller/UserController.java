@@ -1,5 +1,7 @@
 package com.isea533.mybatis.controller;
 
+import java.util.Date;
+
 import net.foreworld.dsession.DistributedSession;
 import net.foreworld.dsession.HttpSession;
 
@@ -47,9 +49,7 @@ public class UserController {
 			result.addObject("success", true);
 			// TODO
 			session.setAttribute("session.user", user);
-			session.setAttribute("kao", "123456真j8难注册ffss112233aaa");
-
-			// System.out.println("--==" + haha.getName());
+			session.setAttribute("session.time", (new Date()).toString());
 		} else {
 			result.addObject("success", false);
 			result.addObject("msg", "用户名或密码输入错误");

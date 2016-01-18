@@ -18,37 +18,22 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 public class DistributedSessionResolver implements
 		HandlerMethodArgumentResolver {
 	private final Logger logger;
+	private static ThreadLocal<Object> session = new ThreadLocal<Object>();
 
 	public DistributedSessionResolver() {
 		logger = Logger.getLogger(getClass().getName());
 	}
 
-	// private static HaHaSession instance;
-
 	@Override
 	public Object resolveArgument(MethodParameter parameter,
 			ModelAndViewContainer arg1, NativeWebRequest arg2,
 			WebDataBinderFactory arg3) throws Exception {
-
-		// Object o = BeanUtils.instantiate(parameter.getParameterType());
-		//
-		// logger.info(o.toString());
-
-		// HttpSession session1 = getSession();
-		// session1.setAttribute("kao", "这么难获取");
-		//
-		// HaHaSession session = new HaHaSession();
-		//
-		//
-		// session.setName("wo ri");
-
-		HttpSession instance = new HttpSessionImpl();
-		//
-		logger.info("==--12312355661122");
-		// User user = new User();
-		// user.setUserName("admin");
-		// user.setUserPass("123456");
-		return instance;
+		Object _o = session.get();
+		if (null == _o) {
+			_o = new HttpSessionImpl();
+			session.set(_o);
+		} // END
+		return _o;
 	}
 
 	@Override
