@@ -24,16 +24,18 @@
 
 package com.isea533.mybatis.test;
 
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import tk.mybatis.mapper.entity.Example;
+
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.isea533.mybatis.mapper.CountryMapper;
 import com.isea533.mybatis.model.Country;
-import org.apache.ibatis.session.SqlSession;
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import tk.mybatis.mapper.entity.Example;
-
-import java.util.List;
 
 /**
  * Created by liuzh on 2015/3/7.

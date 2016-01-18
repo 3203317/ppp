@@ -1,9 +1,7 @@
 package com.isea533.mybatis.controller.demo;
 
-import com.github.pagehelper.PageInfo;
-import com.isea533.mybatis.model.Country;
-import com.isea533.mybatis.model.CountryQueryModel;
-import com.isea533.mybatis.service.CountryService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
+import com.github.pagehelper.PageInfo;
+import com.isea533.mybatis.model.Country;
+import com.isea533.mybatis.model.CountryQueryModel;
+import com.isea533.mybatis.service.CountryService;
 
 /**
  * @author liuzh_3nofxnp

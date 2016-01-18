@@ -2,6 +2,8 @@ package net.foreworld.dsession;
 
 import java.util.logging.Logger;
 
+import net.foreworld.dsession.impl.HttpSessionImpl;
+
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -13,10 +15,11 @@ import org.springframework.web.method.support.ModelAndViewContainer;
  * @author huangxin (3203317@qq.com)
  *
  */
-public class DHttpSessionResolver implements HandlerMethodArgumentResolver {
+public class DistributedSessionResolver implements
+		HandlerMethodArgumentResolver {
 	private final Logger logger;
 
-	public DHttpSessionResolver() {
+	public DistributedSessionResolver() {
 		logger = Logger.getLogger(getClass().getName());
 	}
 
@@ -39,9 +42,9 @@ public class DHttpSessionResolver implements HandlerMethodArgumentResolver {
 		//
 		// session.setName("wo ri");
 
-		HttpSession instance = new HttpSession();
+		HttpSession instance = new HttpSessionImpl();
 		//
-		logger.info("==--1231235566");
+		logger.info("==--12312355661122");
 		// User user = new User();
 		// user.setUserName("admin");
 		// user.setUserPass("123456");
@@ -50,6 +53,6 @@ public class DHttpSessionResolver implements HandlerMethodArgumentResolver {
 
 	@Override
 	public boolean supportsParameter(MethodParameter parameter) {
-		return parameter.hasParameterAnnotation(DHttpSession.class);
+		return parameter.hasParameterAnnotation(DistributedSession.class);
 	}
 }

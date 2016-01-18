@@ -24,11 +24,13 @@
 
 package com.isea533.mybatis.service.impl;
 
-import com.isea533.mybatis.service.IService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import tk.mybatis.mapper.common.Mapper;
 
-import java.util.List;
+import com.isea533.mybatis.service.IService;
 
 /**
  * Created by liuzh on 2014/12/11.

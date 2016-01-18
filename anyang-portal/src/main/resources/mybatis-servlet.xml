@@ -35,7 +35,7 @@
 
 	<mvc:annotation-driven>
 		<mvc:argument-resolvers>
-			<bean class="net.foreworld.dsession.DHttpSessionResolver" lazy-init="false" />
+			<bean class="net.foreworld.dsession.DistributedSessionResolver" lazy-init="false" />
 	    </mvc:argument-resolvers>
 	</mvc:annotation-driven>
 

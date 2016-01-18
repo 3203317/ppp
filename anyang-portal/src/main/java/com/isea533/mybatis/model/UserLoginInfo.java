@@ -24,8 +24,13 @@
 
 package com.isea533.mybatis.model;
 
-import javax.persistence.*;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Table(name = "`user login info`")
 public class UserLoginInfo {

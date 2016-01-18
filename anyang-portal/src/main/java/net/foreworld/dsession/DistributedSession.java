@@ -7,6 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ * 分布式Session
  *
  * @author huangxin (3203317@qq.com)
  *
@@ -14,6 +15,6 @@ import java.lang.annotation.Target;
 @Target({ ElementType.PARAMETER })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface DHttpSession {
+public @interface DistributedSession {
 	// TODO
 }

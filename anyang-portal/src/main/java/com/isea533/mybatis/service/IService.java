@@ -24,9 +24,9 @@
 
 package com.isea533.mybatis.service;
 
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+
+import org.springframework.stereotype.Service;
 
 /**
  * 通用接口
