@@ -26,6 +26,7 @@ public class ManageController {
 		ModelAndView result = new ModelAndView(index_ftl);
 		// TODO
 		result.addObject("data_session_user", obj);
+		result.addObject("kao121", session.getAttribute("kao"));
 		return result;
 	}
 }

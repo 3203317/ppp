@@ -33,6 +33,12 @@
 		<property name="unmarshaller" ref="castorMarshaller" />
 	</bean>
 
+	<mvc:annotation-driven>
+		<mvc:argument-resolvers>
+			<bean class="net.foreworld.dsession.DHttpSessionResolver" lazy-init="false" />
+	    </mvc:argument-resolvers>
+	</mvc:annotation-driven>
+
 	<bean id="mappingJackson2HttpMessageConverter"
 		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 		<property name="supportedMediaTypes">
@@ -137,5 +143,4 @@
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="100000" />
 	</bean>
-
 </beans>

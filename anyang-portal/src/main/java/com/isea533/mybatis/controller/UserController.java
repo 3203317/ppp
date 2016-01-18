@@ -1,6 +1,7 @@
 package com.isea533.mybatis.controller;
 
-import javax.servlet.http.HttpSession;
+import net.foreworld.dsession.DHttpSession;
+import net.foreworld.dsession.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,13 +33,13 @@ public class UserController {
 	}
 
 	@RequestMapping(value = { "/user/logout" }, method = RequestMethod.GET)
-	public String logoutUI(HttpSession session) {
+	public String logoutUI(@DHttpSession HttpSession session) {
 		session.invalidate();
 		return "redirect:/user/login";
 	}
 
 	@RequestMapping(value = { "/user/login" }, method = RequestMethod.POST, produces = "application/json")
-	public ModelAndView login(User user, HttpSession session) {
+	public ModelAndView login(User user, @DHttpSession HttpSession session) {
 		ModelAndView result = new ModelAndView();
 		// TODO
 		if ("admin".equals(user.getUserName())
@@ -46,6 +47,9 @@ public class UserController {
 			result.addObject("success", true);
 			// TODO
 			session.setAttribute("session.user", user);
+			session.setAttribute("kao", "123456真j8难注册123444555");
+
+			// System.out.println("--==" + haha.getName());
 		} else {
 			result.addObject("success", false);
 			result.addObject("msg", "用户名或密码输入错误");
