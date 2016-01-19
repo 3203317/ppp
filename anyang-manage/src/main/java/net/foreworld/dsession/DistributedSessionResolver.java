@@ -2,7 +2,9 @@ package net.foreworld.dsession;
 
 import java.util.logging.Logger;
 
+import net.foreworld.dsession.impl.DistributedSessionImpl;
 import net.foreworld.dsession.impl.HttpSessionImpl;
+import net.foreworld.dsession.utils.SysCfgUtil;
 
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -30,8 +32,14 @@ public class DistributedSessionResolver implements
 			WebDataBinderFactory arg3) throws Exception {
 		Object _o = session.get();
 		if (null == _o) {
-			_o = new HttpSessionImpl();
+			if (null != SysCfgUtil.get("session.host")
+					&& !"".equals(SysCfgUtil.get("session.host"))) {
+				_o = new DistributedSessionImpl();
+			} else {
+				_o = new HttpSessionImpl();
+			} // END
 			session.set(_o);
+			logger.info("distributed session");
 		} // END
 		return _o;
 	}

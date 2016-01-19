@@ -1,4 +1,5 @@
-#Wed Jan 06 13:14:59 CST 2016
+#Tue Jan 19 23:41:35 CST 2016
 eclipse.preferences.version=1
 encoding//src/main/resources/config.properties=UTF-8
 encoding//src/main/resources/log4j.properties=UTF-8
+encoding//src/main/resources/session.properties=UTF-8
