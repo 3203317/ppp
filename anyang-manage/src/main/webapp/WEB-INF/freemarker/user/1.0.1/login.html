@@ -13,7 +13,7 @@
 	<div id='banner'>
 		<ul>
 			<li><a href='/'>首页</a></li>
-			<li><a href='/user/login'>登陆</a></li>
+			<li><a href='/manage/user/login'>登陆</a></li>
 		</ul>
 	</div>
 	<center>
@@ -41,7 +41,7 @@
 		$(function() {
 			$('#btn_login').click(function() {
 				$.ajax({
-					url : 'user/login',
+					url : '/manage/user/login',
 					type : 'POST',
 					dataType : 'JSON',
 					data : {

@@ -33,12 +33,6 @@
 		<property name="unmarshaller" ref="castorMarshaller" />
 	</bean>
 
-	<mvc:annotation-driven>
-		<mvc:argument-resolvers>
-			<bean class="net.foreworld.dsession.DistributedSessionResolver" lazy-init="false" />
-	    </mvc:argument-resolvers>
-	</mvc:annotation-driven>
-
 	<bean id="mappingJackson2HttpMessageConverter"
 		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 		<property name="supportedMediaTypes">
