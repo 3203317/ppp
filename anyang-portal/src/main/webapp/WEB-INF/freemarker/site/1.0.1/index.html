@@ -12,8 +12,11 @@
 <body>
 	<div id='banner'>
 		<ul>
-			<li><a href='/'>首页</a></li>
-			<li><a href='/manage/user/login'>登陆</a></li>
+			<li><a href='${(conf_html_virtualPath)!}'>首页</a></li>
+			<li><a href='${(conf_html_virtualPath)!}manage/user/login'>登陆</a>
+			</li>
+			<li>欢迎您，<a href='javascript:;'>${(data_session_user.userName)!}</a>
+			</li>
 		</ul>
 	</div>
 	<script>

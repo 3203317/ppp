@@ -25,7 +25,7 @@ public class SiteController {
 		user.setUserName("admin");
 		user.setUserPass("123456");
 		// TODO
-		result.addObject("user", user);
+		result.addObject("data_session_user", user);
 		return result;
 	}
 }
