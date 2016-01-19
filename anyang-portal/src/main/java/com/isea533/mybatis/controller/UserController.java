@@ -43,17 +43,41 @@ public class UserController {
 	@RequestMapping(value = { "/user/login" }, method = RequestMethod.POST, produces = "application/json")
 	public ModelAndView login(User user, @DistributedSession HttpSession session) {
 		ModelAndView result = new ModelAndView();
+		User _user = login(user.getUserName(), user.getUserPass());
 		// TODO
-		if ("admin".equals(user.getUserName())
-				&& "123456".equals(user.getUserPass())) {
+		if (null != _user) {
 			result.addObject("success", true);
 			// TODO
-			session.setAttribute("session.user", user);
+			session.setAttribute("session.user", _user);
 			session.setAttribute("session.time", (new Date()).toString());
 		} else {
 			result.addObject("success", false);
 			result.addObject("msg", "用户名或密码输入错误");
 		} // END
 		return result;
+	}
+
+	/**
+	 * 用户登陆
+	 *
+	 * @param userName
+	 *            用户名
+	 * @param userPass
+	 *            密码
+	 * @return
+	 */
+	private User login(String userName, String userPass) {
+		if ("admin".equals(userName) && "123456".equals(userPass)) {
+			User user = new User();
+			user.setUserName("admin");
+			user.setUserPass("123456");
+			return user;
+		} else if ("huangxin".equals(userName) && "654321".equals(userPass)) {
+			User user = new User();
+			user.setUserName("huangxin");
+			user.setUserPass("654321");
+			return user;
+		}
+		return null;
 	}
 }

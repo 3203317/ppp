@@ -9,6 +9,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -32,6 +33,9 @@ public class SessionFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse res,
 			FilterChain chain) throws IOException, ServletException {
 		logger.info(cfg.getInitParameter("abc"));
+		HttpServletRequest hreq = (HttpServletRequest) req;
+		logger.info(hreq.getRequestURI());
+		// TODO
 		chain.doFilter(req, res);
 	}
 
