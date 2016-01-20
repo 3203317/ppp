@@ -32,13 +32,10 @@ public class SessionFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res,
 			FilterChain chain) throws IOException, ServletException {
-		logger.info(cfg.getInitParameter("abc"));
-		HttpServletRequest hreq = (HttpServletRequest) req;
-		logger.info(hreq.getRequestURI());
-
-		logger.info(hreq.getRequestURL().toString());
+		logger.info(cfg.getInitParameter("url-suffix"));
 		// TODO
-		chain.doFilter(req, res);
+		chain.doFilter(new DistributedSessionRequest((HttpServletRequest) req),
+				res);
 	}
 
 	@Override
