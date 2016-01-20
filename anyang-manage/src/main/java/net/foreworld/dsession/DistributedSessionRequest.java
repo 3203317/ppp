@@ -21,8 +21,6 @@ public class DistributedSessionRequest extends HttpServletRequestWrapper {
 
 	@Override
 	public HttpSession getSession() {
-		logger.info(getRequestURI());
-		logger.info(getRequestURL().toString());
 		return super.getSession();
 	}
 }

@@ -1,5 +1,7 @@
 package net.foreworld.dsession.utils;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,8 +58,8 @@ public class HttpUtil {
 	 *            cookie名称
 	 * @return
 	 */
-	public static String getCookieByName(HttpServletRequest req, String name) {
-		Map<String, Cookie> cookieMap = HttpUtil.readCookieMap(req);
+	public static String getCookie(HttpServletRequest req, String name) {
+		Map<String, Cookie> cookieMap = readCookieMap(req);
 		if (cookieMap.containsKey(name)) {
 			Cookie cookie = (Cookie) cookieMap.get(name);
 			return cookie.getValue();
@@ -87,5 +89,49 @@ public class HttpUtil {
 		String dyName = "http://" + req.getLocalName() + ":"
 				+ req.getLocalPort() + req.getContextPath();
 		return dyName;
+	}
+
+	/**
+	 * 获取客户端真实IP
+	 *
+	 * @param req
+	 * @return
+	 */
+	public static String getClientRealIP(HttpServletRequest req) {
+		String ipAddr = req.getHeader("x-forwarded-for");
+		// TODO
+		if (null == StringUtil.isEmpty(ipAddr)
+				|| "unknown".equalsIgnoreCase(ipAddr)) {
+			ipAddr = req.getHeader("Proxy-Client-IP");
+		} // END
+		if (null == StringUtil.isEmpty(ipAddr)
+				|| "unknown".equalsIgnoreCase(ipAddr)) {
+			ipAddr = req.getHeader("WL-Proxy-Client-IP");
+		} // END
+		if (null == StringUtil.isEmpty(ipAddr)
+				|| "unknown".equalsIgnoreCase(ipAddr)) {
+			ipAddr = req.getRemoteAddr();
+			// TODO
+			if ("127.0.0.1".equals(ipAddr)) {
+				// 根据网卡取本机配置的IP
+				InetAddress inet = null;
+				try {
+					inet = InetAddress.getLocalHost();
+				} catch (UnknownHostException e) {
+					e.printStackTrace();
+					return null;
+				} // END
+				ipAddr = inet.getHostAddress();
+			}
+
+		}
+
+		// 对于通过多个代理的情况，第一个IP为客户端真实IP,多个IP按照','分割
+		if (null != ipAddr && 15 < ipAddr.length()) { // "***.***.***.***".length()
+			if (0 < ipAddr.indexOf(",")) {
+				ipAddr = ipAddr.substring(0, ipAddr.indexOf(","));
+			} // END
+		} // END
+		return ipAddr;
 	}
 }
