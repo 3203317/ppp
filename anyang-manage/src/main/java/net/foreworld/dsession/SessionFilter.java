@@ -47,14 +47,14 @@ public class SessionFilter implements Filter {
 		Cookie[] cookies = hreq.getCookies();
 		// 判断是否支持cookie
 		if (null == cookies) {
-			chain.doFilter(new DistributedSessionRequest(hreq), res);
+			chain.doFilter(req, res);
 			return;
 		} // END
 
 		String realIP = HttpUtil.getClientRealIP(hreq);
 		// 判断IP
 		if (null == StringUtil.isEmpty(realIP)) {
-			chain.doFilter(new DistributedSessionRequest(hreq), res);
+			chain.doFilter(req, res);
 			return;
 		} // END
 
