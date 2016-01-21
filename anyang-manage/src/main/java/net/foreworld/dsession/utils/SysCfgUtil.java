@@ -44,6 +44,17 @@ public class SysCfgUtil {
 		return null;
 	}
 
+	/**
+	 *
+	 * @param key
+	 * @param returnVal
+	 * @return
+	 */
+	public synchronized static String get(String key, String returnVal) {
+		String result = get(key);
+		return null == result ? returnVal : result;
+	}
+
 	public static Map<String, String> getAllConfig() {
 		// 加载配置文件，以后需要移到配置表的service中
 		Map<String, String> _map = new HashMap<String, String>();
