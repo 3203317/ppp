@@ -25,7 +25,6 @@ import net.foreworld.dsession.utils.StringUtil;
  */
 public class SessionFilter implements Filter {
 	private final Logger logger;
-	private FilterConfig cfg;
 	private String urlSuffix;
 
 	public SessionFilter() {
@@ -64,15 +63,15 @@ public class SessionFilter implements Filter {
 			return;
 		} // END
 
-		// TODO
-		HttpServletResponse hres = (HttpServletResponse) res;
-
 		// 获取apikey
 		String apiKey = HttpUtil.getCookie(hreq,
 				DistributedSessionContext.COOKIE_NAME_APIKEY);
 		String curTime = HttpUtil.getCookie(hreq,
 				DistributedSessionContext.COOKIE_NAME_CURTIME);
 		String signature = HttpUtil.getCookie(hreq, apiKey);
+
+		// TODO
+		HttpServletResponse hres = (HttpServletResponse) res;
 
 		if (checkCookiesExists(apiKey, curTime, signature)) {
 			apiKey = hreq.getSession().getId();
@@ -103,7 +102,6 @@ public class SessionFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig cfg) throws ServletException {
-		this.cfg = cfg;
 		urlSuffix = "," + cfg.getInitParameter("url-suffix") + ",";
 	}
 
