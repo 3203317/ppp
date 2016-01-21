@@ -45,7 +45,7 @@ public class HttpUtil {
 			String value, int maxAge) {
 		Cookie cookie = new Cookie(name, value);
 		cookie.setPath("/");
-		if (maxAge > 0)
+		if (0 < maxAge)
 			cookie.setMaxAge(maxAge);
 		res.addCookie(cookie);
 	}
