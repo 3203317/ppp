@@ -1,9 +1,8 @@
 package net.foreworld.dsession.utils;
 
+import java.util.logging.Logger;
+
 import net.foreworld.dsession.DistributedSessionContext;
-
-import org.apache.log4j.Logger;
-
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -19,7 +18,7 @@ public final class RedisUtil {
 	private static JedisPool jedisPool = null;
 
 	static {
-		logger = Logger.getLogger(RedisUtil.class);
+		logger = Logger.getLogger(RedisUtil.class.getName());
 	}
 
 	private RedisUtil() {
@@ -40,7 +39,7 @@ public final class RedisUtil {
 					Integer.valueOf(SysCfgUtil.get("db.timeout")),
 					SysCfgUtil.get("db.pass"));
 		} catch (Exception e) {
-			logger.error(e);
+			logger.info(e.getMessage());
 		}
 	}
 
@@ -55,10 +54,12 @@ public final class RedisUtil {
 		// TODO
 		Jedis jedis = null;
 		try {
+			if (null == jedisPool)
+				return null;
 			jedis = jedisPool.getResource();
 			return jedis;
 		} catch (Exception e) {
-			logger.error(e);
+			logger.info(e.getMessage());
 			return null;
 		} finally {
 			if (null != jedis)

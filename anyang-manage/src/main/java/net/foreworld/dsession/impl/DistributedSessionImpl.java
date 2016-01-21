@@ -7,6 +7,7 @@ import net.foreworld.dsession.HttpSession;
 import net.foreworld.dsession.utils.HttpUtil;
 import net.foreworld.dsession.utils.RedisUtil;
 import net.foreworld.dsession.utils.SerializeUtil;
+import redis.clients.jedis.Jedis;
 
 /**
  *
@@ -21,22 +22,37 @@ public class DistributedSessionImpl implements HttpSession {
 	}
 
 	public void setAttribute(String name, Object value) {
+		Jedis jedis = RedisUtil.getJedis();
+		if (null == jedis)
+			return;
+
+		// TODO
 		String apiKey = HttpUtil.getCookie(HttpUtil.getRequest(),
 				DistributedSessionContext.COOKIE_NAME_APIKEY);
-		RedisUtil.getJedis().set((apiKey + ":" + name).getBytes(),
+		jedis.set((apiKey + ":" + name).getBytes(),
 				SerializeUtil.serialize(value));
 	}
 
 	public void invalidate() {
+		Jedis jedis = RedisUtil.getJedis();
+		if (null == jedis)
+			return;
+
+		// TODO
 		javax.servlet.http.HttpSession session = HttpUtil.getSession();
 		session.invalidate();
 	}
 
 	public Object getAttribute(String name) {
+		Jedis jedis = RedisUtil.getJedis();
+		if (null == jedis)
+			return null;
+
+		// TODO
 		String apiKey = HttpUtil.getCookie(HttpUtil.getRequest(),
 				DistributedSessionContext.COOKIE_NAME_APIKEY);
-		Object obj = SerializeUtil.unserialize(RedisUtil.getJedis().get(
-				(apiKey + ":" + name).getBytes()));
+		Object obj = SerializeUtil.unserialize(jedis.get((apiKey + ":" + name)
+				.getBytes()));
 		return obj;
 	}
 }
