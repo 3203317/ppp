@@ -26,6 +26,7 @@ import net.foreworld.dsession.utils.StringUtil;
 public class SessionFilter implements Filter {
 	private final Logger logger;
 	private FilterConfig cfg;
+	private String urlSuffix;
 
 	public SessionFilter() {
 		logger = Logger.getLogger(getClass().getName());
@@ -41,7 +42,12 @@ public class SessionFilter implements Filter {
 			FilterChain chain) throws IOException, ServletException {
 		// TODO
 		HttpServletRequest hreq = (HttpServletRequest) req;
-		HttpServletResponse hres = (HttpServletResponse) res;
+
+		// TODO
+		if (!checkUrlSafe(hreq)) {
+			chain.doFilter(req, res);
+			return;
+		}
 
 		// TODO
 		Cookie[] cookies = hreq.getCookies();
@@ -57,6 +63,9 @@ public class SessionFilter implements Filter {
 			chain.doFilter(req, res);
 			return;
 		} // END
+
+		// TODO
+		HttpServletResponse hres = (HttpServletResponse) res;
 
 		// 获取apikey
 		String apiKey = HttpUtil.getCookie(hreq,
@@ -86,6 +95,8 @@ public class SessionFilter implements Filter {
 					DistributedSessionContext.COOKIE_MAXAGE);
 		} // END
 
+		logger.info("signature: " + HttpUtil.getCookie(hreq, apiKey));
+
 		// TODO
 		chain.doFilter(new DistributedSessionRequest(hreq), res);
 	}
@@ -93,6 +104,7 @@ public class SessionFilter implements Filter {
 	@Override
 	public void init(FilterConfig cfg) throws ServletException {
 		this.cfg = cfg;
+		urlSuffix = "," + cfg.getInitParameter("url-suffix") + ",";
 	}
 
 	/**
@@ -108,5 +120,20 @@ public class SessionFilter implements Filter {
 		return null == StringUtil.isEmpty(apiKey)
 				|| null == StringUtil.isEmpty(curTime)
 				|| null == StringUtil.isEmpty(signature);
+	}
+
+	/**
+	 * 检测Url是否安全
+	 *
+	 * @param url
+	 * @return 安全返回true
+	 */
+	private boolean checkUrlSafe(HttpServletRequest req) {
+		String suffix = HttpUtil.getUrlSuffix(req);
+		// TODO
+		if (null == suffix)
+			return true;
+		// TODO
+		return urlSuffix.indexOf("," + suffix.toLowerCase() + ",") == -1;
 	}
 }

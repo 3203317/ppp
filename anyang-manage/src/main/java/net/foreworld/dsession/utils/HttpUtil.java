@@ -133,4 +133,18 @@ public class HttpUtil {
 		} // END
 		return ipAddr;
 	}
+
+	/**
+	 * 获取地址后缀
+	 *
+	 * @param req
+	 * @return
+	 */
+	public static String getUrlSuffix(HttpServletRequest req) {
+		String url = req.getRequestURI();
+		// TODO
+		if (-1 == url.indexOf("."))
+			return null;
+		return url.substring(url.lastIndexOf(".") + 1, url.length());
+	}
 }
