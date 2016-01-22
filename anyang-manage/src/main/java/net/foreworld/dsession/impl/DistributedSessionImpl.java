@@ -1,5 +1,6 @@
 package net.foreworld.dsession.impl;
 
+import java.util.Set;
 import java.util.logging.Logger;
 
 import net.foreworld.dsession.DistributedSessionContext;
@@ -39,23 +40,49 @@ public class DistributedSessionImpl implements HttpSession {
 		if (null == apiKey)
 			return;
 
-		Jedis jedis = RedisUtil.getJedis();
-		if (null == jedis)
-			return;
+		// TODO
+		Jedis jedis = null;
+		try {
+			jedis = RedisUtil.getJedis();
+			if (null == jedis)
+				return;
 
-		jedis.set((apiKey + ":" + name).getBytes(),
-				SerializeUtil.serialize(value));
-		jedis.close();
+			// TODO
+			jedis.setex((apiKey + ":" + name).getBytes(),
+					DistributedSessionContext.COOKIE_MAXAGE,
+					SerializeUtil.serialize(value));
+		} catch (Exception ignore) {
+		} finally {
+			if (null != jedis)
+				jedis.close();
+		}
 	}
 
 	public void invalidate() {
-		Jedis jedis = RedisUtil.getJedis();
-		if (null == jedis)
+		String apiKey = HttpUtil.getCookie(HttpUtil.getRequest(),
+				DistributedSessionContext.COOKIE_NAME_APIKEY);
+		apiKey = StringUtil.isEmpty(apiKey);
+
+		if (null == apiKey)
 			return;
 
 		// TODO
-		javax.servlet.http.HttpSession session = HttpUtil.getSession();
-		session.invalidate();
+		Jedis jedis = null;
+		try {
+			jedis = RedisUtil.getJedis();
+			if (null == jedis)
+				return;
+
+			Set<String> values = jedis.keys(apiKey + ":*");
+
+			for (String value : values) {
+				jedis.del(value);
+			}
+		} catch (Exception ignore) {
+		} finally {
+			if (null != jedis)
+				jedis.close();
+		}
 	}
 
 	public Object getAttribute(String name) {
