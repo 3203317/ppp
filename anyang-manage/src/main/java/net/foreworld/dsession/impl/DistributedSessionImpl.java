@@ -32,11 +32,7 @@ public class DistributedSessionImpl implements HttpSession {
 			return;
 
 		// TODO
-		String apiKey = HttpUtil.getCookie(HttpUtil.getRequest(),
-				DistributedSessionContext.COOKIE_NAME_APIKEY);
-		apiKey = StringUtil.isEmpty(apiKey);
-
-		// TODO
+		String apiKey = getApiKey();
 		if (null == apiKey)
 			return;
 
@@ -53,16 +49,17 @@ public class DistributedSessionImpl implements HttpSession {
 					SerializeUtil.serialize(value));
 		} catch (Exception ignore) {
 		} finally {
-			if (null != jedis)
-				jedis.close();
+			if (null != jedis) {
+				try {
+					jedis.close();
+				} catch (Exception ignore) {
+				}
+			}
 		}
 	}
 
 	public void invalidate() {
-		String apiKey = HttpUtil.getCookie(HttpUtil.getRequest(),
-				DistributedSessionContext.COOKIE_NAME_APIKEY);
-		apiKey = StringUtil.isEmpty(apiKey);
-
+		String apiKey = getApiKey();
 		if (null == apiKey)
 			return;
 
@@ -80,8 +77,12 @@ public class DistributedSessionImpl implements HttpSession {
 			}
 		} catch (Exception ignore) {
 		} finally {
-			if (null != jedis)
-				jedis.close();
+			if (null != jedis) {
+				try {
+					jedis.close();
+				} catch (Exception ignore) {
+				}
+			}
 		}
 	}
 
@@ -91,25 +92,40 @@ public class DistributedSessionImpl implements HttpSession {
 			return null;
 
 		// TODO
-		String apiKey = HttpUtil.getCookie(HttpUtil.getRequest(),
-				DistributedSessionContext.COOKIE_NAME_APIKEY);
-		apiKey = StringUtil.isEmpty(apiKey);
-
+		String apiKey = getApiKey();
 		if (null == apiKey)
 			return null;
 
-		Jedis jedis = RedisUtil.getJedis();
-		if (null == jedis)
-			return null;
+		// TODO
+		byte[] b = null;
+		Jedis jedis = null;
+		try {
+			jedis = RedisUtil.getJedis();
+			if (null == jedis)
+				return null;
 
-		byte[] b = jedis.get((apiKey + ":" + name).getBytes());
-		jedis.close();
+			b = jedis.get((apiKey + ":" + name).getBytes());
 
-		if (null == b)
-			return null;
+			if (null == b)
+				return null;
+		} catch (Exception ignore) {
+		} finally {
+			if (null != jedis) {
+				try {
+					jedis.close();
+				} catch (Exception ignore) {
+				}
+			}
+		} // END
 
 		Object obj = SerializeUtil.unserialize(b);
-
 		return obj;
+	}
+
+	private String getApiKey() {
+		String apiKey = HttpUtil.getCookie(HttpUtil.getRequest(),
+				DistributedSessionContext.COOKIE_NAME_APIKEY);
+		apiKey = StringUtil.isEmpty(apiKey);
+		return apiKey;
 	}
 }
