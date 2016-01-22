@@ -30,19 +30,22 @@ public class DistributedSessionImpl implements HttpSession {
 		if (null == name)
 			return;
 
-		Jedis jedis = RedisUtil.getJedis();
-		if (null == jedis)
-			return;
-
 		// TODO
 		String apiKey = HttpUtil.getCookie(HttpUtil.getRequest(),
 				DistributedSessionContext.COOKIE_NAME_APIKEY);
 		apiKey = StringUtil.isEmpty(apiKey);
 
 		// TODO
-		if (null != apiKey)
-			jedis.set((apiKey + ":" + name).getBytes(),
-					SerializeUtil.serialize(value));
+		if (null == apiKey)
+			return;
+
+		Jedis jedis = RedisUtil.getJedis();
+		if (null == jedis)
+			return;
+
+		jedis.set((apiKey + ":" + name).getBytes(),
+				SerializeUtil.serialize(value));
+		jedis.close();
 	}
 
 	public void invalidate() {
@@ -60,10 +63,6 @@ public class DistributedSessionImpl implements HttpSession {
 		if (null == name)
 			return null;
 
-		Jedis jedis = RedisUtil.getJedis();
-		if (null == jedis)
-			return null;
-
 		// TODO
 		String apiKey = HttpUtil.getCookie(HttpUtil.getRequest(),
 				DistributedSessionContext.COOKIE_NAME_APIKEY);
@@ -72,7 +71,12 @@ public class DistributedSessionImpl implements HttpSession {
 		if (null == apiKey)
 			return null;
 
+		Jedis jedis = RedisUtil.getJedis();
+		if (null == jedis)
+			return null;
+
 		byte[] b = jedis.get((apiKey + ":" + name).getBytes());
+		jedis.close();
 
 		if (null == b)
 			return null;
