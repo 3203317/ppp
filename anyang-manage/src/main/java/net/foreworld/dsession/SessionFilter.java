@@ -10,7 +10,6 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -48,17 +47,10 @@ public class SessionFilter implements Filter {
 			return;
 		}
 
-		// TODO
-		Cookie[] cookies = hreq.getCookies();
-		// 判断是否支持cookie
-		if (null == cookies) {
-			chain.doFilter(req, res);
-			return;
-		} // END
-
 		String realIP = HttpUtil.getClientRealIP(hreq);
+		realIP = StringUtil.isEmpty(realIP);
 		// 判断IP
-		if (null == StringUtil.isEmpty(realIP)) {
+		if (null == realIP) {
 			chain.doFilter(req, res);
 			return;
 		} // END
@@ -66,9 +58,16 @@ public class SessionFilter implements Filter {
 		// 获取apikey
 		String apiKey = HttpUtil.getCookie(hreq,
 				DistributedSessionContext.COOKIE_NAME_APIKEY);
+		apiKey = StringUtil.isEmpty(apiKey);
+
+		// TODO
 		String curTime = HttpUtil.getCookie(hreq,
 				DistributedSessionContext.COOKIE_NAME_CURTIME);
+		curTime = StringUtil.isEmpty(curTime);
+
+		// TODO
 		String signature = HttpUtil.getCookie(hreq, apiKey);
+		signature = StringUtil.isEmpty(signature);
 
 		// TODO
 		HttpServletResponse hres = (HttpServletResponse) res;
@@ -115,9 +114,7 @@ public class SessionFilter implements Filter {
 	 */
 	private boolean checkCookiesExists(String apiKey, String curTime,
 			String signature) {
-		return null == StringUtil.isEmpty(apiKey)
-				|| null == StringUtil.isEmpty(curTime)
-				|| null == StringUtil.isEmpty(signature);
+		return null == apiKey || null == curTime || null == signature;
 	}
 
 	/**
