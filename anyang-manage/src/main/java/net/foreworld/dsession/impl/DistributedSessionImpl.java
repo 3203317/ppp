@@ -1,6 +1,5 @@
 package net.foreworld.dsession.impl;
 
-import java.util.Set;
 import java.util.logging.Logger;
 
 import net.foreworld.dsession.DistributedSessionContext;
@@ -44,9 +43,13 @@ public class DistributedSessionImpl implements HttpSession {
 				return;
 
 			// TODO
-			jedis.setex((apiKey + ":" + name).getBytes(),
-					DistributedSessionContext.COOKIE_MAXAGE,
+			jedis.hset(apiKey.getBytes(), name.getBytes(),
 					SerializeUtil.serialize(value));
+
+			if (!jedis.exists(apiKey)) {
+				jedis.expire(apiKey.getBytes(),
+						DistributedSessionContext.COOKIE_MAXAGE);
+			}
 		} catch (Exception ignore) {
 		} finally {
 			if (null != jedis) {
@@ -70,11 +73,13 @@ public class DistributedSessionImpl implements HttpSession {
 			if (null == jedis)
 				return;
 
-			Set<String> values = jedis.keys(apiKey + ":*");
+			// 删除多个keys
+			// Set<String> values = jedis.keys(apiKey + ":*");
+			// for (String value : values) {
+			// jedis.del(value);
+			// }
 
-			for (String value : values) {
-				jedis.del(value);
-			}
+			jedis.del(apiKey);
 		} catch (Exception ignore) {
 		} finally {
 			if (null != jedis) {
@@ -104,7 +109,7 @@ public class DistributedSessionImpl implements HttpSession {
 			if (null == jedis)
 				return null;
 
-			b = jedis.get((apiKey + ":" + name).getBytes());
+			b = jedis.hget(apiKey.getBytes(), name.getBytes());
 
 			if (null == b)
 				return null;
