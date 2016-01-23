@@ -17,7 +17,7 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public class RestUtil {
 
-	public static String standard(String data, String key) {
+	public static String genSignature(String data, String key) {
 		byte[] byteHMAC = null;
 		try {
 			Mac mac = Mac.getInstance("HmacSHA1");
@@ -25,25 +25,24 @@ public class RestUtil {
 			mac.init(spec);
 			byteHMAC = mac.doFinal(data.toLowerCase(Locale.getDefault())
 					.getBytes());
-		} catch (InvalidKeyException e) {
-			e.printStackTrace();
+		} catch (InvalidKeyException ignore) {
+			return null;
 		} catch (NoSuchAlgorithmException ignore) {
-			ignore.printStackTrace();
+			return null;
 		}
 		// TODO
 		String oauth = new BASE64Encoder().encode(byteHMAC);
 
 		try {
 			return URLEncoder.encode(oauth, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+		} catch (UnsupportedEncodingException ignore) {
 		}
-		return "";
+		return null;
 	}
 
 	public static void main(String[] args) {
 		for (int i = 0; i < 10; i++)
-			System.out.println(standard((new Random()).toString(),
+			System.out.println(genSignature((new Random()).toString(),
 					(new Random()).toString()));
 	}
 }
