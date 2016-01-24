@@ -39,6 +39,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>net.foreworld</groupId>
+			<artifactId>foreworld-dsession</artifactId>
+			<version>1.0.3</version>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
@@ -230,11 +235,8 @@
 			<version>${mapper.version}</version>
 		</dependency>
 		<!-- velocity -->
-		<!-- <dependency>
-			<groupId>org.apache.velocity</groupId>
-			<artifactId>velocity</artifactId>
-			<version>1.7</version>
-		</dependency> -->
+		<!-- <dependency> <groupId>org.apache.velocity</groupId> <artifactId>velocity</artifactId>
+			<version>1.7</version> </dependency> -->
 		<!--freemarker -->
 		<dependency>
 			<groupId>org.freemarker</groupId>
