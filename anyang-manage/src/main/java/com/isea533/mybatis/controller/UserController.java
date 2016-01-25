@@ -72,7 +72,7 @@ public class UserController {
 			user.setUserName("admin");
 			user.setUserPass("123456");
 			return user;
-		} else if ("huangxin".equals(userName) && "654321".equals(userPass)) {
+		} else if ("huangxin".equals(userName) && "123456".equals(userPass)) {
 			User user = new User();
 			user.setUserName("huangxin");
 			user.setUserPass("123456");
