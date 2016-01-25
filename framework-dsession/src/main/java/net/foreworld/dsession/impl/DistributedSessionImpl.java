@@ -5,9 +5,9 @@ import java.util.logging.Logger;
 import net.foreworld.dsession.DistributedSessionContext;
 import net.foreworld.dsession.HttpSession;
 import net.foreworld.dsession.utils.HttpUtil;
-import net.foreworld.dsession.utils.RedisUtil;
 import net.foreworld.util.SerializeUtil;
 import net.foreworld.util.StringUtil;
+import net.foreworld.util.redis.RedisUtil;
 import redis.clients.jedis.Jedis;
 
 /**

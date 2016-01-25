@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import net.foreworld.dsession.impl.DistributedSessionImpl;
 import net.foreworld.dsession.impl.HttpSessionImpl;
 import net.foreworld.util.StringUtil;
+import net.foreworld.util.redis.RedisProp;
 
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -32,7 +33,7 @@ public class DistributedSessionResolver implements
 			WebDataBinderFactory arg3) throws Exception {
 		Object _o = session.get();
 		if (null == _o) {
-			if (null == StringUtil.isEmpty(DistributedSessionContext.DB_HOST)) {
+			if (null == StringUtil.isEmpty(RedisProp.get("db.host"))) {
 				_o = new HttpSessionImpl();
 			} else {
 				_o = new DistributedSessionImpl();

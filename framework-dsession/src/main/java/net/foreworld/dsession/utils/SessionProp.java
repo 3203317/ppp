@@ -4,21 +4,19 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import org.apache.commons.lang.StringUtils;
+import net.foreworld.util.StringUtil;
 
 /**
  *
  * @author huangxin (3203317@qq.com)
  *
  */
-public class SysCfgUtil {
+public class SessionProp {
 	private static ResourceBundle config = null;
-	private static final String FILE_NAME = "session";
-
 	static {
 		try {
-			config = ResourceBundle.getBundle(FILE_NAME);
-		} catch (Exception ignored) {
+			config = ResourceBundle.getBundle("session");
+		} catch (Exception ignore) {
 		}
 	}
 
@@ -30,37 +28,24 @@ public class SysCfgUtil {
 	 */
 	public synchronized static String get(String key) {
 		try {
-			String _key = StringUtils.defaultIfEmpty(key, "");
+			String _key = StringUtil.isEmpty(key, "");
 			if (!config.containsKey(_key)) {
 				return null;
 			} // END
 			String _str = config.getString(_key);
-			_str = StringUtils.defaultIfEmpty(_str, "");
-			_str = _str.trim();
+			_str = StringUtil.isEmpty(_str, "");
 			return _str;
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception ignore) {
+			ignore.printStackTrace();
 		}
 		return null;
 	}
 
-	/**
-	 *
-	 * @param key
-	 * @param returnVal
-	 * @return
-	 */
-	public synchronized static String get(String key, String returnVal) {
-		String result = get(key);
-		return null == result ? returnVal : result;
-	}
-
 	public static Map<String, String> getAllConfig() {
-		// 加载配置文件，以后需要移到配置表的service中
 		Map<String, String> _map = new HashMap<String, String>();
 		for (String key : config.keySet()) {
-			_map.put(StringUtils.trim(key),
-					StringUtils.trim(config.getString(key)));
+			_map.put(StringUtil.isEmpty(key),
+					StringUtil.isEmpty(config.getString(key)));
 		} // END
 		return _map;
 	}

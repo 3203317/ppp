@@ -1,6 +1,6 @@
 package net.foreworld.dsession;
 
-import net.foreworld.dsession.utils.SysCfgUtil;
+import net.foreworld.dsession.utils.SessionProp;
 
 /**
  *
@@ -9,11 +9,9 @@ import net.foreworld.dsession.utils.SysCfgUtil;
  */
 public interface DistributedSessionContext {
 
-	public final static int COOKIE_MAXAGE = Integer.valueOf(SysCfgUtil
+	public final static int COOKIE_MAXAGE = Integer.valueOf(SessionProp
 			.get("cookie.maxAge"));
 
 	public static final String COOKIE_NAME_APIKEY = "apiKey";
 	public static final String COOKIE_NAME_CURTIME = "curTime";
-
-	public static final String DB_HOST = SysCfgUtil.get("db.host");
 }

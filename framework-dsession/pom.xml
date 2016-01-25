@@ -31,20 +31,14 @@
 		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
 		<log4j.version>1.2.17</log4j.version>
 		<junit.version>4.11</junit.version>
-		<jedis.version>2.8.0</jedis.version>
-		<foreworld-util.version>1.0.1</foreworld-util.version>
+		<foreworld-util-redis.version>1.0.1</foreworld-util-redis.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>net.foreworld</groupId>
-			<artifactId>foreworld-util</artifactId>
-			<version>${foreworld-util.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>redis.clients</groupId>
-			<artifactId>jedis</artifactId>
-			<version>${jedis.version}</version>
+			<artifactId>foreworld-util-redis</artifactId>
+			<version>${foreworld-util-redis.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

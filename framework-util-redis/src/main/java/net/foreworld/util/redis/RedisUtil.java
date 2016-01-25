@@ -1,8 +1,7 @@
-package net.foreworld.dsession.utils;
+package net.foreworld.util.redis;
 
 import java.util.logging.Logger;
 
-import net.foreworld.dsession.DistributedSessionContext;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -27,17 +26,16 @@ public final class RedisUtil {
 	private static synchronized void initPool() {
 		try {
 			JedisPoolConfig config = new JedisPoolConfig();
-			config.setMaxIdle(Integer.valueOf(SysCfgUtil.get("db.maxIdle")));
-			config.setMaxWaitMillis(Integer.valueOf(SysCfgUtil
+			config.setMaxIdle(Integer.valueOf(RedisProp.get("db.maxIdle")));
+			config.setMaxWaitMillis(Integer.valueOf(RedisProp
 					.get("db.maxWaitMillis")));
-			config.setTestOnBorrow(Boolean.valueOf(SysCfgUtil
+			config.setTestOnBorrow(Boolean.valueOf(RedisProp
 					.get("db.testOnBorrow")));
 			// TIMEOUT 最大延迟时间
-			jedisPool = new JedisPool(config,
-					DistributedSessionContext.DB_HOST,
-					Integer.valueOf(SysCfgUtil.get("db.port")),
-					Integer.valueOf(SysCfgUtil.get("db.timeout")),
-					SysCfgUtil.get("db.pass"));
+			jedisPool = new JedisPool(config, RedisProp.get("db.host"),
+					Integer.valueOf(RedisProp.get("db.port")),
+					Integer.valueOf(RedisProp.get("db.timeout")),
+					RedisProp.get("db.pass"));
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 		}

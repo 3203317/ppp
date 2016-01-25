@@ -16,9 +16,14 @@ public class StringUtil {
 	public static String isEmpty(String str) {
 		if (null == str)
 			return null;
-		// TODO
 		str = str.trim();
-		// TODO
 		return 0 == str.length() ? null : str;
+	}
+
+	public static String isEmpty(String str, String defaultStr) {
+		String result = isEmpty(str);
+		if (null == result)
+			return defaultStr;
+		return result;
 	}
 }

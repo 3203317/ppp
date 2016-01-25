@@ -18,16 +18,29 @@ public class SerializeUtil {
 	 * @return
 	 */
 	public static byte[] serialize(Object object) {
-		ObjectOutputStream oos = null;
 		ByteArrayOutputStream baos = null;
+		ObjectOutputStream out = null;
 		try {
 			// 序列化
 			baos = new ByteArrayOutputStream();
-			oos = new ObjectOutputStream(baos);
-			oos.writeObject(object);
+			out = new ObjectOutputStream(baos);
+			out.writeObject(object);
 			byte[] bytes = baos.toByteArray();
 			return bytes;
 		} catch (Exception ignore) {
+		} finally {
+			if (null != out) {
+				try {
+					out.close();
+				} catch (Exception ignore) {
+				}
+			} // END
+			if (null != baos) {
+				try {
+					baos.close();
+				} catch (Exception ignore) {
+				}
+			}
 		}
 		return null;
 	}
@@ -40,12 +53,26 @@ public class SerializeUtil {
 	 */
 	public static Object unserialize(byte[] bytes) {
 		ByteArrayInputStream bais = null;
+		ObjectInputStream in = null;
 		try {
 			// 反序列化
 			bais = new ByteArrayInputStream(bytes);
-			ObjectInputStream ois = new ObjectInputStream(bais);
-			return ois.readObject();
+			in = new ObjectInputStream(bais);
+			return in.readObject();
 		} catch (Exception ignore) {
+		} finally {
+			if (null != in) {
+				try {
+					in.close();
+				} catch (Exception ignore) {
+				}
+			} // END
+			if (null != bais) {
+				try {
+					bais.close();
+				} catch (Exception ignore) {
+				}
+			}
 		}
 		return null;
 	}

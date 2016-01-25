@@ -3,11 +3,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.foreworld</groupId>
-	<artifactId>foreworld-util</artifactId>
+	<artifactId>foreworld-util-redis</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0.1</version>
-	<name>foreworld :: framework :: util</name>
-	<description>工具类</description>
+	<name>foreworld :: framework :: util :: redis</name>
+	<description>redis工具类</description>
 	<url>http://www.foreworld.net/</url>
 
 	<distributionManagement>
@@ -21,10 +21,21 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<log4j.version>1.2.17</log4j.version>
 		<junit.version>4.11</junit.version>
-		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+		<jedis.version>2.8.0</jedis.version>
+		<foreworld-util.version>1.0.1</foreworld-util.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>net.foreworld</groupId>
+			<artifactId>foreworld-util</artifactId>
+			<version>${foreworld-util.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>${jedis.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -35,12 +46,6 @@
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>${javax.servlet-api.version}</version>
-			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
