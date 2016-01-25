@@ -14,4 +14,6 @@ public interface DistributedSessionContext {
 
 	public static final String COOKIE_NAME_APIKEY = "apiKey";
 	public static final String COOKIE_NAME_CURTIME = "curTime";
+
+	public static final String BLANK = " ";
 }

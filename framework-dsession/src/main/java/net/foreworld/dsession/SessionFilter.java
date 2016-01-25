@@ -88,8 +88,9 @@ public class SessionFilter implements Filter {
 					DistributedSessionContext.COOKIE_MAXAGE);
 
 			// 真实IP
-			signature = RestUtil.genSignature(apiKey, apiKey + " " + curTime
-					+ " " + realIP);
+			signature = RestUtil.genSignature(apiKey, apiKey
+					+ DistributedSessionContext.BLANK + curTime
+					+ DistributedSessionContext.BLANK + realIP);
 
 			// TODO
 			HttpUtil.addCookie(hres, apiKey, signature,

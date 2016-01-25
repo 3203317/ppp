@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import net.foreworld.dsession.DistributedSessionContext;
 import net.foreworld.dsession.HttpSession;
 import net.foreworld.dsession.utils.HttpUtil;
+import net.foreworld.util.RestUtil;
 import net.foreworld.util.SerializeUtil;
 import net.foreworld.util.StringUtil;
 import net.foreworld.util.redis.RedisUtil;
@@ -35,6 +36,9 @@ public class DistributedSessionImpl implements HttpSession {
 		if (null == apiKey)
 			return;
 
+		if (!checkSignSafe(apiKey))
+			return;
+
 		// TODO
 		Jedis jedis = null;
 		try {
@@ -60,6 +64,9 @@ public class DistributedSessionImpl implements HttpSession {
 	public void invalidate() {
 		String apiKey = getApiKey();
 		if (null == apiKey)
+			return;
+
+		if (!checkSignSafe(apiKey))
 			return;
 
 		// TODO
@@ -97,6 +104,9 @@ public class DistributedSessionImpl implements HttpSession {
 		if (null == apiKey)
 			return null;
 
+		if (!checkSignSafe(apiKey))
+			return null;
+
 		// TODO
 		byte[] b = null;
 		Jedis jedis = null;
@@ -128,5 +138,45 @@ public class DistributedSessionImpl implements HttpSession {
 				DistributedSessionContext.COOKIE_NAME_APIKEY);
 		apiKey = StringUtil.isEmpty(apiKey);
 		return apiKey;
+	}
+
+	private String getCurTime() {
+		String curTime = HttpUtil.getCookie(HttpUtil.getRequest(),
+				DistributedSessionContext.COOKIE_NAME_CURTIME);
+		curTime = StringUtil.isEmpty(curTime);
+		return curTime;
+	}
+
+	private String getSignature(String apiKey) {
+		String signature = HttpUtil.getCookie(HttpUtil.getRequest(), apiKey);
+		signature = StringUtil.isEmpty(signature);
+		return signature;
+	}
+
+	/**
+	 * 检查签名安全
+	 *
+	 * @return
+	 */
+	private boolean checkSignSafe(String apiKey) {
+		String curTime = getCurTime();
+		// 检查curTime
+		if (null == curTime)
+			return false;
+
+		String signature = getSignature(apiKey);
+		// 检查signature
+		if (null == signature)
+			return false;
+
+		String realIP = HttpUtil.getClientRealIP(HttpUtil.getRequest());
+		realIP = StringUtil.isEmpty(realIP);
+		// 检查IP
+		if (null == realIP)
+			return false;
+
+		return signature.equals(RestUtil.genSignature(apiKey, apiKey
+				+ DistributedSessionContext.BLANK + curTime
+				+ DistributedSessionContext.BLANK + realIP));
 	}
 }
