@@ -2,6 +2,7 @@ package net.foreworld.dsession;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 import javax.servlet.Filter;
@@ -73,15 +74,17 @@ public class SessionFilter implements Filter {
 		HttpServletResponse hres = (HttpServletResponse) res;
 
 		if (checkCookiesExists(apiKey, curTime, signature)) {
-			apiKey = hreq.getSession().getId();
-			HttpUtil.addCookie(hres,
-					DistributedSessionContext.COOKIE_NAME_APIKEY, apiKey,
-					DistributedSessionContext.COOKIE_MAXAGE);
-
 			// 当前时间
 			curTime = String.valueOf((new Date()).getTime());
 			HttpUtil.addCookie(hres,
 					DistributedSessionContext.COOKIE_NAME_CURTIME, curTime,
+					DistributedSessionContext.COOKIE_MAXAGE);
+
+			// TODO
+			apiKey = RestUtil.genSignature(UUID.randomUUID().toString(),
+					curTime);
+			HttpUtil.addCookie(hres,
+					DistributedSessionContext.COOKIE_NAME_APIKEY, apiKey,
 					DistributedSessionContext.COOKIE_MAXAGE);
 
 			// 真实IP
