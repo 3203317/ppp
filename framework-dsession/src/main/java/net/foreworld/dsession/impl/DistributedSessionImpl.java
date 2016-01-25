@@ -47,9 +47,14 @@ public class DistributedSessionImpl implements HttpSession {
 				return;
 
 			// TODO
-			jedis.hset(apiKey.getBytes(), name.getBytes(),
-					SerializeUtil.serialize(value));
-			jedis.expire(apiKey, DistributedSessionContext.COOKIE_MAXAGE);
+			if (jedis.exists(apiKey)) {
+				jedis.hset(apiKey.getBytes(), name.getBytes(),
+						SerializeUtil.serialize(value));
+			} else {
+				jedis.hset(apiKey.getBytes(), name.getBytes(),
+						SerializeUtil.serialize(value));
+				jedis.expire(apiKey, DistributedSessionContext.COOKIE_MAXAGE);
+			} // END
 		} catch (Exception ignore) {
 		} finally {
 			if (null != jedis) {

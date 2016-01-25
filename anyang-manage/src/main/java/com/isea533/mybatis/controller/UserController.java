@@ -75,7 +75,7 @@ public class UserController {
 		} else if ("huangxin".equals(userName) && "654321".equals(userPass)) {
 			User user = new User();
 			user.setUserName("huangxin");
-			user.setUserPass("654321");
+			user.setUserPass("123456");
 			return user;
 		}
 		return null;
