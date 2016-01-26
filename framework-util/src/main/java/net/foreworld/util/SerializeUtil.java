@@ -6,9 +6,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
+ * SerializeUtil
  *
  * @author huangxin (3203317@qq.com)
- *
+ * @license LGPL (http://www.gnu.org/licenses/lgpl.html)
+ * @copyright FOREWORLD.NET
  */
 public class SerializeUtil {
 	/**

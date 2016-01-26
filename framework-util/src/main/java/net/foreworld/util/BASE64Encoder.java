@@ -1,9 +1,11 @@
 package net.foreworld.util;
 
 /**
+ * BASE64Encoder
  *
  * @author huangxin (3203317@qq.com)
- *
+ * @license LGPL (http://www.gnu.org/licenses/lgpl.html)
+ * @copyright FOREWORLD.NET
  */
 public class BASE64Encoder {
 	private static final char last2byte = (char) Integer

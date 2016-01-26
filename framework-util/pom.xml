@@ -62,4 +62,23 @@
 		</plugins>
 	</build>
 
+	<licenses>
+		<license>
+			<name>LGPL</name>
+			<url>http://www.gnu.org/licenses/lgpl.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>foreworld</id>
+			<name>huangxin</name>
+			<email>3203317@qq.com</email>
+			<roles>
+				<role>Architect</role>
+			</roles>
+		</developer>
+	</developers>
+
 </project>
