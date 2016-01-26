@@ -20,9 +20,11 @@ import net.foreworld.util.StringUtil;
 import org.apache.log4j.Logger;
 
 /**
+ * SessionFilter
  *
  * @author huangxin (3203317@qq.com)
- *
+ * @license LGPL (http://www.gnu.org/licenses/lgpl.html)
+ * @copyright FOREWORLD.NET
  */
 public class SessionFilter implements Filter {
 	private static final Logger logger = Logger.getLogger(SessionFilter.class);

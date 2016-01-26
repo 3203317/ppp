@@ -7,9 +7,11 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 /**
+ * RedisUtil
  *
  * @author huangxin (3203317@qq.com)
- *
+ * @license LGPL (http://www.gnu.org/licenses/lgpl.html)
+ * @copyright FOREWORLD.NET
  */
 public final class RedisUtil {
 	private static final Logger logger = Logger.getLogger(RedisUtil.class);

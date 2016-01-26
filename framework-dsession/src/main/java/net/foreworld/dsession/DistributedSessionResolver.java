@@ -12,9 +12,11 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
 /**
+ * DistributedSessionResolver
  *
  * @author huangxin (3203317@qq.com)
- *
+ * @license LGPL (http://www.gnu.org/licenses/lgpl.html)
+ * @copyright FOREWORLD.NET
  */
 public class DistributedSessionResolver implements
 		HandlerMethodArgumentResolver {

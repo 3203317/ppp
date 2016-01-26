@@ -4,9 +4,11 @@ import net.foreworld.dsession.HttpSession;
 import net.foreworld.dsession.utils.HttpUtil;
 
 /**
+ * HttpSessionImpl
  *
  * @author huangxin (3203317@qq.com)
- *
+ * @license LGPL (http://www.gnu.org/licenses/lgpl.html)
+ * @copyright FOREWORLD.NET
  */
 public class HttpSessionImpl implements HttpSession {
 

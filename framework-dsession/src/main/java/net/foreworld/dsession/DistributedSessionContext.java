@@ -5,9 +5,11 @@ import net.foreworld.util.redis.RedisUtil;
 import redis.clients.jedis.Jedis;
 
 /**
+ * DistributedSessionContext
  *
  * @author huangxin (3203317@qq.com)
- *
+ * @license LGPL (http://www.gnu.org/licenses/lgpl.html)
+ * @copyright FOREWORLD.NET
  */
 public class DistributedSessionContext {
 

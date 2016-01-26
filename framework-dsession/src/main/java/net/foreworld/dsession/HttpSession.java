@@ -1,10 +1,11 @@
 package net.foreworld.dsession;
 
 /**
- * 分布式Session
+ * HttpSession
  *
  * @author huangxin (3203317@qq.com)
- *
+ * @license LGPL (http://www.gnu.org/licenses/lgpl.html)
+ * @copyright FOREWORLD.NET
  */
 public interface HttpSession {
 	/**

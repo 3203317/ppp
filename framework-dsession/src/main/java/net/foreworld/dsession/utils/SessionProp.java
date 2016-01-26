@@ -7,9 +7,11 @@ import java.util.ResourceBundle;
 import net.foreworld.util.StringUtil;
 
 /**
+ * session.properties
  *
  * @author huangxin (3203317@qq.com)
- *
+ * @license LGPL (http://www.gnu.org/licenses/lgpl.html)
+ * @copyright FOREWORLD.NET
  */
 public class SessionProp {
 	private static ResourceBundle config = null;
