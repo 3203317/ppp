@@ -1,6 +1,6 @@
 package net.foreworld.util.redis;
 
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -12,13 +12,9 @@ import redis.clients.jedis.JedisPoolConfig;
  *
  */
 public final class RedisUtil {
-	private static final Logger logger;
+	private static final Logger logger = Logger.getLogger(RedisUtil.class);
 
 	private static JedisPool jedisPool = null;
-
-	static {
-		logger = Logger.getLogger(RedisUtil.class.getName());
-	}
 
 	private RedisUtil() {
 	}
@@ -37,7 +33,7 @@ public final class RedisUtil {
 					Integer.valueOf(RedisProp.get("db.timeout")),
 					RedisProp.get("db.pass"));
 		} catch (Exception e) {
-			logger.info(e.getMessage());
+			logger.error("初始化Redis池失败", e);
 		}
 	}
 
@@ -57,7 +53,7 @@ public final class RedisUtil {
 			jedis = jedisPool.getResource();
 			return jedis;
 		} catch (Exception e) {
-			logger.info(e.getMessage());
+			logger.error("获取Redis实例失败", e);
 			return null;
 		}
 	}

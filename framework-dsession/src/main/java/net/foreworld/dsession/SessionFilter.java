@@ -3,7 +3,6 @@ package net.foreworld.dsession;
 import java.io.IOException;
 import java.util.Date;
 import java.util.UUID;
-import java.util.logging.Logger;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -18,22 +17,20 @@ import net.foreworld.dsession.utils.HttpUtil;
 import net.foreworld.util.RestUtil;
 import net.foreworld.util.StringUtil;
 
+import org.apache.log4j.Logger;
+
 /**
  *
  * @author huangxin (3203317@qq.com)
  *
  */
 public class SessionFilter implements Filter {
-	private final Logger logger;
+	private static final Logger logger = Logger.getLogger(SessionFilter.class);
 	private String urlSuffix;
-
-	public SessionFilter() {
-		logger = Logger.getLogger(getClass().getName());
-	}
 
 	@Override
 	public void destroy() {
-		logger.warning("destroy");
+		logger.info("filter destroy");
 	}
 
 	@Override

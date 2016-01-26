@@ -1,7 +1,5 @@
 package net.foreworld.dsession;
 
-import java.util.logging.Logger;
-
 import net.foreworld.dsession.impl.DistributedSessionImpl;
 import net.foreworld.dsession.impl.HttpSessionImpl;
 import net.foreworld.util.StringUtil;
@@ -20,12 +18,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
  */
 public class DistributedSessionResolver implements
 		HandlerMethodArgumentResolver {
-	private final Logger logger;
 	private static ThreadLocal<Object> session = new ThreadLocal<Object>();
-
-	public DistributedSessionResolver() {
-		logger = Logger.getLogger(getClass().getName());
-	}
 
 	@Override
 	public Object resolveArgument(MethodParameter parameter,
@@ -37,7 +30,6 @@ public class DistributedSessionResolver implements
 				_o = new HttpSessionImpl();
 			} else {
 				_o = new DistributedSessionImpl();
-				logger.info("distributed session");
 			} // END
 			session.set(_o);
 		} // END

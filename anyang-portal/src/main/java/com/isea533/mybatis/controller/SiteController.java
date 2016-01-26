@@ -1,6 +1,7 @@
 package com.isea533.mybatis.controller;
 
 import net.foreworld.dsession.DistributedSession;
+import net.foreworld.dsession.DistributedSessionContext;
 import net.foreworld.dsession.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,9 @@ public class SiteController {
 		// TODO
 		Object obj = session.getAttribute("session.user");
 		result.addObject("data_session_user", obj);
+		// 在线人数
+		result.addObject("data_session_online",
+				DistributedSessionContext.getOnlineNum());
 		return result;
 	}
 }

@@ -1,7 +1,5 @@
 package net.foreworld.dsession.impl;
 
-import java.util.logging.Logger;
-
 import net.foreworld.dsession.DistributedSessionContext;
 import net.foreworld.dsession.HttpSession;
 import net.foreworld.dsession.utils.HttpUtil;
@@ -17,11 +15,6 @@ import redis.clients.jedis.Jedis;
  *
  */
 public class DistributedSessionImpl implements HttpSession {
-	private final Logger logger;
-
-	public DistributedSessionImpl() {
-		logger = Logger.getLogger(getClass().getName());
-	}
 
 	public void setAttribute(String name, Object value) {
 		if (null == value)

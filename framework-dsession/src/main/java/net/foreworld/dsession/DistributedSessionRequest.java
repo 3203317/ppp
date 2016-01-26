@@ -1,7 +1,5 @@
 package net.foreworld.dsession;
 
-import java.util.logging.Logger;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
@@ -12,11 +10,9 @@ import javax.servlet.http.HttpSession;
  *
  */
 public class DistributedSessionRequest extends HttpServletRequestWrapper {
-	private final Logger logger;
 
 	public DistributedSessionRequest(HttpServletRequest request) {
 		super(request);
-		logger = Logger.getLogger(getClass().getName());
 	}
 
 	@Override
