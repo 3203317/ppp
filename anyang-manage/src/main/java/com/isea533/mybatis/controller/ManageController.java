@@ -1,7 +1,6 @@
 package com.isea533.mybatis.controller;
 
-import net.foreworld.dsession.DistributedSession;
-import net.foreworld.dsession.HttpSession;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +18,7 @@ public class ManageController {
 	private String index_ftl = "manage/1.0.2/index";
 
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
-	public ModelAndView indexUI(@DistributedSession HttpSession session) {
+	public ModelAndView indexUI(HttpSession session) {
 		Object obj = session.getAttribute("session.user");
 		if (null == obj) {
 			return new ModelAndView("redirect:/user/login");

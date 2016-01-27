@@ -2,8 +2,7 @@ package com.isea533.mybatis.controller;
 
 import java.util.Date;
 
-import net.foreworld.dsession.DistributedSession;
-import net.foreworld.dsession.HttpSession;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,13 +34,13 @@ public class UserController {
 	}
 
 	@RequestMapping(value = { "/user/logout" }, method = RequestMethod.GET)
-	public String logoutUI(@DistributedSession HttpSession session) {
+	public String logoutUI(HttpSession session) {
 		session.invalidate();
 		return "redirect:/user/login";
 	}
 
 	@RequestMapping(value = { "/user/login" }, method = RequestMethod.POST, produces = "application/json")
-	public ModelAndView login(User user, @DistributedSession HttpSession session) {
+	public ModelAndView login(User user, HttpSession session) {
 		ModelAndView result = new ModelAndView();
 		User _user = login(user.getUserName(), user.getUserPass());
 		// TODO
