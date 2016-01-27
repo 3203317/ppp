@@ -70,7 +70,7 @@ class SessionInvocationHandler implements InvocationHandler {
 		return method.invoke(session, args);
 	}
 
-	public void setAttribute(String name, Object value) {
+	private void setAttribute(String name, Object value) {
 		if (null == value)
 			return;
 
@@ -113,7 +113,7 @@ class SessionInvocationHandler implements InvocationHandler {
 		}
 	}
 
-	public void invalidate() {
+	private void invalidate() {
 		String apiKey = getApiKey();
 		if (null == apiKey)
 			return;
@@ -146,7 +146,7 @@ class SessionInvocationHandler implements InvocationHandler {
 		}
 	}
 
-	public Object getAttribute(String name) {
+	private Object getAttribute(String name) {
 		name = StringUtil.isEmpty(name);
 		if (null == name)
 			return null;

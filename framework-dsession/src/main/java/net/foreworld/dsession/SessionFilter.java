@@ -28,6 +28,9 @@ import org.apache.log4j.Logger;
  */
 public class SessionFilter implements Filter {
 	private static final Logger logger = Logger.getLogger(SessionFilter.class);
+	private static final String URL_SUFFIX = "url-suffix";
+	private static final String COMMA = ",";
+
 	private String urlSuffix;
 
 	@Override
@@ -47,9 +50,8 @@ public class SessionFilter implements Filter {
 			return;
 		}
 
-		String realIP = HttpUtil.getClientRealIP(hreq);
-		realIP = StringUtil.isEmpty(realIP);
 		// 判断IP
+		String realIP = HttpUtil.getClientRealIP(hreq);
 		if (null == realIP) {
 			chain.doFilter(req, res);
 			return;
@@ -104,7 +106,7 @@ public class SessionFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig cfg) throws ServletException {
-		urlSuffix = "," + cfg.getInitParameter("url-suffix") + ",";
+		urlSuffix = COMMA + cfg.getInitParameter(URL_SUFFIX) + COMMA;
 	}
 
 	/**
@@ -129,9 +131,7 @@ public class SessionFilter implements Filter {
 	private boolean checkUrlSafe(HttpServletRequest req) {
 		String suffix = HttpUtil.getUrlSuffix(req);
 		// TODO
-		if (null == suffix)
-			return true;
-		// TODO
-		return urlSuffix.indexOf("," + suffix.toLowerCase() + ",") == -1;
+		return null == suffix ? true : urlSuffix.indexOf(COMMA
+				+ suffix.toLowerCase() + COMMA) == -1;
 	}
 }

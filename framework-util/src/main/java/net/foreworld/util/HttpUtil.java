@@ -73,8 +73,8 @@ public abstract class HttpUtil {
 	 * @return
 	 */
 	public static String getDynamicName(HttpServletRequest req) {
-		String dyName = "http://" + req.getLocalName() + ":"
-				+ req.getLocalPort() + req.getContextPath();
+		String dyName = req.getLocalName() + ":" + req.getLocalPort()
+				+ req.getContextPath();
 		return dyName;
 	}
 
@@ -130,8 +130,7 @@ public abstract class HttpUtil {
 	public static String getUrlSuffix(HttpServletRequest req) {
 		String url = req.getRequestURI();
 		// TODO
-		if (-1 == url.indexOf("."))
-			return null;
-		return url.substring(url.lastIndexOf(".") + 1, url.length());
+		return -1 == url.indexOf(".") ? null : url.substring(
+				url.lastIndexOf(".") + 1, url.length());
 	}
 }

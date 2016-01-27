@@ -15,16 +15,16 @@ public class DistributedSessionAttributeListener implements
 
 	@Override
 	public void attributeAdded(HttpSessionBindingEvent event) {
-		System.out.println("attributeAdded");
+		// TODO
 	}
 
 	@Override
 	public void attributeRemoved(HttpSessionBindingEvent event) {
-		System.out.println("attributeRemoved");
+		// TODO
 	}
 
 	@Override
 	public void attributeReplaced(HttpSessionBindingEvent event) {
-		System.out.println("attributeReplaced");
+		// TODO
 	}
 }

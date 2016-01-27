@@ -20,15 +20,13 @@ public class SerializeUtil {
 	 * @return
 	 */
 	public static byte[] serialize(Object object) {
-		ByteArrayOutputStream baos = null;
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		ObjectOutputStream out = null;
 		try {
 			// 序列化
-			baos = new ByteArrayOutputStream();
 			out = new ObjectOutputStream(baos);
 			out.writeObject(object);
-			byte[] bytes = baos.toByteArray();
-			return bytes;
+			return baos.toByteArray();
 		} catch (Exception ignore) {
 		} finally {
 			if (null != out) {

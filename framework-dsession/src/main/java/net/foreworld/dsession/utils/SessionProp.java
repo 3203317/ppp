@@ -35,8 +35,7 @@ public class SessionProp {
 				return null;
 			} // END
 			String _str = config.getString(_key);
-			_str = StringUtil.isEmpty(_str, "");
-			return _str;
+			return StringUtil.isEmpty(_str, "");
 		} catch (Exception ignore) {
 			ignore.printStackTrace();
 		}

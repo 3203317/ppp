@@ -35,6 +35,9 @@ public class RestUtil {
 			return null;
 		} // END
 
+		if (null == byteHMAC)
+			return null;
+
 		String code = new BASE64Encoder().encode(byteHMAC);
 
 		try {

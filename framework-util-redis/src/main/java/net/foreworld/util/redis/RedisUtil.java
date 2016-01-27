@@ -35,7 +35,7 @@ public final class RedisUtil {
 					Integer.valueOf(RedisProp.get("db.timeout")),
 					RedisProp.get("db.pass"));
 		} catch (Exception e) {
-			logger.error("初始化Redis池失败", e);
+			logger.error(e);
 		}
 	}
 
@@ -45,17 +45,13 @@ public final class RedisUtil {
 	 * @return
 	 */
 	public synchronized static Jedis getJedis() {
-		if (null == jedisPool)
+		if (null == jedisPool) {
 			initPool();
-		// TODO
-		Jedis jedis = null;
+		} // END
 		try {
-			if (null == jedisPool)
-				return null;
-			jedis = jedisPool.getResource();
-			return jedis;
+			return null == jedisPool ? null : jedisPool.getResource();
 		} catch (Exception e) {
-			logger.error("获取Redis实例失败", e);
+			logger.error(e);
 			return null;
 		}
 	}

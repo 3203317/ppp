@@ -30,9 +30,7 @@ public class DistributedSessionContext {
 		Jedis jedis = null;
 		try {
 			jedis = RedisUtil.getJedis();
-			if (null == jedis)
-				return 0;
-			return jedis.dbSize();
+			return null == jedis ? 0 : jedis.dbSize();
 		} catch (Exception ignore) {
 		} finally {
 			if (null != jedis) {
