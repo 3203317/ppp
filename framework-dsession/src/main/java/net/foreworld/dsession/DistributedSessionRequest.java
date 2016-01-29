@@ -58,7 +58,9 @@ class SessionInvocationHandler implements InvocationHandler {
 			throws Throwable {
 		String methodName = method.getName();
 		// TODO
-		if ("setAttribute".equals(methodName)) {
+		if ("getAttribute".equals(methodName)) {
+			return getAttribute(String.valueOf(args[0]));
+		} else if ("setAttribute".equals(methodName)) {
 			setAttribute(String.valueOf(args[0]), args[1]);
 			return null;
 		} else if ("removeAttribute".equals(methodName)) {
@@ -67,8 +69,6 @@ class SessionInvocationHandler implements InvocationHandler {
 		} else if ("invalidate".equals(methodName)) {
 			invalidate();
 			return null;
-		} else if ("getAttribute".equals(methodName)) {
-			return getAttribute(String.valueOf(args[0]));
 		} // END
 		return method.invoke(session, args);
 	}
