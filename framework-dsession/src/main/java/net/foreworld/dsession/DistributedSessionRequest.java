@@ -61,6 +61,9 @@ class SessionInvocationHandler implements InvocationHandler {
 		if ("setAttribute".equals(methodName)) {
 			setAttribute(String.valueOf(args[0]), args[1]);
 			return null;
+		} else if ("removeAttribute".equals(methodName)) {
+			// removeAttribute(String.valueOf(args[0]));
+			return null;
 		} else if ("invalidate".equals(methodName)) {
 			invalidate();
 			return null;
@@ -144,6 +147,40 @@ class SessionInvocationHandler implements InvocationHandler {
 				}
 			}
 		}
+	}
+
+	private void removeAttribute(String name) {
+		name = StringUtil.isEmpty(name);
+		if (null == name)
+			return;
+
+		String apiKey = getApiKey();
+		if (null == apiKey)
+			return;
+
+		if (!checkSignSafe(apiKey))
+			return;
+
+		// TODO
+		Jedis jedis = null;
+		try {
+			jedis = RedisUtil.getJedis();
+			if (null == jedis)
+				return;
+
+			// TODO
+			if (jedis.hexists(apiKey, name))
+				jedis.hdel(apiKey, name);
+		} catch (Exception ignore) {
+		} finally {
+			if (null != jedis) {
+				try {
+					jedis.close();
+				} catch (Exception ignore) {
+				}
+			}
+		}
+
 	}
 
 	private Object getAttribute(String name) {
