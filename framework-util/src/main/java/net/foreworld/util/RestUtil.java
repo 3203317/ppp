@@ -6,8 +6,12 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Locale;
 
+import javax.crypto.KeyGenerator;
 import javax.crypto.Mac;
+import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+
+import org.apache.commons.codec.binary.Base64;
 
 /**
  * RestUtil
@@ -45,5 +49,21 @@ public class RestUtil {
 		} catch (UnsupportedEncodingException ignore) {
 		}
 		return null;
+	}
+
+	public static String genApiKey() {
+		try {
+			KeyGenerator generator = KeyGenerator.getInstance("HmacSHA1");
+			SecretKey key = generator.generateKey();
+			String encodedKey = Base64.encodeBase64URLSafeString(key
+					.getEncoded());
+			return encodedKey;
+		} catch (NoSuchAlgorithmException ignore) {
+		}
+		return null;
+	}
+
+	public static String genSecKey() {
+		return genApiKey();
 	}
 }
