@@ -42,7 +42,8 @@ public class RestUtil {
 		if (null == byteHMAC)
 			return null;
 
-		String code = new BASE64Encoder().encode(byteHMAC);
+		// String code = new BASE64Encoder().encode(byteHMAC);
+		String code = Base64.encodeBase64String(byteHMAC);
 
 		try {
 			return URLEncoder.encode(code, ENC);
