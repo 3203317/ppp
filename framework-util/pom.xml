@@ -5,7 +5,7 @@
 	<groupId>net.foreworld</groupId>
 	<artifactId>foreworld-util</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.5</version>
+	<version>1.0.7</version>
 	<name>foreworld :: framework :: util</name>
 	<description>工具类</description>
 	<url>http://www.foreworld.net/</url>

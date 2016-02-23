@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.foreworld.dsession.utils.HttpUtil;
+import net.foreworld.dsession.utils.SessionProp;
 import net.foreworld.util.RestUtil;
 import net.foreworld.util.StringUtil;
 
@@ -30,6 +31,8 @@ public class SessionFilter implements Filter {
 	private static final Logger logger = Logger.getLogger(SessionFilter.class);
 	private static final String URL_SUFFIX = "url-suffix";
 	private static final String COMMA = ",";
+
+	public final static String COOKIE_DOMAIN = SessionProp.get("cookie.domain");
 
 	private String urlSuffix;
 
@@ -77,14 +80,14 @@ public class SessionFilter implements Filter {
 		if (checkCookiesExists(apiKey, curTime, signature)) {
 			// 当前时间
 			curTime = String.valueOf((new Date()).getTime());
-			HttpUtil.addCookie(hres,
+			HttpUtil.addCookie(hres, COOKIE_DOMAIN,
 					DistributedSessionContext.COOKIE_NAME_CURTIME, curTime,
 					DistributedSessionContext.COOKIE_MAXAGE);
 
 			// TODO
 			apiKey = RestUtil.genSignature(UUID.randomUUID().toString(),
 					curTime);
-			HttpUtil.addCookie(hres,
+			HttpUtil.addCookie(hres, COOKIE_DOMAIN,
 					DistributedSessionContext.COOKIE_NAME_APIKEY, apiKey,
 					DistributedSessionContext.COOKIE_MAXAGE);
 
@@ -94,7 +97,7 @@ public class SessionFilter implements Filter {
 					+ DistributedSessionContext.BLANK + realIP);
 
 			// TODO
-			HttpUtil.addCookie(hres, apiKey, signature,
+			HttpUtil.addCookie(hres, COOKIE_DOMAIN, apiKey, signature,
 					DistributedSessionContext.COOKIE_MAXAGE);
 		} // END
 

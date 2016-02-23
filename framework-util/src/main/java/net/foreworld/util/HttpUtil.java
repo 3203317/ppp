@@ -17,10 +17,13 @@ import javax.servlet.http.HttpServletResponse;
  * @copyright FOREWORLD.NET
  */
 public abstract class HttpUtil {
+
 	/**
 	 * 新增Cookie
 	 *
 	 * @param res
+	 * @param domain
+	 *            .foreworld.net
 	 * @param name
 	 *            cookie名称
 	 * @param value
@@ -28,9 +31,11 @@ public abstract class HttpUtil {
 	 * @param maxAge
 	 *            cookie存放时间（单位为秒；3天：3*24*60*60；值为0，则cookie随浏览器关闭而清除）
 	 */
-	public static void addCookie(HttpServletResponse res, String name,
-			String value, int maxAge) {
+	public static void addCookie(HttpServletResponse res, String domain,
+			String name, String value, int maxAge) {
 		Cookie cookie = new Cookie(name, value);
+		if (null != StringUtil.isEmpty(domain))
+			cookie.setDomain(domain);
 		cookie.setPath("/");
 		if (0 < maxAge)
 			cookie.setMaxAge(maxAge);
