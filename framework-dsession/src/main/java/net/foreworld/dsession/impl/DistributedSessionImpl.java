@@ -2,6 +2,7 @@ package net.foreworld.dsession.impl;
 
 import net.foreworld.dsession.DistributedSessionContext;
 import net.foreworld.dsession.HttpSession;
+import net.foreworld.dsession.SessionFilter;
 import net.foreworld.dsession.utils.HttpUtil;
 import net.foreworld.util.RestUtil;
 import net.foreworld.util.SerializeUtil;
@@ -169,14 +170,20 @@ public class DistributedSessionImpl implements HttpSession {
 		if (null == signature)
 			return false;
 
-		String realIP = HttpUtil.getClientRealIP(HttpUtil.getRequest());
-		realIP = StringUtil.isEmpty(realIP);
-		// 检查IP
-		if (null == realIP)
-			return false;
+		String realIP = null;
+
+		if (null != SessionFilter.SECURE_IP) {
+			realIP = HttpUtil.getClientRealIP(HttpUtil.getRequest());
+			realIP = StringUtil.isEmpty(realIP);
+			// 检查IP
+			if (null == realIP)
+				return false;
+		}
 
 		return signature.equals(RestUtil.genSignature(apiKey, apiKey
-				+ DistributedSessionContext.BLANK + curTime
-				+ DistributedSessionContext.BLANK + realIP));
+				+ DistributedSessionContext.BLANK
+				+ curTime
+				+ ((null == SessionFilter.SECURE_IP) ? ""
+						: DistributedSessionContext.BLANK + realIP)));
 	}
 }

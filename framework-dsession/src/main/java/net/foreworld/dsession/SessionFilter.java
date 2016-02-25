@@ -32,7 +32,8 @@ public class SessionFilter implements Filter {
 	private static final String URL_SUFFIX = "url-suffix";
 	private static final String COMMA = ",";
 
-	public final static String COOKIE_DOMAIN = SessionProp.get("cookie.domain");
+	private final static String COOKIE_DOMAIN = SessionProp
+			.get("cookie.domain");
 	public final static String SECURE_IP = StringUtil.isEmpty(SessionProp
 			.get("secure.ip"));
 
@@ -60,6 +61,7 @@ public class SessionFilter implements Filter {
 		if (null != SECURE_IP) {
 			// 判断IP
 			realIP = HttpUtil.getClientRealIP(hreq);
+			realIP = StringUtil.isEmpty(realIP);
 			if (null == realIP) {
 				chain.doFilter(req, res);
 				return;

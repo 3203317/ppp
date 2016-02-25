@@ -258,14 +258,20 @@ class SessionInvocationHandler implements InvocationHandler {
 		if (null == signature)
 			return false;
 
-		String realIP = HttpUtil.getClientRealIP(req);
-		realIP = StringUtil.isEmpty(realIP);
-		// 检查IP
-		if (null == realIP)
-			return false;
+		String realIP = null;
+
+		if (null != SessionFilter.SECURE_IP) {
+			realIP = HttpUtil.getClientRealIP(req);
+			realIP = StringUtil.isEmpty(realIP);
+			// 检查IP
+			if (null == realIP)
+				return false;
+		}
 
 		return signature.equals(RestUtil.genSignature(apiKey, apiKey
-				+ DistributedSessionContext.BLANK + curTime
-				+ DistributedSessionContext.BLANK + realIP));
+				+ DistributedSessionContext.BLANK
+				+ curTime
+				+ ((null == SessionFilter.SECURE_IP) ? ""
+						: DistributedSessionContext.BLANK + realIP)));
 	}
 }

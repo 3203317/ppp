@@ -41,7 +41,17 @@
 		<dependency>
 			<groupId>net.foreworld</groupId>
 			<artifactId>foreworld-dsession</artifactId>
-			<version>1.0.3</version>
+			<version>1.0.10</version>
+		</dependency>
+		<dependency>
+			<groupId>net.foreworld</groupId>
+			<artifactId>foreworld-util</artifactId>
+			<version>1.0.9</version>
+		</dependency>
+		<dependency>
+			<groupId>net.foreworld</groupId>
+			<artifactId>foreworld-util-redis</artifactId>
+			<version>1.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
