@@ -33,6 +33,8 @@ public class SessionFilter implements Filter {
 	private static final String COMMA = ",";
 
 	public final static String COOKIE_DOMAIN = SessionProp.get("cookie.domain");
+	public final static String SECURE_IP = StringUtil.isEmpty(SessionProp
+			.get("secure.ip"));
 
 	private String urlSuffix;
 
@@ -53,11 +55,15 @@ public class SessionFilter implements Filter {
 			return;
 		}
 
-		// 判断IP
-		String realIP = HttpUtil.getClientRealIP(hreq);
-		if (null == realIP) {
-			chain.doFilter(req, res);
-			return;
+		String realIP = null;
+
+		if (null != SECURE_IP) {
+			// 判断IP
+			realIP = HttpUtil.getClientRealIP(hreq);
+			if (null == realIP) {
+				chain.doFilter(req, res);
+				return;
+			}
 		} // END
 
 		// 获取apikey
@@ -93,8 +99,10 @@ public class SessionFilter implements Filter {
 
 			// 真实IP
 			signature = RestUtil.genSignature(apiKey, apiKey
-					+ DistributedSessionContext.BLANK + curTime
-					+ DistributedSessionContext.BLANK + realIP);
+					+ DistributedSessionContext.BLANK
+					+ curTime
+					+ ((null == SECURE_IP) ? ""
+							: DistributedSessionContext.BLANK + realIP));
 
 			// TODO
 			HttpUtil.addCookie(hres, COOKIE_DOMAIN, apiKey, signature,

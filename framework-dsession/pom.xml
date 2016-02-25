@@ -5,7 +5,7 @@
 	<groupId>net.foreworld</groupId>
 	<artifactId>foreworld-dsession</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.4</version>
+	<version>1.0.5</version>
 	<name>foreworld :: framework :: dsession</name>
 	<description>分布式会话</description>
 	<url>http://www.foreworld.net/</url>
