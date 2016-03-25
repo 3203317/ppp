@@ -5,7 +5,7 @@
 	<groupId>net.foreworld</groupId>
 	<artifactId>foreworld-dsession</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.13</version>
+	<version>1.0.14</version>
 	<name>foreworld :: framework :: dsession</name>
 	<description>分布式会话</description>
 	<url>http://www.foreworld.net/</url>
@@ -63,23 +63,23 @@
 		<dependency>
 			<groupId>org.springframework.session</groupId>
 			<artifactId>spring-session-data-redis</artifactId>
-			<version>1.0.1.RELEASE</version>
+			<version>1.0.2.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.session</groupId>
 			<artifactId>spring-session</artifactId>
-			<version>1.0.1.RELEASE</version>
+			<version>1.0.2.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>redis.clients</groupId>
 			<artifactId>jedis</artifactId>
 			<version>2.5.2</version>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.orange.redis-embedded</groupId>
 			<artifactId>embedded-redis</artifactId>
 			<version>0.6</version>
-		</dependency>
+		</dependency> -->
 	</dependencies>
 
 	<dependencyManagement>
